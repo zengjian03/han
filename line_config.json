@@ -50,7 +50,7 @@
 		    "name": "本地线路1"
 		},
 		{
-		    "url": "clan://localhost/han/2.json",
+		    "url": "clan://han/2.json",
 		    "name": "本地线路2"
 		}
     ],
