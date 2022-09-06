@@ -1,1 +1,60 @@
-[{title:'🎁BOX线路',url:'http://52bsj.vip:81/api/v3/file/get/29899/box2.json?sign=3cVyKZQr3lFAwdB3HK-A7h33e0MnmG6lLB9oWlvSNnM%3D%3A0',time:'🏵>月光宝盒线路'},{title:'🍚刚刚线路',url:'http://刚刚.live/猫 ',time:'♻️>推荐线路'},{title:'🅱️哔哩学习线路',url:'http://52bsj.vip:81/api/v3/file/get/41063/bili.json?sign=TxuApYZt6bNl9TzI7vObItW34UnATQ4RQxABAEwHst4%3D%3A0',time:'🎬>娱乐学习线路'},{title:'🎈alist+网盘综合线路',url:'http://52bsj.vip:81/api/v3/file/get/45055/alist.json?sign=5hJ60J-4XMmtamakqYzTiaX_8-1vwxpGeN0WcRVDsh8%3D%3A0',time:'🔍>4K搜索专用'},{title:'🎈820线路',url:'https://gitea.com/hongdeng98/YH/raw/branch/main/Mao0820.json',time:'🍒>网络收集'},{title:'🍧冰点娱乐线路',url:'https://gitcode.net/qq_26898231/TVBox/-/raw/main/tv.json',time:'🛀🏻️>网络收集'},{title:'🍐木极线路',url:'https://pan.tenire.com/down.php/2664dabf44e1b55919f481903a178cba.txt',time:'🍐>存储平台'},{title:'🌈佰欣园线路',url:'https://ghproxy.com/https://raw.githubusercontent.com/chengxueli818913/maoTV/main/44.txt',time:'🍓>网络收集'},{title:'🕺潇洒线路',url:'https://download.kstore.space/download/2863/01.txt',time:'🍉>网络收集'},{title:'🎈福利线路',url:'https://agit.ai/guot54/ygbh/raw/branch/master/PRO.json',time:'🍒>你懂的'}]
+{
+    "urls": [
+        {
+            "url": "http://52bsj.vip:81/api/v3/file/get/29899/box2.json?sign=3cVyKZQr3lFAwdB3HK-A7h33e0MnmG6lLB9oWlvSNnM%3D%3A0",
+            "name": "🎁BOX线路"
+        },
+        {
+            "url": "https://raw.fastgit.org/zhanghong1983/TVBOXZY/main/%E8%A7%82%E5%BD%B1TV/gfjt.json",
+            "name": "家庭FASTGIT线路",
+            "time": "2022-08-26 02:00:00"
+        },
+        {
+            "url": "http://刚刚.live/猫",
+            "name": "🍚刚刚线路"
+        },
+        {
+            "url": "http://52bsj.vip:81/api/v3/file/get/41063/bili.json?sign=TxuApYZt6bNl9TzI7vObItW34UnATQ4RQxABAEwHst4%3D%3A0",
+            "name": "🅱️哔哩学习线路",
+            "time": "2022-08-26 02:00:00"
+        },
+        {
+            "url": "https://pan.tenire.com/down.php/2664dabf44e1b55919f481903a178cba.txt",
+            "name": "🍐木极线路"
+        },
+        {
+            "url": "http://52bsj.vip:81/api/v3/file/get/45055/alist.json?sign=5hJ60J-4XMmtamakqYzTiaX_8-1vwxpGeN0WcRVDsh8%3D%3A0",
+            "name": "🎈alist+网盘综合线路",
+            "time": "2022-08-26 02:00:00"
+        },
+        {
+            "url": "https://gitea.com/hongdeng98/YH/raw/branch/main/Mao0820.json",
+            "name": "4K搜索专用",
+            "time": "2022-08-26 02:00:00"
+        },
+        {
+            "url": "https://gitcode.net/qq_26898231/TVBox/-/raw/main/tv.json",
+            "name": "冰点娱乐线路"
+        },
+        {
+            "url": "https://ghproxy.com/https://raw.githubusercontent.com/chengxueli818913/maoTV/main/44.txt",
+            "name": "🌈佰欣园线路",
+            "time": "2022-08-26 02:00:00"
+        },
+        {
+            "url": "https://download.kstore.space/download/2863/01.txt",
+            "name": "🕺潇洒线路"
+        },
+        {
+            "url": "https://agit.ai/guot54/ygbh/raw/branch/master/PRO.json",
+            "name": "🎈福利线路",
+            "time": "2022-08-26 02:00:00"
+        }
+    ],
+    "vip": [
+        {
+            "url": "http://152.136.125.181:81/MM/dianbos/yeshijieC.json",
+            "name": "yeshijieC.json"
+        }
+    ]
+}
