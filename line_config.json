@@ -44,17 +44,17 @@
         {
             "url": "https://download.kstore.space/download/2863/01.txt",
             "name": "🕺潇洒线路"
-        },
-        {
-            "url": "https://agit.ai/guot54/ygbh/raw/branch/master/PRO.json",
-            "name": "🎈福利线路",
-            "time": "2022-08-26 02:00:00"
         }
     ],
     "vip": [
         {
             "url": "http://152.136.125.181:81/MM/dianbos/yeshijieC.json",
             "name": "yeshijieC.json"
+        },
+        {
+            "url": "https://agit.ai/guot54/ygbh/raw/branch/master/PRO.json",
+            "name": "🎈福利线路",
+            "time": "2022-08-26 02:00:00"
         }
     ]
 }
