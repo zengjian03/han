@@ -1,0 +1,115 @@
+{
+    "urls": [
+        {
+            "url": "https://gitea.com/zengjian/1/raw/branch/main/han.json",
+            "name": "️云星家庭套餐"
+        },
+        {
+            "url": "http://maoyingshi.cc/tvbox/云星日记/ali.m3u8",
+            "name": "️云星阿里套餐"
+        },
+        {
+            "url": "http://maoyingshi.cc/tvbox/云星日记/bili.json",
+            "name": "️云星哔哩套餐"
+        },
+        {
+            "url": "https://gitea.com/33/3/raw/branch/3/3/1",
+            "name": "白嫖影视"
+        },
+        {
+            "url": "http://刚刚.live/猫",
+            "name": "💖刚刚大佬线路"
+        },
+        {
+            "url": "http://miaotvs.cn/osc",
+            "name": "️太阳☀️"
+        },
+        {
+            "url": "https://try.gitea.io/zn777/yshz/raw/branch/main/gitea824.txt",
+            "name": "️🍐木极️"
+        },
+        {
+            "url": "https://apis.fanyeyun.com/down.php/2664dabf44e1b55919f481903a178cba.txt",
+            "name": "️繁叶云️"
+        },
+        {
+            "url": "http://home.jundie.top:81/TVBox/yosakoi.json",
+            "name": "🍒军碟️"
+        },
+        {
+            "url": "https://download.kstore.space/download/2863/01.txt",
+            "name": "🕺潇洒️"
+        },
+        {
+            "url": "https://dxawi.github.io/0/0.json",
+            "name": "️🥦dxawi/github️"
+        },
+        {
+            "url": "https://agit.ai/n/b/raw/branch/a/b/c.json",
+            "name": "️🍅agit/branch️"
+        },
+        {
+            "url": "https://freed.yuanhsing.cf/TVBox/meowcf.json",
+            "name": "️🍆CH猫友️"
+        },
+        {
+            "url": "https://cdn.staticaly.com/gh/XuQqu/PinkBird/main/normal.json",
+            "name": "🌽PinkBird️"
+        },
+        {
+            "url": "https://gitea.com/leevi/NingMengDrink/raw/branch/main/ziyong.json",
+            "name": "未知1"
+        },
+        {
+            "url": "https://liu673cn.github.io/box/m.json",
+            "name": "未知2"
+        },
+        {
+            "url": "https://gitea.com/zengjian/1/raw/branch/main/1.json",
+            "name": "️线路1"
+        },
+        {
+            "url": "https://gitea.com/zengjian/1/raw/branch/main/2.json",
+            "name": "️线路2"
+        },
+        {
+            "url": "https://gitea.com/zengjian/1/raw/branch/main/3.json",
+            "name": "️线路3"
+        },
+        {
+            "url": "https://gitea.com/zengjian/1/raw/branch/main/4.json",
+            "name": "线路4"
+        },
+        {
+            "url": "https://gitea.com/zengjian/1/raw/branch/main/5.json",
+            "name": "线路5"
+        },
+	    {
+	        "url": "https://5848531ky0.oicp.vip/TS/ts.json",
+	        "name": "线路6"
+	     },
+	        {
+	            "url": "https://gitea.com/zengjian/1/raw/branch/main/11.json",
+	            "name": "线路7"
+	        }
+            ,
+	        {
+	            "url": "clan://localhost/han/1.json",
+	            "name": "本地线路1"
+	        },
+	        {
+	            "url": "clan://localhost/han/2.json",
+	            "name": "本地线路2"
+	        }
+
+
+
+    ],
+    "vip": [
+        
+       {
+            "url": "https://gitea.com/33/3/raw/branch/3/3/1",
+            "name": "白嫖影视"
+        } 
+    ]
+}
