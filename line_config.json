@@ -1,8 +1,16 @@
 {
     "urls": [
         {
-            "url": "https://gitea.com/zengjian/1/raw/branch/main/1.json",
+            "url": "https://agit.ai/zengjian/han/raw/branch/master/1.json",
             "name": "涵萌线路"
+        },
+        {
+            "url": "https://maoyingshi.cc/tvbox/云星日记/1.m3u8",
+            "name": "云星日记"
+        },
+        {
+            "url": "https://神器每日推送.tk/pz.json",
+            "name": "神器每日推送"
         },
         {
             "url": "http://52bsj.vip:81/api/v3/file/get/29899/box2.json?sign=3cVyKZQr3lFAwdB3HK-A7h33e0MnmG6lLB9oWlvSNnM%3D%3A0",
@@ -14,8 +22,8 @@
             "time": "2022-08-26 02:00:00"
         },
         {
-            "url": "http://刚刚.live/猫",
-            "name": "🍚刚刚线路"
+            "url": "http://刚刚.live/",
+            "name": "刚刚猫线路"
         },
         {
             "url": "http://52bsj.vip:81/api/v3/file/get/41063/bili.json?sign=TxuApYZt6bNl9TzI7vObItW34UnATQ4RQxABAEwHst4%3D%3A0",
@@ -32,8 +40,8 @@
             "time": "2022-08-26 02:00:00"
         },
         {
-            "url": "https://gitea.com/hongdeng98/YH/raw/branch/main/Mao0820.json",
-            "name": "4K搜索专用",
+            "url": "http://miaotvs.cn/osc",
+            "name": "太阳线路",
             "time": "2022-08-26 02:00:00"
         },
         {
@@ -52,10 +60,6 @@
         {
 		    "url": "clan://localhost/han/1.json",
 		    "name": "本地线路1"
-		},
-		{
-		    "url": "clan://localhost/han/2.json",
-		    "name": "本地线路2"
 		}
     ],
     "vip": [
