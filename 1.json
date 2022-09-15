@@ -5,7 +5,13 @@
 	//电视直播
 	"lives": [{"group": "redirect","channels": [{"name": "redirect","urls": ["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL3plbmdqaWFuL2hhbi9yYXcvYnJhbmNoL21hc3Rlci90di9teXR2LnR4dA=="]}]}],   
 	//数据接口
-	"sites": [      
+	"sites": [  
+	{"key":"mtv_pc_厂长影视","name":"爬虫┃厂长资源","type":3,"api":"csp_Czsapp","searchable":1,"quickSearch":1,"filterable":0},
+	{"key":"mtv_pc_乐猪影视","name":"爬虫┃乐猪影视","type":3,"api":"csp_Lezhu","filterable":1,"quickSearch":1,"searchable":1},
+	{"key":"mtv_pc_快看影视","name":"爬虫┃快看影视","type":3,"api":"csp_Kuaikan","searchable":1,"quickSearch":1,"filterable":1},		        
+	{"key":"csp_77","name":"爬虫┃酷云七七","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},	
+	{"key":"mtv_pc_完美看看","name":"爬虫┃完美看看","type":3,"api":"csp_Wmkk","filterable":1,"quickSearch":1,"ext":"https://agit.ai/zengjian/box/_edit/master/Json/%e5%ae%8c%e7%be%8e%e7%9c%8b%e7%9c%8b%e4%bf%ae%e5%a4%8d.json","searchable":1},       
+	{"key":"mtv_pc_小苹果源","name":"爬虫┃小苹果源","type":3,"api":"csp_LiteApple","searchable":1,"quickSearch":1,"filterable":1},          
 	//{"key":"mtv_pc_293视频","name":"官方┃293视频","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"jar":"https://gitea.com/dq8888/TVBox/raw/branch/main/MaooXB2/0828.jar","filterable":1},	        
 	{"key":"t4public","name":"综合┃T4公共","type":4,"api":"https://t4.secan.icu/vod?sites=all&ali_token=阿里token&timeout=10","searchable":1,"quickSearch":1,"filterable":0},
 	//"api":"https://t4.secan.icu/vod?sites=all&ali_token=3781469b13074e4cac1e0e7113e4fa20&timeout=10",
@@ -17,13 +23,7 @@
 	{"key":"csp_XYQBiu_酷奇","name": "音乐┃酷奇MV","type": 3,"api": "csp_XYQBiu","searchable": 0,"quickSearch": 0,"filterable": 0,"ext": "https://神器每日推送.tk/XYQxb/酷奇MV.json"},
 	{"key": "csp_xpath_网络搜集库qiumi","name": "看球┃球迷专场","type": 3,"api": "csp_XPathFilter","searchable": 1,"quickSearch": 0,"filterable": 1,"ext": "http://maoyingshi.cc/tvbox/云星日记/sh/MaooXB/dj.json"},
 	{"key": "csp_XYQBiu_17kan","name": "看球┃17kan","type": 3,"api": "csp_XYQBiu","searchable": 0,"quickSearch": 0,"filterable": 0,"ext": "http://maoyingshi.cc/tvbox/云星日记/sh/MaooXB/17kan.json","jar":"http://maoyingshi.cc/tvbox/云星日记/jar/17kan.jar"},
-	{"key":"mtv_pc_厂长影视","name":"爬虫┃厂长资源","type":3,"api":"csp_Czsapp","searchable":1,"quickSearch":1,"filterable":0},
-	{"key":"mtv_pc_乐猪影视","name":"爬虫┃乐猪影视","type":3,"api":"csp_Lezhu","filterable":1,"quickSearch":1,"searchable":1},
-	{"key":"mtv_pc_快看影视","name":"爬虫┃快看影视","type":3,"api":"csp_Kuaikan","searchable":1,"quickSearch":1,"filterable":1},		        
-	{"key":"csp_77","name":"爬虫┃酷云七七","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},	
-	{"key":"mtv_pc_完美看看","name":"爬虫┃完美看看","type":3,"api":"csp_Wmkk","filterable":1,"quickSearch":1,"ext":"https://agit.ai/zengjian/box/_edit/master/Json/%e5%ae%8c%e7%be%8e%e7%9c%8b%e7%9c%8b%e4%bf%ae%e5%a4%8d.json","searchable":1},       
-	{"key":"mtv_pc_小苹果源","name":"爬虫┃小苹果源","type":3,"api":"csp_LiteApple","searchable":1,"quickSearch":1,"filterable":1},        
-	
+
 	{
 			"key": "csp_BBB",
 			"name": "👨‍👩‍👦‍👦哔哩套餐",
