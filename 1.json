@@ -6,7 +6,7 @@
 	"lives": [{"group": "redirect","channels": [{"name": "redirect","urls": ["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL3plbmdqaWFuL2hhbi9yYXcvYnJhbmNoL21hc3Rlci90di9teXR2LnR4dA=="]}]}],   
 	//数据接口
 	"sites": [      
-	{"key":"mtv_pc_293视频","name":"官方┃293视频","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"jar":"https://gitea.com/dq8888/TVBox/raw/branch/main/MaooXB2/0828.jar","filterable":1},	        
+	//{"key":"mtv_pc_293视频","name":"官方┃293视频","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"jar":"https://gitea.com/dq8888/TVBox/raw/branch/main/MaooXB2/0828.jar","filterable":1},	        
 	{"key":"t4public","name":"综合┃T4公共","type":4,"api":"https://t4.secan.icu/vod?sites=all&ali_token=阿里token&timeout=10","searchable":1,"quickSearch":1,"filterable":0},
 	//"api":"https://t4.secan.icu/vod?sites=all&ali_token=3781469b13074e4cac1e0e7113e4fa20&timeout=10",
 	{"key":"T4","name":"搜索┃T4爬虫","type":4,"api":"https://service-59u7dsoa-1308372858.gz.apigw.tencentcs.com/release/vod?ali_token=3781469b13074e4cac1e0e7113e4fa20","searchable":1,"quickSearch":1,"filterable":0},
