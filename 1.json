@@ -12,7 +12,7 @@
 	{"key":"csp_77","name":"爬虫┃酷云七七","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},	
 	{"key":"csp_XYQBiu_完美看看",
 	"name":"爬虫┃完美看看",
-	"type":3,"api":"ccsp_XYQBiu","filterable":1,"quickSearch":1,
+	"type":3,"api":"csp_XBiubiu","filterable":1,"quickSearch":1,
 	"ext":"https://agit.ai/zengjian/box/raw/branch/master/Json/完美看看.json","searchable":0},       
 	{"key":"mtv_pc_小苹果源","name":"爬虫┃小苹果源","type":3,"api":"csp_LiteApple","searchable":1,"quickSearch":1,"filterable":1},          
 	//{"key":"mtv_pc_293视频","name":"官方┃293视频","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"jar":"https://gitea.com/dq8888/TVBox/raw/branch/main/MaooXB2/0828.jar","filterable":1},	        
