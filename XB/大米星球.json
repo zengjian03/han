@@ -1,5 +1,5 @@
 {
-  "author": "张弘20220731",
+  "author": "涵萌20220916",
   "name": "大米星球〔时间排序〕",
   "url": "https://www.dmxq.fun",
   "tihuan": "cnzz.com",
@@ -12,8 +12,8 @@
   "jiequqian": "class=\"module-items",
   "jiequhou": "class=\"fixedGroup",
   "jiequshuzuqian": "<a",
-  "jiequshuzuhou": "alt=\"",
-  "tupianqian": "data-original=\"",
+  "jiequshuzuhou": "<div class=\"module-poster-item-info\"",
+  "tupianqian": "src=\"",
   "tupianhou": "\"",
   "biaotiqian": "title=\"",
   "biaotihou": "\"",
