@@ -10,7 +10,7 @@
 	{"key":"mtv_pc_乐猪影视","name":"爬虫┃乐猪影视","type":3,"api":"csp_Lezhu","filterable":1,"quickSearch":1,"searchable":1},
 	{"key":"mtv_pc_快看影视","name":"爬虫┃快看影视","type":3,"api":"csp_Kuaikan","searchable":1,"quickSearch":1,"filterable":1},		        
 	{"key":"csp_77","name":"爬虫┃酷云七七","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},	
-	{"key":"csp_XYQBiu_完美看看",
+	{"key":"csp_XYQBiu_大米星球",
 	"name":"爬虫┃大米星球",
 	"type":3,"api":"csp_XBiubiu","filterable":1,"quickSearch":1,
 	"ext":"https://agit.ai/zengjian/han/raw/branch/master/XB/%E5%A4%A7%E7%B1%B3%E6%98%9F%E7%90%83.json","searchable":0},       
