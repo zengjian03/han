@@ -1,6 +1,6 @@
 {  
 	//jar+壁纸
-	//"spider":"https://神器每日推送.tk/jar;md5;ccd634a9359ebbde69ed804013f90163",
+	"spider":"https://gitcode.net/qq_26898231/TVBox/-/raw/main/jar/888.png;md5;7BF81EB29F54645E289066EF7071A76C",
 	 "wallpaper": "https://tool.weetai.cn/api",
 	//电视直播
 	"lives": [{"group": "redirect","channels": [{"name": "redirect","urls": ["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL3plbmdqaWFuL2hhbi9yYXcvYnJhbmNoL21hc3Rlci90di9teXR2LnR4dA=="]}]}],   
