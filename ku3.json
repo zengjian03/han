@@ -1,0 +1,21 @@
+{
+    "storeHouse": [{
+        "sourceName": "影视①仓",
+        "sourceUrl": "https://gitcode.net/go/go/-/raw/o/ck_2.bin"
+    }, {
+        "sourceName": "影视②仓",
+        "sourceUrl": "https://agit.ai/66666/mao/raw/commit/0ec2c15e9a1a0df2ae6c44b4d7d7a4083d6d6f77/00/xx/0update_yuan"
+    }, {
+        "sourceName": "影视③仓",
+        "sourceUrl": "https://agit.ai/zqk219/baip/raw/branch/master/zqk19.json"
+    }, {
+        "sourceName": "影视④仓",
+        "sourceUrl": "https://agit.ai/zqk219/baip/raw/branch/master/1"
+    }, {
+        "sourceName": "影视⑤仓",
+        "sourceUrl": "https://agit.ai/zqk219/baip/raw/branch/master/6"
+    }, {
+        "sourceName": "影视⑥仓",
+        "sourceUrl": "https://agit.ai/zqk219/baip/raw/branch/master/7"
+    }]
+}
