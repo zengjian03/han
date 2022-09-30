@@ -1,6 +1,6 @@
 {  
 	//jar+壁纸
-	"spider":"https://agit.ai/zengjian/han/raw/branch/master/JAR/0828.jar",
+	"spider":"http://m.miaotvs.cn/资源包.jar;md5;A4D0F912AFAAF7B877125CA73A89F3B9",
 	 "wallpaper": "https://tool.weetai.cn/api",
 	//电视直播
 	"lives": [{"group": "redirect","channels": [{"name": "redirect","urls": ["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL3plbmdqaWFuL2hhbi9yYXcvYnJhbmNoL21hc3Rlci90di9teXR2LnR4dA=="]}]}],   
