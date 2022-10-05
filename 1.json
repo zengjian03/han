@@ -11,11 +11,12 @@
 	{"key":"mtv_pc_乐猪影视","name":"爬虫┃乐猪影视","type":3,"api":"csp_Lezhu","filterable":1,"quickSearch":1,"searchable":1},
 	{"key":"mtv_pc_快看影视","name":"爬虫┃快看影视","type":3,"api":"csp_Kuaikan","searchable":1,"quickSearch":1,"filterable":1},		        
 	{"key":"csp_77","name":"爬虫┃酷云七七","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},	
-	{"key":"293视频","name":"💋293〔SP〕","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"filterable":1,"jar":"https://agit.ai/leevi/apps/raw/branch/main/jar/1001.jar;md5;c474a7a9d106ef348f4ebdc7705c6d38"},
+	{"key":"293视频","name":"爬虫┃293SP","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"filterable":1,"jar":"https://agit.ai/leevi/apps/raw/branch/main/jar/1001.jar;md5;c474a7a9d106ef348f4ebdc7705c6d38"},
 	{"key":"csp_XYQBiu_大米星球",
 	"name":"爬虫┃大米星球",
 	"type":3,"api":"csp_XBiubiu","filterable":1,"quickSearch":1,
-	"ext":"https://agit.ai/zengjian/han/raw/branch/master/biubiu/大米星球","searchable":0},     
+	"ext":"https://agit.ai/zengjian/han/raw/branch/master/biubiu/大米星球","searchable":0},
+	{"key":"csp_Bttoo","name":"爬虫┃两个BT","type":3,"api":"csp_Bttoo","searchable":1,"quickSearch":1,"filterable":1},     
 	{"key":"csp_XYQBiu_爱看影视","name":"爬虫┃爱看影视",
 	"type":3,"api":"csp_XBiubiu","filterable":1,"quickSearch":1,
 	"ext":"https://agit.ai/zengjian/han/raw/branch/master/biubiu/爱看影视.json","searchable":0},
@@ -32,7 +33,7 @@
 	//{"key":"mtv_pc_293视频","name":"官方┃293视频","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"jar":"https://gitea.com/dq8888/TVBox/raw/branch/main/MaooXB2/0828.jar","filterable":1},	        
 	{"key":"t4public","name":"综合┃T4公共","type":4,"api":"https://t4.secan.icu/vod?sites=all&ali_token=阿里token&timeout=10","searchable":1,"quickSearch":1,"filterable":0},
 	//"api":"https://t4.secan.icu/vod?sites=all&ali_token=3781469b13074e4cac1e0e7113e4fa20&timeout=10",
-	{"key":"T4","name":"搜索┃T4爬虫","type":4,"api":"https://service-59u7dsoa-1308372858.gz.apigw.tencentcs.com/release/vod?ali_token=3781469b13074e4cac1e0e7113e4fa20","searchable":1,"quickSearch":1,"filterable":0},
+	//{"key":"T4","name":"搜索┃T4爬虫","type":4,"api":"https://service-59u7dsoa-1308372858.gz.apigw.tencentcs.com/release/vod?ali_token=3781469b13074e4cac1e0e7113e4fa20","searchable":1,"quickSearch":1,"filterable":0},
 	{"key":"csp_Alist1","name":"网盘┃Alist","type":3,"api":"csp_Alist","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://神器每日推送.tk/json/alist.json"},
 	{"key":"csp_biubiu_tingshuxb","name":"听书┃听书网","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"http://maoyingshi.cc/tvbox/云星日记/sh/MaooXB/听书网.json","jar":"http://maoyingshi.cc/tvbox/云星日记/jar/bili.jpg;md5;c5c337bb2793598e9aa5953898fbb087"},
 	{"key":"csp_biubiu_斗鱼","name":"直播┃斗鱼直播","type":3,"api":"csp_XBiubiu","searchable":1,"quickSearch":1,"filterable":0,"ext":"https://freed.yuanhsing.cf/TVBox/MaooXB2/斗鱼.json"},
@@ -43,7 +44,7 @@
 
 	{
 			"key": "csp_BBB",
-			"name": "👨‍👩‍👦‍👦哔哩套餐",
+			"name": "哔哩┃套餐",
 			"type": 3,
 			"api": "csp_Bili",
 			"searchable": 1,
@@ -52,7 +53,7 @@
 			"ext": "https://agit.ai/n/b/raw/branch/a/b/bili.json"
 		},  {
 	           "key": "教程Pro",
-	           "name": "🌏网络教程",
+	           "name": "哔哩┃网络教程",
 	           "type": 3,
 	           "api": "csp_Bili",
 	           "searchable": 1,
@@ -61,7 +62,7 @@
 	           "ext": "https://agit.ai/o/o/raw/branch/o/o/wljc.json"
 	     }, {
 		      "key":"演唱会",
-		      "name":"🅱️演唱会（B站）",
+		      "name":"哔哩┃演唱会",
 		      "type":3,"api":"csp_Bili",
 		      "searchable":0,
 		      "quickSearch":0,        
