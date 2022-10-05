@@ -1,6 +1,7 @@
 {  
 	//jar+壁纸
-	"spider":"http://m.miaotvs.cn/资源包.jar;md5;A4D0F912AFAAF7B877125CA73A89F3B9",
+	//"spider":"http://m.miaotvs.cn/资源包.jar;md5;A4D0F912AFAAF7B877125CA73A89F3B9",
+	"spider":"http://maoyingshi.cc/tvbox/云星日记/jar/0925.jpg;md5;b273ac2e81f1326724494fff3ad88634",
 	 "wallpaper": "https://tool.weetai.cn/api",
 	//电视直播
 	"lives": [{"group": "redirect","channels": [{"name": "redirect","urls": ["proxy://do=live&type=txt&ext=aHR0cHM6Ly9hZ2l0LmFpL3plbmdqaWFuL2hhbi9yYXcvYnJhbmNoL21hc3Rlci90di9teXR2LnR4dA=="]}]}],   
@@ -10,6 +11,7 @@
 	{"key":"mtv_pc_乐猪影视","name":"爬虫┃乐猪影视","type":3,"api":"csp_Lezhu","filterable":1,"quickSearch":1,"searchable":1},
 	{"key":"mtv_pc_快看影视","name":"爬虫┃快看影视","type":3,"api":"csp_Kuaikan","searchable":1,"quickSearch":1,"filterable":1},		        
 	{"key":"csp_77","name":"爬虫┃酷云七七","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1},	
+	{"key":"293视频","name":"💋293〔SP〕","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"filterable":1,"jar":"https://agit.ai/leevi/apps/raw/branch/main/jar/1001.jar;md5;c474a7a9d106ef348f4ebdc7705c6d38"},
 	{"key":"csp_XYQBiu_大米星球",
 	"name":"爬虫┃大米星球",
 	"type":3,"api":"csp_XBiubiu","filterable":1,"quickSearch":1,
