@@ -29,7 +29,7 @@
 	{"key":"csp_XYQBiu_ COKEMV","name":"爬虫┃COKEMV",
 	"type":3,"api":"csp_XBiubiu","filterable":1,"quickSearch":1,
 	"ext":"https://agit.ai/zengjian/han/raw/branch/master/biubiu/COKEMV.json","searchable":0}, 
-	{"key":"csp_Alist1","name":"网盘┃Alist","type":3,"api":"csp_Alist","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://agit.ai/zengjian/han/raw/branch/master/biubiu/alist.json"},   
+	{"key":"csp_Alist1","name":"网盘┃我的云盘","type":3,"api":"csp_Alist","searchable":1,"quickSearch":1,"filterable":1,"ext":"https://agit.ai/zengjian/han/raw/branch/master/biubiu/alist.json"},   
 	{"key":"mtv_pc_小苹果源","name":"爬虫┃小苹果源","type":3,"api":"csp_LiteApple","searchable":1,"quickSearch":1,"filterable":1},          
 	//{"key":"mtv_pc_293视频","name":"官方┃293视频","type":3,"api":"csp_SP293","searchable":1,"quickSearch":1,"jar":"https://gitea.com/dq8888/TVBox/raw/branch/main/MaooXB2/0828.jar","filterable":1},	        
 	{"key":"t4public","name":"综合┃T4公共","type":4,"api":"https://t4.secan.icu/vod?sites=all&ali_token=阿里token&timeout=10","searchable":1,"quickSearch":1,"filterable":0},
