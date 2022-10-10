@@ -111,10 +111,13 @@ CHC动作电影,http://111.20.33.93/TVOD/88888893/224/3221226465/index.m3u8
 湖南卫视,[1920•1080]http://shbu.live.bestvcdn.com.cn:8080/live/program/live/hnwshd/4000000/mnf.m3u8
 湖南卫视,http://39.135.138.58:18890/PLTV/88888888/224/3221225745/index.m3u8
 湖南卫视,http://223.166.95.30:12999/hls/25/index.m3u8
-湖南电影,https://phonehw.qing.mgtv.com/nn_live/nn_x64/cWlkPSZzPTBhN2UxYjM1NzkyMzIzZDgzZjU0OWEzYzQ0YjZmYjIyJmVzPTE2NjU0MTI5NTYmdXVpZD1iYzRlYzQzMDU1N2FmOWQ4MThiMjM0YzdkYzZlOTQ4YS03OGUzMzQ4ZSZ2PTImYXM9MCZjZG5leF9pZD1od19waG9uZQ,,/HNDYMPP360.m3u8
-湖南电视剧,https://phonews.qing.mgtv.com/nn_live/nn_x64/cWlkPSZzPWZmNDhhNmZlMGU5Yjg3OTk3YzJjMTAzZGEyZGVjMDUyJmVzPTE2NjU0MTIwMzQmdXVpZD1lN2ExN2FhZmRmMDY2OTQxY2NjYTViODViOGQyMmQ0Yy03OGUzMzQ4ZSZ2PTImYXM9MCZjZG5leF9pZD13c19waG9uZTM,/HNDSJMPP360.m3u8
-湖南都市,https://phonews.qing.mgtv.com/nn_live/nn_x64/cWlkPSZzPTA5NGY0OGEzYjhjODNhNGE1ZTg4OTQ0YmVhNzc3ZjU3JmVzPTE2NjU0MTI5OTkmdXVpZD1hNjUwZjFlYTI1YjEzYjAyYTcxZTJmNmJiNTFmYTI1ZS03OGUzMzQ4ZSZ2PTImYXM9MCZjZG5leF9pZD13c19waG9uZTM,/HNDSMPP360.m3u8
-长沙新闻,https://phonews.qing.mgtv.com/nn_live/nn_x64/cWlkPSZzPTI2ZmY2ODAxZTQzNjVjZjRjNjFkNzYxMjM0NGEyNzA5JmVzPTE2NjU0MTMwMzAmdXVpZD1mYWMwMjgyMTZjMmQwZGQxMTNkYjE3MjZmNTQyYzJlZS03OGUzMzQ4ZSZ2PTImYXM9MCZjZG5leF9pZD13c19waG9uZTM,/CSXWMPP360.m3u8
+长沙新闻,http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_346.m3u8
+长沙政法,http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_348.m3u8
+长沙女性,http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_349.m3u8
+长沙经贸,http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_350.m3u8
+长沙购物,http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_354.m3u8
+长沙地铁移动,http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_356.m3u8
+
 
 地方,#genre#
 浙江卫视,http://hw-m-l.cztv.com/channels/lantian/channel01/1080p.m3u8
