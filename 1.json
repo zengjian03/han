@@ -3,7 +3,7 @@
   "sites": [
     {
       "key": "豆瓣",
-      "name": "祝大家新春快乐龙年大吉",
+      "name": "涵萌视界",
       "type": 3,
       "api": "csp_Douban",
       "searchable": 0,
