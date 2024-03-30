@@ -1,5 +1,5 @@
 {
-  "spider": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/jar/yydf.jar;md5;f90dbcbf8dd966817a5db78abb758023",
+  "spider": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/yydf.jar;md5;f90dbcbf8dd966817a5db78abb758023",
   "sites": [
     {
       "key": "豆瓣",
@@ -9,17 +9,6 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 0
-    },
-    {
-      "key": "T4-安博",
-      "name": "安博(T4)",
-      "type": 4,
-      "api": "https://tang.serv00.net/zb/99?token=bc7e367d",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
     },
     {
       "key": "csp_XBPQ_6V",
@@ -33,6 +22,34 @@
       "ext": "https://download.kstore.space/download/4637/lib/6v.json"
     },
     {
+      "key": "drpy_js_奇珍异兽",
+      "name": "🦄奇珍┃异兽┃直采",
+      "type": 3,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/奇珍异兽.js"
+    },
+    {
+      "key": "drpy_js_优酷",
+      "name": "🌱酷酷┃的腾┃直采",
+      "type": 3,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/优酷.js"
+    },
+    {
+      "key": "drpy_js_腾云驾雾",
+      "name": "☁️腾云┃驾雾┃直采",
+      "type": 3,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/腾云驾雾.js"
+    },
+    {
+      "key": "drpy_js_百忙无果",
+      "name": "🍑百忙┃无果┃直采",
+      "type": 3,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/百忙无果.js"
+    },
+    {
       "key": "酷狗",
       "name": "酷狗",
       "type": 3,
@@ -44,28 +61,28 @@
       "key": "drpy_js_博看听书",
       "name": "📖 博看听书 ",
       "type": 3,
-      "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy2.min.js",
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/博看听书.js"
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/博看听书.js"
     },
     {
       "key": "drpy_js_蜻蜓FM",
       "name": "🐞蜻蜓FM[js]",
       "type": 3,
       "searchable": 0,
-      "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy2.min.js",
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/蜻蜓FM.js",
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/蜻蜓FM.js",
       "playerType": "2"
     },
     {
       "key": "csp_XYQHiker_DJ呦呦音乐网",
       "name": "🎺 DJ呦呦音乐 ",
       "type": 3,
-      "jar": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/jar/duanjuw.jar;md5;43485bc25714193e43f131def06329d9",
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/duanjuw.jar;md5;43485bc25714193e43f131def06329d9",
       "api": "csp_XYQHiker",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/DJ呦呦音乐网.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/DJ呦呦音乐网.json"
     },
     {
       "key": "Yinyuetai",
@@ -73,7 +90,7 @@
       "type": 3,
       "api": "csp_Yinyuetai",
       "searchable": 1,
-      "jar": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/jar/fnw.jar;md5;91DE2C2701014CE63FFF81FFB420E029",
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/fnw.jar;md5;91DE2C2701014CE63FFF81FFB420E029",
       "changeable": 0
     },
     {
@@ -84,7 +101,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔百科.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔百科.json"
     },
     {
       "key": "小灯塔科学",
@@ -94,7 +111,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔科学.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔科学.json"
     },
     {
       "key": "小灯塔地理",
@@ -104,7 +121,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔地理.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔地理.json"
     },
     {
       "key": "小灯塔国学",
@@ -114,7 +131,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔国学.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔国学.json"
     },
     {
       "key": "小灯塔人文",
@@ -124,7 +141,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔人文.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔人文.json"
     },
     {
       "key": "儿童拼音",
@@ -134,7 +151,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童拼音.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童拼音.json"
     },
     {
       "key": "儿童识字",
@@ -144,7 +161,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童识字.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童识字.json"
     },
     {
       "key": "儿童英语",
@@ -154,7 +171,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童英语.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童英语.json"
     },
     {
       "key": "儿童硬笔",
@@ -164,7 +181,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童硬笔.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童硬笔.json"
     },
     {
       "key": "儿童思维",
@@ -174,7 +191,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童思维.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童思维.json"
     },
     {
       "key": "儿童口才",
@@ -184,7 +201,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童口才.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童口才.json"
     },
     {
       "key": "儿童编程",
@@ -194,7 +211,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童编程.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童编程.json"
     },
     {
       "key": "儿童武术",
@@ -204,7 +221,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童武术.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童武术.json"
     },
     {
       "key": "兴趣培养",
@@ -214,7 +231,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/兴趣培养.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/兴趣培养.json"
     },
     {
       "key": "小学",
@@ -224,7 +241,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩小学.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩小学.json"
     },
     {
       "key": "初中",
@@ -234,7 +251,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩初中.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩初中.json"
     },
     {
       "key": "高中",
@@ -244,7 +261,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩高中.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩高中.json"
     },
     {
       "key": "csp_Bili",
@@ -254,7 +271,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱动物世界.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱动物世界.json"
     },
     {
       "key": "吾爱英语",
@@ -264,7 +281,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱外语.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱外语.json"
     },
     {
       "key": "软件",
@@ -274,7 +291,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱软件.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱软件.json"
     },
     {
       "key": "Excel教程",
@@ -284,7 +301,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱Excel教程.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱Excel教程.json"
     },
     {
       "key": "吾爱PS",
@@ -294,7 +311,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱PS.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱PS.json"
     },
     {
       "key": "吾爱乐器",
@@ -304,7 +321,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱乐器.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱乐器.json"
     },
     {
       "key": "美食",
@@ -314,7 +331,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱美食.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱美食.json"
     },
     {
       "key": "吾爱舞蹈",
@@ -324,7 +341,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱舞蹈.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱舞蹈.json"
     },
     {
       "key": "吾爱户外",
@@ -334,7 +351,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱户外.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱户外.json"
     },
     {
       "key": "吾爱戏曲",
@@ -344,7 +361,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱戏曲.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱戏曲.json"
     },
     {
       "key": "吾爱搭配",
@@ -354,7 +371,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱搭配.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱搭配.json"
     },
     {
       "key": "吾爱解说",
@@ -364,7 +381,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱解说.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱解说.json"
     },
     {
       "key": "吾爱演唱会",
@@ -374,7 +391,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱演唱会.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱演唱会.json"
     },
     {
       "key": "吾爱经典",
@@ -384,7 +401,7 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 1,
-      "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱经典.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱经典.json"
     },
     {
       "key": "吾爱球星",
