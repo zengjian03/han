@@ -50,6 +50,17 @@
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/百忙无果.js"
     },
     {
+      "key": "csp_yydflive-2",
+      "name": "💞电视电台",
+      "type": 3,
+      "playerType": 1,
+      "jar": "http://47.108.190.141/wx/zb/zb.jar;md5;bf1b124a45435a1be4f54d148280a749",
+      "api": "csp_zb",
+      "searchable": 0,
+      "changeable": 0,
+      "ext": "http://47.108.190.141/wx/zb/live.json"
+    },
+    {
       "key": "酷狗",
       "name": "酷狗",
       "type": 3,
@@ -653,6 +664,15 @@
   ],
   "lives": [
     {
+      "name": "通用版",
+      "type": 0,
+      "url": "http://yydf.540734621.xyz/yydf/yydf/bd/yydf/live/直播源.php",
+      "playerType": 1,
+      "ua": "okhttp/3.15",
+      "epg": "http://epg.112114.xyz/?ch={name}&date={date}",
+      "logo": "https://epg.112114.xyz/logo/{name}.png"
+    },
+    {
       "name": "综合",
       "type": 0,
       "url": "https://cc-im-kefu-cos.7moor-fs2.com/im/2768a390-5474-11ea-afc9-7b323e3e16c0/d4fe44c5-107c-4511-af02-aa08fb10dff7/2024-03-21/2024-03-21_01:12:05/1710954725395/37626265/live1213.txt",
@@ -1011,6 +1031,41 @@
       "name": "解析4",
       "type": 1,
       "url": "http://pan.qiaoji8.com/tvbox/neibu.php?url="
+    },
+    {
+      "name": "宝贝",
+      "type": 1,
+      "url": "http://json.84jia.com/home/api?type=ys&uid=335253&key=demprsyzBMQRVY0234&url=",
+      "ext": {
+        "flag": [
+          "qq",
+          "腾讯",
+          "qiyi",
+          "爱奇艺",
+          "奇艺",
+          "youku",
+          "优酷",
+          "tucheng",
+          "sohu",
+          "搜狐",
+          "letv",
+          "乐视",
+          "mgtv",
+          "芒果",
+          "tnmb",
+          "seven",
+          "yzm",
+          "aliyun",
+          "RJuMao",
+          "bilibili",
+          "1905",
+          "xinvip",
+          "XAL",
+          "qiqi",
+          "XALS",
+          "YuMi-vip"
+        ]
+      }
     }
   ],
   "flags": [
