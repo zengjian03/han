@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jar/fan.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/bili.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/custom_spider.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/heji.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/fnw.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/yingshiche.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/duanjuw.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/ok.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/pg.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/XYQ.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/Yoursmile2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/yydf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jar/hccx.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
