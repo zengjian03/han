@@ -7,9 +7,8 @@
       "type": 3,
       "api": "csp_Douban",
       "searchable": 0,
-      "changeable": 1,
-      "indexs": 1,
-      "ext": "https://agit.ai/zengjian/han/raw/branch/master/lib/douban.json"
+      "quickSearch": 0,
+      "filterable": 0
     },
     {
       "key": "T4-安博",
@@ -23,15 +22,6 @@
       "ext": true
     },
     {
-      "key": "Fangniu4k",
-      "name": "放牛┃TV┃App",
-      "type": 3,
-      "api": "csp_Fangniu4k",
-      "searchable": 1,
-      "jar": "./jar/fnw.jar;md5;91DE2C2701014CE63FFF81FFB420E029",
-      "changeable": 0
-    },
-    {
       "key": "csp_XBPQ_6V",
       "name": "宇宙4K专享",
       "type": 3,
@@ -41,15 +31,6 @@
       "filterable": 1,
       "jar": "https://d.kstore.space/download/4637/jar/spider.jar;md5;f6eac2c1831ccd0215892f30c306958f",
       "ext": "https://download.kstore.space/download/4637/lib/6v.json"
-    },
-    {
-      "key": "短剧",
-      "name": "短剧",
-      "type": 3,
-      "api": "csp_Duanju",
-      "searchable": 0,
-      "changeable": 1,
-      "ext": "https://www.duanjutv.icu"
     },
     {
       "key": "酷狗",
