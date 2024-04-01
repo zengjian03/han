@@ -3,7 +3,7 @@
   "sites": [
     {
       "key": "豆瓣",
-      "name": "涵萌视界",
+      "name": "涵萌视界1",
       "type": 3,
       "api": "csp_Douban",
       "searchable": 0,
