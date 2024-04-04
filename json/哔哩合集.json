@@ -134,7 +134,7 @@
 			"type_id": "旅行探险"
 		}
 	],
-	"filters": {
+	"filter": {
 		"短剧": [
 			{
 				"key": "order",
