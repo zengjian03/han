@@ -1,5 +1,11 @@
 [
-{"name":"涵萌IPV6","url":"https://agit.ai/zengjian/han/raw/branch/master/live/ipv6.m3u"},
-{"name":"范明明OfficalSite","url":"https://ghproxy.net/https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/Invalid/domainv6.m3u"},
+  {
+    "name": "范明明OfficalSite",
+    "url": "https://live.fanmingming.com/tv/m3u/global.m3u"
+  },
+  {
+    "name": "范明明GitHub",
+    "url": "https://mirror.ghproxy.com/raw.githubusercontent.com/fanmingming/live/main/tv/m3u/global.m3u"
+  },
 {"name":"范明明IPV6","url":"https://live.fanmingming.com/tv/m3u/ipv6.m3u"}
 ]
