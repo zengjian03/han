@@ -105,324 +105,34 @@
       "changeable": 0
     },
     {
-      "key": "小灯塔",
-      "name": "🌏 小灯塔",
+      "key": "哔哩学习",
+      "name": "🌏哔哩学习",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔百科.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩学习.json"
     },
     {
-      "key": "小灯塔科学",
-      "name": "🌏 小灯塔科学",
+      "key": "哔哩合集",
+      "name": "🌏哔哩合集",
       "type": 3,
       "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
+      "searchable": 1,
+      "quickSearch": 1,
       "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔科学.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩合集.json"
     },
     {
-      "key": "小灯塔地理",
-      "name": "🌏 小灯塔地理",
+      "key": "哔哩儿童",
+      "name": "🌏哔哩儿童",
       "type": 3,
       "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
+      "searchable": 1,
+      "quickSearch": 1,
       "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔地理.json"
-    },
-    {
-      "key": "小灯塔国学",
-      "name": "🌏 小灯塔国学",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔国学.json"
-    },
-    {
-      "key": "小灯塔人文",
-      "name": "🌏 小灯塔人文",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/小灯塔人文.json"
-    },
-    {
-      "key": "儿童拼音",
-      "name": "🌏 儿童拼音",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童拼音.json"
-    },
-    {
-      "key": "儿童识字",
-      "name": "🌏 儿童识字",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童识字.json"
-    },
-    {
-      "key": "儿童英语",
-      "name": "🌏 儿童英语",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童英语.json"
-    },
-    {
-      "key": "儿童硬笔",
-      "name": "🌏 儿童硬笔",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童硬笔.json"
-    },
-    {
-      "key": "儿童思维",
-      "name": "🌏 儿童思维",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童思维.json"
-    },
-    {
-      "key": "儿童口才",
-      "name": "🌏 儿童口才",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童口才.json"
-    },
-    {
-      "key": "儿童编程",
-      "name": "🌏 儿童编程",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童编程.json"
-    },
-    {
-      "key": "儿童武术",
-      "name": "🌏 儿童武术",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/儿童武术.json"
-    },
-    {
-      "key": "兴趣培养",
-      "name": "🌏 兴趣培养",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/兴趣培养.json"
-    },
-    {
-      "key": "小学",
-      "name": "🌏 小学教育",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩小学.json"
-    },
-    {
-      "key": "初中",
-      "name": "🌏 初中教育",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩初中.json"
-    },
-    {
-      "key": "高中",
-      "name": "🌏 高中教育",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩高中.json"
-    },
-    {
-      "key": "csp_Bili",
-      "name": "🌏 动物世界",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱动物世界.json"
-    },
-    {
-      "key": "吾爱英语",
-      "name": "📚 吾爱外语 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱外语.json"
-    },
-    {
-      "key": "软件",
-      "name": "🔐 软件教程 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱软件.json"
-    },
-    {
-      "key": "Excel教程",
-      "name": "🎨 吾爱Excel ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱Excel教程.json"
-    },
-    {
-      "key": "吾爱PS",
-      "name": "⛵️ 吾爱PS ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱PS.json"
-    },
-    {
-      "key": "吾爱乐器",
-      "name": "🥁 我爱乐器 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱乐器.json"
-    },
-    {
-      "key": "美食",
-      "name": "🥞 美食合集 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱美食.json"
-    },
-    {
-      "key": "吾爱舞蹈",
-      "name": "💃 吾爱舞蹈 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱舞蹈.json"
-    },
-    {
-      "key": "吾爱户外",
-      "name": "🚵🏻 吾爱户外 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱户外.json"
-    },
-    {
-      "key": "吾爱戏曲",
-      "name": "💕 吾爱戏曲 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱戏曲.json"
-    },
-    {
-      "key": "吾爱搭配",
-      "name": "⛸ 吾爱搭配 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱搭配.json"
-    },
-    {
-      "key": "吾爱解说",
-      "name": "👾 吾爱解说 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱解说.json"
-    },
-    {
-      "key": "吾爱演唱会",
-      "name": "🎸 吾爱演唱会 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱演唱会.json"
-    },
-    {
-      "key": "吾爱经典",
-      "name": "🎷 吾爱音乐 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱经典.json"
-    },
-    {
-      "key": "吾爱球星",
-      "name": "⚽️ 吾爱球星 ",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "ext": "https://agit.ai/zengjian/han/raw/branch/master/json/吾爱球星.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json"
     },
     {
       "key": "直播转点播",
