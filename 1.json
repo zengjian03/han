@@ -134,8 +134,10 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 0,
-      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/hccx.jar;md5;534246be66cfa4f252d7dcbf106673c9",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json"
+      //"jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/hccx.jar;md5;534246be66cfa4f252d7dcbf106673c9",
+      "ext": {
+        "json": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json"
+      }
     },
     {
       "key": "bili",
