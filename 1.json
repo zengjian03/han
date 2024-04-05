@@ -144,19 +144,6 @@
       }
     },
     {
-      "key": "bili",
-      "name": "B站 | Bili[jar]",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 0,
-      "quickSearch": 0,
-      "changeable": 0,
-      "ext": {
-        "json": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json",
-        "cookie": "http://127.0.0.1:9978/file/TV/lib/bili_cookie.txt"
-      }
-    },
-    {
       "key": "直播转点播",
       "name": "🐼️┃电视┃直播",
       "type": 3,
