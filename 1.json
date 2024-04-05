@@ -134,8 +134,10 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 0,
-      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/hccx.jar;md5;534246be66cfa4f252d7dcbf106673c9",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json"
+      "ext": {
+        "json": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json",
+        "cookie": "http://127.0.0.1:9978/file/TV/lib/bili_cookie.txt"
+      }
     },
     {
       "key": "bili",
@@ -147,7 +149,6 @@
       "changeable": 0,
       "ext": {
         "json": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/吾爱球星.json",
-        "type": "演唱会#电影#电视剧#帕梅拉#广场舞#纪录片#综艺#鬼畜#音乐#舞蹈#影视#知识#美食#风光#田园#户外#8K#徐云",
         "cookie": "http://127.0.0.1:9978/file/TV/lib/bili_cookie.txt"
       }
     },
