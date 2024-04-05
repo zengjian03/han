@@ -112,8 +112,10 @@
       "searchable": 0,
       "quickSearch": 0,
       "filterable": 0,
-      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/hccx.jar;md5;534246be66cfa4f252d7dcbf106673c9",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩学习.json"
+      "ext": {
+        "json": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩学习.json",
+        "cookie": "http://127.0.0.1:9978/file/TV/lib/bili_cookie.txt"
+      }
     },
     {
       "key": "哔哩合集",
@@ -123,8 +125,10 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/hccx.jar;md5;534246be66cfa4f252d7dcbf106673c9",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩合集.json"
+      "ext": {
+        "json": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩合集.json",
+        "cookie": "http://127.0.0.1:9978/file/TV/lib/bili_cookie.txt"
+      }
     },
     {
       "key": "哔哩儿童",
