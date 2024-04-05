@@ -106,7 +106,7 @@
     },
     {
       "key": "哔哩学习",
-      "name": "🌏哔哩学习",
+      "name": "🅱哔哩学习",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
@@ -136,6 +136,20 @@
       "filterable": 0,
       "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/hccx.jar;md5;534246be66cfa4f252d7dcbf106673c9",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json"
+    },
+    {
+      "key": "bili",
+      "name": "B站 | Bili[jar]",
+      "type": 3,
+      "api": "csp_Bili",
+      "searchable": 0,
+      "quickSearch": 0,
+      "changeable": 0,
+      "ext": {
+        "json": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json",
+        "type": "演唱会#电影#电视剧#帕梅拉#广场舞#纪录片#综艺#鬼畜#音乐#舞蹈#影视#知识#美食#风光#田园#户外#8K#徐云",
+        "cookie": "http://127.0.0.1:9978/file/TV/lib/bili_cookie.txt"
+      }
     },
     {
       "key": "直播转点播",
@@ -282,14 +296,6 @@
       "ext": "http://127.0.0.1:9978/file/TV/lib/tokenm.json$$$http://127.0.0.1:9978/file/TV/lib/sambashare.txt"
     },
     {
-      "key": "直播转点播",
-      "name": "🐼️┃电视┃直播",
-      "type": 3,
-      "searchable": 0,
-      "api": "http://127.0.0.1:9978/file/TV/lib/live2vod.js",
-      "ext": "http://127.0.0.1:9978/file/TV/lib/feimaolive.json"
-    },
-    {
       "key": "FirstAid",
       "name": "🚑 急救知识 ",
       "type": 3,
@@ -313,19 +319,6 @@
       "quickSearch": 0,
       "changeable": 1,
       "indexs": 1
-    },
-    {
-      "key": "bili",
-      "name": "B站 | Bili[jar]",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 1,
-      "quickSearch": 0,
-      "changeable": 0,
-      "ext": {
-        "type": "演唱会#电影#电视剧#帕梅拉#广场舞#纪录片#综艺#鬼畜#音乐#舞蹈#影视#知识#美食#风光#田园#户外#8K#徐云",
-        "cookie": "http://127.0.0.1:9978/file/TV/lib/bili_cookie.txt"
-      }
     },
     {
       "key": "美剧迷",

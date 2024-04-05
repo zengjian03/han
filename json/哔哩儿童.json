@@ -1,6 +1,6 @@
 {
   "cookie": "http://127.0.0.1:9978/file/TV/lib/bili_cookie.txt",
-  "classes": [
+  "class": [
     {
       "type_name": "儿童乐园",
       "type_id": "儿童乐园"
