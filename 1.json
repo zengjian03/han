@@ -109,9 +109,9 @@
       "name": "🌏哔哩学习",
       "type": 3,
       "api": "csp_Bili",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
       "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/hccx.jar;md5;534246be66cfa4f252d7dcbf106673c9",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩学习.json"
     },
@@ -131,9 +131,9 @@
       "name": "🌏哔哩儿童",
       "type": 3,
       "api": "csp_Bili",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
       "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/hccx.jar;md5;534246be66cfa4f252d7dcbf106673c9",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩儿童.json"
     },
@@ -142,8 +142,8 @@
       "name": "🐼️┃电视┃直播",
       "type": 3,
       "searchable": 0,
-      "api": "https://agit.ai/zengjian/han/raw/branch/master/lib/live2vod.js",
-      "ext": "https://agit.ai/zengjian/han/raw/branch/master/lib/feimaolive.json"
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/live2vod.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/feimaolive.json"
     },
     {
       "key": "FirstAid",
@@ -1954,35 +1954,6 @@
       }
     },
     {
-      "name": "米饭",
-      "type": 1,
-      "url": "https://api.json.icu/api/?key=b1f3b1a9e1c0a42ae969db10bd315a95&url=",
-      "ext": {
-        "flag": [
-          "爱奇艺",
-          "奇艺",
-          "qq",
-          "腾讯",
-          "youku",
-          "优酷",
-          "pptv",
-          "PPTV",
-          "letv",
-          "乐视",
-          "leshi",
-          "bilibili",
-          "哔哩哔哩",
-          "哔哩",
-          "mgtv",
-          "芒果",
-          "芒果"
-        ],
-        "header": {
-          "User-Agent": "okhttp/4.1.0"
-        }
-      }
-    },
-    {
       "name": "饭饭",
       "type": 1,
       "url": "http://api.888484.xyz/神秘哥哥/super.php?v=",
@@ -2016,155 +1987,6 @@
           "YuMi-vip"
         ]
       }
-    },
-    {
-      "name": "虾米",
-      "type": 0,
-      "url": "https://jx.xmflv.com/?url=",
-      "ext": {
-        "flag": [
-          "qq",
-          "腾讯",
-          "qiyi",
-          "爱奇艺",
-          "奇艺",
-          "youku",
-          "优酷",
-          "sohu",
-          "搜狐",
-          "letv",
-          "乐视",
-          "mgtv",
-          "芒果",
-          "imgo",
-          "rx",
-          "ltnb",
-          "bilibili",
-          "1905",
-          "xigua"
-        ]
-      }
-    },
-    {
-      "name": "PM",
-      "url": "https://www.playm3u8.cn/jiexi.php?url=",
-      "type": 0,
-      "ext": {
-        "flag": [
-          "qiyi",
-          "imgo",
-          "爱奇艺",
-          "奇艺",
-          "qq",
-          "腾讯",
-          "youku",
-          "优酷",
-          "pptv",
-          "PPTV",
-          "letv",
-          "乐视",
-          "leshi",
-          "bilibili",
-          "哔哩哔哩",
-          "哔哩",
-          "mgtv",
-          "芒果",
-          "sohu",
-          "xigua",
-          "fun",
-          "风行"
-        ],
-        "header": {
-          "User-Agent": "Mozilla/5.0"
-        }
-      },
-      "header": {
-        "User-Agent": "Mozilla/5.0"
-      }
-    },
-    {
-      "name": "全民",
-      "url": "http://api.wpsseo.cn/?v=",
-      "type": 0,
-      "ext": {
-        "flag": [
-          "qiyi",
-          "imgo",
-          "爱奇艺",
-          "奇艺",
-          "qq",
-          "腾讯",
-          "youku",
-          "优酷",
-          "pptv",
-          "PPTV",
-          "letv",
-          "乐视",
-          "leshi",
-          "bilibili",
-          "哔哩哔哩",
-          "哔哩",
-          "mgtv",
-          "芒果",
-          "sohu",
-          "xigua",
-          "fun",
-          "风行"
-        ],
-        "header": {
-          "User-Agent": "Mozilla/5.0"
-        }
-      },
-      "header": {
-        "User-Agent": "Mozilla/5.0"
-      }
-    },
-    {
-      "name": "m3u8",
-      "type": 0,
-      "url": "https://jx.m3u8.tv/jiexi/?url="
-    },
-    {
-      "name": "8090",
-      "url": "https://www.8090.la/8090/?url=",
-      "type": 0,
-      "ext": {
-        "flag": [
-          "qiyi",
-          "imgo",
-          "爱奇艺",
-          "奇艺",
-          "qq",
-          "腾讯",
-          "youku",
-          "优酷",
-          "pptv",
-          "PPTV",
-          "letv",
-          "乐视",
-          "leshi",
-          "bilibili",
-          "哔哩哔哩",
-          "哔哩",
-          "mgtv",
-          "芒果",
-          "sohu",
-          "xigua",
-          "fun",
-          "风行"
-        ],
-        "header": {
-          "User-Agent": "Mozilla/5.0"
-        }
-      },
-      "header": {
-        "User-Agent": "Mozilla/5.0"
-      }
-    },
-    {
-      "name": "看看",
-      "type": 0,
-      "url": "https://jx.m3u8.pw/?url="
     },
     {
       "name": "巧技",
