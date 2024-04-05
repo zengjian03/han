@@ -105,7 +105,7 @@
       "type_id": "给孩子的第一堂性教育课"
     }
   ],
-  "filter": {
+  "filters": {
     "儿童口才": [
       {
         "key": "order",

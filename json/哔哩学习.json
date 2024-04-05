@@ -21,7 +21,7 @@
 			"type_id": "北师大版课程"
 		}
 	],
-	"filter": {
+	"filters": {
 		"苏教版课程": [
 			{
 				"key": "order",
