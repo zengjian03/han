@@ -645,7 +645,7 @@
       "name": "文才|XBPQ",
       "type": 3,
       "api": "csp_XBPQ",
-      "jar": "http://127.0.0.1:9978/file/TV/lib/XBPQ.jar",
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext": {
         "分类": "国产剧&短剧&喜剧片&爱情片&恐怖片&战争片&科幻片&动作片&综艺&欧美剧&港台剧&日韩剧",
         "分类值": "14&42&22&26&36&25&30&23&69&15&16&62",
@@ -698,7 +698,7 @@
       "name": "黑狐影院|XBPQ",
       "type": 3,
       "api": "csp_XBPQ",
-      "jar": "http://127.0.0.1:9978/file/TV/lib/XBPQ.jar",
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext": {
         "站名": "黑狐影院",
         "主页url": "http://fagmn.com",
@@ -735,7 +735,7 @@
     {
       "key": "XBPQ_电影先生",
       "name": "电影先生|XBPQ",
-      "jar": "http://127.0.0.1:9978/file/TV/lib/XBPQ.jar",
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "type": 3,
       "api": "csp_XBPQ",
       "ext": {
@@ -761,7 +761,7 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "http://127.0.0.1:9978/file/TV/lib/XBPQ.jar",
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext": {
         "分类url": "https://www.huanyuxing.com/s/{cateId}/area/{area}/class/{class}/page/{catePg}/year/{year}.html",
         "分类": "电影$id-a#电视剧$id-b#动漫$id-c#综艺$id-d"
