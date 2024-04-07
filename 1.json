@@ -12,39 +12,39 @@
     },
     {
       "key": "csp_XBPQ_6V",
-      "name": "宇宙4K专享",
+      "name": "宇宙4K┃直连",
       "type": 3,
       "api": "csp_XBPQ",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
-      "jar": "https://d.kstore.space/download/4637/jar/spider.jar;md5;f6eac2c1831ccd0215892f30c306958f",
+      //"jar": "https://d.kstore.space/download/4637/jar/spider.jar;md5;f6eac2c1831ccd0215892f30c306958f",
       "ext": "https://download.kstore.space/download/4637/lib/6v.json"
     },
     {
       "key": "drpy_js_奇珍异兽",
-      "name": "🦄奇珍┃异兽┃直采",
+      "name": "奇异┃直采",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/奇珍异兽.js"
     },
     {
       "key": "drpy_js_优酷",
-      "name": "🌱酷酷┃的腾┃直采",
+      "name": "酷酷┃直采",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/优酷.js"
     },
     {
       "key": "drpy_js_腾云驾雾",
-      "name": "☁️腾云┃驾雾┃直采",
+      "name": "腾云┃直采",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/腾云驾雾.js"
     },
     {
       "key": "drpy_js_百忙无果",
-      "name": "🍑百忙┃无果┃直采",
+      "name": "忙果┃直采",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/libs/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/hjdhnx/dr_py/main/js/百忙无果.js"
@@ -174,7 +174,7 @@
     },
     {
       "key": "直播转点播",
-      "name": "🐼️┃电视┃直播",
+      "name": "电视┃直播",
       "type": 3,
       "searchable": 0,
       "api": "http://127.0.0.1:9978/file/TV/lib/live2vod.js",
@@ -195,10 +195,10 @@
     },
     {
       "key": "drpy_js_磁力熊",
-      "name": "磁力熊[js]|索引",
+      "name": "磁力熊|js",
       "type": 3,
-      "api": "http://127.0.0.1:9978/file/TV/lib/drpy2.min.js",
-      "ext": "./js/cilixiongp.js",
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/cilixiongp.js",
       "playerType": "1",
       "searchable": 0,
       "quickSearch": 0,
@@ -207,7 +207,7 @@
     },
     {
       "key": "哔哩学习",
-      "name": "🅱哔哩学习",
+      "name": "哔哩学习",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
@@ -220,7 +220,7 @@
     },
     {
       "key": "哔哩合集",
-      "name": "🌏哔哩合集",
+      "name": "哔哩合集",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 1,
@@ -233,7 +233,7 @@
     },
     {
       "key": "哔哩儿童",
-      "name": "🌏哔哩儿童",
+      "name": "哔哩儿童",
       "type": 3,
       "api": "csp_Bili",
       "searchable": 0,
@@ -415,14 +415,14 @@
     },
     {
       "key": "drpy_js_博看听书",
-      "name": "📖 博看听书 ",
+      "name": "博看听书 ",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/博看听书.js"
     },
     {
       "key": "drpy_js_蜻蜓FM",
-      "name": "🐞蜻蜓FM[js]",
+      "name": "蜻蜓FM┃js",
       "type": 3,
       "searchable": 0,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy2.min.js",
@@ -431,7 +431,7 @@
     },
     {
       "key": "csp_XYQHiker_DJ呦呦音乐网",
-      "name": "🎺 DJ呦呦音乐 ",
+      "name": "DJ呦呦音乐 ",
       "type": 3,
       "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/duanjuw.jar;md5;43485bc25714193e43f131def06329d9",
       "api": "csp_XYQHiker",
@@ -442,7 +442,7 @@
     },
     {
       "key": "Yinyuetai",
-      "name": "音悦台┃音乐┃MV",
+      "name": "音悦台┃MV",
       "type": 3,
       "api": "csp_Yinyuetai",
       "searchable": 1,
@@ -686,7 +686,7 @@
       "name": "白嫖影视|XBPQ",
       "type": 3,
       "api": "csp_XBPQ",
-      "jar": "http://127.0.0.1:9978/file/TV/lib/XBPQ.jar",
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext": {
         "地区": "[替换:大陆>>中国大陆#香港>>中国香港#台湾>>中国台湾]",
         "分类": "电影$1#电视剧$2#动漫$3#短剧$4#综艺$5",
@@ -869,8 +869,8 @@
       "key": "drpy_js_愛盤搜",
       "name": "爱盘搜[js]|夸",
       "type": 3,
-      "api": "http://127.0.0.1:9978/file/TV/lib/drpy2.min.js",
-      "ext": "./js/aipanso.js",
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/aipanso.js",
       "quickSearch": 1,
       "changeable": 1,
       "timeout": 60,
@@ -883,8 +883,8 @@
       "key": "drpy_js_人人影视",
       "name": "人人影视[js]|搜",
       "type": 3,
-      "api": "http://127.0.0.1:9978/file/TV/lib/drpy2.min.js",
-      "ext": "./js/yyets.js",
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/yyets.js",
       "quickSearch": 1,
       "changeable": 1,
       "timeout": 60,
@@ -897,8 +897,8 @@
       "key": "drpy_js_MP4US",
       "name": "MP4电影[js]|磁",
       "type": 3,
-      "api": "http://127.0.0.1:9978/file/TV/lib/drpy2.min.js",
-      "ext": "./js/mp4us.js",
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/mp4us.js",
       "quickSearch": 1,
       "changeable": 1,
       "timeout": 60
@@ -942,8 +942,8 @@
       "key": "drpy_js_酷吧",
       "name": "酷吧[js]|磁",
       "type": 3,
-      "api": "http://127.0.0.1:9978/file/TV/lib/drpy2.min.js",
-      "ext": "./js/kuba.js",
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/kuba.js",
       "quickSearch": 1,
       "changeable": 1,
       "timeout": 60
@@ -980,7 +980,7 @@
       "searchable": 1,
       "filterable": 1,
       "changeable": 1,
-      "ext": "./js/alistjar.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/alistjar.json"
     },
     {
       "key": "快看",
@@ -1176,7 +1176,7 @@
       "key": "愛看",
       "name": "愛看",
       "type": 3,
-      "api": "./js/ikanbot_open.js",
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/ikanbot_open.js",
       "searchable": 1,
       "changeable": 0
     },
@@ -1197,7 +1197,7 @@
       "searchable": 1,
       "filterable": 1,
       "changeable": 1,
-      "ext": "./js/alist.json"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/alist.json"
     },
     {
       "key": "MV_vod",
