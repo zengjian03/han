@@ -1,50 +1,72 @@
-// 一级&搜索页 直向改横向 --> land:1, ratio:1.78,
-import { _ } from "assets://js/lib/cat.js";
-let key = '我的哔哩';
-let HOST = 'https://api.bilibili.com';
-let siteKey = '';
-let siteType = 0;
-const PC_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.361";
- let cookie = "http://127.0.0.1:9978/file/TV/bili_cookie.txt"; // 可更换成自己的cookie
-//let cookie = "https://ghproxy.net/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/txt/cookie.txt"; // 可更换成自己的cookie
+/**
+ * 已知问题：
+    * [推荐]页面：'雷电模拟器'播放部份影片会出错，'播放器'改成'ijk' & '解码方式'改成'软解'，即可正常播放
+ * 影视TV 超連結跳轉支持
+ * 影视TV 弹幕支持
+    * https://t.me/fongmi_offical/
+    * https://github.com/FongMi/Release/tree/main/apk
+ * 皮皮虾DMBox 弹幕支持
+    * 设置 > 窗口预览 > 开启
+    * https://t.me/pipixiawerun
+    * vod_area:'bilidanmu'
+ * Cookie设置
+    * Cookie获取方法 https://ghproxy.net/https://raw.githubusercontent.com/UndCover/PyramidStore/main/list.md
+ * Cookie设置方法1: DR-PY 后台管理界面
+    * CMS后台管理 > 设置中心 > 环境变量 > {"bili_cookie":"XXXXXXX","vmid":"XXXXXX"} > 保存
+ * Cookie设置方法2: 手动替换Cookie
+    * 底下代码 headers的
+    * "Cookie":"$bili_cookie"
+    * 手动替换为
+    * "Cookie":"将获取的Cookie黏贴在这"
+ */
 
-async function request(reqUrl) {
-  const res = await req(reqUrl, {
-      headers: getMb(),
-  });
-  return res.content;
-}
+var rule = {
+    title:'我的哔哩',
+    host:'https://api.bilibili.com',
+    // homeUrl:'/x/web-interface/search/type?search_type=video&keyword=小姐姐4K&page=1',
+    homeUrl:'/x/web-interface/ranking/v2?rid=0&type=origin', // 排行 > 排行榜 > 原创
+    url:'/x/web-interface/search/type?search_type=videofyfilter',
+    class_name:'推荐&经典无损音乐合集&帕梅拉&太极拳&健身&舞蹈&音乐&歌曲&MV&演唱会&白噪音&知名UP主&说案&解说&演讲&时事&探索发现&纪录片&平面设计教学&软件教程&实用教程&旅游&风景&食谱&美食&搞笑&球星&动物世界&相声小品&戏曲&儿童&小姐姐&热门&旅行探险&历史记录',
+    class_url:'推荐&经典无损音乐合集&帕梅拉&太极拳&健身&舞蹈&音乐&歌曲&MV4K&演唱会4K&白噪音4K&知名UP主&说案&解说&演讲&时事&探索发现超清&纪录片超清&平面设计教学&软件教程&实用教程&旅游&风景4K&食谱&美食超清&搞笑&球星&动物世界超清&相声小品&戏曲&儿童&小姐姐4K&热门&旅行探险&历史记录',
+    filterable: 1,
+    filter_url: '&keyword={{fl.tid}}&page=fypage&duration={{fl.duration}}&order={{fl.order}}',
+    filter_def:{
 
-async function init(cfg) {
-  siteKey = cfg.skey;
-  siteType = cfg.stype;
-  if (cookie.startsWith('http')) cookie = await request(cookie);
-  // console.debug('我的哔哩 cookie =====>' + cookie); // js_debug.log
-}
+        儿童:{tid:'儿童'},
+        苏教版:{tid:'苏教版课程'},
+        人教版:{tid:'人教版课程'},
+        沪教版:{tid:'沪教版课程'},
+        北师大版:{tid:'北师大版课程'}
 
-async function home(filter) {
-  let classes = [{
-			"type_name": "儿童",
-			"type_id": "儿童"
-		},
-		{
-			"type_name": "苏教版",
-			"type_id": "苏教版课程"
-		},
-		{
-			"type_name": "人教版",
-			"type_id": "人教版课程"
-		},
-		{
-			"type_name": "沪教版",
-			"type_id": "沪教版课程"
-		},
-		{
-			"type_name": "北师大版",
-			"type_id": "北师大版课程"
-		}];
-  let filterObj = {
-    苏教版课程: [
+    },
+filters: {
+		"苏教版课程": [
+			{
+				"key": "order",
+				"name": "排序",
+				"value": [
+					{
+						"n": "综合排序",
+						"v": "0"
+					},
+					{
+						"n": "最多点击",
+						"v": "click"
+					},
+					{
+						"n": "最新发布",
+						"v": "pubdate"
+					},
+					{
+						"n": "最多弹幕",
+						"v": "dm"
+					},
+					{
+						"n": "最多收藏",
+						"v": "stow"
+					}
+				]
+			},
 			{
 				"key": "tid",
 				"name": "年级科目",
@@ -326,9 +348,61 @@ async function home(filter) {
 						"v": "苏教版高三化学"
 					}
 				]
+			},
+			{
+				"key": "duration",
+				"name": "时长",
+				"value": [
+					{
+						"n": "全部",
+						"v": "0"
+					},
+					{
+						"n": "60分钟以上",
+						"v": "4"
+					},
+					{
+						"n": "30~60分钟",
+						"v": "3"
+					},
+					{
+						"n": "10~30分钟",
+						"v": "2"
+					},
+					{
+						"n": "10分钟以下",
+						"v": "1"
+					}
+				]
 			}
 		],
-		人教版课程: [
+		"人教版课程": [
+			{
+				"key": "order",
+				"name": "排序",
+				"value": [
+					{
+						"n": "综合排序",
+						"v": "0"
+					},
+					{
+						"n": "最多点击",
+						"v": "click"
+					},
+					{
+						"n": "最新发布",
+						"v": "pubdate"
+					},
+					{
+						"n": "最多弹幕",
+						"v": "dm"
+					},
+					{
+						"n": "最多收藏",
+						"v": "stow"
+					}
+				]
+			},
 			{
 				"key": "tid",
 				"name": "年级科目",
@@ -610,9 +684,61 @@ async function home(filter) {
 						"v": "人教版高三化学"
 					}
 				]
+			},
+			{
+				"key": "duration",
+				"name": "时长",
+				"value": [
+					{
+						"n": "全部",
+						"v": "0"
+					},
+					{
+						"n": "60分钟以上",
+						"v": "4"
+					},
+					{
+						"n": "30~60分钟",
+						"v": "3"
+					},
+					{
+						"n": "10~30分钟",
+						"v": "2"
+					},
+					{
+						"n": "10分钟以下",
+						"v": "1"
+					}
+				]
 			}
 		],
-		沪教版课程: [
+		"沪教版课程": [
+			{
+				"key": "order",
+				"name": "排序",
+				"value": [
+					{
+						"n": "综合排序",
+						"v": "0"
+					},
+					{
+						"n": "最多点击",
+						"v": "click"
+					},
+					{
+						"n": "最新发布",
+						"v": "pubdate"
+					},
+					{
+						"n": "最多弹幕",
+						"v": "dm"
+					},
+					{
+						"n": "最多收藏",
+						"v": "stow"
+					}
+				]
+			},
 			{
 				"key": "tid",
 				"name": "年级科目",
@@ -894,9 +1020,61 @@ async function home(filter) {
 						"v": "沪教版高三化学"
 					}
 				]
+			},
+			{
+				"key": "duration",
+				"name": "时长",
+				"value": [
+					{
+						"n": "全部",
+						"v": "0"
+					},
+					{
+						"n": "60分钟以上",
+						"v": "4"
+					},
+					{
+						"n": "30~60分钟",
+						"v": "3"
+					},
+					{
+						"n": "10~30分钟",
+						"v": "2"
+					},
+					{
+						"n": "10分钟以下",
+						"v": "1"
+					}
+				]
 			}
 		],
-		北师大版课程: [
+		"北师大版课程": [
+			{
+				"key": "order",
+				"name": "排序",
+				"value": [
+					{
+						"n": "综合排序",
+						"v": "0"
+					},
+					{
+						"n": "最多点击",
+						"v": "click"
+					},
+					{
+						"n": "最新发布",
+						"v": "pubdate"
+					},
+					{
+						"n": "最多弹幕",
+						"v": "dm"
+					},
+					{
+						"n": "最多收藏",
+						"v": "stow"
+					}
+				]
+			},
 			{
 				"key": "tid",
 				"name": "年级科目",
@@ -1178,9 +1356,61 @@ async function home(filter) {
 						"v": "北师大版高三化学"
 					}
 				]
+			},
+			{
+				"key": "duration",
+				"name": "时长",
+				"value": [
+					{
+						"n": "全部",
+						"v": "0"
+					},
+					{
+						"n": "60分钟以上",
+						"v": "4"
+					},
+					{
+						"n": "30~60分钟",
+						"v": "3"
+					},
+					{
+						"n": "10~30分钟",
+						"v": "2"
+					},
+					{
+						"n": "10分钟以下",
+						"v": "1"
+					}
+				]
 			}
 		],
-		儿童: [
+		"儿童": [
+			{
+				"key": "order",
+				"name": "排序",
+				"value": [
+					{
+						"n": "综合排序",
+						"v": "0"
+					},
+					{
+						"n": "最多点击",
+						"v": "click"
+					},
+					{
+						"n": "最新发布",
+						"v": "pubdate"
+					},
+					{
+						"n": "最多弹幕",
+						"v": "dm"
+					},
+					{
+						"n": "最多收藏",
+						"v": "stow"
+					}
+				]
+			},
 			{
 				"key": "tid",
 				"name": "分类",
@@ -1262,213 +1492,445 @@ async function home(filter) {
 						"v": "儿童好声音"
 					}
 				]
+			},
+			{
+				"key": "duration",
+				"name": "时长",
+				"value": [
+					{
+						"n": "全部",
+						"v": "0"
+					},
+					{
+						"n": "60分钟以上",
+						"v": "4"
+					},
+					{
+						"n": "30~60分钟",
+						"v": "3"
+					},
+					{
+						"n": "10~30分钟",
+						"v": "2"
+					},
+					{
+						"n": "10分钟以下",
+						"v": "1"
+					}
+				]
 			}
 		]
-  };
-  let filOrd = {key:'order',name:'排序',value:[{n:'综合排序',v:'0'},{n:'最多点击',v:'click'},{n:'最新发布',v:'pubdate'},{n:'最多弹幕',v:'dm'},{n:'最多收藏',v:'stow'}]};
-  filOrd['init'] = filOrd.value[0].v;
-  let filDur = {key:'duration',name:'时长',value:[{n:'全部',v:'0'},{n:'60分钟以上',v:'4'},{n:'30~60分钟',v:'3'},{n:'10~30分钟',v:'2'},{n:'10分钟以下',v:'1'}]};
-  filDur['init'] = filDur.value[0].v;
-  return JSON.stringify({
-    class: _.map(classes, (cls) => {
-      cls.land = 1;
-      cls.ratio = 1.78;
-      if (filterObj[cls.type_id]){
-        filterObj[cls.type_id].push(filOrd, filDur);
-        filterObj[cls.type_id][0]['init'] = filterObj[cls.type_id][0].value[0].v;
-      } else {
-        filterObj[cls.type_id] = [];
-        filterObj[cls.type_id].push(filOrd, filDur)
-      }
-      return cls;
-    }),
-    filters: filterObj,
-  });
-}
+	},
+    // detailUrl:'/x/web-interface/view?aid=fyid',//二级详情拼接链接(json格式用)
+    detailUrl:'/x/web-interface/view/detail?aid=fyid',//二级详情拼接链接(json格式用)
+    searchUrl:'/x/web-interface/search/type?search_type=video&keyword=**&page=fypage',
+    searchable:2,
+    quickSearch:0,
+    headers:{
+        "User-Agent":"PC_UA",
+        "Referer": "https://www.bilibili.com",
+        // "Cookie":"$bili_cookie"
+        // "Cookie":"https://ghproxy.net/https://github.com/FongMi/CatVodSpider/raw/main/txt/cookie.txt"
+        "Cookie":"http://127.0.0.1:9978/file/TV/bili_cookie.txt"
+    },
+    timeout:5000,
+    limit:8,
+    play_parse:true,
+    lazy:`js:
+        let ids = input.split('_');
+        let dan = 'https://api.bilibili.com/x/v1/dm/list.so?oid=' + ids[1];
+        let result = {};
+        let iurl = 'https://api.bilibili.com:443/x/player/playurl?avid=' + ids[0] + '&cid=' + ids[1] + '&qn=116';
+        let html = request(iurl);
+        let jRoot = JSON.parse(html);
+        let jo = jRoot.data;
+        let ja = jo.durl;
+        let maxSize = -1;
+        let position = -1;
+        ja.forEach(function(tmpJo, i) {
+            if (maxSize < Number(tmpJo.size)) {
+                maxSize = Number(tmpJo.size);
+                position = i
+            }
+        });
+        let purl = '';
+        if (ja.length > 0) {
+            if (position === -1) {
+                position = 0
+            }
+            purl = ja[position].url
+        }
+        result.parse = 0;
+        result.playUrl = '';
+        result.url = unescape(purl);
+        result.header = {
+            'Referer': 'https://live.bilibili.com',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36'
+        };
+        if (/\\.flv/.test(purl)) {
+            result.contentType = 'video/x-flv';
+        } else {
+            result.contentType = '';
+        }
+        result.danmaku = dan;
+        input = result
+    `,
+    double:false,
+    // 推荐:'*',
+    推荐:`js:
+        function stripHtmlTag(src) {
+            return src.replace(/<\\/?[^>]+(>|$)/g, '').replace(/&.{1,5};/g, '').replace(/\\s{2,}/g, ' ');
+        }
+        function turnDHM(duration) {
+            let min = '';
+            let sec = '';
+            try {
+                min = duration.split(':')[0];
+                sec = duration.split(':')[1];
+            } catch (e) {
+                min = Math.floor(duration / 60);
+                sec = duration % 60;
+            }
+            if (isNaN(parseInt(duration))) {
+                return '无效输入';
+            }
+            if (min == 0) {
+                return sec + '秒'
+            } else if (0 < min && min < 60) {
+                return min + '分'
+            } else if (60 <= min && min < 1440) {
+                if (min % 60 == 0) {
+                    let h = min / 60;
+                    return h + '小时'
+                } else {
+                    let h = min / 60;
+                    h = (h + '').split('.')[0];
+                    let m = min % 60;
+                    return h + '小时' + m + '分';
+                }
+            } else if (min >= 1440) {
+                let d = min / 60 / 24;
+                d = (d + '').split('.')[0];
+                let h = min / 60 % 24;
+                h = (h + '').split('.')[0];
+                let m = min % 60;
+                let dhm = '';
+                if (d > 0) {
+                    dhm = d + '天'
+                }
+                if (h >= 1) {
+                    dhm = dhm + h + '小时'
+                }
+                if (m > 0) {
+                    dhm = dhm + m + '分'
+                }
+                return dhm
+            }
+            return null
+        }
+        function ConvertNum(num) {
+            let _ws = Math.pow(10, 1);
+            let _b = 1e4;
+            if (num < _b) {
+                return num.toString();
+            }
+            let _r = '';
+            let _strArg = ['', '万', '亿', '万亿'];
+            let _i = Math.floor(Math.log(num) / Math.log(_b));
+            if (_i > 3) {
+                _i = 3;
+            }
+            _r = Math.floor(num / Math.pow(_b, _i) * _ws) / _ws + _strArg[_i];
+            return _r;
+        }
+        let html = request(input);
+        let vodList = JSON.parse(html).data.list;
+        let videos = [];
+        vodList.forEach(function(vod) {
+            let aid = vod.aid;
+            let title = stripHtmlTag(vod.title);
+            let img = vod.pic;
+            if (img.startsWith('//')) {
+                img = 'https:' + img;
+            }
+            let remark = turnDHM(vod.duration) + ' ▶' + ConvertNum(vod.stat.view) + ' 🆙' + vod.owner.name;
+            videos.push({
+                vod_id: aid,
+                vod_name: title,
+                vod_pic: img,
+                vod_remarks: remark
+            })
+        });
+        VODS = videos
+    `,
+    // 一级:'js:let html=request(input);let msg=JSON.parse(html).message;function title_rep(title){if(/keyword/.test(title)){title=title.replace(\'<em class="keyword">\',"").replace("</em>","").replace("&quot;","\'");log("名称替换👉"+title)};return title}if(msg!=="0"){VODS=[{vod_name:KEY+"➢"+msg,vod_id:"no_data",vod_remarks:"别点,缺少bili_cookie",vod_pic:"https://ghproxy.net/https://raw.githubusercontent.com/hjdhnx/dr_py/main/404.jpg"}]}else{let videos=[];let vodList=JSON.parse(html).data.result;vodList.forEach(function(vod){let aid=vod["aid"];let title=vod["title"].trim();title=title_rep(title);title=title_rep(title);title=title_rep(title);title=title_rep(title);let img="https:"+vod["pic"];let remark=vod["duration"];videos.push({vod_id:aid,vod_name:title,vod_pic:img,vod_remarks:remark})});VODS=videos}',
+    一级:`js:
+        if (cateObj.tid.endsWith('_clicklink')) {
+            cateObj.tid = cateObj.tid.split('_')[0];
+            input = HOST + '/x/web-interface/search/type?search_type=video&keyword=' + cateObj.tid + '&page=' + MY_PAGE;
+        }
+        function stripHtmlTag(src) {
+            return src.replace(/<\\/?[^>]+(>|$)/g, '').replace(/&.{1,5};/g, '').replace(/\\s{2,}/g, ' ');
+        }
+        function turnDHM(duration) {
+            let min = '';
+            let sec = '';
+            try {
+                min = duration.split(':')[0];
+                sec = duration.split(':')[1];
+            } catch (e) {
+                min = Math.floor(duration / 60);
+                sec = duration % 60;
+            }
+            if (isNaN(parseInt(duration))) {
+                return '无效输入';
+            }
+            if (min == 0) {
+                return sec + '秒'
+            } else if (0 < min && min < 60) {
+                return min + '分'
+            } else if (60 <= min && min < 1440) {
+                if (min % 60 == 0) {
+                    let h = min / 60;
+                    return h + '小时'
+                } else {
+                    let h = min / 60;
+                    h = (h + '').split('.')[0];
+                    let m = min % 60;
+                    return h + '小时' + m + '分';
+                }
+            } else if (min >= 1440) {
+                let d = min / 60 / 24;
+                d = (d + '').split('.')[0];
+                let h = min / 60 % 24;
+                h = (h + '').split('.')[0];
+                let m = min % 60;
+                let dhm = '';
+                if (d > 0) {
+                    dhm = d + '天'
+                }
+                if (h >= 1) {
+                    dhm = dhm + h + '小时'
+                }
+                if (m > 0) {
+                    dhm = dhm + m + '分'
+                }
+                return dhm
+            }
+            return null
+        }
+        function ConvertNum(num) {
+            let _ws = Math.pow(10, 1);
+            let _b = 1e4;
+            if (num < _b) {
+                return num.toString();
+            }
+            let _r = '';
+            let _strArg = ['', '万', '亿', '万亿'];
+            let _i = Math.floor(Math.log(num) / Math.log(_b));
+            if (_i > 3) {
+                _i = 3;
+            }
+            _r = Math.floor(num / Math.pow(_b, _i) * _ws) / _ws + _strArg[_i];
+            return _r;
+        }
+        let data = [];
+        let vodList = [];
+        if (MY_CATE === '推荐') {
+            input = HOST + '/x/web-interface/index/top/rcmd?ps=14&fresh_idx=' + MY_PAGE + '&fresh_idx_1h=' + MY_PAGE;
+            data = JSON.parse(request(input)).data;
+            vodList = data.item;
+        } else if (MY_CATE === '历史记录') {
+            input = HOST + '/x/v2/history?pn=' + MY_PAGE;
+            data = JSON.parse(request(input)).data;
+            vodList = data;
+        } else {
+            data = JSON.parse(request(input)).data;
+            vodList = data.result;
+        }
+        let videos = [];
+        vodList.forEach(function(vod) {
+            let aid = vod.aid?vod.aid:vod.id;
+            let title = stripHtmlTag(vod.title);
+            let img = vod.pic;
+            if (img.startsWith('//')) {
+                img = 'https:' + img;
+            }
+            let play = '';
+            let danmaku = '';
+            if (MY_CATE === '推荐') {
+                play = ConvertNum(vod.stat.view);
+                danmaku = vod.stat.danmaku;
+            } else if (MY_CATE === '历史记录') {
+                play = ConvertNum(vod.stat.view);
+                danmaku = vod.stat.danmaku;
+            } else {
+                play = ConvertNum(vod.play);
+                danmaku = vod.video_review;
+            }
+            let remark = turnDHM(vod.duration) + ' ▶' + play + ' 💬' + danmaku;
+            videos.push({
+                vod_id: aid,
+                vod_name: title,
+                vod_pic: img,
+                vod_remarks: remark
+            })
+        });
+        VODS = videos
+    `,
+    二级:`js:
+        function stripHtmlTag(src) {
+            return src.replace(/<\\/?[^>]+(>|$)/g, '').replace(/&.{1,5};/g, '').replace(/\\s{2,}/g, ' ');
+        }
+        let html = request(input);
+        let jo = JSON.parse(html).data.View;
+        // 历史记录
+        let cookies = rule_fetch_params.headers.Cookie.split(';');
+        let bili_jct = '';
+        cookies.forEach(cookie => {
+            if (cookie.includes('bili_jct')) {
+                bili_jct = cookie.split('=')[1];
+            }
+        });
+        if (bili_jct !== '') {
+            let historyReport = 'https://api.bilibili.com/x/v2/history/report';
+            let dataPost = {
+                aid: jo.aid,
+                cid: jo.cid,
+                csrf: bili_jct,
+            };
+            post(historyReport, dataPost, 'form');
+        }
 
-async function homeVod() {
-  let html = HOST + '/x/web-interface/popular?ps=20';
-  let data = JSON.parse(await request(html)).data.list;
-  let videos = [];
-  data.forEach(function(it) {
-      videos.push({
-          vod_id: it.aid,
-          vod_name: stripHtmlTag(it.title),
-          vod_pic: it.pic,
-          vod_remarks: '🔥 ' + it.vt_display || '',
-      });
-  });
-  return JSON.stringify({
-      list: videos,
-  });
-}
+        let stat = jo.stat;
+        let up_info = JSON.parse(html).data.Card;
+        let relation = up_info.following ? '已关注' : '未关注';
+        let aid = jo.aid;
+        let title = stripHtmlTag(jo.title);
+        let pic = jo.pic;
+        let desc = jo.desc;
 
-async function category(tid, pg, filter, extend) {
-  let html = HOST + '/x/web-interface/search/type?search_type=video&page=' + pg + '&keyword=' + (extend.tid || tid) + '&duration=' + (extend.duration || '') + '&order=' + (extend.order || '');
-  let data = JSON.parse(await request(html)).data;
-  let videos = [];
-  data.result.forEach(function(it) {
-      videos.push({
-          vod_id: it.aid,
-          vod_name: stripHtmlTag(it.title),
-          vod_pic: 'https:' + it.pic,
-          vod_remarks: turnDHM(it.duration) || '',
-      });
-  });
-  return JSON.stringify({
-      page: parseInt(data.page),
-      pagecount: data.numPages,
-      limit: 20,
-      total: data.numResults,
-      list: videos,
-  });
-}
+        let date = new Date(jo.pubdate * 1000);
+        let yy = date.getFullYear().toString();
+        let mm = date.getMonth()+1;
+        mm = mm < 10 ? ('0' + mm) : mm;
+        let dd = date.getDate();
+        dd = dd < 10 ? ('0' + dd) : dd;
 
-async function detail(id) {
-  let data = JSON.parse(await request(HOST + '/x/web-interface/view?aid=' + id)).data;
-  let vod = {
-      vod_id: data.aid,
-      vod_name: stripHtmlTag(data.title),
-      vod_pic: data.pic,
-      type_name: data.tname,
-      vod_year: new Date(data.pubdate*1000).getFullYear(),
-      vod_remarks: data.duration || '',
-      vod_director: data.owner.name,
-      vod_content: stripHtmlTag(data.desc),
-  };
-  let episodes = data.pages;
-  let playurls = [];
-  episodes.forEach(function(it) {
-    let cid = it.cid;
-    let part = it.part.replace('#', '﹟').replace('$', '﹩');
-    playurls.push(
-        part + '$' + data.aid + '_' + cid
-    )
-  });
-  let playUrl = playurls.join('#');
-  vod.vod_play_from = '道长在线';
-  vod.vod_play_url = playUrl;
-  return JSON.stringify({
-    list: [vod],
-  });
-}
-
-async function play(flag, id, flags) {
-  let ids = id.split('_');
-  let html = HOST + '/x/player/playurl?avid=' + ids[0] + '&cid=' + ids[1] + '&qn=116';
-  let data = JSON.parse(await request(html)).data.durl;
-  let maxSize = -1;
-  let position = -1;
-  data.forEach(function(it, i) {
-      if (maxSize < Number(it.size)) {
-          maxSize = Number(it.size);
-          position = i
-      }
-  });
-  let purl = '';
-  if (data.length > 0) {
-    if (position === -1) {
-        position = 0
-    }
-    purl = data[position].url
-  }
-  // console.debug('我的哔哩 purl =====>' + purl); // js_debug.log
-  return JSON.stringify({
-    parse: 0,
-    url: purl,
-    header: getMb(),
-  });
-}
-
-async function search(wd, quick, pg) {
-  if (pg <= 0 || typeof(pg) == 'undefined') pg = 1;
-  let html = HOST + '/x/web-interface/search/type?search_type=video&keyword=' + wd + '&page=' + pg;
-  let data = JSON.parse(await request(html)).data;
-  let videos = [];
-  data.result.forEach(function(it) {
-    videos.push({
-        vod_id: it.aid,
-        vod_name: stripHtmlTag(it.title),
-        vod_pic: 'https:' + it.pic,
-        vod_remarks: turnDHM(it.duration) || '',
-    });
-  });
-  return JSON.stringify({
-    page: parseInt(data.page),
-    pagecount: data.numPages,
-    limit: 20,
-    total: data.numResults,
-    list: videos,
-    land: 1,
-    ratio: 1.78,
-  });
-}
-
-function getHeader(cookie) {
-  let header = {};
-  header['cookie'] = cookie;
-  header['User-Agent'] = PC_UA;
-  header['Referer'] = 'https://www.bilibili.com';
-  return header;
-}
-
-function getMb() {
-  return getHeader(cookie);
-}
-
-function stripHtmlTag(src) {
-  return src
-      .replace(/<\/?[^>]+(>|$)/g, '')
-      .replace(/&.{1,5};/g, '')
-      .replace(/\s{2,}/g, ' ');
-}
-
-function turnDHM(duration) {
-  let min = duration.split(':')[0];
-  let sec = duration.split(':')[1];
-  if (min == 0) {
-      return sec + '秒';
-  } else if (0 < min && min < 60) {
-      return min + '分';
-  } else if (60 <= min && min < 1440) {
-      if (min % 60 == 0) {
-          let h = min / 60;
-          return h + '小时';
-      } else {
-          let h = min / 60;
-          h = (h + '').split('.')[0];
-          let m = min % 60;
-          return h + '小时' + m + '分';
-      }
-  } else if (min >= 1440) {
-      let d = min / 60 / 24;
-      d = (d + '').split('.')[0];
-      let h = min / 60 % 24;
-      h = (h + '').split('.')[0];
-      let m = min % 60;
-      let dhm = '';
-      if (d > 0) {
-          dhm = d + '天'
-      }
-      if (h >= 1) {
-          dhm = dhm + h + '小时'
-      }
-      if (m > 0) {
-          dhm = dhm + m + '分'
-      }
-      return dhm;
-  }
-  return null;
-}
-
-export function __jsEvalReturn() {
-  return {
-      init: init,
-      home: home,
-      homeVod: homeVod,
-      category: category,
-      detail: detail,
-      play: play,
-      search: search,
-  };
+        let up_name = jo.owner.name;
+        let typeName = jo.tname;
+        // let remark = jo.duration;
+        let vod = {
+            vod_id: aid,
+            vod_name: title,
+            vod_pic: pic,
+            type_name: typeName,
+            vod_year: yy+mm+dd,
+            vod_area: 'bilidanmu',
+            // vod_remarks: remark,
+            vod_tags: 'mv',
+            // vod_director: '🆙 ' + up_name + '　👥 ' + up_info.follower + '　' + relation,
+            vod_director: '🆙 ' + '[a=cr:' + JSON.stringify({'id':up_name + '_clicklink','name':up_name}) + '/]' + up_name + '[/a]' + '　👥 ' + up_info.follower + '　' + relation,
+            vod_actor: '▶' + stat.view + '　' + '💬' + stat.danmaku + '　' + '👍' + stat.like + '　' + '💰' + stat.coin + '　' + '⭐' + stat.favorite,
+            vod_content: desc
+        };
+        let ja = jo.pages;
+        let treeMap = {};
+        let playurls = [];
+        ja.forEach(function(tmpJo) {
+            let cid = tmpJo.cid;
+            let part = tmpJo.part.replaceAll('#', '﹟').replaceAll('$', '﹩');
+            playurls.push(
+                part + '$' + aid + '_' + cid
+            )
+        });
+        treeMap['B站'] = playurls.join('#');
+        let relatedData = JSON.parse(html).data.Related;
+        playurls = [];
+        relatedData.forEach(function(rd) {
+            let ccid = rd.cid;
+            let title = rd.title.replaceAll('#', '﹟').replaceAll('$', '﹩');
+            let aaid = rd.aid;
+            playurls.push(
+                title + '$' + aaid + '_' + ccid
+            )
+        });
+        treeMap['相关推荐'] = playurls.join('#');
+        vod.vod_play_from = Object.keys(treeMap).join("$$$");
+        vod.vod_play_url = Object.values(treeMap).join("$$$");
+        VOD = vod;
+    `,
+    // 搜索:'*',
+    搜索:`js:
+        let html = request(input);
+        function stripHtmlTag(src) {
+            return src.replace(/<\\/?[^>]+(>|$)/g, '').replace(/&.{1,5};/g, '').replace(/\\s{2,}/g, ' ');
+        }
+        function turnDHM(duration) {
+            let min = '';
+            let sec = '';
+            try {
+                min = duration.split(':')[0];
+                sec = duration.split(':')[1];
+            } catch (e) {
+                min = Math.floor(duration / 60);
+                sec = duration % 60;
+            }
+            if (isNaN(parseInt(duration))) {
+                return '无效输入';
+            }
+            if (min == 0) {
+                return sec + '秒'
+            } else if (0 < min && min < 60) {
+                return min + '分'
+            } else if (60 <= min && min < 1440) {
+                if (min % 60 == 0) {
+                    let h = min / 60;
+                    return h + '小时'
+                } else {
+                    let h = min / 60;
+                    h = (h + '').split('.')[0];
+                    let m = min % 60;
+                    return h + '小时' + m + '分';
+                }
+            } else if (min >= 1440) {
+                let d = min / 60 / 24;
+                d = (d + '').split('.')[0];
+                let h = min / 60 % 24;
+                h = (h + '').split('.')[0];
+                let m = min % 60;
+                let dhm = '';
+                if (d > 0) {
+                    dhm = d + '天'
+                }
+                if (h >= 1) {
+                    dhm = dhm + h + '小时'
+                }
+                if (m > 0) {
+                    dhm = dhm + m + '分'
+                }
+                return dhm
+            }
+            return null
+        }
+        let videos = [];
+        let vodList = JSON.parse(html).data.result;
+        vodList.forEach(function(vod) {
+            let aid = vod.aid;
+            let title = stripHtmlTag(vod.title);
+            let img = vod.pic;
+            if (img.startsWith('//')) {
+                img = 'https:' + img;
+            }
+            let remark = turnDHM(vod.duration);
+            videos.push({
+                vod_id: aid,
+                vod_name: title,
+                vod_pic: img,
+                vod_remarks: remark
+            })
+        });
+        VODS = videos
+    `,
+    // 预处理:'if(rule_fetch_params.headers.Cookie.startsWith("http")){rule_fetch_params.headers.Cookie=fetch(rule_fetch_params.headers.Cookie);setItem(RULE_CK,cookie)};log(rule_fetch_params.headers.Cookie)',
 }
