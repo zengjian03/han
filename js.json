@@ -128,10 +128,40 @@
       }
     },
     {
-      "key": "哔哩合集js",
+      "key": "drpy_js_我的哔哩",
       "name": "哔哩合集[js]",
       "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/mybili_open.js"
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      },
+      "changeable": 0,
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/我的哔哩.js"
+    },
+    {
+      "key": "drpy_js_哔哩直播",
+      "name": "哔哩直播[js]",
+      "type": 3,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      },
+      "changeable": 0,
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/哔哩直播.js"
+    },
+    {
+      "key": "drpy_js_哔哩影视",
+      "name": "哔哩影视[js]",
+      "type": 3,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      },
+      "changeable": 0,
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/哔哩影视.js"
     },
     {
       "key": "哔哩学习js",
@@ -143,29 +173,13 @@
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/bilixuexi_open.js"
     },
     {
-      "key": "我的哔哩js",
-      "name": "我的哔哩[js]",
-      "type": 3,
-      "searchable": 0,
-      "quickSearch": 0,
-      "changeable": 0,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/bili_open.js",
-      "ext": {
-        "categories": "音乐#动画#电影#电视剧#番剧#综艺#国创#搞笑#单机游戏#沙雕动画#沙雕穿越#沙雕",
-        "cookie": "DedeUserID=690781341;DedeUserID__ckMd5=cabc96906269c5b6;SESSDATA=2245ba24%2C1684212125%2C466fd%2Ab2;bili_jct=de6fdb60c10f8a83910aa55d79407b4e;"
-      }
-    },
-    {
       "key": "哔哩直播js",
       "name": "哔哩直播[js]",
       "type": 3,
       "searchable": 0,
       "quickSearch": 0,
       "changeable": 0,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/bililive_open.js",
-      "ext": {
-        "cookie": "DedeUserID=690781341;DedeUserID__ckMd5=cabc96906269c5b6;SESSDATA=2245ba24%2C1684212125%2C466fd%2Ab2;bili_jct=de6fdb60c10f8a83910aa55d79407b4e;"
-      }
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/bililive_open.js"
     },
     {
       "key": "酷奇MV",
@@ -341,7 +355,7 @@
     },
     {
       "key": "荐片弹幕版",
-      "name": "弹幕 | 荐片[jar]",
+      "name": "荐片[jar]",
       "type": 3,
       "api": "csp_Jianpian",
       "searchable": 1,
@@ -352,7 +366,7 @@
     },
     {
       "key": "Bdys_spider",
-      "name": "弹幕 | 哔滴[jar]",
+      "name": "哔滴[jar]",
       "api": "csp_Bdys01",
       "type": 3,
       "filterable": 1,
@@ -363,7 +377,7 @@
     },
     {
       "key": "河马",
-      "name": "弹幕 | 河马[jar]",
+      "name": "河马[jar]",
       "type": 3,
       "api": "csp_Hmys",
       "playerType": 1,
@@ -371,7 +385,7 @@
     },
     {
       "key": "天天",
-      "name": "弹幕 | 天天[jar]",
+      "name": "天天[jar]",
       "type": 3,
       "api": "csp_TTian",
       "playerType": 1,
@@ -379,7 +393,7 @@
     },
     {
       "key": "追剧",
-      "name": "弹幕 | 追剧[jar]",
+      "name": "追剧[jar]",
       "type": 3,
       "api": "csp_TTian",
       "playerType": 1,
@@ -387,7 +401,7 @@
     },
     {
       "key": "NanGua",
-      "name": "弹幕 | 南瓜[jar]",
+      "name": "南瓜[jar]",
       "type": 3,
       "api": "csp_NanGua",
       "searchable": 1,
@@ -396,7 +410,7 @@
     },
     {
       "key": "蝴蝶",
-      "name": "弹幕 | 蝴蝶[jar]",
+      "name": "蝴蝶[jar]",
       "type": 3,
       "api": "csp_Hudie",
       "playerType": 2,
@@ -404,7 +418,7 @@
     },
     {
       "key": "PushShare",
-      "name": "弹幕 | 资源分享[jar]",
+      "name": "资源分享[jar]",
       "type": 3,
       "api": "csp_PushShare",
       "searchable": 1,
@@ -419,7 +433,7 @@
     },
     {
       "key": "PikPakShare",
-      "name": "弹幕 | PikPak分享[jar]",
+      "name": "PikPak分享[jar]",
       "type": 3,
       "api": "csp_PikPakShare",
       "searchable": 1,
@@ -431,7 +445,7 @@
     },
     {
       "key": "AliShare",
-      "name": "弹幕 | 影视分享[jar]",
+      "name": "影视分享[jar]",
       "type": 3,
       "api": "csp_AliShare",
       "searchable": 1,
@@ -443,7 +457,7 @@
     },
     {
       "key": "ThunderShare",
-      "name": "弹幕 | 迅雷分享[jar]",
+      "name": "迅雷分享[jar]",
       "type": 3,
       "api": "csp_ThunderShare",
       "searchable": 1,
@@ -455,7 +469,7 @@
     },
     {
       "key": "QuarkShare",
-      "name": "弹幕 | 夸克分享[jar]",
+      "name": "夸克分享[jar]",
       "type": 3,
       "api": "csp_QuarkShare",
       "searchable": 1,
@@ -467,7 +481,7 @@
     },
     {
       "key": "SambaShare",
-      "name": "弹幕 | Samba分享[jar]",
+      "name": "Samba分享[jar]",
       "type": 3,
       "api": "csp_SambaShare",
       "searchable": 0,
@@ -479,7 +493,7 @@
     },
     {
       "key": "csp_WoGG",
-      "name": "弹幕 | 哥哥[jar]",
+      "name": "哥哥[jar]",
       "type": 3,
       "api": "csp_Wogg",
       "searchable": 1,
@@ -490,7 +504,7 @@
     },
     {
       "key": "影视车",
-      "name": "弹幕 | 影视车[jar]",
+      "name": "影视车[jar]",
       "type": 3,
       "api": "csp_Wogg",
       "searchable": 1,
@@ -501,7 +515,7 @@
     },
     {
       "key": "csp_Wobg",
-      "name": "弹幕 | 表哥[jar]",
+      "name": "表哥[jar]",
       "type": 3,
       "api": "csp_Wobg",
       "searchable": 1,
@@ -512,7 +526,7 @@
     },
     {
       "key": "csp_Wobg土豆网盘弹幕",
-      "name": "弹幕 | 土豆[jar]",
+      "name": "土豆[jar]",
       "type": 3,
       "api": "csp_Wobg",
       "searchable": 1,
@@ -523,7 +537,7 @@
     },
     {
       "key": "Xinshijue",
-      "name": "弹幕 | 新视觉[jar]",
+      "name": "新视觉[jar]",
       "type": 3,
       "api": "csp_Xinshijue",
       "quickSearch": 1,
@@ -534,7 +548,7 @@
     },
     {
       "key": "Yscapp",
-      "name": "弹幕 | 影視車[jar]",
+      "name": "影視車[jar]",
       "type": 3,
       "api": "csp_Yscapp",
       "quickSearch": 1,
@@ -542,12 +556,11 @@
       "filterable": 1,
       "timeout": 30,
       "playerType": 1,
-      "playerType": 1,
       "ext": "1"
     },
     {
       "key": "Moli",
-      "name": "弹幕 | HDmoli[jar]",
+      "name": "HDmoli[jar]",
       "type": 3,
       "api": "csp_Moli",
       "quickSearch": 1,
@@ -558,7 +571,7 @@
     },
     {
       "key": "Bt0",
-      "name": "弹幕 | 不太灵[jar]",
+      "name": "不太灵[jar]",
       "type": 3,
       "api": "csp_Bt0",
       "quickSearch": 1,
@@ -569,7 +582,7 @@
     },
     {
       "key": "ddys",
-      "name": "弹幕 | 低端[jar]",
+      "name": "低端[jar]",
       "type": 3,
       "api": "csp_Ddys",
       "quickSearch": 1,
@@ -580,7 +593,7 @@
     },
     {
       "key": "美剧迷",
-      "name": "弹幕 | 美剧迷[jar]",
+      "name": "美剧迷[jar]",
       "type": 3,
       "api": "csp_Meijumi",
       "quickSearch": 1,
@@ -591,7 +604,7 @@
     },
     {
       "key": "Ppxzy",
-      "name": "弹幕 | 皮皮虾[jar]",
+      "name": "皮皮虾[jar]",
       "type": 3,
       "api": "csp_Ppxzy",
       "quickSearch": 1,
@@ -602,7 +615,7 @@
     },
     {
       "key": "新6V",
-      "name": "弹幕 | 新6V[jar]",
+      "name": "新6V[jar]",
       "type": 3,
       "api": "csp_Xb6v",
       "searchable": 1,
@@ -612,7 +625,7 @@
     },
     {
       "key": "4KHDR",
-      "name": "弹幕 | 4KHDR[jar]",
+      "name": "4KHDR[jar]",
       "type": 3,
       "api": "csp_FourKHDR",
       "ext": "http://127.0.0.1:9978/file/TV/token.json$$$http://127.0.0.1:9978/file/TV/4khdr.txt",
@@ -622,7 +635,7 @@
     },
     {
       "key": "校长影视",
-      "name": "弹幕 | 校长[jar]",
+      "name": "校长[jar]",
       "type": 3,
       "api": "csp_XiaoZhang",
       "ext": "http://127.0.0.1:9978/file/TV/token.json",
@@ -632,7 +645,7 @@
     },
     {
       "key": "团长资源",
-      "name": "弹幕 | 团长[jar]",
+      "name": "团长[jar]",
       "type": 3,
       "api": "csp_TZFile",
       "ext": "http://127.0.0.1:9978/file/TV/token.json",
@@ -642,7 +655,7 @@
     },
     {
       "key": "csp_Hdhive",
-      "name": "弹幕 | 影巢[jar]",
+      "name": "影巢[jar]",
       "type": 3,
       "api": "csp_Hdhive",
       "searchable": 1,
@@ -653,7 +666,7 @@
     },
     {
       "key": "Panta",
-      "name": "弹幕 | 盘Ta[jar]",
+      "name": "盘Ta[jar]",
       "type": 3,
       "api": "csp_Panta",
       "quickSearch": 1,
@@ -1744,44 +1757,8 @@
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/有声绘本网.js"
     },
     {
-      "key": "drpy_js_我的哔哩",
-      "name": "弹幕 | 哔哩合集[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "style": {
-        "type": "rect",
-        "ratio": 1.597
-      },
-      "changeable": 0,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/我的哔哩.js"
-    },
-    {
-      "key": "drpy_js_哔哩直播",
-      "name": "弹幕 | 哔哩直播[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "style": {
-        "type": "rect",
-        "ratio": 1.597
-      },
-      "changeable": 0,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/哔哩直播.js"
-    },
-    {
-      "key": "drpy_js_哔哩影视",
-      "name": "弹幕 | 哔哩影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "style": {
-        "type": "rect",
-        "ratio": 1.597
-      },
-      "changeable": 0,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/哔哩影视.js"
-    },
-    {
       "key": "drpy_js_JustLive",
-      "name": "弹幕 | JustLive[js]",
+      "name": "JustLive[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
