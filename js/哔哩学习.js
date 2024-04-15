@@ -21,7 +21,7 @@
  */
 
 var rule = {
-    title:'我的哔哩',
+    title:'哔哩学习',
     host:'https://api.bilibili.com',
     // homeUrl:'/x/web-interface/search/type?search_type=video&keyword=小姐姐4K&page=1',
     homeUrl:'/x/web-interface/ranking/v2?rid=0&type=origin', // 排行 > 排行榜 > 原创
