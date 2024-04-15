@@ -169,8 +169,13 @@
       "type": 3,
       "searchable": 0,
       "quickSearch": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      },
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/哔哩学习.js"
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/哔哩学习.js"
     },
     {
       "key": "哔哩直播js",
