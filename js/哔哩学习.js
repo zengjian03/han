@@ -26,11 +26,12 @@ var rule = {
     // homeUrl:'/x/web-interface/search/type?search_type=video&keyword=小姐姐4K&page=1',
     homeUrl:'/x/web-interface/ranking/v2?rid=0&type=origin', // 排行 > 排行榜 > 原创
     url:'/x/web-interface/search/type?search_type=videofyfilter',
-    class_name:'儿童&苏教版&人教版&沪教版&北师大版',
-    class_url:'儿童&苏教版&人教版&沪教版&北师大版',
+    class_name:'儿童&苏教版&人教版&沪教版&北师大版&历史记录',
+    class_url:'儿童&苏教版&人教版&沪教版&北师大版&历史记录',
     filterable: 1,
     filter_url: '&keyword={{fl.tid}}&page=fypage&duration={{fl.duration}}&order={{fl.order}}',
     filter_def:{
+    历史记录:{tid:'历史记录'},
         儿童:{tid:'儿童'},
         苏教版:{tid:'苏教版'},
         人教版:{tid:'人教版'},
