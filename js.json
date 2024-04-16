@@ -98,16 +98,6 @@
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/lf_live.txt"
     },
     {
-      "key": "drpy_js_ikanbot3",
-      "name": "影视 | 爱看机器人3[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/ikanbot3.js"
-    },
-    {
       "key": "drpy_js_yeyu",
       "name": "业余自营[js]",
       "type": 3,

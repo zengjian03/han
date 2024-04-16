@@ -1,4 +1,4 @@
-import { Crypto, load, _ } from '.assets://js/lib/cat.js';
+import { Crypto, load, _ } from 'assets://js/lib/cat.js';
 
 //let siteUrl = 'https://m.xiangdao.me';
 let siteUrl ='https://v.nmvod.cn/api.php';
