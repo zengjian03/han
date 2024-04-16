@@ -350,6 +350,7 @@
       "api": "csp_Jianpian",
       "searchable": 1,
       "quickSearch": 1,
+      "playerType": 1,
       "filterable": 1,
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/jianpian.json$$$1",
       "timeout": 60
