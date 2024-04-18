@@ -22,7 +22,7 @@
   "sites": [
     {
       "key": "drpy_js_豆瓣",
-      "name": "搜索 | 豆瓣[js]",
+      "name": "搜索|豆瓣[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy.js",
@@ -32,7 +32,7 @@
     },
     {
       "key": "drpy_js_磁力熊搜索",
-      "name": "搜索 | 磁力熊[js]",
+      "name": "搜索|磁力熊[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/cilixiong.js",
@@ -42,7 +42,7 @@
     },
     {
       "key": "lf_js_search",
-      "name": "搜索 | 路飞[js]",
+      "name": "搜索|路飞[js]",
       "type": 3,
       "searchable": 0,
       "changeable": 1,
@@ -52,7 +52,7 @@
     },
     {
       "key": "drpy_js_荐片",
-      "name": "影视 | 荐片[js]",
+      "name": "荐片[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "searchable": 1,
@@ -64,7 +64,7 @@
     },
     {
       "key": "drpy_js_新片场",
-      "name": "新片 | 新片场[js]",
+      "name": "新片|新片场[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "searchable": 1,
@@ -74,7 +74,7 @@
     },
     {
       "key": "lf_js_p2p",
-      "name": "路飞 | 磁力[js]",
+      "name": "路飞|磁力[js]",
       "type": 3,
       "searchable": 1,
       "changeable": 1,
@@ -85,7 +85,7 @@
     },
     {
       "key": "lf_js_lf_live",
-      "name": "电视 | 直播[js]",
+      "name": "电视|直播[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/lf_live_min.js",
       "style": {
@@ -260,7 +260,7 @@
     },
     {
       "key": "T4-duanju5",
-      "name": "影视 | 短剧屋[T4]",
+      "name": "短剧屋[T4]",
       "type": 4,
       "api": "https://catbox.n13.club/duanju5.php",
       "searchable": 1,
@@ -271,7 +271,7 @@
     },
     {
       "key": "豆瓣",
-      "name": "搜索 | 豆瓣[jar]",
+      "name": "搜索|豆瓣[jar]",
       "type": 3,
       "api": "csp_Douban",
       "searchable": 0,
@@ -280,7 +280,7 @@
     },
     {
       "key": "FirstAid",
-      "name": "科普 | 急救[jar]",
+      "name": "科普|急救[jar]",
       "type": 3,
       "api": "csp_FirstAid",
       "searchable": 0,
@@ -293,7 +293,7 @@
     },
     {
       "key": "配置中心",
-      "name": "配置 | 中心[jar]",
+      "name": "配置|中心[jar]",
       "type": 3,
       "api": "csp_Config",
       "searchable": 0,
@@ -306,7 +306,7 @@
     },
     {
       "key": "酷狗",
-      "name": "音频 | 酷狗[jar]",
+      "name": "酷狗[jar]",
       "type": 3,
       "api": "csp_Kugou",
       "searchable": 1,
@@ -314,7 +314,7 @@
     },
     {
       "key": "Iktv",
-      "name": "MV | KTV[jar]",
+      "name": "MV|KTV[jar]",
       "type": 3,
       "api": "csp_Iktv",
       "searchable": 1,
@@ -322,7 +322,7 @@
     },
     {
       "key": "Yinyuetai",
-      "name": "MV | 音悦台[jar]",
+      "name": "MV|音悦台[jar]",
       "type": 3,
       "api": "csp_Yinyuetai",
       "searchable": 1,
@@ -330,7 +330,7 @@
     },
     {
       "key": "AliShareEBook",
-      "name": "书籍 | 分享[jar]",
+      "name": "书籍|分享[jar]",
       "type": 3,
       "api": "csp_AliShare",
       "searchable": 1,
@@ -668,7 +668,7 @@
     },
     {
       "key": "YingSo",
-      "name": "磁力 | 影搜[jar]",
+      "name": "磁力影搜[jar]",
       "type": 3,
       "api": "csp_YingSo",
       "timeout": 60,
@@ -676,7 +676,7 @@
     },
     {
       "key": "盘友圈",
-      "name": "网盘 | 盘友圈",
+      "name": "网盘盘友圈",
       "type": 3,
       "api": "csp_Panyq",
       "timeout": 60,
@@ -684,7 +684,7 @@
     },
     {
       "key": "88Pan",
-      "name": "网盘 | 88网盘[jar]",
+      "name": "网盘88网盘[jar]",
       "type": 3,
       "api": "csp_EightEight",
       "timeout": 30,
@@ -692,7 +692,7 @@
     },
     {
       "key": "PikaSo",
-      "name": "网盘 | 皮卡搜[jar]",
+      "name": "网盘皮卡搜[jar]",
       "type": 3,
       "api": "csp_PikaSo",
       "quickSearch": 1,
@@ -703,7 +703,7 @@
     },
     {
       "key": "csp_HunHePan",
-      "name": "网盘 | 混合盘[jar]",
+      "name": "网盘混合盘[jar]",
       "type": 3,
       "api": "csp_HunHePan",
       "searchable": 1,
@@ -715,7 +715,7 @@
     },
     {
       "key": "秒搜",
-      "name": "网盘 | 秒搜[jar]",
+      "name": "网盘秒搜[jar]",
       "type": 3,
       "api": "csp_MiaoSou",
       "timeout": 30,
@@ -723,7 +723,7 @@
     },
     {
       "key": "Libvio",
-      "name": "网盘 | LIBVIO[jar]",
+      "name": "网盘LIBVIO[jar]",
       "type": 3,
       "api": "csp_Libvio",
       "quickSearch": 1,
@@ -734,7 +734,7 @@
     },
     {
       "key": "DaPanSo",
-      "name": "网盘 | 大盘搜[jar]",
+      "name": "网盘大盘搜[jar]",
       "type": 3,
       "api": "csp_DaPanSo",
       "quickSearch": 1,
@@ -745,7 +745,7 @@
     },
     {
       "key": "Qianfan",
-      "name": "网盘 | 千帆[jar]",
+      "name": "网盘千帆[jar]",
       "type": 3,
       "api": "csp_Qianfan",
       "quickSearch": 1,
@@ -756,7 +756,7 @@
     },
     {
       "key": "YunSo",
-      "name": "网盘 | 小云[jar]",
+      "name": "网盘小云[jar]",
       "type": 3,
       "api": "csp_YunSo",
       "quickSearch": 1,
@@ -767,7 +767,7 @@
     },
     {
       "key": "YunPanOne",
-      "name": "网盘 | 云盘[jar]",
+      "name": "网盘云盘[jar]",
       "type": 3,
       "api": "csp_YunPanOne",
       "quickSearch": 1,
@@ -778,7 +778,7 @@
     },
     {
       "key": "Gitcafe",
-      "name": "阿里 | 纸条[jar]",
+      "name": "阿里纸条[jar]",
       "type": 3,
       "api": "csp_Gitcafe",
       "searchable": 1,
@@ -789,7 +789,7 @@
     },
     {
       "key": "小紙條",
-      "name": "阿里 | 小紙條[jar]",
+      "name": "阿里小紙條[jar]",
       "type": 3,
       "api": "csp_XiaoZhiTiao",
       "searchable": 1,
@@ -800,7 +800,7 @@
     },
     {
       "key": "七夜",
-      "name": "阿里 | 七夜[jar]",
+      "name": "阿里七夜[jar]",
       "type": 3,
       "api": "csp_Dovx",
       "searchable": 1,
@@ -810,7 +810,7 @@
     },
     {
       "key": "盤搜索",
-      "name": "阿里 | 盤搜索[jar]",
+      "name": "阿里盤搜索[jar]",
       "type": 3,
       "api": "csp_PanSearch",
       "searchable": 1,
@@ -820,7 +820,7 @@
     },
     {
       "key": "找資源",
-      "name": "阿里 | 找資源[jar]",
+      "name": "阿里找資源[jar]",
       "type": 3,
       "api": "csp_Zhaozy",
       "searchable": 1,
@@ -830,7 +830,7 @@
     },
     {
       "key": "易搜",
-      "name": "阿里 | 易搜[jar]",
+      "name": "阿里易搜[jar]",
       "type": 3,
       "api": "csp_YiSo",
       "ext": "http://127.0.0.1:9978/file/TV/token.json",
@@ -838,7 +838,7 @@
     },
     {
       "key": "盘搜",
-      "name": "阿里 | 盘搜[jar]",
+      "name": "阿里盘搜[jar]",
       "type": 3,
       "api": "csp_PanSou",
       "ext": "http://127.0.0.1:9978/file/TV/token.json",
@@ -846,7 +846,7 @@
     },
     {
       "key": "UP云搜",
-      "name": "阿里 | up云搜[jar]",
+      "name": "阿里up云搜[jar]",
       "type": 3,
       "api": "csp_UpYun",
       "ext": "http://127.0.0.1:9978/file/TV/token.json",
@@ -854,7 +854,7 @@
     },
     {
       "key": "Funletu",
-      "name": "夸克  | 趣盘搜[jar]",
+      "name": "夸克趣盘搜[jar]",
       "type": 3,
       "api": "csp_Funletu",
       "quickSearch": 1,
@@ -865,7 +865,7 @@
     },
     {
       "key": "QuarkPanso",
-      "name": "夸克 | 盘搜[jar]",
+      "name": "夸克盘搜[jar]",
       "type": 3,
       "api": "csp_QuarkPanso",
       "quickSearch": 1,
@@ -876,21 +876,21 @@
     },
     {
       "key": "drpy_js_南瓜影视",
-      "name": "影视 | 南瓜影视[js]",
+      "name": "南瓜影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/南瓜影视.js"
     },
     {
       "key": "drpy_js_两个BT",
-      "name": "影视 | 两个BT[js]",
+      "name": "两个BT[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/两个BT.js"
     },
     {
       "key": "drpy_js_voflix",
-      "name": "影视 | voflix[js]",
+      "name": "voflix[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/voflix.js"
@@ -898,49 +898,49 @@
 
     {
       "key": "drpy_js_量子影视",
-      "name": "影视 | 量子影视[js]",
+      "name": "量子影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/量子影视.js"
     },
     {
       "key": "drpy_js_农民",
-      "name": "影视 | 农民影视[js]",
+      "name": "农民影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/农民影视.js"
     },
     {
       "key": "drpy_js_在线之家",
-      "name": "影视 | 在线之家[js]",
+      "name": "在线之家[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/在线之家.js"
     },
     {
       "key": "drpy_js_量子资源",
-      "name": "影视 | 量子资源[js]",
+      "name": "量子资源[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/量子资源.js"
     },
     {
       "key": "drpy_js_热播库",
-      "name": "影视 | 热播库[js]",
+      "name": "热播库[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/热播库.js"
     },
     {
       "key": "drpy_js_蛋蛋剧",
-      "name": "影视 | 蛋蛋剧[js]",
+      "name": "蛋蛋剧[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/蛋蛋剧.js"
     },
     {
       "key": "drpy_js_凌云影视",
-      "name": "影视 | 凌云影视[js]",
+      "name": "凌云影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/凌云影视.js"
@@ -948,7 +948,7 @@
 
     {
       "key": "drpy_js_我爱跟剧",
-      "name": "影视 | 我爱跟剧[js]",
+      "name": "我爱跟剧[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/我爱跟剧.js"
@@ -956,14 +956,14 @@
 
     {
       "key": "drpy_js_电影先生",
-      "name": "影视 | 电影先生[js]",
+      "name": "电影先生[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/电影先生.js"
     },
     {
       "key": "drpy_js_落攻阁影视",
-      "name": "影视 | 落攻阁影视[js]",
+      "name": "落攻阁影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/落攻阁影视.js"
@@ -971,413 +971,413 @@
 
     {
       "key": "drpy_js_兄弟影视",
-      "name": "影视 | 兄弟影视[js]",
+      "name": "兄弟影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/兄弟影视.js"
     },
     {
       "key": "drpy_js_4k剧院",
-      "name": "影视 | 4k剧院[js]",
+      "name": "4k剧院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/4k剧院.js"
     },
     {
       "key": "drpy_js_爱迪影视",
-      "name": "影视 | 爱迪影视[js]",
+      "name": "爱迪影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/爱迪影视.js"
     },
     {
       "key": "drpy_js_539影视",
-      "name": "影视 | 539影视[js]",
+      "name": "539影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/539影视.js"
     },
     {
       "key": "drpy_js_333影视",
-      "name": "影视 | 333影视[js]",
+      "name": "333影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/333影视.js"
     },
     {
       "key": "drpy_js_996影视",
-      "name": "影视 | 996影视[js]",
+      "name": "996影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/996影视.js"
     },
     {
       "key": "drpy_js_188影视",
-      "name": "影视 | 188影视[js]",
+      "name": "188影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/188影视.js"
     },
     {
       "key": "drpy_js_哔嘀影视",
-      "name": "影视 | 哔嘀影视[js]",
+      "name": "哔嘀影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/哔嘀影视.js"
     },
     {
       "key": "drpy_js_7喜影院",
-      "name": "影视 | 7喜影院[js]",
+      "name": "7喜影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/7喜影院.js"
     },
     {
       "key": "drpy_js_18哈",
-      "name": "影视 | 18哈[js]",
+      "name": "18哈[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/18哈.js"
     },
     {
       "key": "drpy_js_567电影院",
-      "name": "影视 | 567电影院[js]",
+      "name": "567电影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/567电影院.js"
     },
     {
       "key": "drpy_js_Fun4K",
-      "name": "影视 | Fun4K[js]",
+      "name": "Fun4K[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/Fun4K.js"
     },
     {
       "key": "drpy_js_KOK影院",
-      "name": "影视 | KOK影院[js]",
+      "name": "KOK影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/KOK影院.js"
     },
     {
       "key": "drpy_js_TVB云播",
-      "name": "影视 | TVB云播[js]",
+      "name": "TVB云播[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/TVB云播.js"
     },
     {
       "key": "drpy_js_UrleBird[飞]",
-      "name": "影视 | UrleBird[飞][js]",
+      "name": "UrleBird[飞][js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/UrleBird[飞].js"
     },
     {
       "key": "drpy_js_爱看影院",
-      "name": "影视 | 爱看影院[js]",
+      "name": "爱看影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/爱看影院.js"
     },
     {
       "key": "drpy_js_北川影视",
-      "name": "影视 | 北川影视[js]",
+      "name": "北川影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/北川影视.js"
     },
     {
       "key": "drpy_js_尘落影视",
-      "name": "影视 | 尘落影视[js]",
+      "name": "尘落影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/尘落影视.js"
     },
     {
       "key": "drpy_js_达达龟",
-      "name": "影视 | 达达龟[js]",
+      "name": "达达龟[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/达达龟.js"
     },
     {
       "key": "drpy_js_蛋蛋赞",
-      "name": "影视 | 蛋蛋赞[js]",
+      "name": "蛋蛋赞[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/蛋蛋赞.js"
     },
     {
       "key": "drpy_js_多瑙影视",
-      "name": "影视 | 多瑙影视[js]",
+      "name": "多瑙影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/多瑙影视.js"
     },
     {
       "key": "drpy_js_剧迷su",
-      "name": "影视 | 剧迷su[js]",
+      "name": "剧迷su[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/剧迷su.js"
     },
     {
       "key": "drpy_js_看韩剧",
-      "name": "影视 | 看韩剧[js]",
+      "name": "看韩剧[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/看韩剧.js"
     },
     {
       "key": "drpy_js_看了么",
-      "name": "影视 | 看了么[js]",
+      "name": "看了么[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/看了么.js"
     },
     {
       "key": "drpy_js_蓝光影院",
-      "name": "影视 | 蓝光影院[js]",
+      "name": "蓝光影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/蓝光影院.js"
     },
     {
       "key": "drpy_js_首播影院",
-      "name": "影视 | 首播影院[js]",
+      "name": "首播影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/首播影院.js"
     },
     {
       "key": "drpy_js_小白菜电影",
-      "name": "影视 | 小白菜电影[js]",
+      "name": "小白菜电影[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/小白菜电影.js"
     },
     {
       "key": "drpy_js_影视工场",
-      "name": "影视 | 影视工场[js]",
+      "name": "影视工场[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/影视工场.js"
     },
     {
       "key": "drpy_js_影视之家[V2]",
-      "name": "影视 | 影视之家[V2][js]",
+      "name": "影视之家[V2][js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/影视之家[V2].js"
     },
     {
       "key": "drpy_js_悠久影院",
-      "name": "影视 | 悠久影院[js]",
+      "name": "悠久影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/悠久影院.js"
     },
     {
       "key": "drpy_js_中国人线上看",
-      "name": "影视 | 中国人线上看[js]",
+      "name": "中国人线上看[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/中国人线上看.js"
     },
     {
       "key": "drpy_js_555电影[V2]",
-      "name": "影视 | 555电影[V2]",
+      "name": "555电影[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/555电影[V2].js"
     },
     {
       "key": "drpy_js_69美剧[V2]",
-      "name": "影视 | 69美剧[V2]",
+      "name": "69美剧[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/69美剧[V2].js"
     },
     {
       "key": "drpy_js_cokemv[V2]",
-      "name": "影视 | cokemv[V2]",
+      "name": "cokemv[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/cokemv[V2].js"
     },
     {
       "key": "drpy_js_UM电影[V2]",
-      "name": "影视 | UM电影[V2]",
+      "name": "UM电影[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/UM电影[V2].js"
     },
     {
       "key": "drpy_js_爱迪[V2]",
-      "name": "影视 | 爱迪[V2][js]",
+      "name": "爱迪[V2][js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/爱迪[V2].js"
     },
     {
       "key": "drpy_js_宝片[V2]",
-      "name": "影视 | 宝片[V2]",
+      "name": "宝片[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/宝片[V2].js"
     },
     {
       "key": "drpy_js_刺桐[V2]",
-      "name": "影视 | 刺桐[V2][js]",
+      "name": "刺桐[V2][js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/刺桐[V2].js"
     },
     {
       "key": "drpy_js_咕噜[V2]",
-      "name": "影视 | 咕噜[V2]",
+      "name": "咕噜[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/咕噜[V2].js"
     },
     {
       "key": "drpy_js_吼吼[V2]",
-      "name": "影视 | 吼吼[V2]",
+      "name": "吼吼[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/吼吼[V2].js"
     },
     {
       "key": "drpy_js_曲奇影视[V2]",
-      "name": "影视 | 曲奇影视[V2]",
+      "name": "曲奇影视[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/曲奇影视[V2].js"
     },
     {
       "key": "drpy_js_影探[V2]",
-      "name": "影视 | 影探[V2]",
+      "name": "影探[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/影探[V2].js"
     },
     {
       "key": "drpy_js_北极狐[V2]",
-      "name": "影视 | 北极狐[V2]",
+      "name": "北极狐[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/北极狐[V2].js"
     },
     {
       "key": "drpy_js_大米星球[V2]",
-      "name": "影视 | 大米星球[V2]",
+      "name": "大米星球[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/大米星球[V2].js"
     },
     {
       "key": "drpy_js_奈飞狗[V2]",
-      "name": "影视 | 奈飞狗[V2]",
+      "name": "奈飞狗[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/奈飞狗[V2].js"
     },
     {
       "key": "drpy_js_思古影视[V2]",
-      "name": "影视 | 思古影视[V2]",
+      "name": "思古影视[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/思古影视[V2].js"
     },
     {
       "key": "drpy_js_映迷[V2]",
-      "name": "影视 | 映迷[V2]",
+      "name": "映迷[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/映迷[V2].js"
     },
     {
       "key": "drpy_js_美益达[V2]",
-      "name": "影视 | 美益达[V2]",
+      "name": "美益达[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/美益达[V2].js"
     },
     {
       "key": "drpy_js_落攻阁影视[V2]",
-      "name": "影视 | 落攻阁影视[V2]",
+      "name": "落攻阁影视[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/落攻阁影视[V2].js"
     },
     {
       "key": "drpy_js_西门[V2]",
-      "name": "影视 | 西门[V2]",
+      "name": "西门[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/西门[V2].js"
     },
     {
       "key": "drpy_js_路人甲[V2]",
-      "name": "影视 | 路人甲[V2]",
+      "name": "路人甲[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/路人甲[V2].js"
     },
     {
       "key": "drpy_js_鑫鑫[V2]",
-      "name": "影视 | 鑫鑫[V2]",
+      "name": "鑫鑫[V2]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/鑫鑫[V2].js"
     },
     {
       "key": "drpy_js_360影视",
-      "name": "官源 | 360[js]",
+      "name": "官源|360[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/360影视.js"
     },
     {
       "key": "drpy_js_百忙无果",
-      "name": "官源 | 芒果[js]",
+      "name": "官源|芒果[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/百忙无果.js"
     },
     {
       "key": "drpy_js_腾云驾雾",
-      "name": "官源 | 腾讯[js]",
+      "name": "官源|腾讯[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/腾云驾雾.js"
     },
     {
       "key": "drpy_js_奇珍异兽",
-      "name": "官源 | 爱奇艺[js]",
+      "name": "官源|爱奇艺[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/奇珍异兽.js"
     },
     {
       "key": "drpy_js_菜狗",
-      "name": "官源 | 搜狗[js]",
+      "name": "官源|搜狗[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/菜狗.js"
     },
     {
       "key": "drpy_js_优酷",
-      "name": "官源 | 优酷[js]",
+      "name": "官源|优酷[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/优酷.js"
     },
     {
       "key": "drpy_js_4KHDR",
-      "name": "磁力 | 4KHDR[js]",
+      "name": "磁力4KHDR[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/4khdr.js",
@@ -1389,7 +1389,7 @@
     },
     {
       "key": "drpy_js_极影网",
-      "name": "磁力 | 极影网[js]",
+      "name": "磁力极影网[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/jiyingw.js",
@@ -1401,7 +1401,7 @@
     },
     {
       "key": "drpy_js_MP4US",
-      "name": "磁力 | MP4电影[js]",
+      "name": "磁力MP4电影[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/mp4us.js",
@@ -1413,7 +1413,7 @@
     },
     {
       "key": "drpy_js_电影港",
-      "name": "磁力 | 电影港[js]",
+      "name": "磁力电影港[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/dygang.js",
@@ -1425,7 +1425,7 @@
     },
     {
       "key": "drpy_js_kuba",
-      "name": "磁力 | 酷吧[js]",
+      "name": "磁力酷吧[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/kuba.js",
@@ -1435,7 +1435,7 @@
     },
     {
       "key": "drpy_js_xb6v",
-      "name": "磁力 | 新版6v[js]",
+      "name": "磁力新版6v[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/xb6v.js",
@@ -1447,7 +1447,7 @@
     },
     {
       "key": "drpy_js_美剧迷",
-      "name": "磁力 | 美剧迷[js]",
+      "name": "磁力美剧迷[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/meijumi.js",
@@ -1457,7 +1457,7 @@
     },
     {
       "key": "drpy_js_ddys",
-      "name": "影视 | 低端影视[js]",
+      "name": "低端影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/ddys.js",
@@ -1467,7 +1467,7 @@
     },
     {
       "key": "drpy_js_libvio",
-      "name": "影视 | libvio[js]",
+      "name": "libvio[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/libvio.js",
@@ -1477,7 +1477,7 @@
     },
     {
       "key": "drpy_js_tzfile",
-      "name": "影视 | 团长影视[js]",
+      "name": "团长影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/tzfile.js",
@@ -1487,7 +1487,7 @@
     },
     {
       "key": "drpy_js_dydhhy",
-      "name": "影视 | dydhhy[js]",
+      "name": "dydhhy[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/dydhhy.js",
@@ -1497,7 +1497,7 @@
     },
     {
       "key": "drpy_js_97tvs",
-      "name": "影视 | 97tvs[js]",
+      "name": "97tvs[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/97tvs.js",
@@ -1507,7 +1507,7 @@
     },
     {
       "key": "drpy_js_rrdyw",
-      "name": "影视 | rrdyw[js]",
+      "name": "rrdyw[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/rrdyw.js",
@@ -1517,7 +1517,7 @@
     },
     {
       "key": "drpy_js_校长影视",
-      "name": "夸克 | 校长影视[js]",
+      "name": "夸克校长影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/xzys.js",
@@ -1527,7 +1527,7 @@
     },
     {
       "key": "drpy_js_yyets",
-      "name": "夸克 | 人人影视搜[js]",
+      "name": "夸克人人影视搜[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/yyets.js",
@@ -1537,7 +1537,7 @@
     },
     {
       "key": "drpy_js_奇妙搜[夸]",
-      "name": "夸克 | 奇妙搜[js]",
+      "name": "夸克奇妙搜[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/qimiao.js",
@@ -1547,7 +1547,7 @@
     },
     {
       "key": "drpy_js_愛盤搜",
-      "name": "夸克 | 爱盘搜[js]",
+      "name": "夸克爱盘搜[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/aipanso.js",
@@ -1557,7 +1557,7 @@
     },
     {
       "key": "drpy_js_趣盤搜",
-      "name": "夸克 | 趣盘搜[js]",
+      "name": "夸克趣盘搜[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/funletu.js",
@@ -1567,7 +1567,7 @@
     },
     {
       "key": "drpy_js_meow",
-      "name": "影视 | meow搜[js]",
+      "name": "meow搜[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/meow.js",
@@ -1577,7 +1577,7 @@
     },
     {
       "key": "push_quark",
-      "name": "夸克 | 推送",
+      "name": "夸克推送",
       "type": 3,
       "api": "csp_Quark",
       "changeable": 0,
@@ -1586,7 +1586,7 @@
     },
     {
       "key": "push_agent",
-      "name": "手机 | 推送[jar]",
+      "name": "手机|推送[jar]",
       "type": 3,
       "api": "csp_Push",
       "searchable": 0,
@@ -1597,7 +1597,7 @@
     },
     {
       "key": "drpy_js_磁力熊[磁]",
-      "name": "磁力 | 磁力熊[js]",
+      "name": "磁力磁力熊[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "searchable": 1,
@@ -1608,7 +1608,7 @@
     },
     {
       "key": "drpy_js_6V新版[磁]",
-      "name": "磁力 | 6V新版[js]",
+      "name": "磁力6V新版[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "searchable": 1,
@@ -1619,7 +1619,7 @@
     },
     {
       "key": "drpy_js_童趣",
-      "name": "少儿 | 童趣[js]",
+      "name": "童趣[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1631,7 +1631,7 @@
     },
     {
       "key": "drpy_js_兔小贝",
-      "name": "少儿 | 兔小贝[js]",
+      "name": "兔小贝[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
@@ -1643,7 +1643,7 @@
     },
     {
       "key": "drpy_js_有声绘本网",
-      "name": "少儿 | 有声绘本[js]",
+      "name": "有声绘本[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1667,7 +1667,7 @@
     },
     {
       "key": "drpy_js_斗鱼直播",
-      "name": "直播 | 斗鱼[js]",
+      "name": "直播斗鱼[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
@@ -1679,7 +1679,7 @@
     },
     {
       "key": "drpy_js_虎牙直播",
-      "name": "直播 | 虎牙[js]",
+      "name": "直播虎牙[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
@@ -1691,7 +1691,7 @@
     },
     {
       "key": "drpy_js_310直播",
-      "name": "体育 | 310直播[js]",
+      "name": "310直播[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1703,7 +1703,7 @@
     },
     {
       "key": "drpy_js_88看球",
-      "name": "体育 | 88看球[js]",
+      "name": "88看球[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1715,7 +1715,7 @@
     },
     {
       "key": "drpy_js_JRKAN直播",
-      "name": "体育 | JRKAN直播[js]",
+      "name": "JRKAN直播[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy.min.js",
       "changeable": 0,
@@ -1727,7 +1727,7 @@
     },
     {
       "key": "drpy_js_抓饭体育",
-      "name": "体育 | 抓饭体育[js]",
+      "name": "抓饭体育[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy.min.js",
       "changeable": 0,
@@ -1739,7 +1739,7 @@
     },
     {
       "key": "drpy_js_好趣网",
-      "name": "电视 | 好趣网[js]",
+      "name": "电视好趣网[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
@@ -1751,7 +1751,7 @@
     },
     {
       "key": "drpy_js_相声随身听",
-      "name": "相声 | 相声随身听[js]",
+      "name": "相声随身听[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1759,7 +1759,7 @@
     },
     {
       "key": "drpy_js_评书随身听",
-      "name": "评书 | 评书随身听[js]",
+      "name": "评书随身听[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1767,7 +1767,7 @@
     },
     {
       "key": "drpy_js_武享吧",
-      "name": "格斗 | 武享吧[js]",
+      "name": "格斗|武享吧[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1775,7 +1775,7 @@
     },
     {
       "key": "drpy_js_Alist",
-      "name": "网盘 | Alist[js]",
+      "name": "网盘Alist[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/alist.min.js",
       "changeable": 0,
@@ -1783,119 +1783,119 @@
     },
     {
       "key": "drpy_js_58动漫",
-      "name": "动漫 | 58动漫[js]",
+      "name": "58动漫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/58动漫.js"
     },
     {
       "key": "drpy_js_AGE动漫",
-      "name": "动漫 | AGE动漫[js]",
+      "name": "AGE动漫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/AGE动漫.js"
     },
     {
       "key": "drpy_js_AnFuns",
-      "name": "动漫 | AnFuns[js]",
+      "name": "AnFuns[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/AnFuns.js"
     },
     {
       "key": "drpy_js_Anime1动畫",
-      "name": "动漫 | Anime1动畫[js]",
+      "name": "Anime1动畫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/Anime1动畫.js"
     },
     {
       "key": "drpy_js_NT动漫",
-      "name": "动漫 | NT动漫[js]",
+      "name": "NT动漫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/NT动漫.js"
     },
     {
       "key": "drpy_js_NyaFun",
-      "name": "动漫 | NyaFun[js]",
+      "name": "NyaFun[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/NyaFun.js"
     },
     {
       "key": "drpy_js_爱弹幕",
-      "name": "动漫 | 爱弹幕[js]",
+      "name": "爱弹幕[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/爱弹幕.js"
     },
     {
       "key": "drpy_js_动漫岛",
-      "name": "动漫 | 动漫岛[js]",
+      "name": "动漫岛[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/动漫岛.js"
     },
     {
       "key": "drpy_js_路漫漫",
-      "name": "动漫 | 路漫漫[js]",
+      "name": "路漫漫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/路漫漫.js"
     },
     {
       "key": "drpy_js_喵次元",
-      "name": "影视 | 喵次元[js]",
+      "name": "喵次元[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/喵次元.js"
     },
     {
       "key": "drpy_js_奇米动漫",
-      "name": "动漫 | 奇米动漫[js]",
+      "name": "奇米动漫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/奇米动漫.js"
     },
     {
       "key": "drpy_js_去看吧",
-      "name": "动漫 | 去看吧[js]",
+      "name": "去看吧[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/去看吧.js"
     },
     {
       "key": "drpy_js_曲奇动漫",
-      "name": "动漫 | 曲奇动漫[js]",
+      "name": "曲奇动漫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/曲奇动漫.js"
     },
     {
       "key": "drpy_js_异世界动漫漫",
-      "name": "动漫 | 异世界动漫[js]",
+      "name": "异世界动漫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/异世界动漫.js"
     },
     {
       "key": "drpy_js_怡萱动漫",
-      "name": "动漫 | 怡萱动漫[js]",
+      "name": "怡萱动漫[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/怡萱动漫.js"
     },
     {
       "key": "drpy_js_A8音乐",
-      "name": "音频 | A8音乐[js]",
+      "name": "A8音乐[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/A8音乐.js"
     },
     {
       "key": "drpy_js_DJ音乐",
-      "name": "音频 | DJ音乐[js]",
+      "name": "DJ音乐[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1907,7 +1907,7 @@
     },
     {
       "key": "drpy_js_啦啦DJ",
-      "name": "音频 | 啦啦DJ[js]",
+      "name": "啦啦DJ[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1919,7 +1919,7 @@
     },
     {
       "key": "drpy_js_清风DJ",
-      "name": "音频 | 清风DJ[js]",
+      "name": "清风DJ[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1931,7 +1931,7 @@
     },
     {
       "key": "drpy_js_广播迷FM",
-      "name": "广播 | 广播迷FM[js]",
+      "name": "广播迷FM[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1939,7 +1939,7 @@
     },
     {
       "key": "drpy_js_蜻蜓FM",
-      "name": "广播 | 蜻蜓FM[js]",
+      "name": "蜻蜓FM[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1947,7 +1947,7 @@
     },
     {
       "key": "drpy_js_i275听书",
-      "name": "听书 | i275听书[js]",
+      "name": "i275听书[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1959,7 +1959,7 @@
     },
     {
       "key": "drpy_js_爱上你听书网",
-      "name": "听书 | 爱上你听书[js]",
+      "name": "爱上你听书[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1971,7 +1971,7 @@
     },
     {
       "key": "drpy_js_博看听书",
-      "name": "听书 | 博看听书[js]",
+      "name": "博看听书[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1983,7 +1983,7 @@
     },
     {
       "key": "drpy_js_海洋听书",
-      "name": "听书 | 海洋听书[js]",
+      "name": "海洋听书[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -1995,7 +1995,7 @@
     },
     {
       "key": "drpy_js_六月听书",
-      "name": "听书 | 六月听书[js]",
+      "name": "六月听书[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2007,7 +2007,7 @@
     },
     {
       "key": "drpy_js_听书网",
-      "name": "听书 | 听书网[js]",
+      "name": "听书网[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2019,7 +2019,7 @@
     },
     {
       "key": "drpy_js_喜马拉雅",
-      "name": "听书 | 喜马拉雅[js]",
+      "name": "喜马拉雅[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2031,7 +2031,7 @@
     },
     {
       "key": "drpy_js_有声小说",
-      "name": "听书 | 有声小说[js]",
+      "name": "有声小说[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2043,14 +2043,14 @@
     },
     {
       "key": "drpy_js_播客",
-      "name": "聚合 | 播客[js]",
+      "name": "聚合|播客[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/播客.js"
     },
     {
       "key": "drpy_js_短视频",
-      "name": "聚合 | 短视频[js]",
+      "name": "聚合|短视频[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2058,7 +2058,7 @@
     },
     {
       "key": "drpy_js_酷6网",
-      "name": "聚合 | 酷6网[js]",
+      "name": "聚合|酷6网[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2066,7 +2066,7 @@
     },
     {
       "key": "drpy_js_网易公版影像",
-      "name": "聚合 | 网易公版[js]",
+      "name": "聚合|网易公版[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2078,7 +2078,7 @@
     },
     {
       "key": "drpy_js_爱车MV",
-      "name": "MV | 爱车MV[js]",
+      "name": "MV|爱车MV[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2090,7 +2090,7 @@
     },
     {
       "key": "drpy_js_酷奇MV",
-      "name": "MV | 酷奇[js]",
+      "name": "MV|酷奇[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "changeable": 0,
@@ -2102,7 +2102,7 @@
     },
     {
       "key": "drpy_js_爱看机器人",
-      "name": "影视 | 爱看机器人[js]",
+      "name": "爱看机器人[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "searchable": 1,
@@ -2112,7 +2112,7 @@
     },
     {
       "key": "drpy_js_ikanbot2",
-      "name": "影视 | 爱看机器人2[js]",
+      "name": "爱看机器人2[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "searchable": 1,
@@ -2122,413 +2122,413 @@
     },
     {
       "key": "drpy_js_jsapi2",
-      "name": "影视 | 百度测试[js]",
+      "name": "百度测试[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/jsapi2.js"
     },
     {
       "key": "drpy_js_139影视",
-      "name": "影视 | 139影视[js]",
+      "name": "139影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/139影视.js"
     },
     {
       "key": "drpy_js_348电影网",
-      "name": "影视 | 348电影网[js]",
+      "name": "348电影网[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/348电影网.js"
     },
     {
       "key": "drpy_js_4K电影网",
-      "name": "影视 | 4K电影网[js]",
+      "name": "4K电影网[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/4K电影网.js"
     },
     {
       "key": "drpy_js_8号影院",
-      "name": "影视 | 8号影院[js]",
+      "name": "8号影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/8号影院.js"
     },
     {
       "key": "drpy_js_JangoIndex",
-      "name": "影视 | JangoIndex[js]",
+      "name": "JangoIndex[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/JangoIndex.js"
     },
     {
       "key": "drpy_js_NY影院",
-      "name": "影视 | NY影院[js]",
+      "name": "NY影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/NY影院.js"
     },
     {
       "key": "drpy_js_被窝电影",
-      "name": "影视 | 被窝电影[js]",
+      "name": "被窝电影[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/被窝电影.js"
     },
     {
       "key": "drpy_js_厂长资源",
-      "name": "影视 | 厂长资源[js]",
+      "name": "厂长资源[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/厂长资源.js"
     },
     {
       "key": "drpy_js_楚门影院",
-      "name": "影视 | 楚门影院[js]",
+      "name": "楚门影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/楚门影院.js"
     },
     {
       "key": "drpy_js_大米星球",
-      "name": "影视 | 大米星球[js]",
+      "name": "大米星球[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/大米星球.js"
     },
     {
       "key": "drpy_js_飞兔影视",
-      "name": "影视 | 飞兔影视[js]",
+      "name": "飞兔影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/飞兔影视.js"
     },
     {
       "key": "drpy_js_海兔影院",
-      "name": "影视 | 海兔影院[js]",
+      "name": "海兔影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/海兔影院.js"
     },
     {
       "key": "drpy_js_花猫TV",
-      "name": "影视 | 花猫TV[js]",
+      "name": "花猫TV[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/花猫TV.js"
     },
     {
       "key": "drpy_js_花屋影院",
-      "name": "影视 | 花屋影院[js]",
+      "name": "花屋影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/花屋影院.js"
     },
     {
       "key": "drpy_js_开眼视频",
-      "name": "影视 | 开眼视频[js]",
+      "name": "开眼视频[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/开眼视频.js"
     },
     {
       "key": "drpy_js_看了么",
-      "name": "影视 | 看了么[js]",
+      "name": "看了么[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/看了么.js"
     },
     {
       "key": "drpy_js_徕米TV",
-      "name": "影视 | 徕米TV[js]",
+      "name": "徕米TV[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/徕米TV.js"
     },
     {
       "key": "drpy_js_乐鱼影视",
-      "name": "影视 | 乐鱼影视[js]",
+      "name": "乐鱼影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/乐鱼影视.js"
     },
     {
       "key": "drpy_js_美剧网",
-      "name": "影视 | 美剧网[js]",
+      "name": "美剧网[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/美剧网.js"
     },
     {
       "key": "drpy_js_美视网",
-      "name": "影视 | 美视网[js]",
+      "name": "美视网[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/美视网.js"
     },
     {
       "key": "drpy_js_米爱影视",
-      "name": "影视 | 米爱影视[js]",
+      "name": "米爱影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/米爱影视.js"
     },
     {
       "key": "drpy_js_免费看",
-      "name": "影视 | 免费看[js]",
+      "name": "免费看[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/免费看.js"
     },
     {
       "key": "drpy_js_奈飞中文",
-      "name": "影视 | 奈飞中文[js]",
+      "name": "奈飞中文[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/奈飞中文.js"
     },
     {
       "key": "drpy_js_欧帝影院",
-      "name": "影视 | 欧帝影院[js]",
+      "name": "欧帝影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/欧帝影院.js"
     },
     {
       "key": "drpy_js_皮皮鸭",
-      "name": "影视 | 皮皮鸭[js]",
+      "name": "皮皮鸭[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/皮皮鸭.js"
     },
     {
       "key": "drpy_js_朴樱影视",
-      "name": "影视 | 朴樱影视[js]",
+      "name": "朴樱影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/朴樱影视.js"
     },
     {
       "key": "drpy_js_秋霞影院",
-      "name": "影视 | 秋霞影院[js]",
+      "name": "秋霞影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/秋霞.js"
     },
     {
       "key": "drpy_js_热播之家",
-      "name": "影视 | 热播之家[js]",
+      "name": "热播之家[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/热播之家.js"
     },
     {
       "key": "drpy_js_人人影视",
-      "name": "影视 | 人人影视[js]",
+      "name": "人人影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/人人影视.js"
     },
     {
       "key": "drpy_js_骚火电影",
-      "name": "影视 | 骚火电影[js]",
+      "name": "骚火电影[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/骚火电影.js"
     },
     {
       "key": "drpy_js_时光影视",
-      "name": "影视 | 时光影视[js]",
+      "name": "时光影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/时光影视.js"
     },
     {
       "key": "drpy_js_思古影视",
-      "name": "影视 | 思古影视",
+      "name": "思古影视",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/思古影视.js"
     },
     {
       "key": "drpy_js_私人影院",
-      "name": "影视 | 私人影院[js]",
+      "name": "私人影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/私人影院.js"
     },
     {
       "key": "drpy_js_素白白",
-      "name": "影视 | 素白白[js]",
+      "name": "素白白[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/素白白.js"
     },
     {
       "key": "drpy_js_网飞.TV",
-      "name": "影视 | 网飞.TV[js]",
+      "name": "网飞.TV[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/网飞.TV.js"
     },
     {
       "key": "drpy_js_西瓜影院",
-      "name": "影视 | 西瓜影院[js]",
+      "name": "西瓜影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/西瓜影院.js"
     },
     {
       "key": "drpy_js_蜥蜴影视",
-      "name": "影视 | 蜥蜴影视[js]",
+      "name": "蜥蜴影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/蜥蜴影视.js"
     },
     {
       "key": "drpy_js_小狗影院",
-      "name": "影视 | 小狗影院[js]",
+      "name": "小狗影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/小狗影院.js"
     },
     {
       "key": "drpy_js_新视觉影视",
-      "name": "影视 | 新视觉影视[js]",
+      "name": "新视觉影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/新视觉影视.js"
     },
     {
       "key": "drpy_js_星辰影院",
-      "name": "影视 | 星辰影院[js]",
+      "name": "星辰影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/星辰.js"
     },
     {
       "key": "drpy_js_玄天",
-      "name": "影视 | 玄天[js]",
+      "name": "玄天[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/玄天.js"
     },
     {
       "key": "drpy_js_映迷影院",
-      "name": "影视 | 映迷影院[js]",
+      "name": "映迷影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/映迷影院.js"
     },
     {
       "key": "drpy_js_中国人",
-      "name": "影视 | 中国人[js]",
+      "name": "中国人[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/中国人.js"
     },
     {
       "key": "drpy_js_追剧迷",
-      "name": "影视 | 追剧迷[js]",
+      "name": "追剧迷[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/追剧迷.js"
     },
     {
       "key": "drpy_js_子子影视",
-      "name": "影视 | 子子影视[js]",
+      "name": "子子影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/子子影视.js"
     },
     {
       "key": "drpy_js_大师兄影视",
-      "name": "起飞 | 大师兄影视[js]",
+      "name": "起飞|大师兄影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/大师兄影视.js"
     },
     {
       "key": "drpy_js_华乐影院",
-      "name": "起飞 | 华乐影院[js]",
+      "name": "起飞|华乐影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/华乐影院[飞].js"
     },
     {
       "key": "drpy_js_天天视频",
-      "name": "起飞 | 天天视频[js]",
+      "name": "起飞|天天视频[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/天天视频[飞].js"
     },
     {
       "key": "drpy_js_起飞影院",
-      "name": "起飞 | 起飞影院[js]",
+      "name": "起飞|起飞影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/起飞影院.js"
     },
     {
       "key": "drpy_js_兰花影院",
-      "name": "起飞 | 兰花影院[js]",
+      "name": "起飞|兰花影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/兰花影院.js"
     },
     {
       "key": "drpy_js_胖虎",
-      "name": "起飞 | 胖虎[js]",
+      "name": "起飞|胖虎[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/胖虎.js"
     },
     {
       "key": "drpy_js_555影视[飞]",
-      "name": "起飞 | 555影视[js]",
+      "name": "起飞|555影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/555影视[飞].js"
     },
     {
       "key": "drpy_js_if101[飞]",
-      "name": "起飞 | if101[js]",
+      "name": "起飞|if101[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/if101[飞].js"
     },
     {
       "key": "drpy_js_KUBO影视[飞]",
-      "name": "起飞 | KUBO影视[js]",
+      "name": "起飞|KUBO影视[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/KUBO影视[飞].js"
     },
     {
       "key": "drpy_js_爱壹帆[飞]",
-      "name": "起飞 | 爱壹帆[js]",
+      "name": "起飞|爱壹帆[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/爱壹帆[飞].js"
     },
     {
       "key": "drpy_js_独播库[飞]",
-      "name": "起飞 | 独播库[js]",
+      "name": "起飞|独播库[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/独播库[飞].js"
     },
     {
       "key": "drpy_js_欧乐影院[飞]",
-      "name": "起飞 | 欧乐影院[js]",
+      "name": "起飞|欧乐影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/欧乐影院[飞].js"
     },
     {
       "key": "drpy_js_小宝影院[飞]",
-      "name": "起飞 | 小宝影院[js]",
+      "name": "起飞|小宝影院[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/小宝影院[飞].js"
