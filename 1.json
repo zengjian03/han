@@ -300,7 +300,7 @@
         "分类链接":"https://gaoqing.la/{cateId}/page/{catePg}[https://gaoqing.la/{cateId}]"
       }
     },
-    {"key":"XBPQ_文才","name":"文才|XBPQ","type":3,"api":"csp_XBPQ", 
+    {"key":"XBPQ_文才","name":"文才|XBPQ","type":3,"api":"csp_XBPQ", "jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext":{"分类": "国产剧&短剧&喜剧片&爱情片&恐怖片&战争片&科幻片&动作片&综艺&欧美剧&港台剧&日韩剧",
         "分类值": "14&42&22&26&36&25&30&23&69&15&16&62",
         "分类url": "https://api.zeqaht.com/api.php/provide/vod/?ac=list&ac=detail&t={cateId}&pg={catePg}",
@@ -335,14 +335,14 @@
         "免嗅": "0"
       }
     },
-    {"key":"XBPQ_BaiPiao","name":"白嫖影视|XBPQ","type":3,"api":"csp_XBPQ", 
+    {"key":"XBPQ_BaiPiao","name":"白嫖影视|XBPQ","type":3,"api":"csp_XBPQ", "jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext": {
         "地区":"[替换:大陆>>中国大陆#香港>>中国香港#台湾>>中国台湾]",
         "分类": "电影$1#电视剧$2#动漫$3#短剧$4#综艺$5",
         "分类url": "https://www.baipiaoys.com:9092/show/area/{area}/by/{by}/class/{class}/id/{cateId}/page/{catePg}/year/{year}.html"
       }
     },
-    {"key":"XBPQ_黑狐影院","name":"黑狐影院|XBPQ","type":3,"api":"csp_XBPQ", 
+    {"key":"XBPQ_黑狐影院","name":"黑狐影院|XBPQ","type":3,"api":"csp_XBPQ", "jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext": {
         "站名": "黑狐影院",
         "主页url": "http://fagmn.com",
@@ -379,7 +379,7 @@
     {
       "key":"XBPQ_电影先生",
       "name": "电影先生|XBPQ",
-      
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "type": 3,
       "api": "csp_XBPQ",
       "ext": {
@@ -397,7 +397,7 @@
         "分类": "电影$dianying#电视剧$dianshiju#动漫$dongman#综艺$zongyi"
       }
     },
-    {"key": "XBPQ_麻衣影院","name":"麻衣影院|XBPQ","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,
+    {"key": "XBPQ_麻衣影院","name":"麻衣影院|XBPQ","type":3,"api":"csp_XBPQ","searchable":1,"quickSearch":1,"filterable":1,"jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext": {"分类url":"https://www.huanyuxing.com/s/{cateId}/area/{area}/class/{class}/page/{catePg}/year/{year}.html","分类":"电影$id-a#电视剧$id-b#动漫$id-c#综艺$id-d"}
     },
     {
