@@ -256,17 +256,7 @@
       "filterable": 1,
       "changeable": 0,
       "ext": true
-    },    {
-      "key": "T4-baipao",
-      "name": "T4-白嫖影视",
-      "type": 4,
-      "api": "https://catbox.n13.club/bpys.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },      {"key":"布谷tv","name":"布谷4K磁力","type":3,"api":"csp_XBPQ","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
+    },        {"key":"布谷tv","name":"布谷4K磁力","type":3,"api":"csp_XBPQ","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext":{
         "搜索链接":"https://www.bugutv.org/page/{pg}?cat&s={wd}",
         "简介":"◎简*介</p>&&</p>",
@@ -335,6 +325,7 @@
         "免嗅": "0"
       }
     },
+
     {"key":"XBPQ_黑狐影院","name":"黑狐影院|XBPQ","type":3,"api":"csp_XBPQ", "jar":"https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext": {
         "站名": "黑狐影院",
