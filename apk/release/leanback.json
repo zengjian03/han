@@ -1,6 +1,6 @@
 {
-  "code": 230,
-  "name": "3.1.5",
+  "code": 233,
+  "name": "5.1.2",
   "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/dc.json",
   "desc": "* [共通]\n* 公众号【涵萌视界】回复tv下载新版\n* 一些BUG修复\n* 默认倍速调节\n* 聚合搜索开关\n* [TV]\n* 选集分组修改\n* 遥控器上键显示播放信息\n* 控制栏颜色透明\n* 首页按钮焦点左右循环\n* 全屏选集"
 }
