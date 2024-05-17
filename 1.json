@@ -19,7 +19,7 @@
     }
   ],
   "wallpaper": "https://jianbian.chuqiuyu.workers.dev",
-  "logo": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/ic_logo.png",
+  //"logo": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/ic_logo.png",
   "sites": [
     {
       "key": "drpy_js_豆瓣",
@@ -118,146 +118,7 @@
           "体育"
         ]
       }
-    },
-    {
-      "key": "T4-jianpian",
-      "name": "T4-荐片",
-      "type": 4,
-      "api": "https://catbox.n13.club/jianpian.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },
-    {
-      "key": "T4-360",
-      "name": "360影视大全",
-      "type": 4,
-      "api": "https://catbox.n13.club/360.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },
-    {
-      "key": "T4-音乐",
-      "name": "T4-音乐",
-      "type": 4,
-      "api": "https://catbox.n13.club/wy.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },
-    {
-      "key": "T4-nangua",
-      "name": "T4-南瓜",
-      "type": 4,
-      "api": "https://catbox.n13.club/nangua.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },{
-      "key": "T4-nongmin",
-      "name": "T4-农民",
-      "type": 4,
-      "api": "https://catbox.n13.club/nongmin.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },{
-      "key": "T4-yinyuetai",
-      "name": "T4-音悦台",
-      "type": 4,
-      "api": "https://catbox.n13.club/yyt.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },
-    {
-      "key": "T4-jianpian",
-      "name": "T4-荐片",
-      "type": 4,
-      "api": "https://catbox.n13.club/jianpian.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },
-    {
-      "key": "T4-360",
-      "name": "T4-360影视",
-      "type": 4,
-      "api": "https://catbox.n13.club/360.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },
-    {
-      "key": "T4-音乐",
-      "name": "T4-音乐",
-      "type": 4,
-      "api": "https://catbox.n13.club/wy.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },
-    {
-      "key": "T4-nangua",
-      "name": "T4-南瓜",
-      "type": 4,
-      "api": "https://catbox.n13.club/nangua.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },{
-      "key": "T4-juquan",
-      "name": "T4-猪圈",
-      "type": 4,
-      "api": "https://catbox.n13.club/juquan.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },{
-      "key": "T4-xuexi",
-      "name": "T4-学习",
-      "type": 4,
-      "api": "https://catbox.n13.club/t4.php?url=2",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },
-    {
-      "key": "T4-yingtan",
-      "name": "T4-影探",
-      "type": 4,
-      "api": "https://catbox.n13.club/yt.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 0,
-      "ext": true
-    },        {"key":"布谷tv","name":"布谷4K磁力","type":3,"api":"csp_XBPQ","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
+    }, {"key":"布谷tv","name":"布谷4K磁力","type":3,"api":"csp_XBPQ","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext":{
         "搜索链接":"https://www.bugutv.org/page/{pg}?cat&s={wd}",
         "简介":"◎简*介</p>&&</p>",
