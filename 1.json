@@ -232,6 +232,7 @@
       "key": "drpy_js_我的哔哩",
       "name": "哔哩合集[js]",
       "type": 3,
+      "quickSearch": 0,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
         "type": "rect",
@@ -244,6 +245,8 @@
       "key": "drpy_js_哔哩直播",
       "name": "哔哩直播[js]",
       "type": 3,
+      "searchable": 0,
+      "quickSearch": 0,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
         "type": "rect",
@@ -256,6 +259,8 @@
       "key": "drpy_js_哔哩影视",
       "name": "哔哩影视[js]",
       "type": 3,
+      "searchable": 0,
+      "quickSearch": 0,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
         "type": "rect",
@@ -326,7 +331,6 @@
           "犯罪片",
           "奇幻片",
           "记录片",
-          "伦理片",
           "动画片",
           "中国动漫",
           "日本动漫",
@@ -363,22 +367,11 @@
           "剧情片",
           "恐怖片",
           "喜剧片",
-          "纪录片",
-          "伦理片"
+          "纪录片"
         ]
       }
     },
-    {
-      "key": "T4-duanju5",
-      "name": "短剧屋[T4]",
-      "type": 4,
-      "api": "https://catbox.n13.club/duanju5.php",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "changeable": 1,
-      "ext": true
-    },
+
     {
       "key": "豆瓣",
       "name": "搜索|豆瓣[jar]",
@@ -2259,412 +2252,14 @@
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/4K电影网.js"
     },
     {
-      "key": "drpy_js_8号影院",
-      "name": "8号影院[js]",
+      "key": "csp_YiSo",
+      "name": "易搜┃搜索",
       "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/8号影院.js"
-    },
-    {
-      "key": "drpy_js_JangoIndex",
-      "name": "JangoIndex[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/JangoIndex.js"
-    },
-    {
-      "key": "drpy_js_NY影院",
-      "name": "NY影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/NY影院.js"
-    },
-    {
-      "key": "drpy_js_被窝电影",
-      "name": "被窝电影[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/被窝电影.js"
-    },
-    {
-      "key": "drpy_js_厂长资源",
-      "name": "厂长资源[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/厂长资源.js"
-    },
-    {
-      "key": "drpy_js_楚门影院",
-      "name": "楚门影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/楚门影院.js"
-    },
-    {
-      "key": "drpy_js_大米星球",
-      "name": "大米星球[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/大米星球.js"
-    },
-    {
-      "key": "drpy_js_飞兔影视",
-      "name": "飞兔影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/飞兔影视.js"
-    },
-    {
-      "key": "drpy_js_海兔影院",
-      "name": "海兔影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/海兔影院.js"
-    },
-    {
-      "key": "drpy_js_花猫TV",
-      "name": "花猫TV[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/花猫TV.js"
-    },
-    {
-      "key": "drpy_js_花屋影院",
-      "name": "花屋影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/花屋影院.js"
-    },
-    {
-      "key": "drpy_js_开眼视频",
-      "name": "开眼视频[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/开眼视频.js"
-    },
-    {
-      "key": "drpy_js_看了么",
-      "name": "看了么[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/看了么.js"
-    },
-    {
-      "key": "drpy_js_徕米TV",
-      "name": "徕米TV[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/徕米TV.js"
-    },
-    {
-      "key": "drpy_js_乐鱼影视",
-      "name": "乐鱼影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/乐鱼影视.js"
-    },
-    {
-      "key": "drpy_js_美剧网",
-      "name": "美剧网[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/美剧网.js"
-    },
-    {
-      "key": "drpy_js_美视网",
-      "name": "美视网[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/美视网.js"
-    },
-    {
-      "key": "drpy_js_米爱影视",
-      "name": "米爱影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/米爱影视.js"
-    },
-    {
-      "key": "drpy_js_免费看",
-      "name": "免费看[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/免费看.js"
-    },
-    {
-      "key": "drpy_js_奈飞中文",
-      "name": "奈飞中文[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/奈飞中文.js"
-    },
-    {
-      "key": "drpy_js_欧帝影院",
-      "name": "欧帝影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/欧帝影院.js"
-    },
-    {
-      "key": "drpy_js_皮皮鸭",
-      "name": "皮皮鸭[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/皮皮鸭.js"
-    },
-    {
-      "key": "drpy_js_朴樱影视",
-      "name": "朴樱影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/朴樱影视.js"
-    },
-    {
-      "key": "drpy_js_秋霞影院",
-      "name": "秋霞影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/秋霞.js"
-    },
-    {
-      "key": "drpy_js_热播之家",
-      "name": "热播之家[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/热播之家.js"
-    },
-    {
-      "key": "drpy_js_人人影视",
-      "name": "人人影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/人人影视.js"
-    },
-    {
-      "key": "drpy_js_骚火电影",
-      "name": "骚火电影[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/骚火电影.js"
-    },
-    {
-      "key": "drpy_js_时光影视",
-      "name": "时光影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/时光影视.js"
-    },
-    {
-      "key": "drpy_js_思古影视",
-      "name": "思古影视",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/思古影视.js"
-    },
-    {
-      "key": "drpy_js_私人影院",
-      "name": "私人影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/私人影院.js"
-    },
-    {
-      "key": "drpy_js_素白白",
-      "name": "素白白[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/素白白.js"
-    },
-    {
-      "key": "drpy_js_网飞.TV",
-      "name": "网飞.TV[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/网飞.TV.js"
-    },
-    {
-      "key": "drpy_js_西瓜影院",
-      "name": "西瓜影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/西瓜影院.js"
-    },
-    {
-      "key": "drpy_js_蜥蜴影视",
-      "name": "蜥蜴影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/蜥蜴影视.js"
-    },
-    {
-      "key": "drpy_js_小狗影院",
-      "name": "小狗影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/小狗影院.js"
-    },
-    {
-      "key": "drpy_js_新视觉影视",
-      "name": "新视觉影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/新视觉影视.js"
-    },
-    {
-      "key": "drpy_js_星辰影院",
-      "name": "星辰影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/星辰.js"
-    },
-    {
-      "key": "drpy_js_玄天",
-      "name": "玄天[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/玄天.js"
-    },
-    {
-      "key": "drpy_js_映迷影院",
-      "name": "映迷影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/映迷影院.js"
-    },
-    {
-      "key": "drpy_js_中国人",
-      "name": "中国人[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/中国人.js"
-    },
-    {
-      "key": "drpy_js_追剧迷",
-      "name": "追剧迷[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/追剧迷.js"
-    },
-    {
-      "key": "drpy_js_子子影视",
-      "name": "子子影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/子子影视.js"
-    },
-    {
-      "key": "drpy_js_大师兄影视",
-      "name": "起飞|大师兄影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/大师兄影视.js"
-    },
-    {
-      "key": "drpy_js_华乐影院",
-      "name": "起飞|华乐影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/华乐影院[飞].js"
-    },
-    {
-      "key": "drpy_js_天天视频",
-      "name": "起飞|天天视频[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/天天视频[飞].js"
-    },
-    {
-      "key": "drpy_js_起飞影院",
-      "name": "起飞|起飞影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/起飞影院.js"
-    },
-    {
-      "key": "drpy_js_兰花影院",
-      "name": "起飞|兰花影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/兰花影院.js"
-    },
-    {
-      "key": "drpy_js_胖虎",
-      "name": "起飞|胖虎[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/胖虎.js"
-    },
-    {
-      "key": "drpy_js_555影视[飞]",
-      "name": "起飞|555影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/555影视[飞].js"
-    },
-    {
-      "key": "drpy_js_if101[飞]",
-      "name": "起飞|if101[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/if101[飞].js"
-    },
-    {
-      "key": "drpy_js_KUBO影视[飞]",
-      "name": "起飞|KUBO影视[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/KUBO影视[飞].js"
-    },
-    {
-      "key": "drpy_js_爱壹帆[飞]",
-      "name": "起飞|爱壹帆[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/爱壹帆[飞].js"
-    },
-    {
-      "key": "drpy_js_独播库[飞]",
-      "name": "起飞|独播库[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/独播库[飞].js"
-    },
-    {
-      "key": "drpy_js_欧乐影院[飞]",
-      "name": "起飞|欧乐影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/欧乐影院[飞].js"
-    },
-    {
-      "key": "drpy_js_小宝影院[飞]",
-      "name": "起飞|小宝影院[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/小宝影院[飞].js"
-    },
-    {
-      "key": "應用商店",
-      "name": "應用商店",
-      "type": 3,
-      "api": "csp_Market",
-      "searchable": 0,
-      "changeable": 0,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/market.json"
-    },
-    {
-      "key": "bb",
-      "name": "配置接口完全免费",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy.js"
-    },
-    {
-      "key": "cc",
-      "name": "请勿相信视频中任何广告",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy.js"
+      "api": "csp_YiSo",
+      "searchable": 1,
+      "changeable": 1,
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/tudou.jar;md5;2c46018d3be585009ec6680d420c88b2",
+      "ext": "77c9aa84a92e4963a47f5e2bdb7d48b9"
     }
   ],
   "parses": [
@@ -2970,6 +2565,31 @@
         ]
       }
     },
+    {"name":"🌎逗逗","type":1,"url":"https://jxjson.sc1080.top?url=","ext":{"flag":["爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","imgo","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","芒果"],"header":{"User-Agent":"okhttp/3.12.0"}}},
+    {"name":"🌐左岸","type":0,"url":"https://t1.qlplayer.cyou/player/?url=","ext":{"flag":["爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","imgo","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","芒果"],"header":{"User-Agent":"okhttp/3.12.0"}}},
+    {"name":"🌐yang","type":0,"url":"https://jx.yangtu.top/?url=","ext":{"flag":["爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","imgo","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","芒果"],"header":{"User-Agent":"okhttp/3.12.0"}}},
+    {"name":"🌐777","type":0,"url":"https://jx.777jiexi.com/player/?url=","ext":{"flag":["爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","imgo","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","芒果"],"header":{"User-Agent":"okhttp/3.12.0"}}},
+    {"name":"🌐xmflv","type":0,"url":"https://jx.xmflv.com/?url=","ext":{"flag":["爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","imgo","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","芒果"],"header":{"User-Agent":"okhttp/3.12.0"}}},
+    {"name":"🌐909","type":0,"url":"https://110.42.2.247:9090/player/?url=","ext":{"flag":["爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","imgo","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","芒果"],"header":{"User-Agent":"okhttp/3.12.0"}}},
+    {"name":"🌎秀秀","type":1,"url":"http://tv.yydsys.link/api/icool.php?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","tucheng","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","yzm","aliyun","RJuMao","bilibili","1905","xinvip","XAL","qiqi","XALS","YuMi-vip"]}},
+    {"name":"🌎探探","type":1,"url":"http://27.159.67.238:6688/?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","tucheng","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","yzm","aliyun","RJuMao","bilibili","1905","xinvip","XAL","qiqi","XALS","YuMi-vip"]}},
+    {"name":"🌎露露","type":1,"url":"https://cdn.suxun.site/api/?key=LHnJW2CBw7bWews4bn&url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","tucheng","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","yzm","aliyun","RJuMao","bilibili","1905","xinvip","XAL","qiqi","XALS","YuMi-vip"]}},
+    {"name":"🌎兜兜","type":1,"url":"https://cdn.suxun.site/api/?key=LHnJW2CBw7bWews4bn&url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","tucheng","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","yzm","aliyun","RJuMao","bilibili","1905","xinvip","XAL","qiqi","XALS","YuMi-vip"]}},
+    {"name":"🌎方方","type":1,"url":"http://llyh.xn--yi7aa.top/api/?key=fc82dde9869c739e362a0b6fceb2195b&url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎圆圆","type":1,"url":"http://121.62.61.51:6888/api/?key=eIQ9JzXVIzkY3ZSoEZ&url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎周周","type":1,"url":"http://119.91.123.253:2345/Api/yun.php?url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎长长","type":1,"url":"html|https://json.bbbzd.cn/api/?key=c7da96d160aa81a738954a525644a171&url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎撸撸","type":1,"url":"http://111.229.65.161/za.php?url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎串串","type":1,"url":"http://122.228.84.103:7777/api/?key=DxOBAHSjK87borWuiD&url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎随随","type":1,"url":"http://110.42.2.247:880/analysis/json/?uid=2334&my=fhloqstzDIKLMORTZ9&url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎便便","type":1,"url":"http://skapp.shijie.chat/sk-api/vod/skjson?url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎轻轻","type":1,"url":"http://111.229.65.161/za.php?url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎松松","type":1,"url":"http://124.223.202.12:8080/nby/m3u8/getM3u8?name=jx.91by.top&time=1713476994404&url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎虾虾","type":1,"url":"https://qp.ho7k.com/m78/jiemi.php?url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎涩涩","type":1,"url":"http://110.42.7.182:880/api/?key=f2ba0bc726e01d16a454c5fdc80e0e75&url=","ext":{"flag":["qiyi","imgo","爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","sohu","xigua","fun","风行"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎巧巧","type":1,"url":"http://pan.qiaoji8.com/tvbox/neibu.php?url=","ext":{"flag":["qq","腾讯","qiyi","爱奇艺","奇艺","youku","优酷","tucheng","sohu","搜狐","letv","乐视","mgtv","芒果","tnmb","seven","yzm","aliyun","RJuMao","bilibili","1905","xinvip","XAL","qiqi","XALS","YuMi-vip"]}},
+    {"name":"🌎七七","type":1,"url":"https://api.tyun77.cn/api.php/provide/parseFirsturl?url=","ext":{"flag":["爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","imgo","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","芒果"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
+    {"name":"🌎柒柒","type":1,"url":"https://api.tyun77.cn/api.php/provide/parseDicturl?url=","ext":{"flag":["爱奇艺","奇艺","qq","腾讯","youku","优酷","pptv","PPTV","letv","乐视","imgo","leshi","bilibili","哔哩哔哩","哔哩","mgtv","芒果","芒果"],"header":{"User-Agent":"Mozilla/5.0"}},"header":{"User-Agent":"Mozilla/5.0"}},
     {
       "name": "咸鱼",
       "type": 0,
