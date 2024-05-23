@@ -1,8 +1,12 @@
 {
   "urls": [
     {
-      "name": "📛丨涵萌",
+      "name": "📛丨涵萌A",
       "url": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1.json"
+    },
+    {
+      "name": "📛丨涵萌B",
+      "url": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/2.json"
     },
     {
       "name": "🦒丨荷城茶秀",

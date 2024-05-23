@@ -5,7 +5,7 @@
   "搜索截取模式": "1",
   "搜索列表数组规则": ".search_result_netdisk_list&&a",
   "搜索片单是否Jsoup写法": "1",
-  "搜索片单图片": "img&&src",
+  "搜索片单图片": "https://inews.gtimg.com/newsapp_bt/0/13263837859/1000",
   "搜索片单标题": ".netdisk_item_detail_name&&Text",
   "搜索片单链接": "a&&href",
   "搜索片单副标题": "",
