@@ -259,8 +259,8 @@
 			"filterable": 1,
 			"changeable": 1,
 			"ext": {
-				"token": "file://TV/ali_token.txt",
-				"cookie": "file://TV/quark_cookie.txt",
+				"token": "http://127.0.0.1:9978/file/TV/ali_token.txt",
+				"cookie": "http://127.0.0.1:9978/file/TV/quark_cookie.txt",
 				"site": "https://wogg.xyz",
 				"danmu": true
 			},
@@ -287,7 +287,7 @@
 			"filterable": 0,
 			"indexs": 0,
 			"ext": {
-				"token": "file://TV/ali_token.txt",
+				"token": "http://127.0.0.1:9978/file/TV/ali_token.txt",
 				"share": "file://TV/阿里集合.json"
 			},
 			"style": {
@@ -316,8 +316,8 @@
 			"quickSearch": 1,
 			"filterable": 1,
 			"ext": {
-				"aliToken": "tvfan/token.txt",
-				"quarkCookie": "tvfan/cookie.txt",
+				"aliToken": "http://127.0.0.1:9978/file/TV/ali_token.txt",
+				"quarkCookie": "http://127.0.0.1:9978/file/TV/quark_cookie.txt",
 				"from": "4k|auto|fhd",
 				"siteUrl": "https://api.wogg.xyz/",
 				"danMu": "弹"
@@ -399,8 +399,8 @@
 			"changeable": 1,
 			"filterable": 1,
 			"ext": {
-				"token": "file://TV/ali_token.txt",
-				"cookie": "file://TV/quark_cookie.txt",
+				"token": "http://127.0.0.1:9978/file/TV/ali_token.txt",
+				"cookie": "http://127.0.0.1:9978/file/TV/quark_cookie.txt",
 				"site": "https://tv.yydsys.top",
 				"danmu": true
 			},
@@ -428,8 +428,8 @@
 			"changeable": 1,
 			"filterable": 1,
 			"ext": {
-				"token": "file://TV/ali_token.txt",
-				"cookie": "file://TV/quark_cookie.txt",
+				"token": "http://127.0.0.1:9978/file/TV/ali_token.txt",
+				"cookie": "http://127.0.0.1:9978/file/TV/quark_cookie.txt",
 				"site": "https://wobge.run.goorm.io/"
 			},
 			"timeout": 25
@@ -468,8 +468,8 @@
 			"filterable": 1,
 			"changeable": 1,
 			"ext": {
-				"token": "file://TV/ali_token.txt",
-				"cookie": "file://TV/quark_cookie.txt",
+				"token": "http://127.0.0.1:9978/file/TV/ali_token.txt",
+				"cookie": "http://127.0.0.1:9978/file/TV/quark_cookie.txt",
 				"site": "https://tudou.lvdoui.top",
 				"danmu": true
 			},
@@ -3902,7 +3902,7 @@
 				"ratio": 1.433
 			},
 			"ext": {
-				"cookie": "file://TV/bili_cookie.txt",
+				"cookie": "http://127.0.0.1:9978/file/TV/bili_cookie.txt",
 				"json": "https://jihulab.com/okcaptain/kko/-/raw/main/bili.json"
 			},
 			"timeout": 20
@@ -3932,7 +3932,7 @@
 				"ratio": 1.433
 			},
 			"ext": {
-				"cookie": "file://TV/bili_cookie.txt",
+				"cookie": "http://127.0.0.1:9978/file/TV/bili_cookie.txt",
 				"json": "https://jihulab.com/okcaptain/kko/-/raw/main/biliych.json"
 			},
 			"timeout": 20
@@ -4099,7 +4099,7 @@
 			"searchable": 1,
 			"quickSearch": 1,
 			"filterable": 0,
-			"ext": "http://127.0.0.1:9978/file/XYQTVBox/alitoken.txt"
+			"ext": "http://127.0.0.1:9978/file/TV/token.json"
 		},
 		{
 			"key": "csp_AliPS",
@@ -4109,7 +4109,7 @@
 			"searchable": 1,
 			"quickSearch": 1,
 			"filterable": 0,
-			"ext": "http://127.0.0.1:9978/file/XYQTVBox/alitoken.txt"
+			"ext": "http://127.0.0.1:9978/file/TV/token.json"
 		},
 		{
 			"key": "csp_XYQHikerAL_77zys",
@@ -4151,7 +4151,7 @@
 			"filterable": 0,
 			"changeable": 0,
 			"ext": {
-				"token": "file://TV/ali_token.txt",
+				"token": "http://127.0.0.1:9978/file/TV/ali_token.txt",
 				"danmu": true
 			},
 			"timeout": 15
@@ -4166,7 +4166,7 @@
 			"filterable": 0,
 			"changeable": 0,
 			"ext": {
-				"token": "file://TV/ali_token.txt",
+				"token": "http://127.0.0.1:9978/file/TV/ali_token.txt",
 				"danmu": true
 			},
 			"timeout": 15
@@ -4181,7 +4181,7 @@
 			"filterable": 0,
 			"changeable": 0,
 			"ext": {
-				"token": "file://TV/ali_token.txt",
+				"token": "http://127.0.0.1:9978/file/TV/ali_token.txt",
 				"danmu": true
 			},
 			"timeout": 15
