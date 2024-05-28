@@ -1,7 +1,7 @@
 {
   "spider": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/pg.jar;md5;f163cc01c986eac95dbfadba3b72adbe",
   "wallpaper": "https://jianbian.chuqiuyu.workers.dev",
-  "logo": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/img/logo.png",
+  "logo": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/img/logo2.png",
   "sites": [
     {
       "key": "drpy_js_豆瓣",
@@ -48,6 +48,47 @@
       "timeout": 30
     },
     {
+      "key": "好恐怖磁力",
+      "name": "好恐怖|磁力",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "主页url": "https://m.haokongbu.top/",
+        "分类url": "https://m.haokongbu.top/{cateId}/index_{catePg}.html[https://m.haokongbu.top/{cateId}/index.html]",
+        "分类": "国产剧$guochanju#港剧$gangju#动作片$dongzuopian#喜剧片$xijupian#爱情片$aiqingpian#科幻片$kehuanpian#恐怖片$kongbupian#战争片$zhanzhengpian#剧情片$juqingpian#微电影$weidianying#记录片$m_jlp#高清$gaoqing#动漫$donghuapian#台湾$taiwanju#日本$riju#韩国$hanju#欧美$oumeiju#泰国$taiguoju#海外$haiwaiju",
+        "副标题": "class=\"typeset\"&&</i>",
+        "起始页": 2,
+        "倒序": 1,
+        "播放数组": "下载地址</h2>&&</ul>[不包含:网盘]",
+        "播放列表": "<ul>&&</div>[包含:magnet]"
+      },
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar"
+    },
+    {
+      "key": "小白磁力",
+      "name": "小白┃磁力",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "playerType": 1,
+      "jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
+      "ext": {
+        "主页url": "https://www.xbw20.com/",
+        "编码": "gb2312",
+        "图片": "data-src=\"&&\"",
+        "标题": "alt=\"&&\"",
+        "副标题": "class=\"time\">&&</label",
+        "分类url": "https://www.xbw20.com/search.asp?page={catePg}&searchword={area}&searchtype=2[https://www.xbw20.com/vod/{cateId}.html]",
+        "分类": "电影$newmovie#电视剧$newTV#4K专区$new4K#动画片$newcartoon",
+        "起始页": 2,
+        "倒序": 1,
+        "播放数组": "迅雷下载</div>&&</div>",
+        "播放列表": "<a&&</a >"
+      }
+    },
+    {
       "key": "drpy_js_荐片",
       "name": "荐片[js]",
       "type": 3,
@@ -71,7 +112,7 @@
     },
     {
       "key": "lf_js_p2p",
-      "name": "磁力路飞[js]",
+      "name": "磁力·路飞[js]",
       "type": 3,
       "searchable": 1,
       "changeable": 1,
