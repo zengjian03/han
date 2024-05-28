@@ -14,24 +14,38 @@
       "changeable": 0
     },
     {
-      "key": "drpy_js_磁力熊搜索",
-      "name": "搜索|磁力熊[js]",
+      "key": "drpy_js_6V新版[磁]",
+      "name": "磁力6V新版[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/cilixiong.js",
       "searchable": 1,
-      "quickSearch": 0,
-      "changeable": 1
+      "quickSearch": 1,
+      "changeable": 0,
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/6V新版[磁].js",
+      "timeout": 30
     },
     {
-      "key": "lf_js_search",
-      "name": "搜索|路飞[js]",
+      "key": "drpy_js_磁力熊[磁]",
+      "name": "磁力熊[js]",
       "type": 3,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 0,
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/磁力熊[磁].js",
+      "timeout": 30
+    },
+    {
+      "key": "drpy_js_4KHDR",
+      "name": "磁力4K[js]",
+      "type": 3,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/4khdr.js",
+      "playerType": "1",
+      "searchable": 1,
+      "quickSearch": 1,
       "changeable": 1,
-      "quickSearch": 0,
-      "filterable": 0,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/lf_search3_min.js"
+      "timeout": 30
     },
     {
       "key": "drpy_js_荐片",
@@ -57,7 +71,7 @@
     },
     {
       "key": "lf_js_p2p",
-      "name": "路飞|磁力[js]",
+      "name": "磁力路飞[js]",
       "type": 3,
       "searchable": 1,
       "changeable": 1,
@@ -268,12 +282,6 @@
       "name": "酷奇[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/kuqimv_open.js"
-    },
-    {
-      "key": "ktv",
-      "name": "kTV歌[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/ktv_open.js"
     },
     {
       "key": "火狐资源",
@@ -1450,18 +1458,6 @@
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/优酷.js"
     },
     {
-      "key": "drpy_js_4KHDR",
-      "name": "磁力4KHDR[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/4khdr.js",
-      "playerType": "1",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "timeout": 30
-    },
-    {
       "key": "drpy_js_极影网",
       "name": "磁力极影网[js]",
       "type": 3,
@@ -1668,29 +1664,28 @@
       "changeable": 0,
       "ext": "http://127.0.0.1:9978/file/TV/tokenm.json",
       "timeout": 30
-    },
-    {
-      "key": "drpy_js_磁力熊[磁]",
-      "name": "磁力磁力熊[js]",
+    }, {
+      "key": "drpy_js_磁力熊搜索",
+      "name": "搜索|磁力熊[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
+      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/cilixiong.js",
       "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 0,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/磁力熊[磁].js",
-      "timeout": 30
+      "quickSearch": 0,
+      "changeable": 1
     },
     {
-      "key": "drpy_js_6V新版[磁]",
-      "name": "磁力6V新版[js]",
+      "key": "lf_js_search",
+      "name": "搜索|路飞[js]",
       "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 0,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/6V新版[磁].js",
-      "timeout": 30
+      "changeable": 1,
+      "quickSearch": 0,
+      "filterable": 0,
+      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/lf_search3_min.js"
     },
+
+
     {
       "key": "drpy_js_童趣",
       "name": "童趣[js]",
@@ -1729,7 +1724,7 @@
     },
     {
       "key": "drpy_js_JustLive",
-      "name": "JustLive[js]",
+      "name": "直播合集[js]",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "style": {
