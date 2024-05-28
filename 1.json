@@ -19,7 +19,7 @@
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/cilixiong.js",
-      "searchable": 0,
+      "searchable": 1,
       "quickSearch": 0,
       "changeable": 1
     },
@@ -27,7 +27,7 @@
       "key": "lf_js_search",
       "name": "搜索|路飞[js]",
       "type": 3,
-      "searchable": 0,
+      "searchable": 1,
       "changeable": 1,
       "quickSearch": 0,
       "filterable": 0,
@@ -80,27 +80,7 @@
       "filterable": 1,
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/lf_live.txt"
     },
-    {
-      "key": "drpy_js_yeyu",
-      "name": "业余自营[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/caiji.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "ext": {
-        "url": "http://ys.540734621.xyz/api.php/provide/vod/",
-        "categories": [
-          "短剧",
-          "电影",
-          "电视剧",
-          "动漫",
-          "综艺",
-          "记录片",
-          "体育"
-        ]
-      }
-    }, {"key":"布谷tv","name":"布谷4K磁力","type":3,"api":"csp_XBPQ","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
+     {"key":"布谷tv","name":"布谷4K磁力","type":3,"api":"csp_XBPQ","jar": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/XBPQ.jar",
       "ext":{
         "搜索链接":"https://www.bugutv.org/page/{pg}?cat&s={wd}",
         "简介":"◎简*介</p>&&</p>",
