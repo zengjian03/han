@@ -1,5 +1,5 @@
 {
-  "spider": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/pg.jar;md5;f163cc01c986eac95dbfadba3b72adbe",
+  "spider": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/jar/pg.jar;md5;59f1ab62201be046a29643f401d94f0c",
   "wallpaper": "https://jianbian.chuqiuyu.workers.dev",
   "logo": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/img/ic_logo1.mp4",
   "sites": [
@@ -325,81 +325,145 @@
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/kuqimv_open.js"
     },
     {
-      "key": "火狐资源",
-      "name": "火狐采集[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/caiji.js",
-      "ext": {
-        "url": "https://hhzyapi.com/api.php/provide/vod/from/hhm3u8",
-        "categories": [
-          "内地剧",
-          "欧美剧",
-          "香港剧",
-          "台湾剧",
-          "马泰剧",
-          "韩剧",
-          "日剧",
-          "动作片",
-          "爱情片",
-          "喜剧片",
-          "科幻片",
-          "恐怖片",
-          "剧情片",
-          "战争片",
-          "灾难片",
-          "悬疑片",
-          "犯罪片",
-          "奇幻片",
-          "记录片",
-          "动画片",
-          "中国动漫",
-          "日本动漫",
-          "欧美动漫",
-          "大陆综艺",
-          "日韩综艺",
-          "港台综艺",
-          "欧美综艺"
-        ]
-      }
-    },
-    {
-      "key": "新浪资源",
-      "name": "新浪采集[js]",
-      "type": 3,
-      "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/caiji.js",
-      "ext": {
-        "url": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/from/xlm3u8",
-        "categories": [
-          "大陆剧",
-          "港澳剧",
-          "台湾剧",
-          "欧美剧",
-          "韩剧",
-          "日剧",
-          "泰剧",
-          "动漫",
-          "动漫电影",
-          "综艺",
-          "动作片",
-          "爱情片",
-          "科幻片",
-          "战争片",
-          "剧情片",
-          "恐怖片",
-          "喜剧片",
-          "纪录片"
-        ]
-      }
-    },
-
-    {
-      "key": "豆瓣",
-      "name": "搜索|豆瓣[jar]",
-      "type": 3,
-      "api": "csp_Douban",
-      "searchable": 0,
+      "key": "haiwaikan",
+      "name": "海外看",
+      "type": 1,
+      "api": "http://127.0.0.1:10079/p/0/proxy/https://haiwaikan.com/api.php/provide/vod?",
+      "playUrl": "json:http://127.0.0.1:10079/parse/?thread=0&proxy=proxy&url=",
+      "searchable": 1,
       "changeable": 1,
-      "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/json/douban.json"
+      "categories": [
+        "日本动漫",
+        "国产动漫",
+        "欧美动漫",
+        "国产剧",
+        "韩剧",
+        "日剧",
+        "台剧",
+        "泰剧",
+        "港剧",
+        "欧美剧",
+        "动画电影",
+        "韩国综艺",
+        "国产综艺",
+        "日本综艺",
+        "欧美综艺",
+        "冒险片",
+        "剧情片",
+        "动作片",
+        "同性片",
+        "喜剧片",
+        "奇幻片",
+        "恐怖片",
+        "悬疑片",
+        "惊悚片",
+        "战争片",
+        "歌舞片",
+        "灾难片",
+        "爱情片",
+        "犯罪片",
+        "科幻片",
+        "纪录片",
+        "经典片"
+      ]
+    },
+    {
+      "key": "ikun",
+      "name": "ikun",
+      "type": 1,
+      "api": "http://127.0.0.1:10079/p/0/proxy/https://ikunzyapi.com/api.php/provide/vod/?",
+      "playUrl": "json:http://127.0.0.1:10079/parse/?thread=0&proxy=proxy&url=",
+      "playerType":1,
+      "searchable": 1,
+      "changeable": 1
+    },
+    {
+      "key": "飞速资源",
+      "name": "飞速资源",
+      "type": 1,
+      "api": "http://127.0.0.1:10079/p/0/proxy/http://fszy1.com/api.php/provide/vod/?",
+      "playUrl": "json:http://127.0.0.1:10079/parse/?thread=0&proxy=proxy&url=",
+      "playerType":1,
+      "searchable": 1,
+      "changeable": 1
+    },
+    {
+      "key": "暴風",
+      "name": "暴風",
+      "type": 1,
+      "api": "http://127.0.0.1:10079/p/0/proxy/https://bfzyapi.com/api.php/provide/vod?",
+      "playUrl": "json:http://127.0.0.1:10079/parse/?thread=0&proxy=proxy&url=",
+      "searchable": 1,
+      "changeable": 1
+    },
+    {
+      "key": "索尼",
+      "name": "索尼 ",
+      "type": 1,
+      "api": "http://127.0.0.1:10079/p/0/proxy/https://suoniapi.com/api.php/provide/vod?",
+      "playUrl": "json:http://127.0.0.1:10079/parse/?thread=0&proxy=proxy&url=",
+      "searchable": 1,
+      "changeable": 1
+    },
+    {
+      "key": "快帆",
+      "name": "快帆",
+      "type": 1,
+      "api": "http://127.0.0.1:10079/p/0/proxy/https://api.kuaifan.tv/api.php/provide/vod?",
+      "playUrl": "json:http://127.0.0.1:10079/parse/?thread=0&proxy=proxy&url=",
+      "searchable": 1,
+      "changeable": 1
+    },
+    {
+      "key": "量子",
+      "name": "量子",
+      "type": 1,
+      "api": "http://127.0.0.1:10079/p/0/proxy/http://cj.lziapi.com/api.php/provide/vod/?",
+      "playUrl": "json:http://127.0.0.1:10079/parse/?thread=0&proxy=proxy&url=",
+      "playerType":1,
+      "searchable": 1,
+      "changeable": 1
+    },
+    {
+      "key": "非凡",
+      "name": "非凡",
+      "type": 1,
+      "api": "http://127.0.0.1:10079/p/0/proxy/http://cj.ffzyapi.com/api.php/provide/vod/?",
+      "playUrl": "json:http://127.0.0.1:10079/parse/?thread=0&proxy=proxy&url=",
+      "playerType":1,
+      "searchable": 1,
+      "changeable": 1,
+      "categories": [
+        "国产动漫",
+        "日韩动漫",
+        "国产剧",
+        "韩国剧",
+        "日本剧",
+        "电影片",
+        "连续剧",
+        "综艺片",
+        "动漫片",
+        "动作片",
+        "喜剧片",
+        "爱情片",
+        "科幻片",
+        "恐怖片",
+        "剧情片",
+        "战争片",
+        "香港剧",
+        "欧美剧",
+        "记录片",
+        "台湾剧",
+        "海外剧",
+        "泰国剧",
+        "大陆综艺",
+        "港台综艺",
+        "日韩综艺",
+        "欧美综艺",
+        "欧美动漫",
+        "港台动漫",
+        "海外动漫"
+      ]
     },
     {
       "key": "FirstAid",
@@ -2749,19 +2813,10 @@
       ]
     }
   ],
-  "rules": [
+  "rules":[
     {
       "name": "proxy",
       "hosts": [
-        "mypikpak.com",
-        ".*workers.dev",
-        "www.cilixiong.com",
-        "*.t4tv.hz.cz",
-        "kuba222.com",
-        "mp4us.com",
-        "dydhhy.com",
-        "magicalsearch.top",
-        "api123.adys.app",
         "raw.githubusercontent.com",
         "googlevideo.com",
         "cdn.v82u1l.com",
@@ -2775,99 +2830,18 @@
         "uhibo.com",
         ".*boku.*",
         ".*nivod.*",
+        "*.t4tv.hz.cz",
         ".*ulivetv.*"
       ]
     },
-    {
-      "name": "磁力廣告",
-      "hosts": [
-        "magnet"
-      ],
-      "regex": [
-        "更多",
-        "社區",
-        "xuu",
-        "最新",
-        "最新",
-        "直播",
-        "更新",
-        "社区",
-        "有趣",
-        "有趣",
-        "英皇体育",
-        "全中文AV在线",
-        "澳门皇冠赌场",
-        "哥哥快来",
-        "美女荷官",
-        "裸聊",
-        "新片首发",
-        "UUE29"
-      ]
-    },
-    {
-      "name": "海外看",
-      "hosts": [
-        "haiwaikan"
-      ],
-      "regex": [
-        "8.16",
-        "8.1748",
-        "10.0099",
-        "10.3333",
-        "10.85",
-        "12.33",
-        "16.0599"
-      ]
-    },
-    {
-      "name": "索尼",
-      "hosts": [
-        "suonizy"
-      ],
-      "regex": [
-        "15.1666",
-        "15.2666"
-      ]
-    },
-    {
-      "name": "暴風",
-      "hosts": [
-        "bfzy"
-      ],
-      "regex": [
-        "#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:3,[\\s\\S]*?#EXT-X-DISCONTINUITY"
-      ]
-    },
-    {
-      "name": "星星",
-      "hosts": [
-        "aws.ulivetv.net"
-      ],
-      "regex": [
-        "#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:8,[\\s\\S]*?#EXT-X-DISCONTINUITY"
-      ]
-    },
-    {
-      "name": "量子",
-      "hosts": [
-        "vip.lz",
-        "hd.lz",
-        "v.cdnlz"
-      ],
-      "regex": [
-        "18.5333"
-      ]
-    },
-    {
-      "name": "非凡",
-      "hosts": [
-        "vip.ffzy",
-        "hd.ffzy"
-      ],
-      "regex": [
-        "25.1"
-      ]
-    },
+    {"host":"www.djuu.com","rule":["mp4.djuu.com","m4a"]},{"host":"www.sharenice.net","rule":["huoshan.com","/item/video/"],"filter":[]},
+    {"host":"www.sharenice.net","rule":["sovv.qianpailive.com","vid="],"filter":[]},
+    {"host":"www.sharenice.net","rule":["douyin.com","/play/"]},
+    {"host":"m.ysxs8.vip","rule":["ysting.ysxs8.vip:81","xmcdn.com"],"filter":[]},
+    {"host":"hdmoli.com","rule":[".m3u8"]},{"host":"https://api.live.bilibili.com","rule":["bilivideo.com","/index.m3u8"],"filter":["data.bilibili.com/log/web","i0.hdslb.com/bfs/live/"]},
+    {"host":"www.agemys.cc","rule":["cdn-tos","obj/tos-cn"]},
+    {"host":"www.fun4k.com","rule":["https://hd.ijycnd.com/play","index.m3u8"]},
+    {"host":"zjmiao.com","rule":["play.videomiao.vip/API.php","time=","key=","path="]},
     {
       "name": "火山嗅探",
       "hosts": [
@@ -2896,16 +2870,7 @@
       ]
     },
     {
-      "name": "七新嗅探",
-      "hosts": [
-        "api.52wyb.com"
-      ],
-      "regex": [
-        "m3u8?pt=m3u8"
-      ]
-    },
-    {
-      "name": "夜市點擊",
+      "name": "夜市",
       "hosts": [
         "yeslivetv.com"
       ],
@@ -2914,12 +2879,36 @@
       ]
     },
     {
-      "name": "毛驢點擊",
+      "name": "毛驢",
       "hosts": [
         "www.maolvys.com"
       ],
       "script": [
-        "document.getElementsByClassName('swal-buttonswal-button--confirm')[0].click()"
+        "document.getElementsByClassName('swal-button swal-button--confirm')[0].click()"
+      ]
+    },
+    {
+      "name": "磁力广告",
+      "hosts": [
+        "magnet"
+      ],
+      "regex": [
+        "更多",
+        "社 區",
+        "x u u",
+        "最 新",
+        "直 播",
+        "更 新",
+        "社 区",
+        "有 趣",
+        "英皇体育",
+        "全中文AV在线",
+        "澳门皇冠赌场",
+        "哥哥快来",
+        "美女荷官",
+        "裸聊",
+        "新片首发",
+        "UUE29"
       ]
     }
   ],
