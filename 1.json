@@ -5,7 +5,7 @@
   "sites": [
     {
       "key": "drpy_js_豆瓣",
-      "name": "搜索|豆瓣[js]",
+      "name": "公众号 涵萌视界",
       "type": 3,
       "api": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/lib/drpy2.min.js",
       "ext": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy.js",
