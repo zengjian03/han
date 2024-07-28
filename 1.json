@@ -13,15 +13,6 @@
       "searchable": 1,
       "quickSearch": 0,
       "changeable": 0
-    },  {
-      "key": "总线1111",
-      "name": "影视|苹果",
-      "type": 1,
-      "playerType": 1,
-      "searchable": 1,
-      "quickSearch": 1,
-      "api": "http://43.242.202.173:25253/tvbox/api/test.php",
-      "playUrl": "json:http://43.242.202.173:25253/tvbox/json.php/?password=212070131&url="
     },
     {
       "key": "drpy_js_6V新版[磁]",
