@@ -122,7 +122,7 @@
             "filterable": 0,
             "ext": {
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩相声.json"
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/bili/哔哩相声.json"
             },
             "style": {
                 "type": "rect",
@@ -139,7 +139,7 @@
             "filterable": 0,
             "ext": {
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩小品.json"
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/bili/哔哩小品.json"
             },
             "style": {
                 "type": "rect",
@@ -156,7 +156,7 @@
             "filterable": 0,
             "ext": {
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩戏曲.json"
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/bili/哔哩戏曲.json"
             },
             "style": {
                 "type": "rect",
