@@ -13,8 +13,8 @@ var rule = {
 	quickSearch:0,
 	headers:{'User-Agent': 'PC_UA'},
 	timeout:5000,
-    class_name:'連載中&2024&2023&2022&2021&2020&2019&2018&更早',
-    class_url:'連載中&2024&2023&2022&2021&2020&2019&2018&2017',
+    class_name:'連載中&2025&2024&2023&2022&2021&2020&2019&2018&更早',
+    class_url:'連載中&2025&2024&2023&2022&2021&2020&2019&2018&2017',
 	play_parse:true,
 	lazy:`js:
 		var apiurl = 'https://v.anime1.me/api';
@@ -140,7 +140,7 @@ var rule = {
 		}
 		let vlist2 = vlist.reverse().join("#");
 		vod_tab_list.push(vlist2);
-		VOD.vod_play_from = '道长在线';
+		VOD.vod_play_from = '在线播放';
 		VOD.vod_play_url = vod_tab_list.join("$$$");
 	`,
 	搜索: `js:

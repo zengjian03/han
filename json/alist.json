@@ -1,20 +1,21 @@
 {
-  "drives": [
-    {
-      "name": "东辰影视🤍小雅网盘",
-      "server": "http://124.70.137.72:5678/"
-    },
-    {
-      "name": "东辰影视🤍环宇轩",
-      "server": "https://pan.mediy.cn/"
-    },
-    {
-      "name": "东辰影视🤍资源小站",
-      "server": "https://pan.ecve.cn/"
-    },
-{
-      "name": "关注公众号“东方精英汇”",
-      "server": "https://al.chirmyram.com/"
-    }
-  ]
+    "vodPic": "https://rogsoft.ddnsto.com/softcenter/softcenter/res/icon-alist.png",
+    "drives": [
+        {
+            "name": "小雅",
+            "server": "http://alist.xiaoya.pro"
+        },
+        {
+            "name": "触光",
+            "server": "https://pan.ichuguang.com"
+        },
+        {
+            "name": "魔都云",
+            "server": "https://cdn.modupan.com"
+        },
+        {
+            "name": "七米蓝",
+            "server": "https://al.chirmyram.com"
+        }
+    ]
 }
