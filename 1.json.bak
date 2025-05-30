@@ -18,7 +18,7 @@
             "searchable": 0
         },    {
             "key": "荐片",
-            "name": "建哥｜荐片",
+            "name": "建建｜荐片",
             "api": "csp_Jianpian",
             "type": 3,
             "playerType": 1,
