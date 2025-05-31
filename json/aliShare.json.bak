@@ -101,5 +101,17 @@
                 "folder": "root"
             }
         ]
+    },{
+        "name": "我的动漫",
+        "folders": [
+            {
+                "shareId": "kaUb52bwY6Y",
+                "folder": "root"
+            },
+            {
+                "shareId": "7Ks9ccmdNcv",
+                "folder": "root"
+            }
+        ]
     }
 ]
