@@ -1,0 +1,50 @@
+{
+  "desc": "此链接为 MusicFree 插件，插件开发及使用方式参考 https://musicfree.upup.fun",
+  "plugins": [
+    {
+      "name": "酷狗",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/kg.js",
+      "version": "0.0.2"
+    },
+    {
+      "name": "网易云",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/wy.js",
+      "version": "0.0.2"
+    },
+    {
+      "name": "酷我",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/kw.js",
+      "version": "0.0.0"
+    },
+    {
+      "name": "哔哩哔哩",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/bilibili/index.js",
+      "version": "0.2.2"
+    },
+    {
+      "name": "QQ音乐",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/qq.js",
+      "version": "0.0.2"
+    },
+    {
+      "name": "小米音乐",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/xiaomi.js",
+      "version": "0.0.0"
+    },
+    {
+      "name": "歌词千寻",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/geciqianxun/index.js",
+      "version": "0.0.0"
+    },
+    {
+      "name": "猫耳FM",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/maoerfm/index.js",
+      "version": "0.1.4"
+    },
+    {
+      "name": "音悦台",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/yinyuetai/index.js",
+      "version": "0.0.1"
+    }
+  ]
+}

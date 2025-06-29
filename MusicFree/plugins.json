@@ -1,0 +1,65 @@
+{
+  "desc": "此链接为 MusicFree 插件，插件开发及使用方式参考 https://musicfree.upup.fun",
+  "plugins": [
+    {
+      "name": "Audiomack",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/audiomack/index.js",
+      "version": "0.0.2"
+    },
+    {
+      "name": "歌词网",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/geciwang/index.js",
+      "version": "0.0.0"
+    },
+    {
+      "name": "哔哩哔哩",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/bilibili/index.js",
+      "version": "0.2.2"
+    },
+    {
+      "name": "快手",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/kuaishou/index.js",
+      "version": "0.0.2"
+    },
+    {
+      "name": "Navidrome",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/navidrome/index.js",
+      "version": "0.0.0"
+    },
+    {
+      "name": "suno",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/suno/index.js",
+      "version": "0.0.0"
+    },
+    {
+      "name": "歌词千寻",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/geciqianxun/index.js",
+      "version": "0.0.0"
+    },
+    {
+      "name": "猫耳FM",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/maoerfm/index.js",
+      "version": "0.1.4"
+    },
+    {
+      "name": "WebDAV",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/webdav/index.js",
+      "version": "0.0.2"
+    },
+    {
+      "name": "udio",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/udio/index.js",
+      "version": "0.0.0"
+    },
+    {
+      "name": "音悦台",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/yinyuetai/index.js",
+      "version": "0.0.1"
+    },
+    {
+      "name": "Youtube",
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/zengjian03/han/master/MusicFree/dist/youtube/index.js",
+      "version": "0.0.1"
+    }
+  ]
+}
