@@ -1,7 +1,7 @@
 {
     "spider": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/jar/spider.jar",
     "wallpaper": "http://bobohome.ignorelist.com:20247/bing",
-    "logo": "http://127.0.0.1:9978/file/TVBox/logo.png",
+    "logo": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/img/ic_logo1.mp4",
     "sites": [
         {
             "key": "豆瓣",
