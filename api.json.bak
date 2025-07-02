@@ -1,7 +1,7 @@
 {
-    "spider": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/jar/spider.jar",
+    "spider": "./spider.jar",
     "wallpaper": "http://bobohome.ignorelist.com:20247/bing",
-    "logo": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/img/ic_logo1.mp4",
+    "logo": "http://127.0.0.1:9978/file/TVBox/logo.png",
     "sites": [
         {
             "key": "豆瓣",
@@ -11,37 +11,29 @@
             "searchable": 0
         },
         {
-            "key": "荐片",
-            "name": "荐片｜磁力",
-            "api": "csp_Jianpian",
-            "type": 3,
-            "playerType": 1,
-            "ext": "http://api2.rinhome.com"
-        },
-    {
-      "key": "哔哩合集",
-      "name": "哔哩合集｜弹幕",
-      "type": 3,
-      "api": "csp_Bili",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "style": {
-        "type": "rect",
-        "ratio": 1.597
-      },
-      "ext": {
-        "cookie": "http://127.0.0.1:9978/file/TVBox/bilibili.txt",
-        "json": "./bili/哔哩合集.json"
-      },
-      "timeout": 10
-    },
-       {
             "key": "预告",
             "name": "新片｜预告",
             "type": 3,
             "api": "csp_DouBan",
             "searchable": 0
+        },
+        {
+            "key": "荐片",
+            "name": "荐片｜磁力",
+            "type": 3,
+            "api": "./js/荐片.js",
+            "searchable": 1,
+            "quickSearch": 1
+        },
+                {
+            "key": "荐片",
+            "name": "见见｜荐片",
+            "type": 3,
+            "api": "./js/drpy2.min.js",
+            "ext": "./js/荐片.js",
+            "style": {
+                "type": "list"
+            }
         },
         {
             "key": "本地",
@@ -107,17 +99,29 @@
             "quickSearch": 1
         },
         {
+            "key": "行动",
+            "name": "行动｜APP",
+            "type": 3,
+            "api": "csp_AppSy",
+            "ext": {
+                "url": "http://160.202.246.9:2356",
+                "key1": "aassddwwxxllsx1x",
+                "key2": "aassddwwxxllsx1x",
+                "key3": "aassddwwxxllsx1x"
+            }
+        },
+        {
             "key": "仓鼠",
             "name": "仓鼠｜APP",
             "type": 3,
             "quickSearch": 1,
-            "api": "csp_AppGet2",
+            "api": "csp_AppGet",
             "ext": {
-                "url": "https://qjappcms.cs4k.top",
-                "dataKey": "Z98KXaLtO2wC1Pte",
-                "dataIv": "Z98KXaLtO2wC1Pte",
+                "url": "https://apiapplbys.lbys.app:5678",
+                "dataKey": "apiapplbyskey168",
+                "dataIv": "apiapplbyskey168",
                 "deviceId": "",
-                "version": "120"
+                "version": "107"
             }
         },
         {
@@ -512,7 +516,7 @@
             "name": "爱奇异｜视频",
             "type": 3,
             "api": "./js/drpy2.min.js",
-            "ext": "./js/爱奇艺.js"
+            "ext": "./js/荐片.js"
         },
         {
             "key": "三六零",
