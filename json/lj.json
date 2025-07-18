@@ -1,5 +1,5 @@
 {
-    "SiteUrl": "https://www.leijing.xyz,https://www.leijing1.com,https://leijing.xyz,https://leijing1.com",
+    "SiteUrl": "https://www.leijing1.com,https://leijing.xyz,https://leijing1.com",
     "Classes": [
         {
             "type_name": "电影",
@@ -29,5 +29,6 @@
             "type_name": "演唱会",
             "type_id": "42317879720298"
         }
-    ]
+    ],
+    "Cookie": "JSESSIONID=E1DB8AC0F708B4E282B9998F371F9E3B; cms_token=2e714955704148f99268eaa976de09ce; cms_accessToken=6272a9e68faa49c4a73c684df0c44eee; cms_refreshToken=4908d2845de044d7bcde237f66092415"
 }
