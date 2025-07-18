@@ -2526,7 +2526,8 @@
 				"16.5333",
 				"#EXT-X-DISCONTINUITY\\r*\\n*[\\s\\S]*?#EXT-X-CUE-IN"
 			]
-		}],
+		}
+		],
         {
             "name": "农民",
             "hosts": [
