@@ -2203,8 +2203,9 @@
             }
         }
     ],
-        "rules": [    {
-      "name": ♻️量非",
+        "rules": [   
+		{
+      "name": "♻️量非",
       "hosts": [
         "lz",
         "vip.lz",
