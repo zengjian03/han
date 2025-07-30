@@ -2,7 +2,7 @@
   "spider": "httpshttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//ghproxy.nehttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/httpshttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//raw.githubusercontent.cohttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/zengjian0https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/hahttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/mastehttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/custom_spider.jar",
   "wallpaper": "httpshttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//xn--11x805d.xn--4kq62z5rby2qupq9ub.xyhttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/",
   "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
-   "logo": "httpshttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//ghproxy.nehttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/httpshttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//raw.githubusercontent.cohttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/zengjian0https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/hahttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/mastehttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/imhttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/ic_logo1.mp4",
+  "logo": "httpshttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//ghproxy.nehttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/httpshttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//raw.githubusercontent.cohttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/zengjian0https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/hahttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/mastehttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/imhttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/ic_logo1.mp4",
   "sites": [
     {
       "key": "drpy_js_豆瓣",
@@ -143,8 +143,10 @@
       "type": 3,
       "playerType": 2,
       "api": "csp_HBleiJing",
-      "ext": {        "tyitoken": "httphttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//127.0.0.1:997https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/filhttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/HBThttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/tyitoken.txt",
-        "leijck": ""}
+      "ext": {
+        "tyitoken": "httphttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B//127.0.0.1:997https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/filhttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/HBThttps://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/tyitoken.txt",
+        "leijck": ""
+      }
     },
     {
       "key": "短剧夸克2",
@@ -946,7 +948,7 @@
       "regex": [
         "#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:1\\.000000,[\\s\\S]*?#EXT-X-DISCONTINUITY",
         "#EXTINF.*?\\s+.*?p1ayer.*?\\.ts\\s+",
-        "#EXTINF.*?\\s+.*?\https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/video\https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/original.*?\\.ts\\s+"
+        "#EXTINF.*?\\s+.*?\\./original.*?\\.ts\\s+"
       ]
     },
     {
