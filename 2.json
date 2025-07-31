@@ -2,7 +2,7 @@
   "spider": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/custom_spider.jar",
   "wallpaper": "https://xn--11x805d.xn--4kq62z5rby2qupq9ub.xyz/",
   "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
-  "logo": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/img/ic_logo1.mp4",
+  "logo": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/img/ic_logo1.gif",
   "sites": [
     {
       "key": "drpy_js_豆瓣",
@@ -10,19 +10,6 @@
       "type": 3,
       "api": "csp_Douban",
       "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/B/lib/douban.json"
-    },
-    {
-      "key": "提醒",
-      "api": "csp_Douban2",
-      "name": "仅用作学习交流使用，请于24小时之内进行清除",
-      "type": 3
-    },
-    {
-      "key": "测试",
-      "name": "应用|更新",
-      "type": 3,
-      "api": "csp_Market",
-      "ext": "aHR0cHM6Ly84OTI0LmtzdG9yZS5zcGFjZS9odWJhbi9tYXJrLmpzb24="
     },
     {
       "key": "设置",
