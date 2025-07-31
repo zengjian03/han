@@ -2673,9 +2673,7 @@
       "logo": "https://epg.iill.top/logo/{name}.png",
       "ua": "okhttp/3.15,AptvPlayer/1.4.0",
       "timeout": 10
-    }
-        
-    ],
+    },
     {
       "name": "AI直播",
       "type": 0,
