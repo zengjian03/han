@@ -1,0 +1,13 @@
+{
+    "urls": [
+        {
+            "url": "clan://localhost/XYQTVBox/XYQTVBox.json",
+            "name": "香雅情线路"
+        },
+        {
+            "url": "clan://localhost/XYQTVBox/qiaoji/qjtvbox.json",
+            "name": "巧计本地",
+            "time": "2025-02-21"
+        }
+    ]
+}
