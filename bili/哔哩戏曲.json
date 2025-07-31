@@ -1,6 +1,14 @@
 {"cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
 "class": [
     {
+      "type_name": "花鼓戏",
+      "type_id": "花鼓戏超清"
+    },
+    {
+      "type_name": "黄梅戏",
+      "type_id": "黄梅戏超清"
+    },	
+    {
       "type_name": "潮剧",
       "type_id": "潮剧超清"
     },
@@ -75,11 +83,7 @@
       "type_name": "歌仔戏",
       "type_id": "歌仔戏超清"
     },
-    
-    {
-      "type_name": "黄梅戏",
-      "type_id": "黄梅戏超清"
-    },
+   
     {
       "type_name": "评剧",
       "type_id": "评剧超清"
@@ -87,11 +91,7 @@
     {
       "type_name": "豫剧",
       "type_id": "豫剧超清"
-    },
-    {
-      "type_name": "花鼓戏",
-      "type_id": "花鼓戏超清"
-    },    
+    },   
     {
       "type_name": "布袋戏",
       "type_id": "布袋戏合集超清"
