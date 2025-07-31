@@ -736,7 +736,8 @@
         "json": "./bibi/哔哩视频.json",
         "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
       }
-    }, {
+    },
+    {
       "key": "哔哩合集",
       "name": "哔哩｜合集",
       "type": 3,
@@ -2046,7 +2047,6 @@
         "type": "list"
       }
     },
-   
     {
       "key": "急救教学",
       "name": "急救｜教学",
@@ -2574,37 +2574,37 @@
     }
   ],
   "lives": [
-        {
-          "name": "本地live文件",
-          "type":"0",
-          "pass": true,
-          "url":"./本地直播源.txt",
-          "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
-          "logo": "https://epg.iill.top/logo/{name}.png"
-        },
-        {
-          "name": "BMCH",
-          "type":"0",
-          "pass": true,
-          "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/big-mouth-cn/tv/main/iptv-ok.m3u",
-          "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
-          "logo": "https://epg.v1.mk/logo/{name}.png"
-        },
-        {
-          "name": "Tianmu",
-          "type":"0",
-          "pass": true,
-          "url": "https://ghfile.geekertao.top/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
-          "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
-          "logo": "https://epg.v1.mk/logo/{name}.png"
-        },
-        {
-	      "name": "范明明",
-	      "type":"0",
-        "pass": true,
-	      "url": "https://live.fanmingming.cn/tv/m3u/ipv6.m3u"
-    	},
-		{
+    {
+      "name": "本地live文件",
+      "type": "0",
+      "pass": true,
+      "url": "./本地直播源.txt",
+      "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+      "logo": "https://epg.iill.top/logo/{name}.png"
+    },
+    {
+      "name": "BMCH",
+      "type": "0",
+      "pass": true,
+      "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/big-mouth-cn/tv/main/iptv-ok.m3u",
+      "epg": "https://epg.v1.mk/json?ch={name}&date={date}",
+      "logo": "https://epg.v1.mk/logo/{name}.png"
+    },
+    {
+      "name": "Tianmu",
+      "type": "0",
+      "pass": true,
+      "url": "https://ghfile.geekertao.top/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+      "epg": "https://epg.v1.mk/json?ch={name}&date={date}",
+      "logo": "https://epg.v1.mk/logo/{name}.png"
+    },
+    {
+      "name": "范明明",
+      "type": "0",
+      "pass": true,
+      "url": "https://live.fanmingming.cn/tv/m3u/ipv6.m3u"
+    },
+    {
       "name": "AI直播",
       "type": 0,
       "url": "https://github.3x25.com/https://raw.githubusercontent.com/PizazzGY/TV/master/output/user_result.txt",
