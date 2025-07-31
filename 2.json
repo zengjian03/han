@@ -461,6 +461,7 @@
         "ratio": 1.433
       },
       "ext": {
+		  "jar": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/jar/spider.jar;md5;1b55227909a1a6d682968dcf399b392f",
         "json": "./bili/哔哩合集.json",
         "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
       }
