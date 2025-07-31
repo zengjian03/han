@@ -1,5 +1,5 @@
 {
-    "cookie": "",
+    "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
     "classes": [
     {"type_name":"经典合集","type_id":"经典无损音乐合集"},    
     {"type_name":"粤语","type_id":"粤语歌曲超清"},

@@ -46,9 +46,9 @@
         "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
         "dutoken": "http://127.0.0.1:9978/file/TVBox/dutoken.txt",
         "p123token": "http://127.0.0.1:9978/file/TVBox/p123token.txt",
-        "token": "http://127.0.0.1:9978/file/TVBox/Altoken.txt",
-        "cookie": "http://127.0.0.1:9978/file/TVBox/qkcookie.txt",
-        "uccookie": "http://127.0.0.1:9978/file/TVBox/uccookie.txt",
+        "token": "http://127.0.0.1:9978/file/TVBox/.aliyun",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/quark_cookie.txt",
+        "uccookie": "http://127.0.0.1:9978/file/TVBox/uc_cookie.txt",
         "site": "http://103.45.162.207:20720/"
       }
     },
@@ -62,9 +62,9 @@
         "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
         "dutoken": "http://127.0.0.1:9978/file/TVBox/dutoken.txt",
         "p123token": "http://127.0.0.1:9978/file/TVBox/p123token.txt",
-        "token": "http://127.0.0.1:9978/file/TVBox/Altoken.txt",
-        "cookie": "http://127.0.0.1:9978/file/TVBox/qkcookie.txt",
-        "uccookie": "http://127.0.0.1:9978/file/TVBox/uccookie.txt",
+        "token": "http://127.0.0.1:9978/file/TVBox/.aliyun",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/quark_cookie.txt",
+        "uccookie": "http://127.0.0.1:9978/file/TVBox/uc_cookie.txt",
         "site": "http://xsayang.fun:12512/"
       }
     },
@@ -78,9 +78,9 @@
         "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
         "dutoken": "http://127.0.0.1:9978/file/TVBox/dutoken.txt",
         "p123token": "http://127.0.0.1:9978/file/TVBox/p123token.txt",
-        "token": "http://127.0.0.1:9978/file/TVBox/Altoken.txt",
-        "cookie": "http://127.0.0.1:9978/file/TVBox/qkcookie.txt",
-        "uccookie": "http://127.0.0.1:9978/file/TVBox/uccookie.txt",
+        "token": "http://127.0.0.1:9978/file/TVBox/.aliyun",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/quark_cookie.txt",
+        "uccookie": "http://127.0.0.1:9978/file/TVBox/uc_cookie.txt",
         "site": "http://xsayang.fun:12512/"
       }
     },
@@ -94,9 +94,9 @@
         "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
         "dutoken": "http://127.0.0.1:9978/file/TVBox/dutoken.txt",
         "p123token": "http://127.0.0.1:9978/file/TVBox/p123token.txt",
-        "token": "http://127.0.0.1:9978/file/TVBox/Altoken.txt",
-        "cookie": "http://127.0.0.1:9978/file/TVBox/qkcookie.txt",
-        "uccookie": "http://127.0.0.1:9978/file/TVBox/uccookie.txt",
+        "token": "http://127.0.0.1:9978/file/TVBox/.aliyun",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/quark_cookie.txt",
+        "uccookie": "http://127.0.0.1:9978/file/TVBox/uc_cookie.txt",
         "site": "http://xsayang.fun:12512/"
       }
     },
@@ -110,9 +110,9 @@
 		 "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
         "dutoken": "http://127.0.0.1:9978/file/TVBox/dutoken.txt",
         "p123token": "http://127.0.0.1:9978/file/TVBox/p123token.txt",
-        "token": "http://127.0.0.1:9978/file/TVBox/Altoken.txt",
-        "cookie": "http://127.0.0.1:9978/file/TVBox/qkcookie.txt",
-        "uccookie": "http://127.0.0.1:9978/file/TVBox/uccookie.txt",
+        "token": "http://127.0.0.1:9978/file/TVBox/.aliyun",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/quark_cookie.txt",
+        "uccookie": "http://127.0.0.1:9978/file/TVBox/uc_cookie.txt",
         "site": "http://xiaomi666.fun"
       }
     },
@@ -126,9 +126,9 @@
 		 "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
         "dutoken": "http://127.0.0.1:9978/file/TVBox/dutoken.txt",
         "p123token": "http://127.0.0.1:9978/file/TVBox/p123token.txt",
-        "token": "http://127.0.0.1:9978/file/TVBox/Altoken.txt",
-        "cookie": "http://127.0.0.1:9978/file/TVBox/qkcookie.txt",
-        "uccookie": "http://127.0.0.1:9978/file/TVBox/uccookie.txt",
+        "token": "http://127.0.0.1:9978/file/TVBox/.aliyun",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/quark_cookie.txt",
+        "uccookie": "http://127.0.0.1:9978/file/TVBox/uc_cookie.txt",
         "site": "https://xhww.net"
       }
     },
@@ -139,12 +139,12 @@
       "playerType": 2,
       "api": "csp_HBhaiM",
       "ext": {
-        "tyitoken": "http://127.0.0.1:9978/file/HBTV/tyitoken.txt",
-        "dutoken": "http://127.0.0.1:9978/file/HBTV/dutoken.txt",
-        "p123token": "http://127.0.0.1:9978/file/HBTV/p123token.txt",
-        "token": "http://127.0.0.1:9978/file/HBTV/Altoken.txt",
-        "cookie": "http://127.0.0.1:9978/file/HBTV/qkcookie.txt",
-        "uccookie": "http://127.0.0.1:9978/file/HBTV/uccookie.txt",
+        "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
+        "dutoken": "http://127.0.0.1:9978/file/TVBox/dutoken.txt",
+        "p123token": "http://127.0.0.1:9978/file/TVBox/p123token.txt",
+        "token": "http://127.0.0.1:9978/file/TVBox/.aliyun",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/quark_cookie.txt",
+        "uccookie": "http://127.0.0.1:9978/file/TVBox/uccookie.txt",
         "hmianck": "",
         "site": "https://www.haimianxz.com"
       }
@@ -156,7 +156,7 @@
       "playerType": 2,
       "api": "csp_HBleiJing",
       "ext": {
-        "tyitoken": "http://127.0.0.1:9978/file/HBTV/tyitoken.txt",
+        "tyitoken": "http://127.0.0.1:9978/file/TVBox/tyitoken.txt",
         "leijck": ""
       }
     },
@@ -447,6 +447,108 @@
       "type": 3,
       "api": "csp_HByingSo",
       "ext": "4"
+    }, {
+      "key": "哔哩合集",
+      "name": "哔哩｜合集",
+      "type": 3,
+      "api": "csp_Bili",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 0,
+      "changeable": 0,
+      "style": {
+        "type": "rect",
+        "ratio": 1.433
+      },
+      "ext": {
+        "json": "./bili/哔哩合集.json",
+        "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
+      }
+    },
+    {
+      "key": "哔哩演唱会",
+      "name": "哔哩｜音乐",
+      "type": 3,
+      "api": "csp_Bili",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": {
+        "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+        "json": "./bili/哔哩演唱会.json"
+      },
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      }
+    },
+    {
+      "key": "哔哩听书",
+      "name": "哔哩｜听书",
+      "type": 3,
+      "api": "csp_Bili",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": {
+        "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+        "json": "./bili/哔哩听书.json"
+      },
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      }
+    },
+    {
+      "key": "哔哩相声",
+      "name": "哔哩｜相声",
+      "type": 3,
+      "api": "csp_Bili",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": {
+        "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+        "json": "./bili/哔哩相声.json"
+      },
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      }
+    },
+    {
+      "key": "哔哩小品",
+      "name": "哔哩｜小品",
+      "type": 3,
+      "api": "csp_Bili",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": {
+        "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+        "json": "./bili/哔哩小品.json"
+      },
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      }
+    },
+    {
+      "key": "哔哩戏曲",
+      "name": "哔哩｜戏曲",
+      "type": 3,
+      "api": "csp_Bili",
+      "searchable": 0,
+      "quickSearch": 0,
+      "filterable": 0,
+      "ext": {
+        "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
+        "json": "./json/哔哩戏曲.json"
+      },
+      "style": {
+        "type": "rect",
+        "ratio": 1.597
+      }
     },
     {
       "key": "360",
