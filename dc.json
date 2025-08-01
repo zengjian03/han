@@ -2,74 +2,15 @@
   "urls": [
     {
       "name": "📛丨涵萌A",
-      "url": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1.json"
+      "url": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/api.json"
     },
     {
       "name": "📛丨涵萌B",
-      "url": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/2.json"
+      "url": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/2/api.json"
     },
     {
       "name": "📛丨涵萌C",
-      "url": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/3.json"
-    },    {
-      "name": "PG📚在线",
-      "url": "https://cnb.cool/fish2018/pg/-/git/raw/master/jsm.json"
-    },    {
-      "name": "XBPQ📚在线",
-      "url": "https://9071.kstore.vip/自写.txt"
-    },
-    {
-      "name": "黄金📚在线",
-      "url": "https://gitlab.com/lzc1021lzc/hjfggzs.hjys/-/raw/main/hjys.free.json"
-    },
-    {
-      "name": "道长📚在线",
-      "url": "https://gitlab.com/duomv/dzhipy/-/raw/main/index.json"
-    },  {
-      "name": "SVIP📚在线",
-      "url": "https://4708.kstore.space/box/svip.json"
-    },
-    {
-      "name": "小米📚在线",
-      "url": "http://www.mpanso.com/小米/DEMO.json"
-    },    {
-      "name": "欧歌📚在线",
-      "url": "https://欧歌.v.nxog.top/m/"
-    },
-    {
-      "name": "老虎📚在线",
-      "url": "http://tv.laohu.cool/tvbox.json"
-    },
-    {
-      "name": "Clun📚在线",
-      "url": "https://clun.top/box.json"
-    },
-    {
-      "name": "O  K📚在线",
-      "url": "http://ok321.top/ok"
-    },
-    {
-      "name": "🦒丨摸鱼儿",
-      "url": "http://我不是.摸鱼儿.top"
-    },
-    {
-      "name": "🚒丨放牛娃",
-      "url": "http://tvbox.王二小放牛娃.xyz"
-    },
-    {
-      "name": "💞丨OK线路",
-      "url": "https://jihulab.com/okcaptain/kko/-/raw/main/tv.txt"
-    },
-    {
-      "name": "🍚丨饭太硬",
-      "url": "http://www.饭太硬.com/tv/"
-    },    {
-      "name": "🐼丨肥猫",
-      "url": "http://肥猫.com/"
-    },
-    {
-      "name": "🚒丨技巧",
-      "url": "http://pandown.pro/tvbox/tvbox.json"
+      "url": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/3/api.json"
     }
   ]
 }
