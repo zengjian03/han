@@ -1,10 +1,10 @@
-{
-  "warningText": "资源来自网络，无盈利纯技术分享！[所有内容仅供学习使用，请勿用于违法及商业用途，请勿付费购买]",
-  "logo": "https://7337.kstore.space/tubiao/%E5%A4%A9%E5%BE%AE.gif",
+{  "wallpaper": "http://bobohome.ignorelist.com:20247/bing",
+  "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
+  "logo": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/img/ic_logo1.gif",
   "sites": [
     {
       "key": "豆瓣",
-      "name": "公众号【科技天微】：限试用测试，禁传播贩卖(0801更)",
+      "name": "豆瓣推荐",
       "type": 3,
       "api": "csp_Douban",
       "searchable": 0,
