@@ -1,5 +1,7 @@
 {
-    "wallpaper": "https://wp.upx8.com/api.php",
+      "wallpaper": "http://bobohome.ignorelist.com:20247/bing",
+  "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
+  "logo": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/img/ic_logo1.gif",
     "spider": "./custom_spider.jar;md5;821ece3a24a573d9b44456bba0106aab",
     "lives": [
         {
