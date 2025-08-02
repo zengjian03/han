@@ -1,9 +1,9 @@
     "lives": [
         {
-          "name": "本地live文件",
+          "name": "涵萌视界",
           "type":"0",
           "pass": true,
-          "url":"./本地直播源.txt",
+          "url":"../live/MTV.txt",
           "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
           "logo": "https://epg.iill.top/logo/{name}.png"
         },
@@ -28,7 +28,14 @@
 	      "type":"0",
         "pass": true,
 	      "url": "https://live.fanmingming.cn/tv/m3u/ipv6.m3u"
-    	},
+    	},{
+          "name": "本地live文件",
+          "type":"0",
+          "pass": true,
+          "url":"./本地直播源.txt",
+          "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
+          "logo": "https://epg.iill.top/logo/{name}.png"
+        },
 		{
       "name": "AI直播",
       "type": 0,

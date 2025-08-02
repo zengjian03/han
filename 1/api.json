@@ -1855,7 +1855,7 @@
             "filterable": 0,
             "ext": {
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
-                "json": "./json/哔哩哔哩演唱会.json"
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/bili/演唱会.json"
             },
             "style": {
                 "type": "rect",
@@ -2267,6 +2267,14 @@
         }
     ],
     "lives": [
+	        {
+          "name": "涵萌视界",
+          "type":"0",
+          "pass": true,
+          "url":"../live/MTV.txt",
+          "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
+          "logo": "https://epg.iill.top/logo/{name}.png"
+        },
         {
             "name": "AI直播",
             "type": 0,
