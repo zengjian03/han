@@ -2270,9 +2270,7 @@
 	        {
           "name": "涵萌视界",
           "type":"0",
-          "url":".https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/live/MTV.txt",
-          "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
-          "logo": "https://epg.iill.top/logo/{name}.png"
+          "url":".https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/live/MTV.txt"
         },
         {
             "name": "AI直播",
