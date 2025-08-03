@@ -1,5 +1,5 @@
 MTV-1,#genre#
-我的,http://www.dsk.cc/cctv/tjdx.php?id=cctv1
+我的,http://www.dsk.cc/php/jzb.php?id=cctv1
 姜育恒-再回首,http://em.21dtv.com/songs/60056761.mkv
 姜育恒-再回首(演唱会),http://em.21dtv.com/songs/60056760.mkv
 张敬轩-断点,http://em.21dtv.com/songs/60015919.mkv
