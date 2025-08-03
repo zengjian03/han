@@ -48,7 +48,7 @@
                 "type": "list",
                 "ratio": 1.433
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/aliShare.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/aliShare.json"
         },    {
       "key": "huban",
       "name": "弹幕|小窗",
@@ -588,7 +588,7 @@
                 "ratio": 1.433
             },
             "ext": {
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/哔哩视频.json",
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩视频.json",
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
             }
         },
@@ -596,29 +596,29 @@
             "key": "腾讯视频",
             "name": "腾讯｜视频",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/腾讯视频.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/腾讯视频.js"
         },
         {
             "key": "优酷视频",
             "name": "优酷｜视频",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/优酷视频.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/优酷视频.js"
         },
         {
             "key": "芒果视频",
             "name": "芒果｜视频",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/芒果视频.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/芒果视频.js"
         },
         {
             "key": "爱奇艺",
             "name": "爱奇异｜视频",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/爱奇艺.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/爱奇艺.js"
         },
         {
             "key": "三六零",
@@ -635,7 +635,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/xbky.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/xbky.json"
         },
         {
             "key": "玩偶哥哥",
@@ -645,7 +645,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/wogg.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/wogg.json"
         },
         {
             "key": "木偶",
@@ -655,7 +655,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/mogg.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/mogg.json"
         },
         {
             "key": "蜡笔",
@@ -666,7 +666,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/lb.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/lb.json"
         },
         {
             "key": "至臻",
@@ -677,7 +677,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/zz.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/zz.json"
         },
         {
             "key": "多多",
@@ -688,7 +688,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/yyds.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/yyds.json"
         },
         {
             "key": "欧哥",
@@ -699,7 +699,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/og.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/og.json"
         },
         {
             "key": "二小",
@@ -710,7 +710,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/ex.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/ex.json"
         },
         {
             "key": "大玩",
@@ -721,7 +721,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/dawo.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/dawo.json"
         },
         {
             "key": "虎斑",
@@ -732,7 +732,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/hb.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/hb.json"
         },
         {
             "key": "闪电",
@@ -743,7 +743,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/sd.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/sd.json"
         },
         {
             "key": "奥秘",
@@ -754,7 +754,7 @@
             "quickSearch": 1,
             "filterable": 1,
             "changeable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/am.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/am.json"
         },
         {
             "key": "团长",
@@ -779,7 +779,7 @@
                 "type": "list",
                 "ratio": 1.433
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/lj.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/lj.json"
         },
         {
             "key": "海绵",
@@ -794,7 +794,7 @@
                 "type": "list",
                 "ratio": 1.433
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/hm.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/hm.json"
         },
         {
             "key": "夸父",
@@ -809,7 +809,7 @@
                 "type": "list",
                 "ratio": 1.433
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/kf.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/kf.json"
         },
         {
             "key": "123",
@@ -824,7 +824,7 @@
                 "type": "list",
                 "ratio": 1.433
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/123.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/123.json"
         },
         {
             "key": "趣盘",
@@ -860,8 +860,8 @@
             "key": "双星",
             "name": "双星｜4K弹幕",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/双星.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/双星.js",
             "style": {
                 "type": "list"
             }
@@ -870,8 +870,8 @@
             "key": "百酷",
             "name": "百酷｜4K弹幕",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/百酷.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/百酷.js",
             "style": {
                 "type": "list"
             }
@@ -880,8 +880,8 @@
             "key": "校长",
             "name": "校长｜4K弹幕",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/校长.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/校长.js",
             "style": {
                 "type": "list"
             }
@@ -890,8 +890,8 @@
             "key": "天堂",
             "name": "天堂｜4K弹幕",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/天堂.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/天堂.js",
             "style": {
                 "type": "list"
             }
@@ -900,8 +900,8 @@
             "key": "人人电影网",
             "name": "人人｜4K弹幕",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/人人电影网.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/人人电影网.js",
             "style": {
                 "type": "list"
             }
@@ -910,8 +910,8 @@
             "key": "爱搜",
             "name": "爱搜｜4K弹幕",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/爱搜.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/爱搜.js",
             "style": {
                 "type": "list"
             }
@@ -955,8 +955,8 @@
             "key": "人人分享站",
             "name": "人人｜搜索",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/人人分享站.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/人人分享站.js",
             "style": {
                 "type": "list"
             }
@@ -965,8 +965,8 @@
             "key": "全盘",
             "name": "全盘｜搜索",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/全盘.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/全盘.js",
             "style": {
                 "type": "list"
             }
@@ -984,7 +984,7 @@
             "key": "甜圈短剧",
             "name": "甜圈｜短剧",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/甜圈短剧.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/甜圈短剧.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
@@ -995,7 +995,7 @@
             "key": "偷乐短剧",
             "name": "偷乐｜短剧",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/偷乐短剧.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/偷乐短剧.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
@@ -1006,7 +1006,7 @@
             "key": "爱看短剧",
             "name": "爱看｜短剧",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/爱看短剧.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/爱看短剧.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
@@ -1017,7 +1017,7 @@
             "key": "锦鲤短剧",
             "name": "锦鲤｜短剧",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/锦鲤短剧.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/锦鲤短剧.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
@@ -1032,7 +1032,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XYQHiker/短剧屋.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XYQHiker/短剧屋.json"
         },        {
             "key": "追剧达人",
             "name": "追剧达人｜影视",
@@ -1057,7 +1057,7 @@
             "key": "金牌影视",
             "name": "金牌｜影视",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/金牌影视.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/金牌影视.py",
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
@@ -1070,7 +1070,7 @@
             "key": "猎手影视",
             "name": "猎手｜影视",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/猎手影视.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/猎手影视.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
@@ -1081,7 +1081,7 @@
             "key": "零度影视",
             "name": "零度｜影视",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/零度影视.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/零度影视.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
@@ -1092,7 +1092,7 @@
             "key": "想看影视",
             "name": "想看｜影视",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/想看影视.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/想看影视.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
@@ -1103,7 +1103,7 @@
             "key": "追星影视",
             "name": "追星｜影视",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/追星影视.py",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/追星影视.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
@@ -1225,8 +1225,8 @@
             "key": "采集之王",
             "name": "采集｜合集",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/采集之王.js?type=url&params=.https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/采集静态.json$1$1"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/采集之王.js?type=url&params=https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/采集静态.json$1$1"
         },
         {
             "key": "爱看机器人",
@@ -1242,77 +1242,77 @@
             "name": "明星｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/明星影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/明星影视.json"
         },
         {
             "key": "麦田影视",
             "name": "麦田｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/麦田影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/麦田影视.json"
         },
         {
             "key": "海纳影视",
             "name": "海纳｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/海纳影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/海纳影视.json"
         },
         {
             "key": "免费影视",
             "name": "免费｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/免费影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/免费影视.json"
         },
         {
             "key": "面包影视",
             "name": "面包｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/面包影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/面包影视.json"
         },
         {
             "key": "永乐影视",
             "name": "永乐｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/永乐影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/永乐影视.json"
         },
         {
             "key": "雪糕影视",
             "name": "雪糕｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/雪糕影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/雪糕影视.json"
         },
         {
             "key": "骚火影视",
             "name": "骚火｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/骚火影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/骚火影视.json"
         },
         {
             "key": "七点影视",
             "name": "七点｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/七点影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/七点影视.json"
         },
         {
             "key": "三九影视",
             "name": "三九｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/三九影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/三九影视.json"
         },
         {
             "key": "三四影视",
             "name": "三四｜影视",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/三四影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/三四影视.json"
         },
         {
             "key": "农民影视",
@@ -1322,7 +1322,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XYQHiker/农民影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XYQHiker/农民影视.json"
         },
         {
             "key": "盒子影视",
@@ -1332,7 +1332,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XYQHiker/盒子影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XYQHiker/盒子影视.json"
         },
         {
             "key": "电影牛",
@@ -1342,14 +1342,14 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XYQHiker/电影牛.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XYQHiker/电影牛.json"
         },
         {
             "key": "剧圈圈",
             "name": "剧圈｜影视",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/剧圈圈.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/剧圈圈.js"
         },
         {
             "key": "1905",
@@ -1385,28 +1385,28 @@
             "style": {
                 "type": "list"
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/哆啦新番社.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/哆啦新番社.json"
         },
         {
             "key": "56动漫",
             "name": "56｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/56动漫.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/56动漫.js"
         },
         {
             "key": "NT动漫",
             "name": "NT｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/NT动漫.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/NT动漫.js"
         },
         {
             "key": "Anime1",
             "name": "A1｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/Anime1.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/Anime1.js"
         },
         {
             "key": "曼波动漫",
@@ -1526,77 +1526,77 @@
             "name": "樱花｜动漫",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/樱花动漫.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/樱花动漫.json"
         },
         {
             "key": "巴士动漫",
             "name": "巴士｜动漫",
             "type": 3,
             "api": "csp_XYQHiker",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XYQHiker/巴士动漫.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XYQHiker/巴士动漫.json"
         },
         {
             "key": "好看动漫",
             "name": "好看｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/好看动漫.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/好看动漫.js"
         },
         {
             "key": "奇米动漫",
             "name": "奇米｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/奇米动漫.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/奇米动漫.js"
         },
         {
             "key": "花子动漫",
             "name": "花子｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/花子动漫.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/花子动漫.js"
         },
         {
             "key": "动画片",
             "name": "动画片｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/动画片大全.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/动画片大全.js"
         },
         {
             "key": "路漫漫",
             "name": "路漫漫｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/路漫漫.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/路漫漫.js"
         },
         {
             "key": "动漫岛",
             "name": "动漫岛｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/动漫岛.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/动漫岛.js"
         },
         {
             "key": "去看吧",
             "name": "去看吧｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/去看吧.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/去看吧.js"
         },
         {
             "key": "爱弹幕",
             "name": "爱弹幕｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/爱弹幕.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/爱弹幕.js"
         },
         {
             "key": "异世界",
             "name": "异世界｜动漫",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/异世界.js"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/drpy_libs/drpy.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/异世界.js"
         },
         {
             "key": "荐片",
@@ -1612,7 +1612,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/修罗影视.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/修罗影视.json"
         },
         {
             "key": "七味",
@@ -1681,7 +1681,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XYQHiker/电影港.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XYQHiker/电影港.json"
         },
         {
             "key": "狐狸君",
@@ -1692,7 +1692,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/狐狸君.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/狐狸君.json"
         },
         {
             "key": "BT天堂",
@@ -1702,7 +1702,7 @@
             "searchable": 1,
             "quickSearch": 1,
             "filterable": 1,
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XYQHiker/BT天堂.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XYQHiker/BT天堂.json"
         },
         {
             "key": "Mp4电影",
@@ -1743,7 +1743,7 @@
                 "type": "list",
                 "ratio": 1.433
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/quarkShare.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/quarkShare.json"
         },
         {
             "key": "UC",
@@ -1757,7 +1757,7 @@
                 "type": "list",
                 "ratio": 1.433
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/ucShare.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/ucShare.json"
         },
         {
             "key": "百度云盘",
@@ -1776,8 +1776,8 @@
             "key": "短剧合集",
             "name": "短剧｜合集",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/短剧合集.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/短剧合集.js",
             "style": {
                 "type": "list"
             }
@@ -1786,8 +1786,8 @@
             "key": "短剧大全",
             "name": "短剧｜大全",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/cloud.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/js/短剧大全.js",
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/cloud.min.js",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/短剧大全.js",
             "style": {
                 "type": "list"
             }
@@ -1803,7 +1803,7 @@
             "style": {
                 "type": "list"
             },
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/alist.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/alist.json"
         },
         {
             "key": "88看球",
@@ -1819,13 +1819,13 @@
             "key": "网络直播",
             "name": "网络｜直播",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/网络直播.py"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/网络直播.py"
         },
         {
             "key": "哔哩直播",
             "name": "哔哩｜直播",
             "type": 3,
-            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/py/哔哩直播.py"
+            "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/py/哔哩直播.py"
         },
         {
             "key": "哔哩合集",
@@ -1841,7 +1841,7 @@
                 "ratio": 1.433
             },
             "ext": {
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/哔哩合集.json",
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩合集.json",
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
             }
         },
@@ -1872,7 +1872,7 @@
             "filterable": 0,
             "ext": {
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/哔哩哔哩听书.json"
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩听书.json"
             },
             "style": {
                 "type": "rect",
@@ -1889,7 +1889,7 @@
             "filterable": 0,
             "ext": {
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/哔哩哔哩相声.json"
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩相声.json"
             },
             "style": {
                 "type": "rect",
@@ -1906,7 +1906,7 @@
             "filterable": 0,
             "ext": {
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/哔哩哔哩小品.json"
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩小品.json"
             },
             "style": {
                 "type": "rect",
@@ -1923,7 +1923,7 @@
             "filterable": 0,
             "ext": {
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt",
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/哔哩哔哩戏曲.json"
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/哔哩哔哩戏曲.json"
             },
             "style": {
                 "type": "rect",
@@ -1939,7 +1939,7 @@
             "quickSearch": 0,
             "filterable": 1,
             "ext": {
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/少儿教育.json",
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/少儿教育.json",
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
             },
             "style": {
@@ -1956,7 +1956,7 @@
             "quickSearch": 0,
             "filterable": 1,
             "ext": {
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/小学课堂.json",
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/小学课堂.json",
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
             },
             "style": {
@@ -1973,7 +1973,7 @@
             "quickSearch": 0,
             "filterable": 1,
             "ext": {
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/初中课堂.json",
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/初中课堂.json",
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
             },
             "style": {
@@ -1990,7 +1990,7 @@
             "quickSearch": 0,
             "filterable": 1,
             "ext": {
-                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/json/高中课堂.json",
+                "json": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/高中课堂.json",
                 "cookie": "http://127.0.0.1:9978/file/TVBox/bili_cookie.txt"
             },
             "style": {
@@ -2017,7 +2017,7 @@
             "name": "养生｜知识",
             "type": 3,
             "api": "csp_HBPQ",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/1/XBPQ/养生堂.json",
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/XBPQ/养生堂.json",
             "style": {
                 "type": "rect",
                 "ratio": 1.597
