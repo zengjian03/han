@@ -3,7 +3,7 @@
           "name": "涵萌视界",
           "type":"0",
           "pass": true,
-          "url":"../live/MTV.txt",
+          "url":"https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/live/hmlive.txt",
           "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
           "logo": "https://epg.iill.top/logo/{name}.png"
         },
