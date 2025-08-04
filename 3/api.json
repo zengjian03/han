@@ -1178,7 +1178,7 @@
             "name": "采集｜合集",
             "type": 3,
             "api": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/drpy2.min.js",
-            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/采集之王.js?type=url&params=https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/采集静态.json"
+            "ext": "https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/js/采集之王.js?type=url&params=https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/json/采集静态.json$1$1"
         },
         {
             "key": "爱看机器人",
