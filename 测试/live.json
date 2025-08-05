@@ -3,9 +3,26 @@
           "name": "涵萌视界",
           "type":"0",
           "pass": true,
-          "url":"https://ghproxy.net/https://raw.githubusercontent.com/zengjian03/han/master/live/hmlive.txt",
+          "url":"https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/live/hmlive.txt",
           "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
           "logo": "https://epg.iill.top/logo/{name}.png"
+        },
+		{
+            "name": "AI拾光",
+            "type": 0,
+            "url": "https://ghproxy.net/raw.githubusercontent.com/xmbjm/IPTV/master/output/user_result.txt",
+            "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+            "logo": "https://live.fanmingming.cn/tv/{name}.png",
+            "playerType": 2,
+            "timeout": 10
+        },
+		        {
+            "name": "AIGuovin",
+            "type": 0,
+            "url": "https://gitee.com/mytv-android/iptv-api/raw/master/output/result.m3u",
+            "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+            "playerType": 2,
+            "timeout": 10
         },
         {
           "name": "BMCH",
