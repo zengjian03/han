@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菜单配料计算系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cbc;
+            --accent-color: #ff7e5f;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            background-color: rgba(74, 111, 165, 0.1);
+            border-bottom: 3px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab:hover:not(.active) {
+            background-color: rgba(74, 111, 165, 0.05);
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h2 i {
+            font-size: 1.4rem;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .ingredient-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 40px;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .action-btn {
+            background-color: var(--dark-color);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .add-btn {
+            background-color: var(--success-color);
+            margin-top: 10px;
+        }
+        
+        .remove-btn {
+            background-color: var(--danger-color);
+        }
+        
+        .calculator-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn-group button {
+            flex: 1;
+        }
+        
+        .calculate-btn {
+            background-color: var(--accent-color);
+        }
+        
+        .calculate-btn:hover {
+            background-color: #ff6347;
+        }
+        
+        .export-btn {
+            background-color: var(--success-color);
+        }
+        
+        .export-btn:hover {
+            background-color: #218838;
+        }
+        
+        .import-btn {
+            background-color: var(--warning-color);
+            color: #333;
+        }
+        
+        .import-btn:hover {
+            background-color: #e0a800;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--light-color);
+            font-weight: 600;
+        }
+        
+        tbody tr:hover {
+            background-color: rgba(74, 111, 165, 0.05);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            color: white;
+            font-weight: 500;
+            box-shadow: var(--shadow);
+            transform: translateX(200%);
+            transition: transform 0.5s ease;
+            z-index: 1000;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background-color: var(--success-color);
+        }
+        
+        .notification.error {
+            background-color: var(--danger-color);
+        }
+        
+        .notification.warning {
+            background-color: var(--warning-color);
+            color: #333;
+        }
+        
+        .ingredient-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .saved-dishes {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(74, 111, 165, 0.05);
+            border-radius: var(--border-radius);
+        }
+        
+        .saved-dishes h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .saved-dishes ul {
+            list-style: none;
+        }
+        
+        .saved-dishes li {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .saved-dishes li:last-child {
+            border-bottom: none;
+        }
+        
+        .dish-item-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .dish-item-actions button {
+            width: auto;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .search-container i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+        
+        .search-container input {
+            padding-left: 40px;
+        }
+        
+        .dish-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+        }
+        
+        .dish-group h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .search-results {
+            position: absolute;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            z-index: 100;
+            display: none;
+        }
+        
+        .search-results.active {
+            display: block;
+        }
+        
+        .search-results div {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .search-results div:hover {
+            background-color: rgba(74, 111, 165, 0.1);
+        }
+        
+        .highlight {
+            background-color: #ffeb3b;
+            font-weight: bold;
+        }
+        
+        .file-input-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .file-input-label {
+            display: block;
+            padding: 12px;
+            background-color: var(--light-color);
+            border: 2px dashed #ccc;
+            border-radius: var(--border-radius);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .file-input-label:hover {
+            background-color: #e9ecef;
+            border-color: var(--primary-color);
+        }
+        
+        .file-input-label i {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        #file-input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        
+        .data-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .data-actions button {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .ingredient-row {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+            
+            .calculator-row {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+            
+            .data-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-utensils"></i> 菜单配料计算系统</h1>
+            <p>轻松管理菜品配方，计算所需配料，导出采购清单</p>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active" data-tab="dishes">菜品管理</div>
+            <div class="tab" data-tab="calculator">配料计算</div>
+            <div class="tab" data-tab="export">导出结果</div>
+        </div>
+        
+        <!-- 菜品管理标签 -->
+        <div id="dishes-tab" class="tab-content active">
+            <div class="section">
+                <h2><i class="fas fa-plus-circle"></i> 录入新菜品</h2>
+                <div class="form-group">
+                    <label for="dish-name">菜品名称</label>
+                    <input type="text" id="dish-name" placeholder="例如：宫保鸡丁">
+                </div>
+                
+                <div id="ingredients-container">
+                    <div class="ingredient-row">
+                        <input type="text" class="ingredient-name" placeholder="配料名称">
+                        <input type="number" class="ingredient-amount" placeholder="重量" min="0" step="0.1">
+                        <select class="ingredient-unit">
+                            <option value="斤">斤</option>
+                            <option value="个">个</option>
+                            <option value="件">件</option>
+                            <option value="包">包</option>
+                        </select>
+                        <div class="action-btn remove-btn" onclick="removeIngredientRow(this)">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="add-ingredient" class="add-btn action-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+                
+                <div class="btn-group">
+                    <button id="save-dish" class="btn">
+                        <i class="fas fa-save"></i> 保存菜品
+                    </button>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2><i class="fas fa-database"></i> 菜品数据管理</h2>
+                <div class="form-group">
+                    <label>数据导入</label>
+                    <div class="file-input-container">
+                        <label for="file-input" class="file-input-label">
+                            <i class="fas fa-file-import"></i>
+                            <span>点击或拖放JSON文件导入菜品数据</span>
+                        </label>
+                        <input type="file" id="file-input" accept=".json" onchange="handleFileSelect(event)">
+                    </div>
+                </div>
+                
+                <div class="data-actions">
+                    <button id="export-data-btn" class="btn import-btn">
+                        <i class="fas fa-file-export"></i> 导出菜品数据
+                    </button>
+                    <button id="import-data-btn" class="btn import-btn">
+                        <i class="fas fa-file-import"></i> 导入菜品数据
+                    </button>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2><i class="fas fa-list"></i> 已保存菜品</h2>
+                <div id="saved-dishes-list" class="saved-dishes">
+                    <p>没有保存的菜品</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 配料计算标签 -->
+        <div id="calculator-tab" class="tab-content">
+            <div class="section">
+                <h2><i class="fas fa-calculator"></i> 配料计算器</h2>
+                
+                <div class="form-group">
+                    <label for="dish-search">搜索菜品</label>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="dish-search" placeholder="输入菜品名称搜索...">
+                        <div id="search-results" class="search-results"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="select-dish">选择菜品</label>
+                    <select id="select-dish">
+                        <option value="">-- 请选择菜品 --</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dish-quantity">份数</label>
+                    <input type="number" id="dish-quantity" min="1" value="1">
+                </div>
+                
+                <button id="add-to-list" class="btn">
+                    <i class="fas fa-plus"></i> 添加到计算清单
+                </button>
+            </div>
+            
+            <div class="section">
+                <h2><i class="fas fa-clipboard-list"></i> 当前菜品清单</h2>
+                <div id="dish-list-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>菜品名称</th>
+                                <th>份数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dish-list">
+                            <!-- 菜品清单将在这里显示 -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="btn-group">
+                    <button id="calculate-btn" class="btn calculate-btn">
+                        <i class="fas fa-calculator"></i> 计算配料明细
+                    </button>
+                    <button id="clear-list" class="btn">
+                        <i class="fas fa-trash-alt"></i> 清空清单
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 导出结果标签 -->
+        <div id="export-tab" class="tab-content">
+            <div class="section">
+                <h2><i class="fas fa-clipboard-list"></i> 配料计算结果</h2>
+                <div class="form-group">
+                    <label for="export-filename">导出文件名</label>
+                    <input type="text" id="export-filename" placeholder="例如：采购清单" value="保时捷员工餐">
+                </div>
+                
+                <div id="results-container">
+                    <div id="dish-results">
+                        <!-- 菜品结果将在这里显示 -->
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button id="export-btn" class="btn export-btn">
+                        <i class="fas fa-file-export"></i> 导出Excel数据
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="notification" class="notification"></div>
+    
+    <script>
+        // 菜品数据存储
+        let dishes = JSON.parse(localStorage.getItem('dishes')) || [];
+        let currentList = [];
+        let dishDetails = {};
+        
+        // DOM元素
+        const dishNameInput = document.getElementById('dish-name');
+        const ingredientsContainer = document.getElementById('ingredients-container');
+        const addIngredientBtn = document.getElementById('add-ingredient');
+        const saveDishBtn = document.getElementById('save-dish');
+        const savedDishesList = document.getElementById('saved-dishes-list');
+        const dishSearchInput = document.getElementById('dish-search');
+        const searchResults = document.getElementById('search-results');
+        const selectDish = document.getElementById('select-dish');
+        const dishQuantityInput = document.getElementById('dish-quantity');
+        const addToListBtn = document.getElementById('add-to-list');
+        const dishList = document.getElementById('dish-list');
+        const calculateBtn = document.getElementById('calculate-btn');
+        const clearListBtn = document.getElementById('clear-list');
+        const dishResults = document.getElementById('dish-results');
+        const exportBtn = document.getElementById('export-btn');
+        const exportFilename = document.getElementById('export-filename');
+        const exportDataBtn = document.getElementById('export-data-btn');
+        const importDataBtn = document.getElementById('import-data-btn');
+        const fileInput = document.getElementById('file-input');
+        const notification = document.getElementById('notification');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 标签切换
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.dataset.tab;
+                    
+                    // 移除所有活动标签
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+                    
+                    // 添加活动类
+                    tab.classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // 初始化菜品选择框
+            populateDishSelect();
+            
+            // 渲染已保存菜品
+            renderSavedDishes();
+            
+            // 设置搜索功能
+            dishSearchInput.addEventListener('input', filterDishes);
+            
+            // 设置文件拖放
+            setupFileDragDrop();
+            
+            // 导出菜品数据按钮
+            exportDataBtn.addEventListener('click', exportDishesData);
+            
+            // 导入菜品数据按钮
+            importDataBtn.addEventListener('click', () => fileInput.click());
+        });
+        
+        // 设置文件拖放功能
+        function setupFileDragDrop() {
+            const fileInputLabel = document.querySelector('.file-input-label');
+            
+            fileInputLabel.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.backgroundColor = '#e9ecef';
+                this.style.borderColor = 'var(--primary-color)';
+            });
+            
+            fileInputLabel.addEventListener('dragleave', function() {
+                this.style.backgroundColor = 'var(--light-color)';
+                this.style.borderColor = '#ccc';
+            });
+            
+            fileInputLabel.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.backgroundColor = 'var(--light-color)';
+                this.style.borderColor = '#ccc';
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFileImport(files[0]);
+                }
+            });
+        }
+        
+        // 处理文件选择
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                handleFileImport(file);
+            }
+        }
+        
+        // 处理文件导入
+        function handleFileImport(file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    const content = e.target.result;
+                    const importedDishes = JSON.parse(content);
+                    
+                    // 验证导入的数据结构
+                    if (!Array.isArray(importedDishes) || 
+                        !importedDishes.every(dish => 
+                            dish.name && 
+                            Array.isArray(dish.ingredients) && 
+                            dish.ingredients.every(ing => 
+                                ing.name && ing.amount && ing.unit
+                            )
+                        )
+                    ) {
+                        throw new Error('导入的文件格式不正确');
+                    }
+                    
+                    // 如果当前有菜品数据，提示用户
+                    if (dishes.length > 0) {
+                        if (!confirm('导入数据将覆盖现有菜品数据。确定要导入吗？')) {
+                            return;
+                        }
+                    }
+                    
+                    // 保存导入的数据
+                    dishes = importedDishes;
+                    localStorage.setItem('dishes', JSON.stringify(dishes));
+                    
+                    // 更新UI
+                    populateDishSelect();
+                    renderSavedDishes();
+                    
+                    showNotification('菜品数据导入成功', 'success');
+                } catch (error) {
+                    console.error('导入失败:', error);
+                    showNotification('导入失败: ' + error.message, 'error');
+                }
+            };
+            
+            reader.onerror = function() {
+                showNotification('读取文件失败', 'error');
+            };
+            
+            reader.readAsText(file);
+        }
+        
+        // 导出菜品数据
+        function exportDishesData() {
+            if (dishes.length === 0) {
+                showNotification('没有菜品数据可以导出', 'warning');
+                return;
+            }
+            
+            // 创建JSON数据
+            const dataStr = JSON.stringify(dishes, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            // 创建下载链接
+            const exportFileDefaultName = '菜品数据_' + new Date().toISOString().slice(0, 10) + '.json';
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showNotification('菜品数据导出成功', 'success');
+        }
+        
+        // 添加新配料行
+        addIngredientBtn.addEventListener('click', function() {
+            const newRow = document.createElement('div');
+            newRow.className = 'ingredient-row';
+            newRow.innerHTML = `
+                <input type="text" class="ingredient-name" placeholder="配料名称">
+                <input type="number" class="ingredient-amount" placeholder="重量" min="0" step="0.1">
+                <select class="ingredient-unit">
+                <option value="斤">斤</option>
+             <option value="个">个</option>
+             <option value="件">件</option>
+             <option value="包">包</option>
+                </select>
+                <div class="action-btn remove-btn" onclick="removeIngredientRow(this)">
+                    <i class="fas fa-times"></i>
+                </div>
+            `;
+            ingredientsContainer.appendChild(newRow);
+        });
+        
+        // 移除配料行
+        window.removeIngredientRow = function(btn) {
+            const row = btn.parentElement;
+            if (ingredientsContainer.children.length > 1) {
+                row.remove();
+            } else {
+                showNotification('至少需要一种配料', 'error');
+            }
+        };
+        
+        // 保存菜品
+        saveDishBtn.addEventListener('click', function() {
+            const name = dishNameInput.value.trim();
+            if (!name) {
+                showNotification('请输入菜品名称', 'error');
+                return;
+            }
+            
+            if (dishes.some(d => d.name === name)) {
+                showNotification('该菜品名称已存在', 'error');
+                return;
+            }
+            
+            const ingredients = [];
+            const rows = ingredientsContainer.querySelectorAll('.ingredient-row');
+            
+            for (const row of rows) {
+                const name = row.querySelector('.ingredient-name').value.trim();
+                const amount = parseFloat(row.querySelector('.ingredient-amount').value);
+                const unit = row.querySelector('.ingredient-unit').value;
+                
+                if (name && !isNaN(amount) && amount > 0) {
+                    ingredients.push({ name, amount, unit });
+                }
+            }
+            
+            if (ingredients.length === 0) {
+                showNotification('请至少添加一种有效配料', 'error');
+                return;
+            }
+            
+            const dish = { name, ingredients };
+            dishes.push(dish);
+            localStorage.setItem('dishes', JSON.stringify(dishes));
+            populateDishSelect();
+            
+            // 重置表单
+            dishNameInput.value = '';
+            rows.forEach((row, index) => {
+                if (index === 0) {
+                    row.querySelector('.ingredient-name').value = '';
+                    row.querySelector('.ingredient-amount').value = '';
+                } else {
+                    row.remove();
+                }
+            });
+            
+            showNotification(`"${name}" 菜品已成功保存`, 'success');
+            renderSavedDishes();
+        });
+        
+        // 渲染已保存的菜品
+        function renderSavedDishes() {
+            if (dishes.length === 0) {
+                savedDishesList.innerHTML = '<p>没有保存的菜品</p>';
+                return;
+            }
+            
+            let html = '<h3><i class="fas fa-list"></i> 已保存菜品</h3><ul>';
+            
+            dishes.forEach((dish, index) => {
+                html += `
+                    <li>
+                        <div>
+                            <strong>${dish.name}</strong>
+                            <div class="ingredients">${dish.ingredients.length}种配料</div>
+                        </div>
+                        <div class="dish-item-actions">
+                            <button class="btn" onclick="editDish(${index})">
+                                <i class="fas fa-edit"></i> 编辑
+                            </button>
+                            <button class="btn" style="background-color: var(--danger-color);" onclick="deleteDish(${index})">
+                                <i class="fas fa-trash"></i> 删除
+                            </button>
+                        </div>
+                    </li>
+                `;
+            });
+            
+            html += '</ul>';
+            savedDishesList.innerHTML = html;
+        }
+        
+        // 编辑菜品
+        window.editDish = function(index) {
+            const dish = dishes[index];
+            dishNameInput.value = dish.name;
+            
+            // 清空现有配料行
+            while (ingredientsContainer.children.length > 1) {
+                ingredientsContainer.lastChild.remove();
+            }
+            
+            // 填充配料
+            const firstRow = ingredientsContainer.querySelector('.ingredient-row');
+            firstRow.querySelector('.ingredient-name').value = dish.ingredients[0].name;
+            firstRow.querySelector('.ingredient-amount').value = dish.ingredients[0].amount;
+            firstRow.querySelector('.ingredient-unit').value = dish.ingredients[0].unit;
+            
+            // 添加其他配料
+            for (let i = 1; i < dish.ingredients.length; i++) {
+                const ing = dish.ingredients[i];
+                const newRow = document.createElement('div');
+                newRow.className = 'ingredient-row';
+                newRow.innerHTML = `
+                    <input type="text" class="ingredient-name" placeholder="配料名称" value="${ing.name}">
+                    <input type="number" class="ingredient-amount" placeholder="重量" min="0" step="0.1" value="${ing.amount}">
+                    <select class="ingredient-unit">
+                        <option value="斤" ${ing.unit === '斤' ? 'selected' : ''}>斤</option>
+                        <option value="个" ${ing.unit === '个' ? 'selected' : ''}>个</option>
+                         <option value="件" ${ing.unit === '件' ? 'selected' : ''}>件</option>
+                        <option value="包" ${ing.unit === '包' ? 'selected' : ''}>包</option>
+                    </select>
+                    <div class="action-btn remove-btn" onclick="removeIngredientRow(this)">
+                        <i class="fas fa-times"></i>
+                    </div>
+                `;
+                ingredientsContainer.appendChild(newRow);
+            }
+            
+            // 删除原菜品
+            dishes.splice(index, 1);
+            localStorage.setItem('dishes', JSON.stringify(dishes));
+            renderSavedDishes();
+            
+            showNotification(`正在编辑 "${dish.name}"`, 'success');
+        };
+        
+        // 删除菜品
+        window.deleteDish = function(index) {
+            const dishName = dishes[index].name;
+            if (confirm(`确定要删除菜品 "${dishName}" 吗？`)) {
+                dishes.splice(index, 1);
+                localStorage.setItem('dishes', JSON.stringify(dishes));
+                populateDishSelect();
+                renderSavedDishes();
+                showNotification(`"${dishName}" 已删除`, 'success');
+            }
+        };
+        
+        // 填充菜品选择框
+        function populateDishSelect() {
+            selectDish.innerHTML = '<option value="">-- 请选择菜品 --</option>';
+            dishes.forEach(dish => {
+                const option = document.createElement('option');
+                option.value = dish.name;
+                option.textContent = dish.name;
+                selectDish.appendChild(option);
+            });
+        }
+        
+        // 菜品搜索功能
+        function filterDishes() {
+            const searchTerm = dishSearchInput.value.toLowerCase();
+            searchResults.innerHTML = '';
+            
+            if (searchTerm.length === 0) {
+                searchResults.classList.remove('active');
+                return;
+            }
+            
+            const filteredDishes = dishes.filter(dish => 
+                dish.name.toLowerCase().includes(searchTerm)
+            );
+            
+            if (filteredDishes.length === 0) {
+                searchResults.innerHTML = '<div>没有找到匹配的菜品</div>';
+                searchResults.classList.add('active');
+                return;
+            }
+            
+            filteredDishes.forEach(dish => {
+                const resultItem = document.createElement('div');
+                const highlightedName = highlightMatch(dish.name, searchTerm);
+                resultItem.innerHTML = highlightedName;
+                resultItem.addEventListener('click', () => {
+                    selectDish.value = dish.name;
+                    dishSearchInput.value = '';
+                    searchResults.classList.remove('active');
+                });
+                searchResults.appendChild(resultItem);
+            });
+            
+            searchResults.classList.add('active');
+        }
+        
+        // 高亮匹配文本
+        function highlightMatch(text, searchTerm) {
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+        
+        // 添加菜品到清单
+        addToListBtn.addEventListener('click', function() {
+            const dishName = selectDish.value;
+            const quantity = parseInt(dishQuantityInput.value);
+            
+            if (!dishName) {
+                showNotification('请选择菜品', 'error');
+                return;
+            }
+            
+            if (isNaN(quantity) || quantity < 1) {
+                showNotification('请输入有效的份数', 'error');
+                return;
+            }
+            
+            // 查找菜品
+            const dish = dishes.find(d => d.name === dishName);
+            if (!dish) return;
+            
+            // 检查是否已存在
+            const existingIndex = currentList.findIndex(item => item.name === dishName);
+            if (existingIndex !== -1) {
+                currentList[existingIndex].quantity += quantity;
+            } else {
+                currentList.push({
+                    name: dishName,
+                    quantity: quantity,
+                    ingredients: [...dish.ingredients]
+                });
+            }
+            
+            // 更新UI
+            updateDishList();
+            showNotification(`已添加${quantity}份${dishName}`, 'success');
+        });
+        
+        // 更新菜品清单
+        function updateDishList() {
+            dishList.innerHTML = '';
+            
+            currentList.forEach((dish, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${dish.name}</td>
+                    <td>${dish.quantity}</td>
+                    <td class="ingredient-actions">
+                        <button class="action-btn remove-btn" onclick="removeFromList(${index})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </td>
+                `;
+                dishList.appendChild(row);
+            });
+        }
+        
+        // 清空菜品清单
+        clearListBtn.addEventListener('click', function() {
+            currentList = [];
+            updateDishList();
+            dishDetails = {};
+            dishResults.innerHTML = '';
+            showNotification('菜品清单已清空', 'success');
+        });
+        
+        // 从清单中移除菜品
+        window.removeFromList = function(index) {
+            const dishName = currentList[index].name;
+            currentList.splice(index, 1);
+            updateDishList();
+            showNotification(`已移除${dishName}`, 'success');
+        };
+        
+        // 计算配料明细
+        calculateBtn.addEventListener('click', function() {
+            if (currentList.length === 0) {
+                showNotification('请先添加菜品到清单', 'error');
+                return;
+            }
+            
+            dishDetails = {};
+            dishResults.innerHTML = '';
+            
+            // 计算每个菜品的配料
+            currentList.forEach(dish => {
+                // 存储每个菜品的配料详情
+                dishDetails[dish.name] = {
+                    quantity: dish.quantity,
+                    ingredients: []
+                };
+                
+                // 计算该菜品的配料
+                dish.ingredients.forEach(ingredient => {
+                    const amount = ingredient.amount * dish.quantity;
+                    
+                    // 添加到菜品详情
+                    dishDetails[dish.name].ingredients.push({
+                        name: ingredient.name,
+                        amount: amount,
+                        unit: ingredient.unit
+                    });
+                });
+            });
+            
+            // 显示菜品结果
+            displayDishResults();
+            
+            // 切换到导出标签
+            tabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(tc => tc.classList.remove('active'));
+            document.querySelector('.tab[data-tab="export"]').classList.add('active');
+            document.getElementById('export-tab').classList.add('active');
+            
+            showNotification('计算完成！请查看导出结果', 'success');
+        });
+        
+        // 显示菜品结果
+        function displayDishResults() {
+            dishResults.innerHTML = '<h3><i class="fas fa-utensils"></i> 菜品配料明细</h3>';
+            
+            currentList.forEach(dish => {
+                const dishGroup = document.createElement('div');
+                dishGroup.className = 'dish-group';
+                
+                dishGroup.innerHTML = `
+                    <h3>${dish.name} (${dish.quantity}份)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>配料名称</th>
+                                <th>重量</th>
+                                <th>单位</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${dishDetails[dish.name].ingredients.map(ing => `
+                                <tr>
+                                    <td>${ing.name}</td>
+                                    <td>${ing.amount.toFixed(2)}</td>
+                                    <td>${ing.unit}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+                
+                dishResults.appendChild(dishGroup);
+            });
+        }
+        
+        // 导出Excel
+        exportBtn.addEventListener('click', function() {
+            if (currentList.length === 0) {
+                showNotification('没有数据可以导出', 'error');
+                return;
+            }
+            
+            // 创建工作簿
+            const wb = XLSX.utils.book_new();
+            
+            // 准备数据
+            const data = [
+                ['保时捷员工餐'],
+                ['菜品名称']
+            ];
+            
+            // 添加菜品数据
+            currentList.forEach(item => {
+                // 添加菜品名称行
+                data.push([item.name, item.quantity,'份']);
+                
+                // 添加该菜品的配料
+                dishDetails[item.name].ingredients.forEach(ing => {
+                    data.push([ing.name, ing.amount.toFixed(2), ing.unit]);
+                });
+                
+                // 添加空行分隔
+                data.push(['']);
+            });
+            
+            // 创建工作表
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            XLSX.utils.book_append_sheet(wb, ws, "菜单配料清单");
+            
+            // 设置列宽
+            const wscols = [
+                { wch: 20 }, // 菜品名称列宽
+                { wch: 5 }, // 份数列宽
+                { wch: 20 }, // 配料名称列宽
+                { wch: 10 }, // 重量列宽
+                { wch: 5 }  // 单位列宽
+            ];
+            ws['!cols'] = wscols;
+            
+            // 导出文件
+            const filename = exportFilename.value.trim() || '菜单配料清单';
+            const date = new Date();
+            const dateString = `${date.getFullYear()}${(date.getMonth()+1).toString().padStart(2, '0')}${date.getDate().toString().padStart(2, '0')}`;
+            XLSX.writeFile(wb, `${filename}_${dateString}.xlsx`);
+            
+            showNotification('导出成功！已包含菜品信息', 'success');
+        });
+        
+        // 显示通知
+        function showNotification(message, type) {
+            notification.textContent = message;
+            notification.className = `notification ${type}`;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
