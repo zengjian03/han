@@ -23,6 +23,13 @@
         "ratio": 1.597
       }
     },
+	{
+      "key": "huban",
+      "name": "弹幕|小窗",
+      "type": 3,
+      "jar": "https://gitee.com/zj521jj/little-tiger-spot/raw/master/jar/HubanTC.jar",
+      "api": "csp_Huban"
+    },
     {
       "key": "本地",
       "name": "☀本地🔹视频",

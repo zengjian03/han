@@ -22,6 +22,21 @@
       "name": "网弹|旧设置",
       "type": 3,
       "api": "csp_HBset"
+    },{
+      "key": "huban",
+      "name": "弹幕|小窗",
+      "type": 3,
+      "jar": "https://gitee.com/zj521jj/little-tiger-spot/raw/master/jar/HubanTC.jar",
+      "api": "csp_Huban"
+    },
+	    {
+      "key": "全网",
+      "name": "全网|短剧",
+      "type": 3,
+      "api": "csp_HBqkDj3",
+       "ext": {
+        "site": "http://xsayang.fun:14710"
+      }
     },
     {
       "key": "聚合",

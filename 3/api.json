@@ -24,6 +24,13 @@
       "type": 3,
       "api": "csp_LocalFile"
     },
+	{
+      "key": "huban",
+      "name": "弹幕|小窗",
+      "type": 3,
+      "jar": "https://gitee.com/zj521jj/little-tiger-spot/raw/master/jar/HubanTC.jar",
+      "api": "csp_Huban"
+    },
     {
       "key": "AList",
       "name": "小雅｜合集",

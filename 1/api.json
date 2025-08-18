@@ -49,11 +49,11 @@
                 "ratio": 1.433
             },
             "ext": "https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/json/aliShare.json"
-        },    {
+        },  {
       "key": "huban",
       "name": "弹幕|小窗",
       "type": 3,
-      "jar": "https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/jar/HubanTC.jar",
+      "jar": "https://gitee.com/zj521jj/little-tiger-spot/raw/master/jar/HubanTC.jar",
       "api": "csp_Huban"
     },
         {
