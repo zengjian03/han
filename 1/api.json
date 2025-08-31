@@ -49,17 +49,7 @@
             "ext": {
                 "site": "https://m.hkybqufgh.com,https://m.sizhengxt.com,https://m.9zhoukj.com,https://m.sizhengxt.com,https://m.jiabaide.cn"
             }
-        },{
-      "key": "追剧达人",
-      "name": "追剧达人┃影视",
-      "type": 3,
-    "api": "./lib/drpy2.min.js",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "order_num": 0,
-      "ext": "./js/追剧达人.js"
-    }, {
+        }, {
             "key": "AV4K影视",
             "name": "AV4K｜影视",
             "type": 3,
@@ -184,8 +174,6 @@
     }
   ],
 
-
-  "logo": "https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1716545739254/fc1b89e152cd4aa28d295107cb6c56c9.gif",
   "lives": [
     
 
