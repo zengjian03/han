@@ -49,13 +49,14 @@
                 "ratio": 1.433
             },
             "ext": "https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/json/aliShare.json"
-        },  {
-      "key": "huban",
-      "name": "弹幕|小窗",
-      "type": 3,
-      "jar": "https://gitee.com/zj521jj/little-tiger-spot/raw/master/jar/HubanTC.jar",
-      "api": "csp_Huban"
-    },
+        }, {
+"key": "配置",
+"name": "懒羊羊弹幕小窗",
+"type": 3,
+"api": "csp_ConfigCenter",
+"playerType": 2,
+"jar": "http://117.50.184.199:97/jar/custom_spider.jar"
+},
         {
             "key": "热播影视",
             "name": "热播｜APP",
