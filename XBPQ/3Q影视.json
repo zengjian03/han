@@ -1,0 +1,17 @@
+{
+    "主页url": "https://qqqys.com/",
+    "搜索url": "https://qqqys.com/?s={wd}",
+    "搜索数组": "main-content\">&&</article>",
+    "简介": "描述：&&<br>",
+    "导演": "导演：&&<br>",
+    "主演": "主演：&&<br>",
+    "影片年代": "年份：&&<br>",
+    "影片地区": "地区：&&<br>",
+    "线路数组": "entry-content&&</div>",
+    "线路标题": "播放源",
+    "播放数组": "entry-content&&</div>",
+    "播放列表": "<a href=&&</a>",
+    "播放链接": "href=\"&&\"",
+    "分类": "电影$movie#剧集$tv#动漫$cartoon#综艺$variety#短剧$short",
+    "分类url": "https://qqqys.com/category/{cateId}/page/{catePg}"
+}

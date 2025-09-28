@@ -1,0 +1,127 @@
+    "lives": [
+        {
+          "name": "涵萌视界",
+          "type":"0",
+          "pass": true,
+          "url":"https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/live/hmlive.txt",
+          "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
+          "logo": "https://epg.iill.top/logo/{name}.png"
+        },
+		{
+            "name": "AI拾光",
+            "type": 0,
+            "url": "https://ghproxy.net/raw.githubusercontent.com/xmbjm/IPTV/master/output/user_result.txt",
+            "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+            "logo": "https://live.fanmingming.cn/tv/{name}.png",
+            "playerType": 2,
+            "timeout": 10
+        },
+		        {
+            "name": "AIGuovin",
+            "type": 0,
+            "url": "https://gitee.com/mytv-android/iptv-api/raw/master/output/result.m3u",
+            "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+            "playerType": 2,
+            "timeout": 10
+        },
+        {
+          "name": "BMCH",
+          "type":"0",
+          "pass": true,
+          "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com/big-mouth-cn/tv/main/iptv-ok.m3u",
+          "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
+          "logo": "https://epg.v1.mk/logo/{name}.png"
+        },
+        {
+          "name": "Tianmu",
+          "type":"0",
+          "pass": true,
+          "url": "https://ghfile.geekertao.top/https://raw.githubusercontent.com/TianmuTNT/iptv/main/iptv.txt",
+          "epg": "https://epg.v1.mk/json?ch={name}&date={date}",     
+          "logo": "https://epg.v1.mk/logo/{name}.png"
+        },
+        {
+	      "name": "范明明",
+	      "type":"0",
+        "pass": true,
+	      "url": "https://live.fanmingming.cn/tv/m3u/ipv6.m3u"
+    	},{
+          "name": "本地live文件",
+          "type":"0",
+          "pass": true,
+          "url":"./本地直播源.txt",
+          "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
+          "logo": "https://epg.iill.top/logo/{name}.png"
+        },
+		{
+      "name": "AI直播",
+      "type": 0,
+      "url": "https://github.3x25.com/https://raw.githubusercontent.com/PizazzGY/TV/master/output/user_result.txt",
+      "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+      "playerType": 1,
+      "timeout": 10
+    },
+    {
+      "name": "Guovin",
+      "type": 0,
+      "url": "https://gitee.com/mytv-android/iptv-api/raw/master/output/result.m3u",
+      "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",
+      "timeout": 10
+    },
+    {
+      "name": "虎牙一起看",
+      "type": 3,
+      "api": "csp_Feiyang",
+      "url": "https://yun.urldwz.com/f/BE9PSL/huyayqk.m3u",
+      "timeout": 10,
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "斗鱼一起看",
+      "type": 3,
+      "api": "csp_Feiyang",
+      "url": "https://yun.urldwz.com/f/NR9qiA/douyuyqk.m3u",
+      "timeout": 10,
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "YY轮播",
+      "type": 3,
+      "api": "csp_Feiyang",
+      "url": "https://yun.urldwz.com/f/dlkycZ/yylunbo.m3u",
+      "timeout": 10,
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "B站直播",
+      "type": 3,
+      "api": "csp_Feiyang",
+      "url": "https://yun.urldwz.com/f/9XBkHK/bilibili.m3u",
+      "timeout": 10,
+      "ua": "okhttp/3.15"
+    },
+    {
+      "name": "电视Live",
+      "type": 0,
+      "url": "https://tv.iill.top/m3u/Gather",
+      "playerType": 2,
+      "timeout": 10
+    },
+    {
+      "name": "网络Live",
+      "type": 0,
+      "url": "https://tv.iill.top/m3u/Live",
+      "playerType": 2,
+      "timeout": 10
+    },
+    {
+      "name": "APTV",
+      "type": 0,
+      "url": "https://github.3x25.com/https://github.com/Kimentanm/aptv/raw/master/m3u/iptv.m3u",
+      "epg": "http://epg.51zmt.top:8000/api/diyp/?ch={name}&date={date}",
+      "logo": "https://epg.iill.top/logo/{name}.png",
+      "ua": "okhttp/3.15,AptvPlayer/1.4.0",
+      "timeout": 10
+    }
+        
+    ],
