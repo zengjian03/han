@@ -2,7 +2,7 @@
     "spider": "./svip.jar",
     "wallpaper": "https://sgmao.serv00.net/image/",
     "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
-  "logo": "https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/lib/logo.gif",
+  "logo": "./lib/logo.gif",
     "sites": [
         {
             "key": "豆瓣",
@@ -2154,7 +2154,7 @@
           "name": "涵萌视界",
           "type":"0",
           "pass": true,
-          "url":"https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/live/hmlive.txt",
+          "url":"./live/hmlive.txt",
           "epg": "http://cdn.1678520.xyz/epg/?ch={name}&date={date}",     
           "logo": "https://epg.iill.top/logo/{name}.png"
         },
