@@ -36,7 +36,7 @@
   "sites": [
     {
       "key": "drpy_js_豆瓣",
-      "name": "搜索 | 豆瓣[js]",
+      "name": "搜索 | 豆瓣",
       "type": 3,
       "api": "./lib/drpy2.min.js",
       "ext": "./lib/drpy.js",
