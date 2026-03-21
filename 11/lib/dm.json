@@ -1,0 +1,53 @@
+{
+    "作者": "Doubebly",
+    "name": "动漫巴士",
+    "主页url": "https://m.dmxixi.com",
+    "分类url": "/list-@class-@page.html",
+    "详情url": "/v/@ids.html",
+    "搜索url": "/s-@wd---------@page.html",
+    "请求头": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+        "accept-language": "zh-CN,zh;q=0.9"
+    },
+    "分类": "ul.nav_row li;a@text;a@href;(\\d+).html",
+    "分类过滤": "首页",
+    "首页数据": {
+        "数据列表": "ul.v_list li",
+        "vod_id": "a.title@href;(\\d+).html",
+        "vod_name": "a.title@text",
+        "vod_pic": "a.cover@data-bg",
+        "vod_remarks": "span.desc@text"
+    },
+    "分类数据": {
+        "数据列表": "ul.v_list li",
+        "vod_id": "a.title@href;(\\d+).html",
+        "vod_name": "a.title@text",
+        "vod_pic": "a.cover@data-bg",
+        "vod_remarks": "span.desc@text"
+    },
+    "详情数据": {
+        "标题": "h1.v_title@text",
+        "地区": "",
+        "年代": "",
+        "简介": "#intro p@text",
+        "主演": "",
+        "导演": "",
+        "标签": "p.v_desc@text",
+        "线路列表": "ul.play_from li",
+        "线路名字": "li@text",
+        "播放列表": "ul.play_list",
+        "选集列表": "li",
+        "选集名字": "a@text",
+        "选集地址": "a@href"
+    },
+    "搜索数据": {
+        "数据列表": "ul.v_list li",
+        "vod_id": "a.title@href;(\\d+).html",
+        "vod_name": "a.title@text",
+        "vod_pic": "a.cover@data-bg",
+        "vod_remarks": "span.desc@text"
+    },
+    "播放数据": {
+        "嗅探播放": true
+    }
+}
