@@ -10,11 +10,6 @@
         "repositories": "Release",
         "branches": "fongmi",
         "type_name": "FM影视"
-    },
-    {
-        "author": "FongMi",
-        "repositories": "Release",
-        "branches": "okjack",
-        "type_name": "FM+OK"
     }
+
 ]
