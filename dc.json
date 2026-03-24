@@ -8,25 +8,10 @@
       "name": "📛丨涵萌B",
       "url": "https://wget.la/https://raw.githubusercontent.com/zengjian03/han/master/2/api.json"
     },
-    {
-      "name": "📛丨涵萌C",
-      "url": "https://wget.la/https://raw.githubusercontent.com/zengjian03/han/master/3/api.json"
-    },
-	{
-      "name": "📛丨涵萌D",
-      "url": "https://wget.la/https://raw.githubusercontent.com/zengjian03/han/master/4/api.json"
-    },
-	{
-      "name": "📛丨涵萌E",
-      "url": "https://wget.la/https://raw.githubusercontent.com/zengjian03/han/master/5/api.json"
-    },
+
 	{
       "name": "📛丨涵萌KTV",
       "url": "https://wget.la/https://raw.githubusercontent.com/zengjian03/han/master/ktv/api.json"
-    },
-	{
-      "name": "📛丨涵萌F",
-      "url": "https://wget.la/https://raw.githubusercontent.com/zengjian03/han/master/6/api.json"
     }
   ]
 }
