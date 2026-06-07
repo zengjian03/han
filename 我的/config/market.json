@@ -1,0 +1,100 @@
+[
+    {
+        "name": "接口信息",
+        "list": [
+            {
+                "name": "官方网站",
+                "url": "https://chigua.eu.org",
+                "icon": "",
+                "copy": "",
+                "version": ""
+            },
+            {
+                "name": "使用说明",
+                "url": "https://v6.gh-proxy.org/https://raw.githubusercontent.com/chitue/dongliTV/refs/heads/main/README.md",
+                "icon": "",
+                "copy": "",
+                "version": ""
+            },
+            {
+                "name": "更新日志",
+                "url": "https://v6.gh-proxy.org/https://raw.githubusercontent.com/chitue/dongliTV/refs/heads/main/CHANGELOG.md",
+                "icon": "",
+                "copy": "",
+                "version": ""
+            },
+            {
+                "name": "当前版本",
+                "url": "currentVersion",
+                "icon": "",
+                "copy": "",
+                "version": ""
+            },
+            {
+                "name": "最新版本",
+                "url": "latestVersion",
+                "icon": "",
+                "copy": "",
+                "version": ""
+            }
+        ]
+    },
+    {
+        "name": "蜂蜜影视",
+        "list": [
+            {
+                "name": "蜂蜜影视",
+                "url": "https://v6.gh-proxy.org//https://raw.githubusercontent.com/FongMi/Release/fongmi/apk/leanback-armeabi_v7a.apk",
+                "icon": "",
+                "version": "电视32位"
+            },
+            {
+                "name": "蜂蜜影视",
+                "url": "https://v6.gh-proxy.org/https://raw.githubusercontent.com/FongMi/Release/fongmi/apk/leanback-arm64_v8a.apk",
+                "icon": "",
+                "version": "电视64位"
+            },
+            {
+                "name": "蜂蜜影视",
+                "url": "https://v6.gh-proxy.org/https://raw.githubusercontent.com/FongMi/Release/fongmi/apk/mobile-armeabi_v7a.apk",
+                "icon": "",
+                "version": "手机32位"
+            },
+            {
+                "name": "蜂蜜影视",
+                "url": "https://v6.gh-proxy.org/https://raw.githubusercontent.com/FongMi/Release/fongmi/apk/mobile-arm64_v8a.apk",
+                "icon": "",
+                "version": "手机64位"
+            }
+        ]
+    },
+    {
+        "name": "网盘资源",
+        "list": [
+            {
+                "name": "百度",
+                "url": "https://pan.baidu.com/s/13JGvmZlFIqJblaDFRGthVQ?pwd=2026",
+                "icon": "",
+                "version": "网盘资源"
+            },
+            {
+                "name": "夸克",
+                "url": "https://pan.quark.cn/s/514a56ac6d23",
+                "icon": "",
+                "version": "网盘资源"
+            },
+            {
+                "name": "UC",
+                "url": "https://drive.uc.cn/s/084710ec4dc04?public=1",
+                "icon": "",
+                "version": "网盘资源"
+            },
+            {
+                "name": "迅雷",
+                "url": "https://pan.xunlei.com/s/VOkvcQ2Pcn41Bh4gxAgyXggiA1?pwd=v5z7",
+                "icon": "",
+                "version": "网盘资源"
+            }
+        ]
+    }
+]

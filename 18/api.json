@@ -1,0 +1,673 @@
+{
+  "spider": "./spider.jar",
+  "wallpaper": "https://t.alcy.cc/fj",
+  "warningText":"🔥VIP接口🔥更新提示:
+📢接口一直在更新
+📢接口一直在更新
+📢没事多清理缓存",
+  "sites": [
+		{
+			"key": "hipy_js_豆瓣[官]",
+			"name": "豆瓣",
+			"type": 3,
+			"api": "./lib/drpy2.min.js",
+			"searchable": 1,
+			"quickSearch": 1,
+			"filterable": 1,
+			"order_num": 0,
+			"ext": "./js/豆瓣[官].js"
+		},{"key": "采集之王",
+            "name": "采集｜合集",
+            "type": 3,
+            "api": "./lib/drpy2.min.js",
+            "ext": "./js/采集之王.js?type=url&params=../json/采集静态.json$1"
+        },                {
+            "key": "嗷呜密剧",
+            "name": "嗷呜｜翻墙",
+            "type": 3,
+            "api": "./py/py_Xhm.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1
+        },{
+      "key": "采集之王密",
+      "name": "采集┃密视",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "order_num": 0,
+      "ext": "./js/采集之王.js?type=url&params=../json/采集[密]静态.json$1$"
+     // "ext": "./js/16wMV[听].js"
+    },	           {
+        "key": "js_madou",
+        "name": "[🈲]麻豆(js)",
+        "type": 3,
+         "api": "./js/madou.js",
+          "searchable": 1,
+          "quickSearch": 0,
+          "filterable": 0,
+           "changeable": 0
+          },     {
+      "key": "极乐国产禁区",
+      "name": "极乐国产🔞",
+      "type": 3,
+      "api": "csp_XBPQ",
+      "jar": "./jar/xyqxbpq.jar",            "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": {
+        "请求头": "User-Agent$MOBILE_UA",
+        "编码": "UTF-8",
+        "主页url": "https://iegeewiet-4mag.hscwang26y2m.xyz/jlhs",
+        "二次截取": "thumbnail-group&&<script>",
+        "数组": "<li&&</li>",
+        "标题": ">&&</a></h5>",
+        "副标题": "🔞少看少撸",
+        "图片": "data-original=\"&&\"",
+        "链接": "/vodplay/+/voddetail/&&/+-1-1/",
+        "直接播放": "1",
+        "分类url": "https://iegeewiet4mag.hscwang26y2m.xyz/vodtype/{cateId}-{catePg}/",
+        "分类数组": "<dd&&/dd>",
+        "分类标题": ">&&</a",
+        "分类ID": "/vodtype/&&/"
+      }
+    },
+    {
+            "key": "杂交",
+            "name": "杂交水稻",
+            "type": 3,
+            "jar": "./jar/XBPQ.jar",
+            "api": "csp_XBPQ",
+            "ext": {
+                "分类url": "https://dogmovie.net/{cateId}/{catePg}/",
+                "分类": "Anal Dog Sex$anal-dog-sex#Asian Dog Sex$asian-dog-sex#Dog Cock$dog-cock#Dog Cum$dog-cum#Dog Lick$dog-lick#Doggy Style Sex$doggy-style-sex#Girl Dog Sex$girl-dog-sex#Lesbian Dog Sex$lesbian-dog-sex#Man Dog Sex$man-dog-sex#Woman Dog Sex$woman-dog-sex",
+                "直接播放": "1",
+                "简介": "🍁水印广告勿信，谨防诈骗🍁"
+            }
+        },
+        {
+            "key": "巨乳阁",
+            "name": "巨乳阁",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "jar": "./jar/XBPQ.jar",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "ext": {
+                "主页url": "https://bve.jrg6.life/cn/home/web/",
+                "直接播放": "1",
+                "数组": "<a&&</a>",
+                "标题": "</span>&&</p>",
+                "图片": "src=\"&&\"",
+                "链接": "href=\"&&\"",
+                "分类url": "https://bve.jrg6.life/vodtype/{cateId}-{catePg}.html",
+                "分类数组": "&&</a>",
+                "分类标题": "<small>&&</small>",
+                "分类ID": "/vodtype/&&.html"
+            }
+        },
+        {
+            "key": "蘑菇视频",
+            "name": "🔞蘑菇视频",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "jar": "./jar/xyqxbpq.jar",            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "ext": {
+                "作者": "暗黑乐哥",
+                "请求头": "User-Agent$MOBILE_UA",
+                "编码": "UTF-8",
+                "站名": "蘑菇视频",
+                "发布页": "",
+                "防丢url": "",
+                "主页url": "https://www.mogu2026.net",
+                "分类url": "https://www.mogu2026.net/category/cate{cateId}/{catePg}/",
+                "分类数组": "<a&&/a>",
+                "分类标题": ">&&<",
+                "分类ID": "/category/cate&&/",
+                "数组": "lazy lazyload&&</a>",
+                "链接": "href=\"&&\"",
+                "标题": "title=\"&&\"",
+                "图片": "data-cover=\"&&\"",
+                "线路数组": "ellipsis-2&&</div>",
+                "线路标题": "✨蘑菇专线",
+                "播放数组": "data-url&&</div>",
+                "播放列表": "=&&data-cdnline",
+                "播放标题": "✨播放",
+                "播放链接": "https://diik3zzrxh4hj.cloudfront.net+\"&&\"",
+                "简介": "【友情提醒：请不要相信视频中的广告，以免上当受骗！】",
+                "搜索模式": "1",
+                "搜索url": "https://www.mogu2026.net/search/{wd}/{pg}/"
+            }
+        },{
+            "key": "😍性处理",
+            "name": "😍性处理",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "jar": "./jar/XBPQ.jar",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "ext": {
+                "请求头": "User-Agent$Mozilla/5.0 (Linux; Android 13; M2102J2SC Build/TKQ1.221114.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/146.0.7680.14 Mobile Safari/537.36#Cookie$c6s_RobotVerify=1; gg_iscookie=1; gg_show_number6117=3; c6s_uv=2cb440f68796f85d0f5851941b415f0c",
+                "编码": "UTF-8",
+                "数组": "item&&/a>",
+                "标题": "title=\"&&\"",
+                "图片": "data-original=\"&&\"",
+                "副标题": "",
+                "链接": "href=\"&&\"",
+                "简介": "为您介绍👉+description\" content=\"&&\"",
+                "跳转播放链接": "<video*src=\"&&\"",
+                "嗅探词": ".mp4#.m3u8",
+                "搜索模式": "1",
+                "搜索url": "https://q1w0.xclzs61.cc/index.php?m=vod&wd={wd}&pg={pg}",
+                "分类url": "https://q1w0.xclzs61.cc/index.php?m=vod&tid={cateId}&pg={catePg};;z",
+                "分类": "国产精品$571#情色传媒$574# 91大神$575#日本有码$567#日本无码$568#字幕专区$569#制服丝袜$1502#强奸乱伦$1503#巨乳美乳$1504#欧美情色$570#动漫肉番$572#伪娘TS$576#网曝事件$941#剧情三级$942#"
+            }
+        },
+        {
+            "key": "😍性处理二",
+            "name": "😍性处理二",
+            "type": 3,
+            "api": "csp_XBPQ",
+            "jar": "./jar/XBPQ.jar",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "ext": {
+                "请求头": "User-Agent$Mozilla/5.0 (Linux; Android 13; M2102J2SC Build/TKQ1.221114.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/146.0.7680.14 Mobile Safari/537.36#Cookie$c6s_RobotVerify=1; gg_iscookie=1; gg_show_number6117=3; c6s_uv=2cb440f68796f85d0f5851941b415f0c",
+                "编码": "UTF-8",
+                "数组": "item&&/a>",
+                "标题": "title=\"&&\"",
+                "图片": "data-original=\"&&\"",
+                "副标题": "",
+                "链接": "href=\"&&\"",
+                "简介": "为您介绍👉+description\" content=\"&&\"",
+                "跳转播放链接": "<video*src=\"&&\"",
+                "嗅探词": ".mp4#.m3u8",
+                "搜索模式": "1",
+                "搜索url": "https://q1w0.xclzs61.cc/index.php?m=vod&wd={wd}&pg={pg}",
+                "分类url": "https://q1w0.xclzs61.cc/index.php?m=vod&wd={cateId}&pg={catePg};;z",
+                "分类": "乱伦$%E4%B9%B1%E4%BC%A6#熟女$%E7%86%9F%E5%A5%B3#母子$%E6%AF%8D%E5%AD%90#偷拍$%E5%81%B7%E6%8B%8D#按摩$%E6%8C%89%E6%91%A9#阿姨$%E9%98%BF%E5%A7%A8#女儿$%E5%A5%B3%E5%84%BF#自慰$%E8%87%AA%E6%85%B0#萝莉$%E8%90%9D%E8%8E%89#妈妈$%E5%A6%88%E5%A6%88#摄像头$%E6%91%84%E5%83%8F%E5%A4%B4#黑人$%E9%BB%91%E4%BA%BA#五十路$%E4%BA%94%E5%8D%81%E8%B7%AF#女厕$%E5%A5%B3%E5%8E%95#绿帽$%E7%BB%BF%E5%B8%BD#勾引$%E5%8B%BE%E5%BC%95#强上$%E5%BC%BA%E4%B8%8A#嫂子$%E5%AB%82%E5%AD%90#干妈$%E5%B9%B2%E5%A6%88#合集$%E5%90%88%E9%9B%86#"
+            }
+        },
+    {
+      "key": "36yihao",
+      "name": "36直播[密]",
+      "type": 3,
+      "api": "./lib/drpy2.min.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "order_num": 0,
+      "ext": "./js/36直播[密].js"
+    },    {
+      "key": "rcj",
+      "name": "as 丨采集",
+      "type": 1,
+      "api": "https://naixxzy.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "国产自拍",
+"精品日韩",
+"精品综合",
+"精品小说",
+"精品美图",
+"国产自拍",
+"主播诱惑",
+"探花约炮",
+"偷拍偷窥",
+"网曝吃瓜",
+"抖阴短片",
+"传媒剧情",
+"日韩主播",
+"日韩无码",
+"中文字幕",
+"AV解说",
+"换脸明星",
+"强奸乱伦",
+"女优明星",
+"欧美激情",
+"重口激情",
+"三级伦理",
+"剧情动漫",
+"SM调教",
+"女同性恋",
+"VR视角",
+"都市言情",
+"暴力侵犯",
+"家庭伦伦",
+"性感身体",
+"角色扮演",
+"福利姬"
+      ]
+    }
+  ],
+
+
+
+   "parses": [
+    {
+      "name": "线路1",
+      "type": 0,
+      "url": "https://jx.xmflv.com/?url=",
+      "ext": {
+        "header": {
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.57"
+        }
+      }
+    },
+    {
+      "name": "盘古解析",
+      "type": 0,
+      "url": "https://www.pangujiexi.com/pangu/?url="
+    },
+    {
+      "name": "解析1",
+      "type": 1,
+      "url": "http://pan.qiaoji8.com/tvbox/neibu.php?url=",
+      "ext": {
+        "flag": [
+          "qq",
+          "腾讯",
+          "qiyi",
+          "爱奇艺",
+          "奇艺",
+          "youku",
+          "优酷",
+          "sohu",
+          "搜狐",
+          "letv",
+          "乐视",
+          "mgtv",
+          "芒果",
+          "tnmb",
+          "seven",
+          "bilibili",
+          "1905"
+        ],
+        "header": {
+          "User-Agent": "okhttp/4.9.1"
+        }
+      }
+    },
+    {
+      "name": "巧技二",
+      "type": 1,
+      "url": "https://zy.qiaoji8.com/gouzi.php?url=",
+      "ext": {
+        "flag": [
+          "qq",
+          "腾讯",
+          "qiyi",
+          "爱奇艺",
+          "奇艺",
+          "youku",
+          "优酷",
+          "sohu",
+          "搜狐",
+          "letv",
+          "乐视",
+          "mgtv",
+          "芒果",
+          "tnmb",
+          "seven",
+          "bilibili",
+          "1905",
+          "NetFilx"
+        ],
+        "header": {
+          "User-Agent": "okhttp/4.9.1"
+        }
+      }
+    }
+  ],
+
+
+  "logo": "https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1716545739254/fc1b89e152cd4aa28d295107cb6c56c9.gif",
+  "lives": [
+    
+
+    {
+      "name": "直播二",
+      "type": 0,
+      "url": "./lib/xinzb.txt",
+      "ua": "okhttp/3.15",
+      "playerType": 2
+    }
+  ],
+
+    "rules": [    {
+      "name": "♻️量非",
+      "hosts": [
+        "lz",
+        "vip.lz",
+        "v.cdnlz",
+        "hd.lz",
+        "ffzy",
+        "vip.ffzy",
+        "hd.ffzy"
+      ],
+      "regex": [
+        "#EXT-X-DISCONTINUITY\r*\n*#EXTINF:6.666667,[\\s\\S]*?#EXT-X-DISCONTINUITY",
+        "#EXT-X-DISCONTINUITY\r*\n*#EXTINF:6.600000,[\\s\\S]*?#EXT-X-DISCONTINUITY"
+      ]
+    },
+    {
+      "name": "♻️索尼",
+      "hosts": [
+        "suonizy",
+        "qrssv.com"
+      ],
+      "regex": [
+        "15.1666",
+        "15.2666"
+      ]
+    },
+    {
+      "name": "♻️乐视",
+      "hosts": [
+        "leshiyun"
+      ],
+      "regex": [
+        "15.92"
+      ]
+    },
+    {
+      "name": "♻️优质",
+      "hosts": [
+        "yzzy",
+        "playback"
+      ],
+      "regex": [
+        "16.63",
+        "18.66",
+        "17.66",
+        "19.13"
+      ]
+    },
+    {
+      "name": "♻️快看",
+      "hosts": [
+        "kuaikan",
+        "vip.kuaikan"
+      ],
+      "regex": [
+        "15.32",
+        "15.231",
+        "18.066"
+      ]
+    },
+    {
+      "name": "♻️360",
+      "hosts": [
+        "lyhuicheng"
+      ],
+      "regex": [
+        "#EXTINF.*?\\s+.*?hrz8QcR9.*?\\.ts\\s+",
+        "#EXT-X-KEY:METHOD=NONE[\\s\\S]*?#EXT-X-DISCONTINUITY"
+      ]
+    },
+    {
+      "name": "♻️开源棋牌",
+      "hosts": [
+        "askzycdn",
+        "jkunbf",
+        "bfikuncdn",
+        "bfaskcdn"
+      ],
+      "regex": [
+        "#EXT-X-KEY:METHOD=NONE\r*\n*#EXTINF:5,[\\s\\S]*?#EXT-X-DISCONTINUITY",
+        "#EXT-X-KEY:METHOD=AES-128,URI=\"[^\"]+\"\r*\n*#EXTINF:3.333,[\\s\\S]*?#EXT-X-DISCONTINUITY"
+      ]
+    },
+    {
+      "name": "♻️暴风",
+      "hosts": [
+        "bfengbf.com",
+        "bfzy",
+        "c1"
+      ],
+      "regex": [
+        "#EXTINF.*?\\s+.*?adjump.*?\\.ts\\s+",
+        "#EXT-X-DISCONTINUITY\r*\n*#EXTINF:3,[\\s\\S]*?#EXT-X-DISCONTINUITY"
+      ]
+    },
+    {
+      "name": "♻️农民",
+      "hosts": [
+        "toutiaovod.com"
+      ],
+      "regex": [
+        "video/tos/cn"
+      ]
+    },
+    {
+      "name": "♻️火山",
+      "hosts": [
+        "huoshan.com"
+      ],
+      "regex": [
+        "item_id="
+      ]
+    },
+    {
+      "name": "♻️抖音",
+      "hosts": [
+        "douyin.com"
+      ],
+      "regex": [
+        "is_play_url="
+      ]
+    },
+    {
+      "name": "♻️磁力",
+      "hosts": [
+        "magnet"
+      ],
+      "regex": [
+        "最 新",
+        "直 播",
+        "更 新"
+      ]
+    },
+    {
+      "name": "♻️饭团点击",
+      "hosts": [
+        "dadagui",
+        "freeok",
+        "dadagui"
+      ],
+      "script": [
+        "document.querySelector(\"#playleft iframe\").contentWindow.document.querySelector(\"#start\").click();"
+      ]
+    },
+    {
+      "name": "♻️毛驴点击",
+      "hosts": [
+        "www.maolvys.com"
+      ],
+      "script": [
+        "document.getElementsByClassName('swal-button swal-button--confirm')[0].click()"
+      ]
+    },
+        {
+            "name": "农民",
+            "hosts": [
+                "toutiaovod.com"
+            ],
+            "regex": [
+                "video/tos/cn"
+            ]
+        },
+        {
+            "name": "火山",
+            "hosts": [
+                "huoshan.com"
+            ],
+            "regex": [
+                "item_id="
+            ]
+        },
+        {
+            "name": "抖音",
+            "hosts": [
+                "douyin.com"
+            ],
+            "regex": [
+                "is_play_url="
+            ]
+        },
+        {
+            "name": "饭团点击",
+            "hosts": [
+                "dadagui",
+                "freeok",
+                "dadagui"
+            ],
+            "script": [
+                "document.querySelector(\"#playleft iframe\").contentWindow.document.querySelector(\"#start\").click();"
+            ]
+        },
+        {
+            "name": "毛驴点击",
+            "hosts": [
+                "www.maolvys.com"
+            ],
+            "script": [
+                "document.getElementsByClassName('swal-button swal-button--confirm')[0].click()"
+            ]
+        },
+        {
+            "name": "ofiii",
+            "hosts": [
+                "www.ofiii.com"
+            ],
+            "script": [
+                "const play=document.getElementsByClassName('play_icon')[0],event=new MouseEvent('click',{bubbles:!0,cancelable:!0,view:window,screenX:100,screenY:100,clientX:50,clientY:50,button:0,shiftKey:!1,ctrlKey:!1,altKey:!1,metaKey:!1,modifierState:0});play.dispatchEvent(event);"
+            ]
+        },
+		{
+			"name": "量子广告",
+			"hosts": [
+				"vip.lz",
+				"hd.lz",
+				".cdnlz"
+			],
+			"regex": [
+				"#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:6\\.666667,[\\s\\S]*?#EXT-X-DISCONTINUITY",
+				"#EXTINF.*?\\s+.*?1o.*?\\.ts\\s+"
+			]
+		},
+		{
+			"name": "非凡广告",
+			"hosts": [
+				"vip.ffzy",
+				"hd.ffzy"
+			],
+			"regex": [
+				"20.52",
+				"#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:7\\.400000,[\\s\\S]*?#EXT-X-DISCONTINUITY",
+				"#EXTINF.*?\\s+.*?1170(20|32).*?\\.ts\\s+",
+				"#EXTINF.*?\\s+.*?116977.*?\\.ts\\s+"
+			]
+		},
+		{
+			"name": "索尼广告",
+			"hosts": [
+				"suonizy"
+			],
+			"regex": [
+				"#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:1\\.000000,[\\s\\S]*?#EXT-X-DISCONTINUITY",
+				"#EXTINF.*?\\s+.*?p1ayer.*?\\.ts\\s+",
+				"#EXTINF.*?\\s+.*?\\/video\\/original.*?\\.ts\\s+"
+			]
+		},
+		{
+			"name": "暴风广告",
+			"hosts": [
+				"bfzy",
+				"bfbfvip"
+			],
+			"regex": [
+				"#EXTINF.*?\\s+.*?adjump.*?\\.ts\\s+"
+			]
+		},{
+			"name": "棋牌广告",
+			"hosts": [
+				"bfzy",
+				"bfbfvip",
+				"p.b8bf.com"
+			],
+			"regex": [
+				"#EXT-X-DISCONTINUITY\r*\n*[\\s\\S]*?#EXT-X-DISCONTINUITY"
+			]
+		},
+		{
+			"name": "星星广告",
+			"hosts": [
+				"aws.ulivetv.net"
+			],
+			"regex": [
+				"#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:8,[\\s\\S]*?#EXT-X-DISCONTINUITY"
+			]
+		},
+		{
+			"name": "快看广告",
+			"hosts": [
+				"kuaikan"
+			],
+			"regex": [
+				"#EXT-X-KEY:METHOD=NONE\\r*\\n*#EXTINF:5,[\\s\\S]*?#EXT-X-DISCONTINUITY",
+				"#EXT-X-KEY:METHOD=NONE\\r*\\n*#EXTINF:2\\.4,[\\s\\S]*?#EXT-X-DISCONTINUITY"
+			]
+		},
+		{
+			"name": "磁力广告",
+			"hosts": [
+				"magnet"
+			],
+			"regex": [
+				"更多",
+				"请访问",
+				"example",
+				"社 區",
+				"x u u",
+				"直 播",
+				"更 新",
+				"社 区",
+				"有趣",
+				"有 趣",
+				"英皇体育",
+				"全中文AV在线",
+				"澳门皇冠赌场",
+				"哥哥快来",
+				"美女荷官",
+				"裸聊",
+				"新片首发",
+				"UUE29"
+			]
+		},
+		{
+			"name": "一起看广告",
+			"hosts": [
+				"yqk88"
+			],
+			"regex": [
+				"18.4",
+				"15.1666",
+				"16.5333",
+				"#EXT-X-DISCONTINUITY\\r*\\n*[\\s\\S]*?#EXT-X-CUE-IN"
+			]
+		}]
+
+
+  
+}

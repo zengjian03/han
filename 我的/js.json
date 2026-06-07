@@ -1,0 +1,232 @@
+{
+    "logo": "./assets/logo2025121201.png",
+    "spider": "./jar/dongli-spider.jar",
+    "sites": [
+        {
+            "key": "ylsp",
+            "name": "永乐视频",
+            "type": 3,
+            "api": "./js/永乐视频.js",
+            "searchable": 1,
+            "changeable": 1
+        },{
+  "key": "ppnix",
+  "name": "PPnix",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/ppnix.html"
+},
+    {
+  "key": "wnvod_home",
+  "name": "导航主页",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/index.html"
+}
+,{
+  "key": "pomo_home",
+  "name": "Pomo 4K",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/pomo.html"
+}
+,{
+  "key": "歪比",
+  "name": "歪比",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/歪比.html"
+}
+,{
+  "key": "厂长",
+  "name": "厂长 4K",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/厂长.html"
+},{
+  "key": "ptt",
+  "name": "ptt 4K",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/ptt.html"
+}
+,{
+  "key": "a123tv",
+  "name": "a123tv",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/a123tv.html"
+}
+, {
+  "key": "fish",
+  "name": "FISH影视",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/fish.html"
+} ,{
+  "key": "libvio",
+  "name": "LIBVIO",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/libvio.html"
+}  ,{
+  "key": "枫叶",
+  "name": "枫叶",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/枫叶.html"
+},
+           {
+            "key": "采集之王",
+            "name": "采集之王",
+            "type": 3,
+            "api": "./js/drpy2.min.js",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "order_num": 1,
+            "ext": "./js/采集之王.js?type=url&params=../json/采集.json"
+        },	{
+			"key": "hipy_js_腾讯弹幕[官]",
+			"name": "腾讯弹幕",
+			"type": 3,
+			"api": "./lib/drpy2.min.js",
+			"searchable": 1,
+			"quickSearch": 1,
+			"filterable": 1,
+			"order_num": 0,
+			"ext": "./js/腾讯弹幕.js"
+		},
+		{
+			"key": "hipy_js_芒果视频[官]",
+			"name": "芒果视频",
+			"type": 3,
+			"api": "./lib/drpy2.min.js",
+			"searchable": 1,
+			"quickSearch": 1,
+			"filterable": 1,
+			"order_num": 0,
+			"ext": "./js/芒果视频.js"
+		},{
+			"key": "hipy_js_爱奇艺[官]",
+			"name": "爱奇艺",
+			"type": 3,
+			"api": "./lib/drpy2.min.js",
+			"searchable": 1,
+			"quickSearch": 1,
+			"filterable": 1,
+			"order_num": 0,
+			"ext": "./js/爱奇艺.js"
+		},
+             {
+            "key": "直播转点播",
+            "name": "🐼️电视┃直播",
+            "type": 3,
+            "searchable": 0,
+            "api": "./js/live2vod.js",
+            "ext": "./json/feimaolive.json"
+        }
+   
+     
+    ],
+    "headers": [
+        {
+            "host": "mgtv.ottiptv.cc",
+            "header": {
+                "User-Agent": "okHttp/Mod-1.4.0.0",
+                "Referer": "https://mgtv.ottiptv.cc/"
+            }
+        }
+    ],
+    "lives": [
+        {
+            "name": "冰茶",
+            "type": 0,
+            "playerType": 2,
+            "url": "https://fy.188766.xyz/?ip=&mima=mianfeidehaimaiqian&json=true",
+            "ua": "bingcha/1.1(mianfeifenxiang)"
+        }
+    ],
+    "parses": [
+        {
+            "name": "解析聚合",
+            "type": 3,
+            "url": "Web"
+        },
+        {
+            "name": "777",
+            "type": 0,
+            "url": "https://www.huaqi.live/?url="
+        },
+        {
+            "name": "jsonplayer",
+            "type": 0,
+            "url": "https://jx.jsonplayer.com/player/?url="
+        },
+        {
+            "name": "xmflv",
+            "type": 0,
+            "url": "https://jx.xmflv.com/?url="
+        }
+    ],
+    "flags": [
+        "youku",
+        "tudou",
+        "qq",
+        "qiyi",
+        "iqiyi",
+        "leshi",
+        "letv",
+        "sohu",
+        "imgo",
+        "mgtv",
+        "bilibili",
+        "pptv",
+        "PPTV",
+        "migu"
+    ],
+    "doh": [
+        {
+            "name": "Google",
+            "url": "https://dns.google/dns-query",
+            "ips": [
+                "8.8.4.4",
+                "8.8.8.8"
+            ]
+        },
+        {
+            "name": "Cloudflare",
+            "url": "https://cloudflare-dns.com/dns-query",
+            "ips": [
+                "1.1.1.1",
+                "1.0.0.1",
+                "2606:4700:4700::1111",
+                "2606:4700:4700::1001"
+            ]
+        },
+        {
+            "name": "AdGuard",
+            "url": "https://dns.adguard.com/dns-query",
+            "ips": [
+                "94.140.14.140",
+                "94.140.14.141"
+            ]
+        },
+        {
+            "name": "DNSWatch",
+            "url": "https://resolver2.dns.watch/dns-query",
+            "ips": [
+                "84.200.69.80",
+                "84.200.70.40"
+            ]
+        },
+        {
+            "name": "Quad9",
+            "url": "https://dns.quad9.net/dns-query",
+            "ips": [
+                "9.9.9.9",
+                "149.112.112.112"
+            ]
+        }
+    ]
+}

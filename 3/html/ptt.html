@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes, viewport-fit=cover">
+<title>PTT追劇大師 · 極光影院</title>
+<link href="https://cdn.jsdelivr.net/npm/video.js@8.23.3/dist/video-js.min.css" rel="stylesheet">
+<style>
+/* ----- 深邃毛玻璃 + 暖橙焦点 · 最终修复版 ----- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at 20% 30%, #0B0E14, #030507);
+  color: #F1F5F9;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  padding: 20px 18px 50px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #FACC15, #F97316, #EA580C);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.5px;
+}
+
+.search-box {
+  flex: 1;
+  max-width: 420px;
+  display: flex;
+  background: rgba(20, 25, 34, 0.75);
+  backdrop-filter: blur(16px);
+  border-radius: 60px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 4px 4px 4px 20px;
+  transition: all 0.2s;
+}
+
+.search-box:focus-within {
+  border-color: #F97316;
+  box-shadow: 0 0 0 2px rgba(249,115,22,0.3);
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  flex: 1;
+  font-size: 14px;
+  color: white;
+  outline: none;
+  padding: 10px 0;
+}
+
+.search-box input::placeholder {
+  color: #9ca3af;
+}
+
+.search-box button {
+  background: #F97316;
+  border: none;
+  border-radius: 50px;
+  padding: 6px 22px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search-box button:hover {
+  background: #FB923C;
+  transform: scale(0.96);
+}
+
+.tabs-primary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 12px;
+}
+
+.tab {
+  padding: 8px 22px;
+  border-radius: 40px;
+  background: rgba(30, 35, 44, 0.6);
+  backdrop-filter: blur(4px);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #b9c3d0;
+}
+
+.tab.active {
+  background: #F97316;
+  color: white;
+  box-shadow: 0 6px 12px rgba(249,115,22,0.35);
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+  padding: 6px 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.filter-label {
+  font-size: 12px;
+  color: #a1a9b5;
+  background: rgba(0,0,0,0.3);
+  padding: 4px 12px;
+  border-radius: 30px;
+}
+
+.filter-chip {
+  padding: 6px 16px;
+  background: rgba(25, 30, 40, 0.7);
+  border-radius: 32px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #cbd5e1;
+}
+
+.filter-chip.active {
+  background: #F97316;
+  color: white;
+  border-color: #F97316;
+  box-shadow: 0 2px 8px rgba(249,115,22,0.4);
+}
+
+/* 卡片网格 - 统一左下角年份，右下角集数 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 22px;
+  margin: 24px 0 32px;
+}
+
+.card {
+  background: rgba(22, 28, 36, 0.78);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.2s ease, border 0.2s;
+  cursor: pointer;
+  box-shadow: 0 12px 22px -8px rgba(0,0,0,0.4);
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: #F97316;
+}
+
+.poster {
+  aspect-ratio: 2 / 3;
+  width: 100%;
+  object-fit: cover;
+  background: #10161e;
+  display: block;
+}
+
+.info {
+  padding: 12px 12px 14px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 8px;
+}
+
+.card-badges {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.year-badge {
+  background: rgba(0,0,0,0.6);
+  border-radius: 20px;
+  padding: 3px 8px;
+  font-size: 10px;
+  color: #ffd966;
+}
+
+.episode-badge {
+  background: rgba(249,115,22,0.2);
+  border-radius: 20px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #ffb27a;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.page-btn {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 8px 24px;
+  border-radius: 40px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #e2e8f0;
+}
+
+.page-btn:not(:disabled):hover {
+  background: #F97316;
+  border-color: #F97316;
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 13, 0.94);
+  backdrop-filter: blur(20px);
+  z-index: 1000;
+  display: none;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.overlay.active {
+  display: block;
+}
+
+.detail-card {
+  max-width: 1000px;
+  margin: 35px auto;
+  background: rgba(18, 23, 32, 0.96);
+  backdrop-filter: blur(28px);
+  border-radius: 38px;
+  border: 1px solid rgba(249,115,22,0.5);
+  padding: 28px 28px;
+  position: relative;
+  box-shadow: 0 30px 50px rgba(0,0,0,0.7);
+}
+
+.close-detail {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(0,0,0,0.6);
+  width: 44px;
+  height: 44px;
+  border-radius: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  transition: 0.2s;
+  border: none;
+  color: white;
+}
+
+.close-detail:hover {
+  background: #F97316;
+  transform: rotate(90deg);
+}
+
+.detail-header {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.detail-poster {
+  width: 150px;
+  border-radius: 20px;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.detail-meta {
+  flex: 1;
+}
+
+.detail-title {
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff, #FACC15);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+
+.detail-info-grid {
+  background: rgba(0,0,0,0.35);
+  padding: 12px 16px;
+  border-radius: 24px;
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.detail-desc {
+  line-height: 1.6;
+  color: #dce5f0;
+  font-size: 14px;
+  margin-top: 12px;
+  background: rgba(0,0,0,0.2);
+  padding: 14px;
+  border-radius: 24px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.line-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0 16px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 18px;
+}
+
+.line-tab {
+  background: rgba(35, 42, 52, 0.8);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 7px 20px;
+  border-radius: 40px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.15s;
+  color: #ccc;
+}
+
+.line-tab.active {
+  background: #F97316;
+  color: white;
+  border-color: #F97316;
+}
+
+.episode-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.episode-btn, .play-now-btn {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid #3a4450;
+  padding: 8px 20px;
+  border-radius: 40px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.1s;
+  color: #f0f0f0;
+}
+
+.episode-btn:hover, .play-now-btn:hover {
+  background: #F97316;
+  color: #0a0e14;
+  border-color: #F97316;
+}
+
+.loading, .empty {
+  text-align: center;
+  padding: 50px;
+  color: #b9c3d0;
+  background: rgba(0,0,0,0.2);
+  border-radius: 32px;
+  margin: 30px 0;
+}
+
+@media (max-width: 640px) {
+  .grid { gap: 14px; grid-template-columns: repeat(2,1fr); }
+  .detail-header { flex-direction: column; align-items: center; text-align: center; }
+  .filter-chip { font-size: 11px; padding: 4px 12px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo">🎬 PTT視頻</div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="搜尋劇名、電影、動漫...">
+      <button id="searchBtn">搜尋</button>
+    </div>
+  </div>
+
+  <div class="tabs-primary" id="mainTabs">
+    <div class="tab active" data-type="tv">電視劇</div>
+    <div class="tab" data-type="movie">電影</div>
+    <div class="tab" data-type="anime">動漫</div>
+    <div class="tab" data-type="variety">綜藝</div>
+    <div class="tab" data-type="short">短劇</div>
+    <div class="tab" data-type="sport">體育</div>
+  </div>
+
+  <div id="filterArea" class="filter-bar"></div>
+
+  <div id="contentArea"><div class="loading">✨ 載入精彩影集...</div></div>
+  <div id="paginationArea"></div>
+</div>
+
+<div class="overlay" id="detailOverlay">
+  <div class="detail-card" id="detailCard"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/video.js@8.23.3/dist/video.min.js"></script>
+<script>
+(function(){
+  const BASE = 'https://ptt.red';
+  const TYPE_MAP = { tv:3, movie:1, anime:4, variety:2, short:66, sport:53 };
+  let currentType = 'tv';
+  let currentPage = 1;
+  let currentKeyword = '';
+  let totalPages = 1;
+  
+  let currentAreaId = '';
+  let currentYear = '';
+  
+  let currentVodId = null;
+  let currentLines = [];
+  let currentEpisodes = [];
+  let currentLineId = null;
+  let playerInstance = null;
+  
+  const COMMON_LINE_IDS = ['61','96','98','74','70','88','38','80','85','94','54','57'];
+  const LINE_NAME_MAP = {
+    '96':'玥雲','61':'鳳雲','98':'璽雲','38':'象雲','74':'浩雲','70':'航雲',
+    '88':'達雲','80':'磊雲','85':'揚雲','94':'琪雲','54':'亭雲','57':'埔雲'
+  };
+  
+  // 后备地区列表（当网页解析失败时使用）
+  const FALLBACK_AREAS = [
+    { name: '全部', value: '' },
+    { name: '大陸', value: '19' },
+    { name: '香港', value: '20' },
+    { name: '台灣', value: '81' },
+    { name: '日本', value: '83' },
+    { name: '韓國', value: '82' },
+    { name: '歐美', value: '22' },
+    { name: '泰國', value: '92' },
+    { name: '其他', value: '23' }
+  ];
+  
+  let fmSdk = null;
+  function waitForFM() {
+    return new Promise(resolve => {
+      if (window.fm && window.fm.req) { fmSdk = window.fm; return resolve(fmSdk); }
+      window.addEventListener('fmsdk', () => { fmSdk = window.fm; resolve(fmSdk); }, { once: true });
+      setTimeout(() => { if (window.fm) { fmSdk = window.fm; resolve(fmSdk); } else resolve(null); }, 2000);
+    });
+  }
+  
+  async function requestText(url) {
+    const fm = await waitForFM();
+    if (fm && fm.req) {
+      const resp = await fm.req(url, {
+        method: 'GET',
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Referer': BASE+'/' },
+        timeout: 25,
+        responseType: 'text',
+        credentials: 'include'
+      });
+      if (resp && resp.ok) return resp.body || '';
+      throw new Error(resp?.error || `HTTP ${resp?.status}`);
+    }
+    const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36', 'Referer': BASE+'/' } });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.text();
+  }
+  
+  function proxyImage(url) {
+    if (!url) return '';
+    if (url.startsWith('http')) {
+      if (fmSdk && fmSdk.res) try { return fmSdk.res(url, { credentials:'include', referer: BASE+'/' }); } catch(e) {}
+      return url;
+    }
+    const full = url.startsWith('/') ? BASE+url : BASE+'/'+url;
+    if (fmSdk && fmSdk.res) try { return fmSdk.res(full, { credentials:'include', referer: BASE+'/' }); } catch(e) {}
+    return full;
+  }
+  
+  // 解析卡片：统一提取年份（左下）和集数（右下）
+  function parseListHtml(html) {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const items = [];
+    const cards = doc.querySelectorAll('#videos .item .card');
+    cards.forEach(card => {
+      const a = card.querySelector('a.visited');
+      if (!a) return;
+      const href = a.getAttribute('href');
+      let id = null;
+      if (href && href.startsWith('/v/')) id = href.split('/')[2];
+      if (!id) return;
+      const img = card.querySelector('img');
+      let pic = img ? (img.getAttribute('data-src') || img.getAttribute('src')) : '';
+      if (pic && pic.startsWith('/')) pic = BASE+pic;
+      let title = a.innerText.trim() || (img?.alt) || '無標題';
+      
+      let year = '';
+      const yearSpan = card.querySelector('.imagelabel-bottom-left .badge-dark');
+      if (yearSpan) {
+        let yearText = yearSpan.innerText.trim();
+        let match = yearText.match(/(\d{4})/);
+        if (match) year = match[1];
+      }
+      
+      let episodeCount = '';
+      const epSpan = card.querySelector('.imagelabel-bottom-right .badge-success');
+      if (epSpan) {
+        let epText = epSpan.innerText.trim();
+        let match = epText.match(/共(\d+)集/);
+        if (match) episodeCount = `共${match[1]}集`;
+        else if (/^\d+集$/.test(epText)) episodeCount = epText;
+      }
+      items.push({ id, title, pic, year, episodeCount });
+    });
+    const pagination = doc.querySelector('.pagination');
+    if (pagination) {
+      const lastLink = pagination.querySelector('.page-item:last-child .page-link');
+      if (lastLink && lastLink.innerText && !isNaN(parseInt(lastLink.innerText))) totalPages = parseInt(lastLink.innerText);
+      else { const next = pagination.querySelector('.next a'); if(next && next.getAttribute('data-page')) totalPages = parseInt(next.getAttribute('data-page'))||1; }
+    }
+    return items;
+  }
+  
+  // 获取筛选器（地区/年份） - 修复非电影分类地区缺失
+  async function fetchAndRenderFilters() {
+    if (currentKeyword) {
+      document.getElementById('filterArea').innerHTML = '<div class="filter-group"><span class="filter-label">🔍 搜尋結果</span></div>';
+      return;
+    }
+    let typeId = TYPE_MAP[currentType] || 3;
+    let url = `${BASE}/p/${typeId}`;
+    try {
+      const html = await requestText(url);
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      let areaChips = [{ name: '全部', value: '' }];
+      let yearChips = [{ name: '全部', value: '' }];
+      
+      // 地区筛选：优先从 #w1 获取
+      const areaNav = doc.querySelector('#w1.nav-pills');
+      if (areaNav) {
+        const areaItems = areaNav.querySelectorAll('.nav-item a');
+        if (areaItems.length > 1) {
+          areaItems.forEach(a => {
+            let href = a.getAttribute('href');
+            let name = a.innerText.trim();
+            if (name === '全部') return;
+            let areaValue = '';
+            if (href) {
+              let match = href.match(/[?&](?:category_id|area_id)=([^&]+)/);
+              if (match) areaValue = match[1];
+            }
+            if (areaValue) areaChips.push({ name, value: areaValue });
+          });
+        }
+      }
+      // 如果解析到的地区只有“全部”，则使用后备列表（针对移动端或特殊分类）
+      if (areaChips.length <= 1) {
+        console.warn('地区解析失败，使用后备地区列表');
+        areaChips = [...FALLBACK_AREAS];
+      }
+      
+      // 年份筛选：电影用 #w3，其他用 #w2
+      let yearSelector = (currentType === 'movie') ? '#w3.nav-pills' : '#w2.nav-pills';
+      const yearNav = doc.querySelector(yearSelector);
+      if (yearNav) {
+        yearNav.querySelectorAll('.nav-item a').forEach(a => {
+          let href = a.getAttribute('href');
+          let name = a.innerText.trim();
+          if (name === '全部') return;
+          let y = '';
+          if (href && href.includes('year=')) y = href.split('year=')[1].split('&')[0];
+          if (y && /^\d{4}$/.test(y)) yearChips.push({ name, value: y });
+        });
+      }
+      // 去重“全部”
+      yearChips = [{ name: '全部', value: '' }, ...yearChips.filter(c => c.name !== '全部')];
+      
+      renderFilterBar(areaChips, yearChips);
+    } catch(e) {
+      console.warn(e);
+      // 出错时使用后备地区列表
+      renderFilterBar(FALLBACK_AREAS, [{ name: '全部', value: '' }]);
+    }
+  }
+  
+  function renderFilterBar(areaChips, yearChips) {
+    let html = `<div class="filter-group"><span class="filter-label">🌏 地區</span>`;
+    areaChips.forEach(chip => {
+      let active = (currentAreaId === chip.value) ? 'active' : '';
+      html += `<div class="filter-chip ${active}" data-filter="area" data-value="${chip.value}">${escapeHtml(chip.name)}</div>`;
+    });
+    html += `</div><div class="filter-group"><span class="filter-label">📅 年份</span>`;
+    yearChips.forEach(chip => {
+      let active = (currentYear === chip.value) ? 'active' : '';
+      html += `<div class="filter-chip ${active}" data-filter="year" data-value="${chip.value}">${escapeHtml(chip.name)}</div>`;
+    });
+    html += `</div>`;
+    document.getElementById('filterArea').innerHTML = html;
+    document.querySelectorAll('.filter-chip').forEach(el => {
+      el.addEventListener('click', (e) => {
+        const filter = el.getAttribute('data-filter');
+        const val = el.getAttribute('data-value');
+        if (filter === 'area') currentAreaId = val;
+        if (filter === 'year') currentYear = val;
+        currentPage = 1;
+        loadContent();
+        fetchAndRenderFilters();
+      });
+    });
+  }
+  
+  async function fetchList() {
+    let url = '';
+    if (currentKeyword) {
+      url = `${BASE}/node/search?title=${encodeURIComponent(currentKeyword)}&page=${currentPage}`;
+    } else {
+      let typeId = TYPE_MAP[currentType] || 3;
+      url = `${BASE}/p/${typeId}`;
+      let params = new URLSearchParams();
+      if (currentAreaId) {
+        if (currentType === 'movie') params.append('area_id', currentAreaId);
+        else params.append('category_id', currentAreaId);
+      }
+      if (currentYear) params.append('year', currentYear);
+      if (currentPage > 1) params.append('page', currentPage);
+      let query = params.toString();
+      if (query) url += '?' + query;
+    }
+    const html = await requestText(url);
+    const items = parseListHtml(html);
+    return { items, totalPages: totalPages || 1 };
+  }
+  
+  function renderGrid(items) {
+    const container = document.getElementById('contentArea');
+    if (!items.length) { container.innerHTML = '<div class="empty">😢 沒有找到影片，試試其他關鍵字</div>'; return; }
+    let html = '<div class="grid">';
+    items.forEach(it => {
+      let imgSrc = proxyImage(it.pic);
+      let yearDisplay = it.year ? it.year : '年份待補';
+      let episodeDisplay = it.episodeCount ? it.episodeCount : '全集';
+      html += `
+        <div class="card" data-id="${it.id}">
+          <img class="poster" src="${escapeHtml(imgSrc)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%23666%22%3E%3Cpath d=%22M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15h-2v-2h2v2zm0-4h-2V7h2v6z%22/%3E%3C/svg%3E'">
+          <div class="info">
+            <div class="title">${escapeHtml(it.title)}</div>
+            <div class="card-badges">
+              <span class="year-badge">📅 ${escapeHtml(yearDisplay)}</span>
+              <span class="episode-badge">🎬 ${escapeHtml(episodeDisplay)}</span>
+            </div>
+          </div>
+        </div>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => { const id = card.getAttribute('data-id'); if (id) openDetail(id); });
+    });
+  }
+  
+  function renderPagination(current, total) {
+    const area = document.getElementById('paginationArea');
+    if (total <= 1) { area.innerHTML = ''; return; }
+    let btns = '<div class="pagination">';
+    btns += `<button class="page-btn" data-page="${current-1}" ${current===1 ? 'disabled' : ''}>‹ 上一頁</button>`;
+    btns += `<span style="padding:6px 14px;background:rgba(0,0,0,0.4);border-radius:40px;">${current} / ${total}</span>`;
+    btns += `<button class="page-btn" data-page="${current+1}" ${current===total ? 'disabled' : ''}>下一頁 ›</button></div>`;
+    area.innerHTML = btns;
+    document.querySelectorAll('.page-btn[data-page]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        let np = parseInt(btn.getAttribute('data-page'));
+        if (!isNaN(np) && np >= 1 && np <= total) { currentPage = np; loadContent(); }
+      });
+    });
+  }
+  
+  async function loadContent() {
+    document.getElementById('contentArea').innerHTML = '<div class="loading">⏳ 載入中...</div>';
+    document.getElementById('paginationArea').innerHTML = '';
+    try {
+      const { items, totalPages: tp } = await fetchList();
+      totalPages = tp || 1;
+      renderGrid(items);
+      renderPagination(currentPage, totalPages);
+    } catch(err) {
+      document.getElementById('contentArea').innerHTML = `<div class="empty">❌ 載入失敗: ${escapeHtml(err.message)}</div>`;
+    }
+  }
+  
+  function extractM3u8(html) {
+    let m3u8 = null;
+    const ldMatch = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i);
+    if (ldMatch) try { let ld = JSON.parse(ldMatch[1]); if (ld.contentUrl && ld.contentUrl.includes('.m3u8')) m3u8 = ld.contentUrl; } catch(e) {}
+    if (!m3u8) { const srcMatch = html.match(/<source[^>]+src=["']([^"']+\.m3u8[^"']*)["']/i); if (srcMatch) m3u8 = srcMatch[1]; }
+    if (!m3u8) { const varMatch = html.match(/var\s+player_aaaa\s*=\s*(\{[\s\S]*?\})\s*;?/); if (varMatch) try { let cfg = JSON.parse(varMatch[1]); if (cfg.url) m3u8 = cfg.url; } catch(e) {} }
+    if (!m3u8) { const all = html.match(/https?:\/\/[^"'\s]+\.m3u8[^"'\s]*/gi); if (all && all.length) m3u8 = all[0]; }
+    return m3u8;
+  }
+  
+  async function parseLinesFromPlayHtml(html) {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    let lines = [];
+    const lineTabs = doc.querySelectorAll('#w1 .nav-tabs a, .nav-tabs a, .play_source_tab a');
+    lineTabs.forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href) return;
+      let parts = href.split('/').filter(p => p.trim());
+      let lineId = parts.pop();
+      if (isNaN(parseInt(lineId))) lineId = parts.pop();
+      if (lineId && !isNaN(parseInt(lineId))) {
+        let name = a.innerText.trim();
+        if (!name) name = LINE_NAME_MAP[lineId] || `線路${lineId}`;
+        if (!lines.find(l => l.id === lineId)) lines.push({ id: lineId, name });
+      }
+    });
+    return lines;
+  }
+  
+  async function playWithFullscreen(m3u8Url, title) {
+    if (!m3u8Url) { alert('獲取影片地址失敗'); return; }
+    const fm = await waitForFM();
+    if (fm && typeof fm.play === 'function') {
+      fm.play(m3u8Url, title || 'PTT影音');
+    } else {
+      alert('播放模塊未就緒，請刷新頁面重試');
+    }
+  }
+  
+  async function openDetail(vodId) {
+    currentVodId = vodId;
+    const detailUrl = `${BASE}/v/${vodId}`;
+    try {
+      const detailHtml = await requestText(detailUrl);
+      const doc = new DOMParser().parseFromString(detailHtml, 'text/html');
+      const title = doc.querySelector('h3')?.innerText?.trim() || doc.title.split(' - ')[0] || '影片詳情';
+      const poster = doc.querySelector('.img-fluid')?.getAttribute('src') || '';
+      
+      let desc = '';
+      const possibleDesc = doc.querySelector('.content-wrapper p, .card p, .row p:not(.share)');
+      if (possibleDesc && possibleDesc.innerText.trim()) {
+        desc = possibleDesc.innerText.trim();
+      } else {
+        const allP = doc.querySelectorAll('p');
+        for (let p of allP) {
+          let txt = p.innerText.trim();
+          if (txt.length > 20 && !txt.includes('聯繫我們') && !txt.includes('分享') && !txt.includes('觀看歷史記錄')) {
+            desc = txt; break;
+          }
+        }
+      }
+      if (!desc || desc.includes('觀看歷史記錄')) desc = '暫無劇情簡介';
+      
+      let infoHtml = '';
+      const rows = doc.querySelectorAll('.table-about tr');
+      rows.forEach(row => {
+        let th = row.querySelector('th')?.innerText, td = row.querySelector('td')?.innerText;
+        if (th && td) infoHtml += `<span><strong>${escapeHtml(th)}：</strong> ${escapeHtml(td)}</span>`;
+      });
+      
+      let episodes = [];
+      const seqContainer = doc.querySelector('.seqs');
+      if (seqContainer) {
+        seqContainer.querySelectorAll('a').forEach(a => {
+          let href = a.getAttribute('href');
+          let text = a.innerText.trim();
+          if (!href) return;
+          let parts = href.split('/').filter(p => p.trim());
+          let epNum = parts.pop();
+          if (epNum && !isNaN(parseInt(epNum))) episodes.push({ num: epNum, text });
+        });
+        episodes.sort((a, b) => parseInt(a.num) - parseInt(b.num));
+      }
+      currentEpisodes = episodes;
+      
+      let lines = [];
+      const testEpisode = episodes.length > 0 ? episodes[0].num : '1';
+      for (let lid of COMMON_LINE_IDS) {
+        let testUrl = `${BASE}/${vodId}/${testEpisode}/${lid}`;
+        try {
+          let playHtml = await requestText(testUrl);
+          let parsed = await parseLinesFromPlayHtml(playHtml);
+          if (parsed.length) {
+            lines = parsed;
+            break;
+          }
+        } catch(e) {}
+      }
+      if (lines.length === 0) {
+        const existingLineLinks = doc.querySelectorAll('.tabbable .nav-tabs a');
+        existingLineLinks.forEach(a => {
+          let href = a.getAttribute('href');
+          if (href) {
+            let parts = href.split('/').filter(p => p.trim());
+            let lineId = parts.pop();
+            if (lineId && !isNaN(parseInt(lineId))) {
+              let name = a.innerText.trim();
+              if (!lines.find(l => l.id === lineId)) lines.push({ id: lineId, name });
+            }
+          }
+        });
+      }
+      if (lines.length === 0) lines.push({ id: '1', name: '極速線路' });
+      currentLines = lines;
+      currentLineId = currentLines[0]?.id || null;
+      
+      const posterUrl = proxyImage(poster);
+      const lineTabsHtml = currentLines.map(line => `<button class="line-tab ${line.id === currentLineId ? 'active' : ''}" data-line="${line.id}">${escapeHtml(line.name)}</button>`).join('');
+      let episodesHtml = '';
+      if (currentEpisodes.length) {
+        episodesHtml = `<div class="episode-list">` + currentEpisodes.map(ep => `<button class="episode-btn" data-num="${ep.num}" data-line="${currentLineId}">${escapeHtml(ep.text)}</button>`).join('') + `</div>`;
+      } else {
+        episodesHtml = `<button class="play-now-btn" id="playNowBtn">🎬 立即播放 </button>`;
+      }
+      
+      const detailCard = document.getElementById('detailCard');
+      detailCard.innerHTML = `
+        <button class="close-detail" id="closeDetailBtn">✕</button>
+        <div class="detail-header">
+          <img class="detail-poster" src="${posterUrl}" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+          <div class="detail-meta">
+            <div class="detail-title">${escapeHtml(title)}</div>
+            <div class="detail-info-grid">${infoHtml || '<span>📺 影視資訊</span>'}</div>
+            <div class="detail-desc"><strong>📖 劇情介紹：</strong><br>${escapeHtml(desc.substring(0, 800))}</div>
+          </div>
+        </div>
+        <div class="line-tabs" id="detailLineTabs">${lineTabsHtml}</div>
+        <div id="episodeContainer">${episodesHtml}</div>
+      `;
+      document.getElementById('detailOverlay').classList.add('active');
+      document.getElementById('closeDetailBtn').onclick = () => closeDetail();
+      attachLineEvents();
+      if (currentEpisodes.length) attachEpisodeEvents();
+      else { let btn = document.getElementById('playNowBtn'); if (btn) btn.onclick = () => playSingle(); }
+    } catch(err) {
+      document.getElementById('detailCard').innerHTML = `<button class="close-detail" id="closeDetailBtn">✕</button><div class="empty">詳情載入失敗: ${escapeHtml(err.message)}</div>`;
+      document.getElementById('detailOverlay').classList.add('active');
+      document.getElementById('closeDetailBtn').onclick = () => closeDetail();
+    }
+  }
+  
+  function attachLineEvents() {
+    document.querySelectorAll('.line-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        let lineId = btn.getAttribute('data-line');
+        if (lineId) {
+          currentLineId = lineId;
+          document.querySelectorAll('.line-tab').forEach(t => t.classList.remove('active'));
+          btn.classList.add('active');
+          if (currentEpisodes.length) {
+            let newEpHtml = `<div class="episode-list">` + currentEpisodes.map(ep => `<button class="episode-btn" data-num="${ep.num}" data-line="${currentLineId}">${escapeHtml(ep.text)}</button>`).join('') + `</div>`;
+            document.getElementById('episodeContainer').innerHTML = newEpHtml;
+            attachEpisodeEvents();
+          } else {
+            let playBtn = document.getElementById('playNowBtn');
+            if (playBtn) playBtn.onclick = () => playSingle();
+          }
+        }
+      });
+    });
+  }
+  
+  function attachEpisodeEvents() {
+    document.querySelectorAll('.episode-btn').forEach(btn => {
+      btn.removeEventListener('click', episodeHandler);
+      btn.addEventListener('click', episodeHandler);
+    });
+  }
+  
+  async function episodeHandler(e) {
+    let btn = e.currentTarget;
+    let epNum = btn.getAttribute('data-num');
+    let lineId = btn.getAttribute('data-line') || currentLineId;
+    let playUrl = `${BASE}/${currentVodId}/${epNum}/${lineId}`;
+    try {
+      let playHtml = await requestText(playUrl);
+      let m3u8 = extractM3u8(playHtml);
+      if (m3u8) await playWithFullscreen(m3u8, `第${epNum}集`);
+      else alert(`獲取播放地址失敗 (線路:${lineId})`);
+    } catch(err) { alert(`播放失敗: ${err.message}`); }
+  }
+  
+  async function playSingle() {
+    if (!currentLineId) { alert('請先選擇線路'); return; }
+    let playUrl = `${BASE}/${currentVodId}/1/${currentLineId}`;
+    try {
+      let playHtml = await requestText(playUrl);
+      let m3u8 = extractM3u8(playHtml);
+      if (m3u8) await playWithFullscreen(m3u8, '完整影片');
+      else alert('無法獲取播放地址');
+    } catch(err) { alert(`請求失敗: ${err.message}`); }
+  }
+  
+  function closeDetail() {
+    document.getElementById('detailOverlay').classList.remove('active');
+    if (playerInstance) { playerInstance.dispose(); playerInstance = null; }
+  }
+  
+  async function performSearch(keyword) {
+    if (!keyword.trim()) return;
+    currentKeyword = keyword.trim();
+    currentAreaId = '';
+    currentYear = '';
+    currentPage = 1;
+    await loadContent();
+    document.getElementById('filterArea').innerHTML = '<div class="filter-group"><span class="filter-label">🔍 搜尋結果</span></div>';
+  }
+  
+  function switchType(type) {
+    currentType = type;
+    currentKeyword = '';
+    currentAreaId = '';
+    currentYear = '';
+    currentPage = 1;
+    loadContent();
+    fetchAndRenderFilters();
+    document.querySelectorAll('#mainTabs .tab').forEach(tab => {
+      let t = tab.getAttribute('data-type');
+      tab.classList.toggle('active', t === type);
+    });
+  }
+  
+  function escapeHtml(str) { if (!str) return ''; return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
+  
+  document.getElementById('searchBtn').addEventListener('click', () => performSearch(document.getElementById('searchInput').value));
+  document.getElementById('searchInput').addEventListener('keypress', e => { if (e.key === 'Enter') document.getElementById('searchBtn').click(); });
+  document.querySelectorAll('#mainTabs .tab').forEach(tab => tab.addEventListener('click', () => switchType(tab.getAttribute('data-type'))));
+  document.getElementById('detailOverlay').addEventListener('click', (e) => { if (e.target === document.getElementById('detailOverlay')) closeDetail(); });
+  
+  waitForFM().then(() => { loadContent(); fetchAndRenderFilters(); }).catch(() => { loadContent(); fetchAndRenderFilters(); });
+})();
+</script>
+</body>
+</html>

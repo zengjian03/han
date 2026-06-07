@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>导航主页</title>
+<style>
+  /* ========== 重置 & 基础 ========== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    color: #fff;
+  }
+
+  /* ========== 高斯模糊背景 ========== 
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255, 60, 60, .25) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(60, 120, 255, .25) 0%, transparent 60%),
+      radial-gradient(ellipse at 50% 80%, rgba(180, 60, 255, .2) 0%, transparent 60%);
+    filter: blur(80px);
+    z-index: -2;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: rgba(0, 0, 0, .35);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    z-index: -1;
+  }*/
+
+  /* ========== 页面容器 ========== */
+  .page {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .page::-webkit-scrollbar { width: 4px; }
+  .page::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 2px; }
+
+  /* ========== 标题 ========== */
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+    text-shadow: 0 2px 12px rgba(0,0,0,.4);
+    flex-shrink: 0;
+  }
+
+  /* ========== 网格布局 ========== */
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  /* ========== 导航按钮 ========== */
+  .nav-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    background: rgba(255, 255, 255, .08);
+    border: 2px solid rgba(255, 255, 255, .15);
+    border-radius: 14px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    transition: transform .2s, box-shadow .2s, border-color .2s, background .2s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-btn:hover,
+  .nav-btn.focused {
+    transform: scale(1.05);
+    background: rgba(255, 60, 60, .15);
+    border-color: #ff3c3c;
+    box-shadow:
+      0 0 0 3px rgba(255, 60, 60, .35),
+      0 4px 20px rgba(255, 60, 60, .3);
+  }
+  .nav-btn.focused::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 18px;
+    border: 2px solid rgba(255, 60, 60, .6);
+    animation: pulse-border 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse-border {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .3; }
+  }
+
+  /* ========== 手机端适配 ========== */
+  @media (max-width: 600px) {
+    .page { padding: 24px 16px 16px; }
+    .title { font-size: 22px; margin-bottom: 20px; }
+    .nav-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .nav-btn {
+      height: 64px;
+      font-size: 15px;
+      border-radius: 12px;
+    }
+  }
+
+  /* ========== 电视端大屏适配 ========== */
+  @media (min-width: 1200px) {
+    .nav-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 28px;
+    }
+    .nav-btn {
+      height: 100px;
+      font-size: 22px;
+    }
+  }
+
+  /* ========== 底部提示 ========== */
+  .hint {
+    margin-top: 30px;
+    font-size: 13px;
+    color: rgba(255,255,255,.4);
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="nav-grid" id="navGrid"></div>
+  
+</div>
+
+<script>
+(function () {
+  /* ====== JSON 数据（可直接替换为 fetch 加载外部文件） ====== */
+  /*const DATA = [
+    { "name": "导航网页", "url": "https://www.252035.xyz/xs/tvbox/nostr.html" },
+    { "name": "歪比巴卜", "url": "./歪比.html" },
+    { "name": "厂长影视", "url": "./厂长.html" },
+    { "name": "a123tv", "url": "./a123tv.html" },
+    { "name": "枫叶影视", "url": "./枫叶.html" }
+  ];*/
+
+  /* 如需从外部 JSON 加载，取消下面注释并注释掉上方 const DATA */
+  
+  let DATA = [];
+  fetch('./data.json')
+    .then(r => r.json())
+    .then(json => { DATA = json["数据"] || json; render(); })
+    .catch(() => console.warn('JSON 加载失败，使用内置数据'));
+  
+
+  const grid = document.getElementById('navGrid');
+  let buttons = [];
+  let focusIndex = -1;
+
+  /* ====== 渲染按钮 ====== */
+  function render() {
+    grid.innerHTML = '';
+    buttons = [];
+    DATA.forEach((item, i) => {
+      const a = document.createElement('a');
+      a.className = 'nav-btn';
+      a.href = item.url;
+      a.textContent = item.name;
+      a.dataset.index = i;
+      a.addEventListener('click', onBtnClick);
+      grid.appendChild(a);
+      buttons.push(a);
+    });
+  }
+
+  /* ====== 焦点管理 ====== */
+  function setFocus(index) {
+    if (index < 0 || index >= buttons.length) return;
+    buttons.forEach(b => b.classList.remove('focused'));
+    focusIndex = index;
+    buttons[focusIndex].classList.add('focused');
+    buttons[focusIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  /* ====== 按钮点击 ====== */
+  function onBtnClick(e) {
+    const idx = parseInt(e.currentTarget.dataset.index);
+    setFocus(idx);
+  }
+
+  /* ====== 键盘导航（电视遥控器方向键） ====== */
+  function getCols() {
+    if (!buttons.length) return 1;
+    const rect0 = buttons[0].getBoundingClientRect();
+    let cols = 1;
+    for (let i = 1; i < buttons.length; i++) {
+      if (buttons[i].getBoundingClientRect().top <= rect0.top + 2) cols++;
+      else break;
+    }
+    return cols;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!buttons.length) return;
+    const cols = getCols();
+    const rows = Math.ceil(buttons.length / cols);
+
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        setFocus(focusIndex < 0 ? 0 : Math.min(focusIndex + 1, buttons.length - 1));
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        setFocus(focusIndex < 0 ? buttons.length - 1 : Math.max(focusIndex - 1, 0));
+        break;
+      case 'ArrowDown':
+        e.preventDefault();
+        if (focusIndex < 0) { setFocus(0); break; }
+        if (focusIndex + cols < buttons.length) setFocus(focusIndex + cols);
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        if (focusIndex < 0) { setFocus(buttons.length - 1); break; }
+        if (focusIndex - cols >= 0) setFocus(focusIndex - cols);
+        break;
+      case 'Enter':
+      case 'OK':  // 部分电视遥控器
+        e.preventDefault();
+        if (focusIndex >= 0) buttons[focusIndex].click();
+        break;
+    }
+  });
+
+  /* ====== 初始化 ====== */
+  render();
+})();
+</script>
+</body>
+</html>

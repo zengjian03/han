@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>蛋蛋兔 WebHome</title>
+  <style>
+    /* ========== CSS 变量 ========== */
+    :root {
+      --panel-rgb: 38, 42, 48;
+      --panel: rgba(var(--panel-rgb), .72);
+      --panel-soft: rgba(var(--panel-rgb), .55);
+      --panel-strong: rgba(var(--panel-rgb), .88);
+      --line: rgba(255, 255, 255, .18);
+      --focus-color: #e53935;
+      --focus-glow: rgba(229, 57, 53, .4);
+      --text-primary: #f5f5f5;
+      --text-secondary: #b0b0b0;
+      --text-muted: #888;
+      --accent: #e53935;
+      --radius: 8px;
+      --radius-lg: 12px;
+      --spacing: 12px;
+      --card-width: 160px;
+      --card-height: 240px;
+    }
+
+    /* ========== 基础样式 ========== */
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    html:not(.fm-native), html:not(.fm-native) body {
+      background: #1a1d22;
+    }
+
+    /* ========== 主容器 ========== */
+    .app {
+      min-height: 100vh;
+      background: transparent;
+      padding-bottom: 60px;
+    }
+
+    /* ========== 顶部导航 ========== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--panel-strong);
+      backdrop-filter: blur(12px);
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      padding: 8px 16px;
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: var(--radius);
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .nav-tab:hover, .nav-tab:focus {
+      color: var(--text-primary);
+      background: rgba(255,255,255,.1);
+    }
+
+    .nav-tab.active {
+      color: var(--accent);
+      background: rgba(229,57,53,.15);
+    }
+
+    .nav-tab:focus {
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+      box-shadow: 0 0 8px var(--focus-glow);
+    }
+
+    /* ========== 搜索栏 ========== */
+    .search-bar {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+    }
+
+    .search-input {
+      padding: 8px 12px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-size: 14px;
+      width: 180px;
+      transition: all .2s;
+    }
+
+    .search-input:focus {
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+      border-color: var(--accent);
+      box-shadow: 0 0 8px var(--focus-glow);
+    }
+
+    .search-btn {
+      padding: 8px 16px;
+      background: var(--accent);
+      border: none;
+      border-radius: var(--radius);
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .search-btn:hover, .search-btn:focus {
+      background: #c62828;
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+      box-shadow: 0 0 8px var(--focus-glow);
+    }
+
+    /* ========== 功能按钮 ========== */
+    .action-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    .action-btn {
+      padding: 8px 16px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      color: var(--text-primary);
+      font-size: 14px;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .action-btn:hover, .action-btn:focus {
+      background: rgba(255,255,255,.18);
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+      box-shadow: 0 0 8px var(--focus-glow);
+    }
+
+    .action-btn .icon {
+      font-size: 16px;
+    }
+
+    /* ========== 分类导航 ========== */
+    .category-nav {
+      background: var(--panel-soft);
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .category-nav-inner {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .category-link {
+      padding: 6px 12px;
+      background: rgba(255,255,255,.08);
+      border: none;
+      border-radius: var(--radius);
+      color: var(--text-secondary);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .category-link:hover, .category-link:focus {
+      color: var(--text-primary);
+      background: rgba(255,255,255,.15);
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+      box-shadow: 0 0 8px var(--focus-glow);
+    }
+
+    /* ========== 内容区域 ========== */
+    .content-section {
+      padding: 16px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    /* ========== 视频卡片网格 ========== */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
+      gap: 16px;
+    }
+
+    .video-card {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all .2s;
+      border: 1px solid var(--line);
+    }
+
+    .video-card:hover, .video-card:focus {
+      transform: translateY(-2px);
+      outline: 3px solid var(--focus-color);
+      outline-offset: 2px;
+      box-shadow: 0 4px 16px var(--focus-glow);
+    }
+
+    .video-card:focus {
+      outline: 3px solid var(--focus-color);
+      box-shadow: 0 0 12px var(--focus-glow);
+    }
+
+    .video-card-img {
+      width: 100%;
+      height: var(--card-height);
+      object-fit: cover;
+      background: rgba(0,0,0,.3);
+    }
+
+    .video-card-info {
+      padding: 10px;
+    }
+
+    .video-card-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0 0 4px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .video-card-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* ========== 详情页浮层 ========== */
+    body.detail-active .app {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .detail-sheet {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: transparent;
+      display: none;
+      overflow-y: auto;
+    }
+
+    .detail-sheet.active {
+      display: block;
+    }
+
+    .detail-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .detail-header {
+      display: flex;
+      gap: 20px;
+      background: var(--panel-strong);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+    }
+
+    .detail-poster {
+      width: 200px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      background: rgba(0,0,0,.3);
+    }
+
+    .detail-info {
+      flex: 1;
+    }
+
+    .detail-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+    }
+
+    .detail-meta {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .detail-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .detail-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--text-primary);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .detail-close:hover, .detail-close:focus {
+      background: var(--accent);
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+      box-shadow: 0 0 8px var(--focus-glow);
+    }
+
+    /* ========== 线路列表 ========== */
+    .routes-section {
+      background: var(--panel);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      border: 1px solid var(--line);
+    }
+
+    .routes-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: var(--text-primary);
+    }
+
+    .routes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .route-card {
+      background: rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 12px;
+      cursor: pointer;
+      transition: all .2s;
+      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .route-card:hover, .route-card:focus {
+      background: rgba(255,255,255,.12);
+      border-color: var(--accent);
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+      box-shadow: 0 0 8px var(--focus-glow);
+    }
+
+    .route-card.current {
+      border-color: var(--accent);
+      background: rgba(229,57,53,.15);
+    }
+
+    .route-thumb {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4px;
+      background: rgba(0,0,0,.3);
+    }
+
+    .route-info {
+      flex: 1;
+    }
+
+    .route-name {
+      font-size: 13px;
+      font-weight: 500;
+      margin: 0 0 4px 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .route-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .route-badge {
+      padding: 2px 6px;
+      background: var(--accent);
+      border-radius: 4px;
+      font-size: 11px;
+      color: #fff;
+    }
+
+    /* ========== 加载状态 ========== */
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+
+    .loading-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--line);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ========== 空状态 ========== */
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      color: var(--text-muted);
+    }
+
+    /* ========== 移动端适配 ========== */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-wrap: wrap;
+      }
+
+      .nav-tabs {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .search-bar {
+        order: 2;
+        width: 100%;
+        margin: 8px 0 0 0;
+      }
+
+      .search-input {
+        width: 100%;
+      }
+
+      .action-btns {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 8px;
+      }
+
+      .detail-header {
+        flex-direction: column;
+      }
+
+      .detail-poster {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      :root {
+        --card-width: 120px;
+        --card-height: 180px;
+      }
+    }
+
+    /* ========== 电视端适配 ========== */
+    @media (min-width: 1200px) {
+      :root {
+        --card-width: 180px;
+        --card-height: 270px;
+      }
+
+      .video-card:focus {
+        transform: scale(1.02);
+      }
+    }
+
+    /* ========== 隐藏元素 ========== */
+    [aria-hidden="true"] {
+      visibility: hidden;
+    }
+
+    [tabindex="-1"]:not(.detail-sheet.active *) {
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <!-- 主应用容器 -->
+  <div class="app" id="app">
+    <!-- 顶部导航 -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">蛋蛋兔</div>
+        
+        <nav class="nav-tabs" role="tablist">
+          <button class="nav-tab active" data-tab="home" tabindex="0">首页</button>
+          <button class="nav-tab" data-tab="movie" tabindex="0">电影</button>
+          <button class="nav-tab" data-tab="tv" tabindex="0">连续剧</button>
+          <button class="nav-tab" data-tab="variety" tabindex="0">综艺</button>
+          <button class="nav-tab" data-tab="anime" tabindex="0">动漫</button>
+        </nav>
+
+        <div class="search-bar">
+          <input type="text" class="search-input" id="searchInput" placeholder="输入影片名称" tabindex="0">
+          <button class="search-btn" id="searchBtn" tabindex="0">搜索</button>
+        </div>
+
+        <div class="action-btns">
+          <button class="action-btn" id="liveBtn" tabindex="0">
+            <span class="icon">📺</span>
+            <span>直播</span>
+          </button>
+          <button class="action-btn" id="keepBtn" tabindex="0">
+            <span class="icon">❤️</span>
+            <span>收藏</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 分类导航 -->
+    <div class="category-nav" id="categoryNav">
+      <div class="category-nav-inner" id="categoryLinks"></div>
+    </div>
+
+    <!-- 内容区域 -->
+    <main class="content-section" id="contentSection">
+      <!-- 动态内容将在此加载 -->
+    </main>
+  </div>
+
+  <!-- 详情页浮层 -->
+  <div class="detail-sheet" id="detailSheet" aria-hidden="true">
+    <button class="detail-close" id="detailClose" tabindex="-1">✕</button>
+    <div class="detail-content" id="detailContent">
+      <!-- 详情内容将在此加载 -->
+    </div>
+  </div>
+
+  <script>
+    // ========== SDK 初始化和工具函数 ==========
+    const BASE_URL = 'https://www.dandantu.cc';
+    let fmReady = false;
+    let isLeanback = false;
+    let currentTab = 'home';
+    let currentCategory = '';
+    let currentPage = 1;
+
+    // 分类映射
+    const CATEGORY_MAP = {
+      movie: {
+        title: '电影',
+        categories: ['全部电影', '动作片', '喜剧片', '爱情片', '科幻片', '恐怖片', '剧情片', '战争片', '纪录片', '动漫电影', '奇幻片', '动画片', '犯罪片', '悬疑片']
+      },
+      tv: {
+        title: '连续剧',
+        categories: ['全部连续剧', '国产剧', '香港剧', '台湾剧', '韩国剧', '欧美剧', '日本剧', '泰国剧', '海外剧']
+      },
+      variety: {
+        title: '综艺',
+        categories: ['全部综艺', '内地综艺', '港台综艺', '日韩综艺', '欧美综艺']
+      },
+      anime: {
+        title: '动漫',
+        categories: ['全部动漫', '国产动漫', '日韩动漫', '欧美动漫', '海外动漫']
+      }
+    };
+
+    // 等待 SDK 就绪
+    function waitForSDK() {
+      return new Promise((resolve) => {
+        if (window.fm || window.fongmi) {
+          fmReady = true;
+          resolve();
+        } else {
+          window.addEventListener('fmsdk', () => {
+            fmReady = true;
+            resolve();
+          });
+          setTimeout(() => {
+            if (!fmReady) resolve();
+          }, 2000);
+        }
+      });
+    }
+
+    // 检测环境
+    function detectEnvironment() {
+      if (window.fongmiClient) {
+        isLeanback = window.fongmiClient.isLeanback === true;
+        document.documentElement.classList.add('fm-native');
+      }
+    }
+
+    // 网络请求
+    async function fetchAPI(url) {
+      try {
+        if (fmReady && window.fm && window.fm.req) {
+          const response = await fm.req(url, {
+            method: 'GET',
+            responseType: 'json',
+            timeout: 30
+          });
+          if (response.ok) return response.body;
+          throw new Error(response.error || `HTTP ${response.status}`);
+        } else {
+          // 浏览器 fallback - 使用模拟数据
+          return getMockData(url);
+        }
+      } catch (e) {
+        console.error('API请求失败:', e);
+        return getMockData(url);
+      }
+    }
+
+    // 处理图片 URL
+    function resolveImageUrl(url) {
+      if (!url) return '';
+      if (url.startsWith('data:')) return url;
+      if (url.startsWith('//')) return 'https:' + url;
+      if (!url.startsWith('http')) return 'https:' + url;
+      return url;
+    }
+
+    // 获取资源 URL
+    function getResourceUrl(url, headers = {}) {
+      const fullUrl = resolveImageUrl(url);
+      if (fmReady && window.fm && window.fm.res) {
+        return fm.res(fullUrl, { headers });
+      }
+      return fullUrl;
+    }
+
+    // ========== 模拟数据 ==========
+    function getMockData(url) {
+      const mockMovies = [
+        { vod_id: '1', vod_name: '复仇者联盟4：终局之战', vod_pic: 'https://picsum.photos/200/300?random=1', vod_remarks: '科幻片 / 2019年', vod_class: '科幻片' },
+        { vod_id: '2', vod_name: '流浪地球2', vod_pic: 'https://picsum.photos/200/300?random=2', vod_remarks: '科幻片 / 2023年', vod_class: '科幻片' },
+        { vod_id: '3', vod_name: '满江红', vod_pic: 'https://picsum.photos/200/300?random=3', vod_remarks: '剧情片 / 2023年', vod_class: '剧情片' },
+        { vod_id: '4', vod_name: '狂飙', vod_pic: 'https://picsum.photos/200/300?random=4', vod_remarks: '国产剧 / 2023年', vod_class: '国产剧' },
+        { vod_id: '5', vod_name: '三体', vod_pic: 'https://picsum.photos/200/300?random=5', vod_remarks: '国产剧 / 2023年', vod_class: '国产剧' },
+        { vod_id: '6', vod_name: '阿凡达：水之道', vod_pic: 'https://picsum.photos/200/300?random=6', vod_remarks: '科幻片 / 2022年', vod_class: '科幻片' },
+      ];
+
+      if (url.includes('ac=detail')) {
+        return {
+          list: [{
+            vod_id: '1',
+            vod_name: '复仇者联盟4：终局之战',
+            vod_pic: 'https://picsum.photos/200/300?random=1',
+            vod_class: '科幻片',
+            vod_year: '2019',
+            vod_area: '美国',
+            vod_content: '一声响指，宇宙间半数生命灰飞烟灭。几近绝望的复仇者们在惊奇队长的帮助下，决定背水一战...',
+            vod_play_url: '正片$https://example.com/video1.m3u8#HD中字$https://example.com/video2.m3u8',
+            vod_play_from: '线路1$线路2'
+          }]
+        };
+      }
+
+      return { list: mockMovies };
+    }
+
+    // ========== 页面渲染函数 ==========
+
+    // 渲染分类导航
+    function renderCategoryNav(tab) {
+      const container = document.getElementById('categoryLinks');
+      const config = CATEGORY_MAP[tab] || CATEGORY_MAP.movie;
+      
+      container.innerHTML = config.categories.map(cat => 
+        `<button class="category-link" data-category="${cat}" tabindex="0">${cat}</button>`
+      ).join('');
+
+      container.querySelectorAll('.category-link').forEach(link => {
+        link.addEventListener('click', () => {
+          const category = link.dataset.category;
+          loadCategoryContent(tab, category);
+        });
+      });
+    }
+
+    // 渲染视频卡片
+    function renderVideoGrid(videos) {
+      const container = document.getElementById('contentSection');
+      
+      if (!videos || videos.length === 0) {
+        container.innerHTML = '<div class="empty-state">暂无内容</div>';
+        return;
+      }
+
+      container.innerHTML = `
+        <h2 class="section-title">${currentCategory || CATEGORY_MAP[currentTab]?.title || '推荐'}</h2>
+        <div class="video-grid">
+          ${videos.map(v => `
+            <div class="video-card" 
+                 data-id="${v.vod_id || ''}" 
+                 data-name="${v.vod_name || ''}"
+                 data-pic="${v.vod_pic || ''}"
+                 tabindex="0"
+                 role="button">
+              <img class="video-card-img" 
+                   src="${getResourceUrl(v.vod_pic)}" 
+                   alt="${v.vod_name || ''}"
+                   loading="lazy">
+              <div class="video-card-info">
+                <h3 class="video-card-title">${v.vod_name || ''}</h3>
+                <p class="video-card-meta">${v.vod_remarks || v.vod_class || ''}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      container.querySelectorAll('.video-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.dataset.id;
+          if (id) loadDetail(id);
+        });
+      });
+    }
+
+    // 渲染详情页
+    function renderDetail(data) {
+      const container = document.getElementById('detailContent');
+      const routes = data.playlist || [];
+      
+      container.innerHTML = `
+        <div class="detail-header">
+          <img class="detail-poster" 
+               src="${getResourceUrl(data.vod_pic)}" 
+               alt="${data.vod_name}">
+          <div class="detail-info">
+            <h1 class="detail-title">${data.vod_name || ''}</h1>
+            <p class="detail-meta">${data.vod_class || ''} / ${data.vod_year || ''} / ${data.vod_area || ''}</p>
+            <p class="detail-desc">${data.vod_content || data.vod_blurb || '暂无简介'}</p>
+          </div>
+        </div>
+        
+        <div class="routes-section">
+          <h3 class="routes-title">切换线路（共${routes.length}条线路）</h3>
+          <div class="routes-grid">
+            ${routes.map((r, i) => `
+              <div class="route-card ${i === 0 ? 'current' : ''}" 
+                   data-url="${r.url || ''}"
+                   data-title="${r.title || data.vod_name}"
+                   tabindex="0"
+                   role="button">
+                <img class="route-thumb" 
+                     src="${getResourceUrl(r.pic || data.vod_pic)}" 
+                     alt="${r.title || ''}">
+                <div class="route-info">
+                  <p class="route-name">${r.title || '线路' + (i + 1)}</p>
+                  <p class="route-meta">${r.remarks || ''}</p>
+                </div>
+                ${i === 0 ? '<span class="route-badge">当前</span>' : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      container.querySelectorAll('.route-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const url = card.dataset.url;
+          const title = card.dataset.title;
+          if (url) playVideo(url, title);
+        });
+      });
+    }
+
+    // ========== 数据加载函数 ==========
+
+    // 加载首页内容
+    async function loadHomeContent() {
+      const container = document.getElementById('contentSection');
+      container.innerHTML = '<div class="loading"><div class="loading-spinner"></div></div>';
+
+      const data = await fetchAPI(`${BASE_URL}/api.php/provide/vod/?ac=list`);
+      renderVideoGrid(data?.list || []);
+      document.getElementById('categoryNav').style.display = 'none';
+    }
+
+    // 加载分类内容
+    async function loadCategoryContent(tab, category) {
+      currentTab = tab;
+      currentCategory = category;
+      
+      const container = document.getElementById('contentSection');
+      container.innerHTML = '<div class="loading"><div class="loading-spinner"></div></div>';
+
+      const typeMap = { movie: 1, tv: 2, variety: 3, anime: 4 };
+      const typeId = typeMap[tab] || 1;
+
+      const data = await fetchAPI(
+        `${BASE_URL}/api.php/provide/vod/?ac=list&t=${typeId}&pg=${currentPage}`
+      );
+
+      renderVideoGrid(data?.list || []);
+      document.getElementById('categoryNav').style.display = 'block';
+    }
+
+    // 加载详情
+    async function loadDetail(id) {
+      const sheet = document.getElementById('detailSheet');
+      const container = document.getElementById('detailContent');
+      
+      container.innerHTML = '<div class="loading"><div class="loading-spinner"></div></div>';
+      
+      sheet.classList.add('active');
+      sheet.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('detail-active');
+      
+      sheet.querySelectorAll('[tabindex="-1"]').forEach(el => {
+        el.setAttribute('tabindex', '0');
+      });
+
+      const data = await fetchAPI(`${BASE_URL}/api.php/provide/vod/?ac=detail&ids=${id}`);
+      const detail = data?.list?.[0];
+
+      if (detail) {
+        const playlist = parsePlayList(detail.vod_play_url, detail.vod_play_from);
+        detail.playlist = playlist;
+        renderDetail(detail);
+      } else {
+        container.innerHTML = '<div class="empty-state">加载失败</div>';
+      }
+
+      document.getElementById('detailClose').focus();
+    }
+
+    // 解析播放列表
+    function parsePlayList(playUrl, playFrom) {
+      if (!playUrl) return [];
+      
+      const lines = playUrl.split('#').filter(l => l.trim());
+      const sources = (playFrom || '').split('$').filter(s => s.trim());
+      
+      return lines.map((line, i) => {
+        const parts = line.split('$');
+        const title = parts[0] || `线路${i + 1}`;
+        const url = parts[1] || parts[0];
+        const source = sources[i] || '';
+        
+        return {
+          title: title.trim(),
+          url: url.trim(),
+          source: source.trim(),
+          remarks: source.trim()
+        };
+      });
+    }
+
+    // 关闭详情页
+    function closeDetail() {
+      const sheet = document.getElementById('detailSheet');
+      sheet.classList.remove('active');
+      sheet.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('detail-active');
+      
+      sheet.querySelectorAll('.route-card, .detail-close').forEach(el => {
+        el.setAttribute('tabindex', '-1');
+      });
+    }
+
+    // ========== 播放功能 ==========
+
+    async function playVideo(url, title) {
+      const fullUrl = resolveImageUrl(url);
+      
+      if (fmReady && window.fm && window.fm.play) {
+        await fm.play(fullUrl, title, {
+          headers: { Referer: BASE_URL }
+        });
+      } else {
+        window.open(fullUrl, '_blank');
+      }
+    }
+
+    // ========== 搜索功能 ==========
+
+    async function doSearch(keyword) {
+      if (!keyword.trim()) return;
+      
+      const container = document.getElementById('contentSection');
+      container.innerHTML = '<div class="loading"><div class="loading-spinner"></div></div>';
+      document.getElementById('categoryNav').style.display = 'none';
+
+      const data = await fetchAPI(
+        `${BASE_URL}/api.php/provide/vod/?ac=list&wd=${encodeURIComponent(keyword)}`
+      );
+
+      currentCategory = `搜索: ${keyword}`;
+      renderVideoGrid(data?.list || []);
+    }
+
+    // ========== 事件绑定 ==========
+
+    function bindEvents() {
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          const tabName = tab.dataset.tab;
+          
+          document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          currentTab = tabName;
+          currentPage = 1;
+          
+          if (tabName === 'home') {
+            loadHomeContent();
+          } else {
+            renderCategoryNav(tabName);
+            loadCategoryContent(tabName, CATEGORY_MAP[tabName]?.categories[0] || '');
+          }
+        });
+      });
+
+      document.getElementById('searchBtn').addEventListener('click', () => {
+        const keyword = document.getElementById('searchInput').value;
+        doSearch(keyword);
+      });
+
+      document.getElementById('searchInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          doSearch(e.target.value);
+        }
+      });
+
+      document.getElementById('liveBtn').addEventListener('click', async () => {
+        if (fmReady && window.fm && window.fm.openLive) {
+          await fm.openLive();
+        }
+      });
+
+      document.getElementById('keepBtn').addEventListener('click', async () => {
+        if (fmReady && window.fm && window.fm.openKeep) {
+          await fm.openKeep();
+        }
+      });
+
+      document.getElementById('detailClose').addEventListener('click', closeDetail);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' || e.key === 'Backspace') {
+          if (document.body.classList.contains('detail-active')) {
+            closeDetail();
+            e.preventDefault();
+          }
+        }
+      });
+    }
+
+    // ========== 遥控器焦点管理 ==========
+
+    function setupTVFocus() {
+      if (!isLeanback) return;
+
+      document.addEventListener('keydown', (e) => {
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+          e.preventDefault();
+          handleDirectionKey(e.key);
+        }
+      });
+    }
+
+    function handleDirectionKey(key) {
+      const focusable = Array.from(document.querySelectorAll('[tabindex="0"]:not([aria-hidden="true"])'));
+      const current = document.activeElement;
+      const currentIndex = focusable.indexOf(current);
+
+      if (currentIndex === -1) {
+        focusable[0]?.focus();
+        return;
+      }
+
+      let nextIndex = currentIndex;
+      
+      if (key === 'ArrowRight') nextIndex = Math.min(currentIndex + 1, focusable.length - 1);
+      else if (key === 'ArrowLeft') nextIndex = Math.max(currentIndex - 1, 0);
+      else if (key === 'ArrowDown') nextIndex = Math.min(currentIndex + 4, focusable.length - 1);
+      else if (key === 'ArrowUp') nextIndex = Math.max(currentIndex - 4, 0);
+
+      focusable[nextIndex]?.focus();
+    }
+
+    // ========== 初始化 ==========
+
+    async function init() {
+      await waitForSDK();
+      detectEnvironment();
+      bindEvents();
+      setupTVFocus();
+      loadHomeContent();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>

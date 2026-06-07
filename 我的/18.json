@@ -1,0 +1,186 @@
+{
+  "logo": "./assets/logo.gif",
+  "warningText": "禁止任何商业用途，仅限个人学习爬虫原理使用！",
+  "wallpaper": "https://tu.ltyuanfang.cn/api/fengjing.php",
+  "spider": "./jar/dongli-spider.jar",
+  "sites": [
+    {
+      "key": "whostv",
+      "name": "WhosTV",
+      "type": 3,
+      "api": "csp_Builtin",
+      "homePage": "./html/whostv.html"
+    },
+    {
+      "key": "missav",
+      "name": "missav",
+      "type": 3,
+      "api": "csp_missav",
+      "homePage": "./html/missav.html"
+    },
+    {
+      "key": "采集之王密",
+      "name": "采集┃密视",
+      "type": 3,
+      "api": "./js/drpy2.min.js",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "order_num": 0,
+      "ext": "./js/采集之王.js?type=url&params=../json/采集[密]静态.json$1$"
+    },
+    {
+      "key": "whoshtml",
+      "name": "💗Whos",
+      "type": 3,
+      "api": "csp_Nostr",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filter": 1,
+      "homePage": "https://whos.tv/actresses"
+    },
+    {
+      "key": "rcj",
+      "name": "as 丨采集",
+      "type": 1,
+      "api": "https://naixxzy.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "国产自拍",
+        "精品日韩",
+        "精品综合",
+        "精品小说",
+        "精品美图",
+        "国产自拍",
+        "主播诱惑",
+        "探花约炮",
+        "偷拍偷窥",
+        "网曝吃瓜",
+        "抖阴短片",
+        "传媒剧情",
+        "日韩主播",
+        "日韩无码",
+        "中文字幕",
+        "AV解说",
+        "换脸明星",
+        "强奸乱伦",
+        "女优明星",
+        "欧美激情",
+        "重口激情",
+        "三级伦理",
+        "剧情动漫",
+        "SM调教",
+        "女同性恋",
+        "VR视角",
+        "都市言情",
+        "暴力侵犯",
+        "家庭伦伦",
+        "性感身体",
+        "角色扮演",
+        "福利姬"
+      ]
+    }
+  ],
+  "headers": [
+    {
+      "host": "mgtv.ottiptv.cc",
+      "header": {
+        "User-Agent": "okHttp/Mod-1.4.0.0",
+        "Referer": "https://mgtv.ottiptv.cc/"
+      }
+    }
+  ],
+  "lives": [
+    {
+      "name": "冰茶",
+      "type": 0,
+      "playerType": 2,
+      "url": "https://fy.188766.xyz/?ip=&mima=mianfeidehaimaiqian&json=true",
+      "ua": "bingcha/1.1(mianfeifenxiang)"
+    }
+  ],
+  "parses": [
+    {
+      "name": "解析聚合",
+      "type": 3,
+      "url": "Web"
+    },
+    {
+      "name": "777",
+      "type": 0,
+      "url": "https://www.huaqi.live/?url="
+    },
+    {
+      "name": "jsonplayer",
+      "type": 0,
+      "url": "https://jx.jsonplayer.com/player/?url="
+    },
+    {
+      "name": "xmflv",
+      "type": 0,
+      "url": "https://jx.xmflv.com/?url="
+    }
+  ],
+  "flags": [
+    "youku",
+    "tudou",
+    "qq",
+    "qiyi",
+    "iqiyi",
+    "leshi",
+    "letv",
+    "sohu",
+    "imgo",
+    "mgtv",
+    "bilibili",
+    "pptv",
+    "PPTV",
+    "migu"
+  ],
+  "doh": [
+    {
+      "name": "Google",
+      "url": "https://dns.google/dns-query",
+      "ips": [
+        "8.8.4.4",
+        "8.8.8.8"
+      ]
+    },
+    {
+      "name": "Cloudflare",
+      "url": "https://cloudflare-dns.com/dns-query",
+      "ips": [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ]
+    },
+    {
+      "name": "AdGuard",
+      "url": "https://dns.adguard.com/dns-query",
+      "ips": [
+        "94.140.14.140",
+        "94.140.14.141"
+      ]
+    },
+    {
+      "name": "DNSWatch",
+      "url": "https://resolver2.dns.watch/dns-query",
+      "ips": [
+        "84.200.69.80",
+        "84.200.70.40"
+      ]
+    },
+    {
+      "name": "Quad9",
+      "url": "https://dns.quad9.net/dns-query",
+      "ips": [
+        "9.9.9.9",
+        "149.112.112.112"
+      ]
+    }
+  ]
+}

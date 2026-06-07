@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好好看影视</title>
+<script>
+// App 环境标识
+if (window.fongmiBridge || window.fm || window.fongmi) {
+  document.documentElement.classList.add("fm-native");
+}
+</script>
+<style>
+:root {
+  --panel-rgb: 76, 88, 98;
+  --panel: rgba(var(--panel-rgb), .58);
+  --panel-soft: rgba(var(--panel-rgb), .44);
+  --line: rgba(255,255,255,.2);
+  --text: #fff;
+  --text-soft: #ccc;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  min-height: 100%;
+  background: transparent;
+  color: var(--text);
+  font-family: "Microsoft YaHei", sans-serif;
+}
+html:not(.fm-native), html:not(.fm-native) body {
+  background: #1a1a2e; /* 浏览器兜底背景 */
+}
+.container { padding: 16px; }
+
+/* 顶部导航 */
+.nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.nav-item {
+  padding: 8px 16px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-item.active {
+  background: #4285f4;
+  border-color: #4285f4;
+}
+
+/* 搜索框 */
+.search-box {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.search-input {
+  flex: 1;
+  padding: 10px 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  outline: none;
+}
+.search-btn {
+  padding: 10px 20px;
+  background: #4285f4;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* 卡片网格 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.card-img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  background: #333;
+}
+.card-body { padding: 8px; }
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-desc {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+/* 加载/空状态 */
+.loading, .empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-soft);
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- 导航 -->
+  <div class="nav">
+    <div class="nav-item active" data-cat="1">电影</div>
+    <div class="nav-item" data-cat="2">剧集</div>
+    <div class="nav-item" data-cat="3">动漫</div>
+    <div class="nav-item" data-cat="4">综艺</div>
+  </div>
+
+  <!-- 搜索 -->
+  <div class="search-box">
+    <input type="text" class="search-input" placeholder="输入影片名搜索...">
+    <button class="search-btn">搜索</button>
+  </div>
+
+  <!-- 内容网格 -->
+  <div class="grid" id="list"></div>
+</div>
+
+<script>
+// 全局变量
+let siteKey = "hhkan1"; // 对应配置里的 sites.key
+let currentCat = "1";
+let page = 1;
+let loading = false;
+
+// DOM 元素
+const navItems = document.querySelectorAll(".nav-item");
+const searchInput = document.querySelector(".search-input");
+const searchBtn = document.querySelector(".search-btn");
+const listEl = document.getElementById("list");
+
+// 初始化
+document.addEventListener("DOMContentLoaded", () => {
+  bindNav();
+  bindSearch();
+  loadList(currentCat, page);
+});
+
+// 导航切换
+function bindNav() {
+  navItems.forEach(item => {
+    item.addEventListener("click", () => {
+      navItems.forEach(i => i.classList.remove("active"));
+      item.classList.add("active");
+      currentCat = item.dataset.cat;
+      page = 1;
+      listEl.innerHTML = "";
+      loadList(currentCat, page);
+    });
+  });
+}
+
+// 搜索
+function bindSearch() {
+  searchBtn.addEventListener("click", () => doSearch());
+  searchInput.addEventListener("keydown", e => e.key === "Enter" && doSearch());
+}
+async function doSearch() {
+  const kw = searchInput.value.trim();
+  if (!kw) return;
+  await fm.search(kw, { direct: true });
+}
+
+// 加载列表（适配 hhkan1 接口，可根据实际接口微调）
+async function loadList(cat, pg) {
+  if (loading) return;
+  loading = true;
+  listEl.innerHTML = '<div class="loading">加载中...</div>';
+
+  try {
+    // 1. 用 fm.req 跨域请求 hhkan1 数据（需适配实际接口）
+    const res = await fm.req(`https://www.hhkan1.com/api.php?cat=${cat}&page=${pg}`, {
+      method: "GET",
+      responseType: "json"
+    });
+
+    if (!res.ok || !res.body?.list) {
+      listEl.innerHTML = '<div class="empty">暂无数据</div>';
+      return;
+    }
+
+    // 2. 渲染卡片
+    const list = res.body.list;
+    listEl.innerHTML = "";
+    list.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      // 封面用 fm.res 处理跨域
+      const imgUrl = fm.res(item.pic || "");
+      card.innerHTML = `
+        <img class="card-img" src="${imgUrl}" alt="${item.name}">
+        <div class="card-body">
+          <div class="card-title">${item.name || "未知影片"}</div>
+          <div class="card-desc">${item.remark || ""}</div>
+        </div>
+      `;
+      // 点击调用 App 原生播放
+      card.addEventListener("click", () => {
+        fm.vod(siteKey, item.id, item.name, item.pic);
+      });
+      listEl.appendChild(card);
+    });
+  } catch (e) {
+    listEl.innerHTML = '<div class="empty">加载失败，请重试</div>';
+    console.error("Load error:", e);
+  } finally {
+    loading = false;
+  }
+}
+</script>
+</body>
+</html>
