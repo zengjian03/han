@@ -90,7 +90,63 @@
 			"filterable": 1,
 			"order_num": 0,
 			"ext": "./js/爱奇艺.js"
-		},{
+		},        {
+            "key": "py_农民",
+            "name": "📱农民ᵖʸ｜APP",
+            "type": 3,
+            "api": "./py/农民影视.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "playerType": 2
+        },
+        {
+            "key": "py_金牌",
+            "name": "📱金牌ᵖʸ｜APP",
+            "type": 3,
+            "api": "./py/金牌影视.py",
+            "style": {
+                "type": "rect",
+                "ratio": 1
+            },
+            "ext": {
+                "site": "https://www.hkybqufgh.com,https://www.sizhengxt.com,https://www.sizhengxt.com"
+            }
+        },
+        {
+            "key": "py_瓜子",
+            "name": "📱瓜子ᵖʸ｜APP",
+            "type": 3,
+            "api": "./py/瓜娃子.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "playerType": 2
+        },
+        {
+            "key": "py_毒舌",
+            "name": "📱毒蛇ᵖʸ｜APP",
+            "type": 3,
+            "api": "./py/毒蛇.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "playerType": 2
+        },
+        {
+            "key": "py_华数",
+            "name": "📱华数ᵖʸ｜APP",
+            "type": 3,
+            "api": "./py/华数.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "playerType": 2
+        },{
             "key": "Cat_聚合短剧",
             "name": "📱 聚合[短剧][短剧]",
             "type": 3,
@@ -157,7 +213,7 @@
         },
         {
             "key": "Cat_聚合知识",
-            "name": "📻 聚合丨知识",
+            "name": "📻 聚合丨知识[听]",
             "type": 3,
             "api": "./open/zhishi_juhe.js",
             "searchable": 1,
