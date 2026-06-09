@@ -130,7 +130,7 @@
         },
         {
             "key": "Cat_梨园戏",
-            "name": "🎭 梨园丨戏曲[听]",
+            "name": "🎭 梨园丨戏曲",
             "type": 3,
             "api": "./open/liyuan_xi.js",
             "searchable": 1,
@@ -148,7 +148,7 @@
         },
         {
             "key": "Cat_聚合儿歌",
-            "name": "👶 聚合丨儿童[听]",
+            "name": "👶 聚合丨儿童",
             "type": 3,
             "api": "./open/erge_juhe.js",
             "searchable": 1,
@@ -157,7 +157,7 @@
         },
         {
             "key": "Cat_聚合知识",
-            "name": "📻 聚合丨知识[听]",
+            "name": "📻 聚合丨知识",
             "type": 3,
             "api": "./open/zhishi_juhe.js",
             "searchable": 1,
@@ -166,7 +166,7 @@
         },
         {
             "key": "Cat_聚合央视",
-            "name": "🌎 聚合丨央视[听]",
+            "name": "🌎 聚合丨央视",
             "type": 3,
             "api": "./open/yangshi_juhe.js",
             "searchable": 1,
@@ -832,14 +832,14 @@
         },
         {
             "key": "蜻蜓FM",
-            "name": "♦｜蜻蜓┃广播",
+            "name": "♦｜蜻蜓┃广播[听]",
             "type": 3,
             "api": "csp_QingTing",
             "ext": ""
         },
         {
             "key": "AiWan",
-            "name": "♦｜爱玩｜音乐",
+            "name": "♦｜爱玩｜音乐[听]",
             "type": 3,
             "api": "csp_AiWan",
             "searchable": 1,
@@ -858,7 +858,7 @@
         },
         {
             "key": "tingchina",
-            "name": "📚｜海盗｜听书",
+            "name": "📚｜海盗听书[听]",
             "type": 3,
             "api": "csp_TingChina",
             "changeable": 0,
@@ -899,7 +899,7 @@
         },
         {
             "key": "哔哩哔哩听书",
-            "name": "🌈｜哔哩｜听书",
+            "name": "🌈｜哔哩听书[听]",
             "type": 3,
             "api": "csp_Bili",
             "searchable": 0,
