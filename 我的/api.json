@@ -5,7 +5,7 @@
     "spider": "./jar/dongli-spider.jar",
     "sites": [
         
-          {
+     {
   "key": "Nostr",
   "name": "涵萌视界",
   "type": 3,
@@ -13,8 +13,8 @@
   "searchable": 1,
   "quickSearch": 1,
   "filter": 1,
-  "homePage": "https://www.252035.xyz/xs/tvbox/test.html"
-}  ,    {
+  "homePage": "https://18746.kstore.space/nostr-emby.html"
+}  ,  {
             "key": "Douban",
             "name": "豆瓣推荐",
             "type": 3,
