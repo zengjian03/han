@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>狐狸君影视</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%;
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  /* 滚动条 */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+  /* 布局 */
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px;
+    min-height: 100vh;
+  }
+
+  /* 导航 */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .nav-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all .2s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-btn:hover, .nav-btn:focus {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+  .nav-btn.active {
+    background: rgba(229,57,53,0.15);
+    border-color: rgba(229,57,53,0.4);
+    color: #ff5252;
+  }
+  .nav-btn.focused {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.2);
+    color: #ff5252;
+  }
+
+  /* 搜索 */
+  .search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .search-input {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+  }
+  .search-input::placeholder { color: #888; }
+  .search-input:focus {
+    border-color: rgba(229,57,53,0.5);
+    background: rgba(255,255,255,0.1);
+  }
+  .search-btn {
+    padding: 10px 22px;
+    border-radius: 24px;
+    background: rgba(229,57,53,0.2);
+    border: 1px solid rgba(229,57,53,0.4);
+    color: #ff5252;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+  }
+  .search-btn.focused, .search-btn:hover {
+    background: rgba(229,57,53,0.35);
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+  }
+
+  /* 分类标题 */
+  .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .section-title a {
+    font-size: 13px;
+    color: #ff5252;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(229,57,53,0.1);
+  }
+  .section-title a.focused, .section-title a:hover {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.2);
+  }
+
+  /* 卡片网格 */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  @media (min-width: 768px) {
+    .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+  }
+  @media (min-width: 1200px) {
+    .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  }
+
+  /* 卡片 */
+  .card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .card:hover, .card:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .card.focused {
+    outline: 3px solid #e53935;
+    outline-offset: 2px;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(229,57,53,0.3);
+  }
+  .card-img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+    background: rgba(255,255,255,0.03);
+  }
+  .card-title {
+    padding: 8px 10px;
+    font-size: 13px;
+    color: #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+  .card-tag {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(229,57,53,0.85);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* 列表推荐 */
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: all .2s;
+    outline: none;
+  }
+  .list-item:hover, .list-item:focus {
+    background: rgba(255,255,255,0.08);
+  }
+  .list-item.focused {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.1);
+  }
+  .list-rank {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(229,57,53,0.2);
+    color: #ff5252;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .list-rank.top {
+    background: rgba(229,57,53,0.8);
+    color: #fff;
+  }
+  .list-text {
+    flex: 1;
+    font-size: 14px;
+    color: #ddd;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* 详情页 */
+  .detail-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: none;
+    overflow-y: auto;
+  }
+  .detail-overlay.active { display: block; }
+  .detail-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+    min-height: 100vh;
+  }
+  .detail-close {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 0;
+    z-index: 10;
+  }
+  .detail-close-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+  }
+  .detail-close-btn.focused, .detail-close-btn:hover {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.2);
+  }
+  .detail-poster {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0 auto 16px;
+    display: block;
+    background: rgba(255,255,255,0.05);
+  }
+  .detail-title {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+  .detail-meta {
+    text-align: center;
+    color: #aaa;
+    font-size: 13px;
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+  .detail-desc {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+
+  /* 下载/网盘区域 */
+  .detail-links-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 12px;
+    color: #fff;
+  }
+  .link-group {
+    margin-bottom: 16px;
+  }
+  .link-group-label {
+    font-size: 13px;
+    color: #ff5252;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .link-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #ddd;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    transition: all .2s;
+    outline: none;
+    word-break: break-all;
+  }
+  .link-btn:hover, .link-btn:focus {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+  .link-btn.focused {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.15);
+    color: #ff5252;
+  }
+  .play-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 16px 0;
+    border-radius: 12px;
+    background: rgba(229,57,53,0.2);
+    border: 2px solid rgba(229,57,53,0.5);
+    color: #ff5252;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    transition: all .2s;
+  }
+  .play-btn:hover, .play-btn:focus {
+    background: rgba(229,57,53,0.35);
+    color: #fff;
+  }
+  .play-btn.focused {
+    outline: 3px solid #e53935;
+    outline-offset: 3px;
+    background: rgba(229,57,53,0.4);
+    box-shadow: 0 0 20px rgba(229,57,53,0.3);
+  }
+
+  /* 加载 */
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-size: 14px;
+  }
+  .error {
+    text-align: center;
+    padding: 40px;
+    color: #ff5252;
+    font-size: 14px;
+  }
+
+  /* TV端优化 */
+  body.tv-mode .card-title { font-size: 14px; padding: 10px; }
+  body.tv-mode .nav-btn { padding: 10px 22px; font-size: 15px; }
+  body.tv-mode .grid { gap: 16px; }
+  @media (min-width: 1200px) {
+    body.tv-mode .grid { grid-template-columns: repeat(6, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="nav" id="nav"></div>
+  <div class="search-box">
+    <input type="search" class="search-input" id="searchInput" placeholder="搜索影视...">
+    <button class="search-btn" id="searchBtn">搜索</button>
+  </div>
+  <div id="content"></div>
+</div>
+
+<!-- 详情页 -->
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-content" id="detailContent"></div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const BASE = 'https://www.foxjun.com';
+  const CATEGORIES = [
+    { key: 'dianying', name: '电影' },
+    { key: 'donghua', name: '动画' },
+    { key: 'meiouju', name: '美欧剧' },
+    { key: 'guochanju', name: '国产剧' },
+    { key: 'rihanju', name: '日韩剧' }
+  ];
+
+  let currentCategory = 'dianying';
+  let isLeanback = false;
+  let focusPath = [];
+  let currentFocus = null;
+
+  // 检测 TV 模式
+  function detectMode() {
+    if (window.fongmiClient && window.fongmiClient.isLeanback) {
+      isLeanback = true;
+      document.body.classList.add('tv-mode');
+    }
+    // 也根据屏幕宽度粗略判断
+    if (window.innerWidth >= 1200 && !window.matchMedia('(pointer: fine)').matches) {
+      isLeanback = true;
+      document.body.classList.add('tv-mode');
+    }
+  }
+
+  // 等待 SDK
+  function waitSdk() {
+    return new Promise(resolve => {
+      if (window.fm && window.fm.req) { resolve(); return; }
+      window.addEventListener('fmsdk', resolve, { once: true });
+      setTimeout(resolve, 3000); // 超时继续
+    });
+  }
+
+  // 请求封装
+  async function req(url, opts) {
+    if (window.fm && window.fm.req) {
+      return window.fm.req(url, opts || {});
+    }
+    // fallback 用 fetch（同域或 CORS 允许时）
+    const res = await fetch(url, opts || {});
+    const text = await res.text();
+    return { ok: res.ok, status: res.status, body: text };
+  }
+
+  // 解析首页 HTML
+  function parseHome(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const result = {};
+
+    CATEGORIES.forEach(cat => {
+      const section = findSection(doc, cat.name);
+      if (section) {
+        result[cat.key] = parseCards(section);
+      }
+    });
+
+    // 解析推荐列表
+    result.recommend = {};
+    const headings = doc.querySelectorAll('h3');
+    headings.forEach(h => {
+      const text = h.textContent.trim();
+      if (text.includes('推荐')) {
+        const key = text.replace('推荐', '').trim();
+        const list = [];
+        let el = h.nextElementSibling;
+        while (el && !el.matches('h3')) {
+          if (el.tagName === 'A') {
+            list.push({
+              title: el.textContent.trim(),
+              url: resolveUrl(el.getAttribute('href')),
+              img: extractImg(el)
+            });
+          }
+          el = el.nextElementSibling;
+        }
+        if (list.length) result.recommend[key] = list;
+      }
+    });
+
+    return result;
+  }
+
+  function findSection(doc, name) {
+    const headings = doc.querySelectorAll('h3');
+    for (const h of headings) {
+      if (h.textContent.includes(name) && h.querySelector('a[href*="channel"]')) {
+        return h.parentElement;
+      }
+    }
+    return null;
+  }
+
+  function parseCards(container) {
+    const cards = [];
+    const links = container.querySelectorAll('a[href*="/archives/"]');
+    const seen = new Set();
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || seen.has(href)) return;
+      seen.add(href);
+      const img = a.querySelector('img');
+      cards.push({
+        title: a.textContent.trim(),
+        url: resolveUrl(href),
+        img: img ? resolveUrl(img.getAttribute('src') || img.getAttribute('data-src')) : ''
+      });
+    });
+    return cards;
+  }
+
+  function extractImg(el) {
+    const img = el.querySelector('img');
+    return img ? resolveUrl(img.getAttribute('src') || img.getAttribute('data-src')) : '';
+  }
+
+  function resolveUrl(url) {
+    if (!url) return '';
+    if (url.startsWith('http')) return url;
+    if (url.startsWith('//')) return 'https:' + url;
+    return BASE + (url.startsWith('/') ? '' : '/') + url;
+  }
+
+  // 解析分类页
+  function parseCategory(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const cards = [];
+    const links = doc.querySelectorAll('a[href*="/archives/"]');
+    const seen = new Set();
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href || seen.has(href)) return;
+      seen.add(href);
+      cards.push({
+        title: a.textContent.trim(),
+        url: resolveUrl(href),
+        img: extractImg(a)
+      });
+    });
+    return cards;
+  }
+
+  // 解析详情页
+  function parseDetail(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const result = { title: '', img: '', meta: {}, desc: '', magnets: [], panLinks: [] };
+
+    const titleEl = doc.querySelector('h1.metas-title, .article-content h1');
+    if (titleEl) result.title = titleEl.textContent.trim();
+
+    const imgEl = doc.querySelector('.movie-poster img, .article-content img');
+    if (imgEl) result.img = resolveUrl(imgEl.getAttribute('src') || '');
+
+    // 元信息
+    const metaEls = doc.querySelectorAll('.movie-detail-box p, .article-metas p');
+    metaEls.forEach(p => {
+      const text = p.textContent.trim();
+      if (text.startsWith('类型：')) result.meta.type = text.replace('类型：', '').trim();
+      if (text.startsWith('上映日期：')) result.meta.date = text.replace('上映日期：', '').trim();
+      if (text.startsWith('语言：')) result.meta.lang = text.replace('语言：', '').trim();
+      if (text.startsWith('主演：')) result.meta.cast = text.replace('主演：', '').trim();
+      if (text.startsWith('简介：')) result.desc = text.replace('简介：', '').trim();
+    });
+
+    // 如果没有简介，尝试其他选择器
+    if (!result.desc) {
+      const descEl = doc.querySelector('.article-text, .entry-content');
+      if (descEl) result.desc = descEl.textContent.trim().substring(0, 300);
+    }
+
+    // 磁力链接
+    const magnetLinks = doc.querySelectorAll('a[href^="magnet:"]');
+    magnetLinks.forEach(a => {
+      result.magnets.push({
+        name: a.textContent.trim() || '磁力链接',
+        url: a.getAttribute('href')
+      });
+    });
+
+    // 网盘链接
+    const allLinks = doc.querySelectorAll('a[href*="pan."]');
+    allLinks.forEach(a => {
+      const href = a.getAttribute('href');
+      if (href) {
+        result.panLinks.push({
+          name: a.textContent.trim() || href,
+          url: href
+        });
+      }
+    });
+
+    return result;
+  }
+
+  // 渲染导航
+  function renderNav() {
+    const nav = document.getElementById('nav');
+    nav.innerHTML = CATEGORIES.map(cat =>
+      `<button class="nav-btn ${cat.key === currentCategory ? 'active' : ''}" data-cat="${cat.key}" tabindex="0">${cat.name}</button>`
+    ).join('');
+    nav.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentCategory = btn.dataset.cat;
+        renderNav();
+        loadCategory(currentCategory);
+      });
+    });
+  }
+
+  // 渲染卡片网格
+  function renderGrid(cards, title, moreUrl) {
+    const html = `
+      <div class="section-title">
+        <span>${title}</span>
+        ${moreUrl ? `<a href="${moreUrl}" class="more-link" data-nav>更多</a>` : ''}
+      </div>
+      <div class="grid">
+        ${cards.map(c => `
+          <div class="card" data-url="${c.url}" tabindex="0" data-nav>
+            <img class="card-img" src="${c.img ? fmRes(c.img) : ''}" alt="" loading="lazy">
+            <div class="card-title">${escapeHtml(c.title)}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return html;
+  }
+
+  // 渲染列表
+  function renderList(items, title) {
+    const html = `
+      <div class="section-title"><span>${title}</span></div>
+      <div class="list">
+        ${items.map((item, i) => `
+          <div class="list-item" data-url="${item.url}" tabindex="0" data-nav>
+            <div class="list-rank ${i < 3 ? 'top' : ''}">${i + 1}</div>
+            <div class="list-text">${escapeHtml(item.title)}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return html;
+  }
+
+  // 加载首页
+  async function loadHome() {
+    const content = document.getElementById('content');
+    content.innerHTML = '<div class="loading">加载中...</div>';
+    try {
+      const res = await req(BASE + '/');
+      if (!res.ok) throw new Error('加载失败');
+      const data = parseHome(res.body);
+      let html = '';
+
+      // 当前分类卡片
+      const cat = CATEGORIES.find(c => c.key === currentCategory);
+      if (data[currentCategory]) {
+        html += renderGrid(data[currentCategory].slice(0, 12), cat.name, `${BASE}/channel/${currentCategory}.html`);
+      }
+
+      // 推荐列表
+      if (data.recommend) {
+        Object.entries(data.recommend).forEach(([key, items]) => {
+          if (items.length) html += renderList(items.slice(0, 10), key + '推荐');
+        });
+      }
+
+      content.innerHTML = html;
+      bindCardClicks();
+    } catch (e) {
+      content.innerHTML = '<div class="error">加载失败，请稍后重试</div>';
+    }
+  }
+
+  // 加载分类
+  async function loadCategory(catKey) {
+    const content = document.getElementById('content');
+    content.innerHTML = '<div class="loading">加载中...</div>';
+    try {
+      const res = await req(`${BASE}/channel/${catKey}.html`);
+      if (!res.ok) throw new Error('加载失败');
+      const cards = parseCategory(res.body);
+      const cat = CATEGORIES.find(c => c.key === catKey);
+      content.innerHTML = renderGrid(cards, cat.name, null);
+      bindCardClicks();
+    } catch (e) {
+      content.innerHTML = '<div class="error">加载失败</div>';
+    }
+  }
+
+  // 绑定卡片点击
+  function bindCardClicks() {
+    document.querySelectorAll('.card, .list-item').forEach(el => {
+      el.addEventListener('click', () => openDetail(el.dataset.url));
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter') openDetail(el.dataset.url);
+      });
+    });
+  }
+
+  // 打开详情
+  async function openDetail(url) {
+    const overlay = document.getElementById('detailOverlay');
+    const content = document.getElementById('detailContent');
+    overlay.classList.add('active');
+    content.innerHTML = '<div class="loading">加载详情...</div>';
+
+    try {
+      const res = await req(url);
+      if (!res.ok) throw new Error('加载详情失败');
+      const data = parseDetail(res.body);
+      renderDetail(data);
+    } catch (e) {
+      content.innerHTML = '<div class="error">加载详情失败</div>';
+    }
+  }
+
+  // 渲染详情
+  function renderDetail(data) {
+    const content = document.getElementById('detailContent');
+    const metaArr = [];
+    if (data.meta.type) metaArr.push('类型：' + data.meta.type);
+    if (data.meta.date) metaArr.push('上映：' + data.meta.date);
+    if (data.meta.lang) metaArr.push('语言：' + data.meta.lang);
+    if (data.meta.cast) metaArr.push('主演：' + data.meta.cast);
+
+    let linksHtml = '';
+
+    // 磁力链接
+    if (data.magnets.length) {
+      linksHtml += `<div class="link-group"><div class="link-group-label">磁力链接</div>`;
+      data.magnets.forEach(m => {
+        linksHtml += `<button class="link-btn" data-magnet="${escapeHtml(m.url)}" data-nav>${escapeHtml(m.name)}</button>`;
+      });
+      linksHtml += `</div>`;
+    }
+
+    // 网盘链接
+    if (data.panLinks.length) {
+      linksHtml += `<div class="link-group"><div class="link-group-label">网盘链接</div>`;
+      data.panLinks.forEach(p => {
+        linksHtml += `<button class="link-btn" data-pan="${escapeHtml(p.url)}" data-nav>${escapeHtml(p.name)}</button>`;
+      });
+      linksHtml += `</div>`;
+    }
+
+    const html = `
+      <div class="detail-close">
+        <button class="detail-close-btn" id="detailClose" data-nav>×</button>
+      </div>
+      <img class="detail-poster" src="${data.img ? fmRes(data.img) : ''}" alt="">
+      <div class="detail-title">${escapeHtml(data.title)}</div>
+      <div class="detail-meta">${metaArr.join(' | ')}</div>
+      <div class="detail-desc">${escapeHtml(data.desc)}</div>
+      ${linksHtml}
+      ${data.magnets.length ? `<button class="play-btn" id="playBtn" data-nav>播放（输出直连地址）</button>` : ''}
+    `;
+    content.innerHTML = html;
+
+    // 关闭按钮
+    document.getElementById('detailClose').addEventListener('click', closeDetail);
+
+    // 播放按钮 - 输出直连地址
+    const playBtn = document.getElementById('playBtn');
+    if (playBtn) {
+      playBtn.addEventListener('click', () => {
+        // 优先使用第一个磁力链接作为直连地址输出
+        if (data.magnets.length > 0) {
+          const magnet = data.magnets[0].url;
+          if (window.fm && window.fm.pan && window.fm.pan.play) {
+            // 使用 pan.play 播放磁力链接
+            window.fm.pan.play({ type: 'magnet', url: magnet, title: data.title });
+          } else {
+            alert('直连地址：' + magnet);
+          }
+        }
+      });
+    }
+
+    // 网盘链接点击
+    content.querySelectorAll('[data-pan]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.dataset.pan;
+        const password = extractPassword(btn.textContent);
+        if (window.fm && window.fm.pan && window.fm.pan.play) {
+          window.fm.pan.play({ type: 'url', url, password, title: data.title });
+        } else {
+          window.open(url, '_blank');
+        }
+      });
+    });
+
+    // 磁力链接点击
+    content.querySelectorAll('[data-magnet]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.dataset.magnet;
+        if (window.fm && window.fm.pan && window.fm.pan.play) {
+          window.fm.pan.play({ type: 'magnet', url, title: data.title });
+        } else {
+          alert('磁力链接：' + url);
+        }
+      });
+    });
+
+    // TV 焦点管理
+    if (isLeanback) {
+      setupTvFocus(content.querySelectorAll('[data-nav]'));
+    }
+  }
+
+  function extractPassword(text) {
+    const match = text.match(/pwd[=:](\w+)/i) || text.match(/密码[:：]\s*(\w+)/i);
+    return match ? match[1] : '';
+  }
+
+  function closeDetail() {
+    document.getElementById('detailOverlay').classList.remove('active');
+  }
+
+  // fm.res 封装
+  function fmRes(url) {
+    if (window.fm && window.fm.res) {
+      return window.fm.res(url);
+    }
+    return url;
+  }
+
+  // HTML 转义
+  function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // TV 焦点导航
+  function setupTvFocus(elements) {
+    const focusable = Array.from(elements);
+    if (!focusable.length) return;
+
+    let index = 0;
+    focusable.forEach((el, i) => {
+      el.addEventListener('focus', () => {
+        focusable.forEach(e => e.classList.remove('focused'));
+        el.classList.add('focused');
+        index = i;
+        currentFocus = el;
+      });
+    });
+
+    // 自动聚焦第一个
+    focusable[0].focus();
+
+    document.addEventListener('keydown', e => {
+      if (!currentFocus) return;
+      const rect = currentFocus.getBoundingClientRect();
+      let next = null;
+
+      switch(e.key) {
+        case 'ArrowRight':
+          next = findNearest(focusable, rect, 'right');
+          break;
+        case 'ArrowLeft':
+          next = findNearest(focusable, rect, 'left');
+          break;
+        case 'ArrowDown':
+          next = findNearest(focusable, rect, 'down');
+          break;
+        case 'ArrowUp':
+          next = findNearest(focusable, rect, 'up');
+          break;
+        case 'Backspace':
+          if (document.getElementById('detailOverlay').classList.contains('active')) {
+            closeDetail();
+            e.preventDefault();
+          }
+          return;
+      }
+
+      if (next) {
+        next.focus();
+        e.preventDefault();
+      }
+    });
+  }
+
+  function findNearest(elements, rect, dir) {
+    let best = null;
+    let bestScore = Infinity;
+    elements.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (el === currentFocus) return;
+      let dx = 0, dy = 0, score = 0;
+      switch(dir) {
+        case 'right':
+          if (r.left <= rect.left) return;
+          dx = r.left - rect.right; dy = Math.abs(r.top - rect.top);
+          break;
+        case 'left':
+          if (r.right >= rect.right) return;
+          dx = rect.left - r.right; dy = Math.abs(r.top - rect.top);
+          break;
+        case 'down':
+          if (r.top <= rect.top) return;
+          dx = Math.abs(r.left - rect.left); dy = r.top - rect.bottom;
+          break;
+        case 'up':
+          if (r.bottom >= rect.bottom) return;
+          dx = Math.abs(r.left - rect.left); dy = rect.top - r.bottom;
+          break;
+      }
+      score = dx + dy;
+      if (score < bestScore) { bestScore = score; best = el; }
+    });
+    return best;
+  }
+
+  // 搜索
+  async function doSearch() {
+    const keyword = document.getElementById('searchInput').value.trim();
+    if (!keyword) return;
+    if (window.fm && window.fm.search) {
+      window.fm.search(keyword, { direct: true });
+      return;
+    }
+    // 网页搜索 fallback
+    window.open(`${BASE}/s/?q=${encodeURIComponent(keyword)}`, '_blank');
+  }
+
+  // 初始化
+  async function init() {
+    detectMode();
+    await waitSdk();
+    renderNav();
+    await loadHome();
+
+    // 搜索
+    document.getElementById('searchBtn').addEventListener('click', doSearch);
+    document.getElementById('searchInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+
+    // TV 焦点
+    if (isLeanback) {
+      setupTvFocus(document.querySelectorAll('[data-nav]'));
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

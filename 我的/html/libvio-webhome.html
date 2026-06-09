@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>LIBVIO</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%; height: 100%;
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+  .app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px;
+    min-height: 100vh;
+  }
+
+  /* 导航 */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .nav-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all .2s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .nav-btn:hover, .nav-btn:focus {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+  .nav-btn.active {
+    background: rgba(229,57,53,0.15);
+    border-color: rgba(229,57,53,0.4);
+    color: #ff5252;
+  }
+  .nav-btn.focused {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.2);
+    color: #ff5252;
+  }
+
+  /* 搜索 */
+  .search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .search-input {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+  }
+  .search-input::placeholder { color: #888; }
+  .search-input:focus {
+    border-color: rgba(229,57,53,0.5);
+    background: rgba(255,255,255,0.1);
+  }
+  .search-btn {
+    padding: 10px 22px;
+    border-radius: 24px;
+    background: rgba(229,57,53,0.2);
+    border: 1px solid rgba(229,57,53,0.4);
+    color: #ff5252;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+  }
+  .search-btn.focused, .search-btn:hover {
+    background: rgba(229,57,53,0.35);
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+  }
+
+  /* 分类标题 */
+  .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* 卡片网格 */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+  @media (min-width: 768px) {
+    .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+  }
+  @media (min-width: 1200px) {
+    .grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+  }
+
+  /* 卡片 */
+  .card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .card:hover, .card:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .card.focused {
+    outline: 3px solid #e53935;
+    outline-offset: 2px;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(229,57,53,0.3);
+  }
+  .card-img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    display: block;
+    background: rgba(255,255,255,0.03);
+  }
+  .card-info {
+    padding: 8px 10px;
+  }
+  .card-title {
+    font-size: 13px;
+    color: #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+  }
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #888;
+  }
+  .card-score {
+    color: #ff5252;
+    font-weight: 500;
+  }
+  .card-ep {
+    color: #aaa;
+  }
+  .card-tag {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(229,57,53,0.85);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  /* 详情页 */
+  .detail-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: none;
+    overflow-y: auto;
+  }
+  .detail-overlay.active { display: block; }
+  .detail-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+    min-height: 100vh;
+  }
+  .detail-close {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 0;
+    z-index: 10;
+  }
+  .detail-close-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+  }
+  .detail-close-btn.focused, .detail-close-btn:hover {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.2);
+  }
+  .detail-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .detail-poster {
+    width: 120px;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    flex-shrink: 0;
+  }
+  .detail-info {
+    flex: 1;
+  }
+  .detail-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+  }
+  .detail-score {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    background: rgba(229,57,53,0.2);
+    color: #ff5252;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .detail-meta {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .detail-desc {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  /* 线路选择 */
+  .source-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .source-tab {
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #ccc;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+  }
+  .source-tab.active {
+    background: rgba(229,57,53,0.15);
+    border-color: rgba(229,57,53,0.4);
+    color: #ff5252;
+  }
+  .source-tab.focused {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+  }
+
+  /* 剧集列表 */
+  .ep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .ep-btn {
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #ddd;
+    font-size: 13px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    transition: all .2s;
+  }
+  .ep-btn:hover, .ep-btn:focus {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+  .ep-btn.focused, .ep-btn.active {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.2);
+    color: #ff5252;
+    border-color: rgba(229,57,53,0.4);
+  }
+
+  /* 网盘下载 */
+  .download-section {
+    margin-top: 20px;
+  }
+  .download-title {
+    font-size: 14px;
+    color: #ff5252;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .download-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #ddd;
+    font-size: 13px;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    word-break: break-all;
+  }
+  .download-btn:hover, .download-btn:focus {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+  }
+  .download-btn.focused {
+    outline: 2px solid #e53935;
+    outline-offset: 2px;
+    background: rgba(229,57,53,0.15);
+    color: #ff5252;
+  }
+
+  /* 播放按钮 */
+  .play-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin: 16px 0;
+    border-radius: 12px;
+    background: rgba(229,57,53,0.2);
+    border: 2px solid rgba(229,57,53,0.5);
+    color: #ff5252;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    transition: all .2s;
+  }
+  .play-btn:hover, .play-btn:focus {
+    background: rgba(229,57,53,0.35);
+    color: #fff;
+  }
+  .play-btn.focused {
+    outline: 3px solid #e53935;
+    outline-offset: 3px;
+    background: rgba(229,57,53,0.4);
+    box-shadow: 0 0 20px rgba(229,57,53,0.3);
+  }
+
+  /* 加载/错误 */
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+    font-size: 14px;
+  }
+  .error {
+    text-align: center;
+    padding: 40px;
+    color: #ff5252;
+    font-size: 14px;
+  }
+
+  /* TV端优化 */
+  body.tv-mode .card-title { font-size: 14px; }
+  body.tv-mode .nav-btn { padding: 10px 22px; font-size: 15px; }
+  body.tv-mode .grid { gap: 16px; }
+  body.tv-mode .ep-grid { grid-template-columns: repeat(8, 1fr); }
+  @media (min-width: 1200px) {
+    body.tv-mode .grid { grid-template-columns: repeat(6, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="nav" id="nav"></div>
+  <div class="search-box">
+    <input type="search" class="search-input" id="searchInput" placeholder="搜索影视...">
+    <button class="search-btn" id="searchBtn">搜索</button>
+  </div>
+  <div id="content"></div>
+</div>
+
+<!-- 详情页 -->
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-content" id="detailContent"></div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const BASE = 'https://www.libvio.pw';
+  const CATEGORIES = [
+    { key: '', name: '首页' },
+    { key: 'movie', name: '电影' },
+    { key: 'tv', name: '剧集' },
+    { key: 'anime', name: '番剧' },
+    { key: 'ji', name: '日韩' },
+    { key: 'oumei', name: '欧美' }
+  ];
+
+  let currentCategory = '';
+  let currentPage = 1;
+  let isLeanback = false;
+  let currentFocus = null;
+  let detailData = null;
+  let currentSource = 0;
+  let currentEp = 0;
+
+  // 检测 TV 模式
+  function detectMode() {
+    if (window.fongmiClient && window.fongmiClient.isLeanback) {
+      isLeanback = true;
+      document.body.classList.add('tv-mode');
+    }
+    if (window.innerWidth >= 1200 && !window.matchMedia('(pointer: fine)').matches) {
+      isLeanback = true;
+      document.body.classList.add('tv-mode');
+    }
+  }
+
+  // 等待 SDK
+  function waitSdk() {
+    return new Promise(resolve => {
+      if (window.fm && window.fm.req) { resolve(); return; }
+      window.addEventListener('fmsdk', resolve, { once: true });
+      setTimeout(resolve, 3000);
+    });
+  }
+
+  // 请求封装
+  async function req(url, opts) {
+    if (window.fm && window.fm.req) {
+      return window.fm.req(url, opts || {});
+    }
+    const res = await fetch(url, opts || {});
+    const text = await res.text();
+    return { ok: res.ok, status: res.status, body: text };
+  }
+
+  // 解析首页/分类页
+  function parseList(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const items = [];
+
+    // libvio 使用 li.stui-vodlist__box 结构
+    const cards = doc.querySelectorAll('.stui-vodlist__box, .module-item, li[data-id]');
+    cards.forEach(card => {
+      const link = card.querySelector('a[href*="/detail/"]');
+      if (!link) return;
+      const img = card.querySelector('img');
+      const titleEl = card.querySelector('h4, .title, a[title]');
+      const scoreEl = card.querySelector('.score, .rating, .module-item-note');
+      const epEl = card.querySelector('.module-item-content, .text');
+
+      items.push({
+        title: titleEl ? titleEl.textContent.trim() : link.textContent.trim(),
+        url: resolveUrl(link.getAttribute('href')),
+        img: img ? resolveUrl(img.getAttribute('data-src') || img.getAttribute('src')) : '',
+        score: scoreEl ? scoreEl.textContent.trim() : '',
+        ep: epEl ? epEl.textContent.trim() : ''
+      });
+    });
+
+    // 如果上面没找到，尝试其他选择器
+    if (!items.length) {
+      const links = doc.querySelectorAll('a[href*="/detail/"]');
+      const seen = new Set();
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || seen.has(href)) return;
+        seen.add(href);
+        const parent = link.closest('li');
+        const img = link.querySelector('img') || (parent && parent.querySelector('img'));
+        const score = parent && parent.querySelector('.score, .rating');
+        items.push({
+          title: link.getAttribute('title') || link.textContent.trim(),
+          url: resolveUrl(href),
+          img: img ? resolveUrl(img.getAttribute('data-src') || img.getAttribute('src')) : '',
+          score: score ? score.textContent.trim() : '',
+          ep: ''
+        });
+      });
+    }
+
+    return items;
+  }
+
+  // 解析详情页
+  function parseDetail(html) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const result = {
+      title: '',
+      img: '',
+      score: '',
+      meta: {},
+      desc: '',
+      sources: [],
+      episodes: [],
+      downloads: []
+    };
+
+    // 标题
+    const titleEl = doc.querySelector('h1, .module-info-heading, .stui-content__detail h3');
+    if (titleEl) result.title = titleEl.textContent.trim();
+
+    // 图片
+    const imgEl = doc.querySelector('.module-info-poster img, .stui-content__thumb img');
+    if (imgEl) result.img = resolveUrl(imgEl.getAttribute('data-src') || imgEl.getAttribute('src'));
+
+    // 评分
+    const scoreEl = doc.querySelector('.module-info-rating, .score, .rating');
+    if (scoreEl) result.score = scoreEl.textContent.trim();
+
+    // 元信息
+    const metaEls = doc.querySelectorAll('.module-info-item, .stui-content__detail p');
+    metaEls.forEach(el => {
+      const text = el.textContent.trim();
+      if (text.includes('导演')) result.meta.director = text.replace(/导演[:：]/, '').trim();
+      if (text.includes('主演')) result.meta.cast = text.replace(/主演[:：]/, '').trim();
+      if (text.includes('类型')) result.meta.type = text.replace(/类型[:：]/, '').trim();
+      if (text.includes('地区')) result.meta.area = text.replace(/地区[:：]/, '').trim();
+      if (text.includes('年份')) result.meta.year = text.replace(/年份[:：]/, '').trim();
+    });
+
+    // 简介
+    const descEl = doc.querySelector('.module-info-introduction, .stui-content__detail .desc, .module-info-intro-content');
+    if (descEl) result.desc = descEl.textContent.trim();
+
+    // 播放线路
+    const sourceTabs = doc.querySelectorAll('.module-tab-item, .stui-vodlist__head h3');
+    sourceTabs.forEach((tab, i) => {
+      const name = tab.textContent.trim();
+      if (name && !name.includes('下载')) {
+        result.sources.push({ name, index: i });
+      }
+    });
+
+    // 剧集列表
+    const epLists = doc.querySelectorAll('.module-play-list, .stui-content__playlist');
+    epLists.forEach((list, sourceIdx) => {
+      const eps = [];
+      const links = list.querySelectorAll('a[href*="/w/"]');
+      links.forEach((link, epIdx) => {
+        eps.push({
+          name: link.textContent.trim(),
+          url: resolveUrl(link.getAttribute('href')),
+          index: epIdx
+        });
+      });
+      if (eps.length) result.episodes.push(eps);
+    });
+
+    // 如果没找到剧集，尝试其他选择器
+    if (!result.episodes.length) {
+      const allEps = doc.querySelectorAll('a[href*="/w/"]');
+      const eps = [];
+      allEps.forEach(link => {
+        eps.push({
+          name: link.textContent.trim(),
+          url: resolveUrl(link.getAttribute('href'))
+        });
+      });
+      if (eps.length) result.episodes.push(eps);
+    }
+
+    // 网盘下载链接
+    const downloadLinks = doc.querySelectorAll('a[href*="pan."], a[href*="drive."]');
+    downloadLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href) {
+        result.downloads.push({
+          name: link.textContent.trim() || href,
+          url: href
+        });
+      }
+    });
+
+    return result;
+  }
+
+  // 解析播放页获取直连地址
+  function parsePlayUrl(html) {
+    // 从 player_aaaa 对象中提取
+    const match = html.match(/player_aaaa\s*=\s*\{[^}]*"url"\s*:\s*"([^"]+)"/);
+    if (match) {
+      // 解码转义字符
+      return match[1].replace(/\\\//g, '/');
+    }
+    // 从 iframe src 中提取
+    const iframeMatch = html.match(/iframe[^>]*src\s*=\s*["']([^"']*plyr[^"']*\?url=([^"']+))/);
+    if (iframeMatch) {
+      try {
+        const urlMatch = iframeMatch[1].match(/url=([^&]+)/);
+        if (urlMatch) return decodeURIComponent(urlMatch[1]);
+      } catch(e) {}
+    }
+    return null;
+  }
+
+  function resolveUrl(url) {
+    if (!url) return '';
+    if (url.startsWith('http')) return url;
+    if (url.startsWith('//')) return 'https:' + url;
+    return BASE + (url.startsWith('/') ? '' : '/') + url;
+  }
+
+  // 渲染导航
+  function renderNav() {
+    const nav = document.getElementById('nav');
+    nav.innerHTML = CATEGORIES.map(cat =>
+      `<button class="nav-btn ${cat.key === currentCategory ? 'active' : ''}" data-cat="${cat.key}" tabindex="0">${cat.name}</button>`
+    ).join('');
+    nav.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentCategory = btn.dataset.cat;
+        currentPage = 1;
+        renderNav();
+        loadList();
+      });
+    });
+  }
+
+  // 渲染列表
+  function renderList(items) {
+    const html = `
+      <div class="grid">
+        ${items.map(item => `
+          <div class="card" data-url="${item.url}" tabindex="0" data-nav>
+            <img class="card-img" src="${item.img ? fmRes(item.img) : ''}" alt="" loading="lazy">
+            <div class="card-info">
+              <div class="card-title">${escapeHtml(item.title)}</div>
+              <div class="card-meta">
+                ${item.score ? `<span class="card-score">${item.score}</span>` : ''}
+                ${item.ep ? `<span class="card-ep">${item.ep}</span>` : ''}
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return html;
+  }
+
+  // 加载列表
+  async function loadList() {
+    const content = document.getElementById('content');
+    content.innerHTML = '<div class="loading">加载中...</div>';
+    try {
+      let url = BASE;
+      if (currentCategory) {
+        url = `${BASE}/type/${currentCategory}.html`;
+      }
+      const res = await req(url);
+      if (!res.ok) throw new Error('加载失败');
+      const items = parseList(res.body);
+      if (!items.length) {
+        content.innerHTML = '<div class="error">暂无内容</div>';
+        return;
+      }
+      content.innerHTML = renderList(items);
+      bindCardClicks();
+      if (isLeanback) setupTvFocus(content.querySelectorAll('[data-nav]'));
+    } catch (e) {
+      content.innerHTML = '<div class="error">加载失败，请稍后重试</div>';
+    }
+  }
+
+  // 绑定卡片点击
+  function bindCardClicks() {
+    document.querySelectorAll('.card').forEach(el => {
+      el.addEventListener('click', () => openDetail(el.dataset.url));
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter') openDetail(el.dataset.url);
+      });
+    });
+  }
+
+  // 打开详情
+  async function openDetail(url) {
+    const overlay = document.getElementById('detailOverlay');
+    const content = document.getElementById('detailContent');
+    overlay.classList.add('active');
+    content.innerHTML = '<div class="loading">加载详情...</div>';
+
+    try {
+      const res = await req(url);
+      if (!res.ok) throw new Error('加载详情失败');
+      detailData = parseDetail(res.body);
+      currentSource = 0;
+      currentEp = 0;
+      renderDetail();
+    } catch (e) {
+      content.innerHTML = '<div class="error">加载详情失败</div>';
+    }
+  }
+
+  // 渲染详情
+  function renderDetail() {
+    const content = document.getElementById('detailContent');
+    const metaArr = [];
+    if (detailData.meta.director) metaArr.push('导演：' + detailData.meta.director);
+    if (detailData.meta.cast) metaArr.push('主演：' + detailData.meta.cast);
+    if (detailData.meta.type) metaArr.push('类型：' + detailData.meta.type);
+    if (detailData.meta.area) metaArr.push('地区：' + detailData.meta.area);
+    if (detailData.meta.year) metaArr.push('年份：' + detailData.meta.year);
+
+    const sourceHtml = detailData.sources.length ?
+      `<div class="source-tabs">
+        ${detailData.sources.map((s, i) => `
+          <button class="source-tab ${i === currentSource ? 'active' : ''}" data-source="${i}" data-nav>${s.name}</button>
+        `).join('')}
+      </div>` : '';
+
+    const eps = detailData.episodes[currentSource] || detailData.episodes[0] || [];
+    const epHtml = eps.length ?
+      `<div class="ep-grid">
+        ${eps.map((ep, i) => `
+          <button class="ep-btn ${i === currentEp ? 'active' : ''}" data-ep="${i}" data-url="${ep.url}" data-nav>${ep.name}</button>
+        `).join('')}
+      </div>` : '';
+
+    const downloadHtml = detailData.downloads.length ?
+      `<div class="download-section">
+        <div class="download-title">网盘下载</div>
+        ${detailData.downloads.map(d => `
+          <button class="download-btn" data-pan="${d.url}" data-nav>${escapeHtml(d.name)}</button>
+        `).join('')}
+      </div>` : '';
+
+    const html = `
+      <div class="detail-close">
+        <button class="detail-close-btn" id="detailClose" data-nav>×</button>
+      </div>
+      <div class="detail-header">
+        <img class="detail-poster" src="${detailData.img ? fmRes(detailData.img) : ''}" alt="">
+        <div class="detail-info">
+          <div class="detail-title">${escapeHtml(detailData.title)}</div>
+          ${detailData.score ? `<span class="detail-score">${detailData.score}</span>` : ''}
+          <div class="detail-meta">${metaArr.join('<br>')}</div>
+        </div>
+      </div>
+      <div class="detail-desc">${escapeHtml(detailData.desc)}</div>
+      ${sourceHtml}
+      ${epHtml}
+      <button class="play-btn" id="playBtn" data-nav>播放（输出直连地址）</button>
+      ${downloadHtml}
+    `;
+    content.innerHTML = html;
+
+    // 关闭按钮
+    document.getElementById('detailClose').addEventListener('click', closeDetail);
+
+    // 线路切换
+    content.querySelectorAll('.source-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        currentSource = parseInt(tab.dataset.source);
+        currentEp = 0;
+        renderDetail();
+      });
+    });
+
+    // 剧集点击
+    content.querySelectorAll('.ep-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentEp = parseInt(btn.dataset.ep);
+        content.querySelectorAll('.ep-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // 直接播放该集
+        playEpisode(btn.dataset.url);
+      });
+    });
+
+    // 播放按钮
+    document.getElementById('playBtn').addEventListener('click', () => {
+      if (eps.length) {
+        const epUrl = eps[currentEp].url;
+        playEpisode(epUrl);
+      }
+    });
+
+    // 网盘链接
+    content.querySelectorAll('[data-pan]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = btn.dataset.pan;
+        if (window.fm && window.fm.pan && window.fm.pan.play) {
+          window.fm.pan.play({ type: 'url', url, title: detailData.title });
+        } else {
+          window.open(url, '_blank');
+        }
+      });
+    });
+
+    if (isLeanback) setupTvFocus(content.querySelectorAll('[data-nav]'));
+  }
+
+  // 播放剧集
+  async function playEpisode(url) {
+    try {
+      const res = await req(url);
+      if (!res.ok) throw new Error('获取播放地址失败');
+      const playUrl = parsePlayUrl(res.body);
+      if (playUrl) {
+        // 输出直连地址
+        if (window.fm && window.fm.play) {
+          window.fm.play(playUrl, detailData.title + ' ' + (detailData.episodes[currentSource]?.[currentEp]?.name || ''));
+        } else if (window.fm && window.fm.pan && window.fm.pan.play) {
+          window.fm.pan.play({ type: 'url', url: playUrl, title: detailData.title });
+        } else {
+          alert('直连地址：' + playUrl);
+        }
+      } else {
+        // 如果无法解析直连，使用 iframe 方式
+        if (window.fm && window.fm.play) {
+          window.fm.play(url, detailData.title);
+        } else {
+          window.open(url, '_blank');
+        }
+      }
+    } catch (e) {
+      alert('播放失败：' + e.message);
+    }
+  }
+
+  function closeDetail() {
+    document.getElementById('detailOverlay').classList.remove('active');
+  }
+
+  function fmRes(url) {
+    if (window.fm && window.fm.res) return window.fm.res(url);
+    return url;
+  }
+
+  function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // TV 焦点导航
+  function setupTvFocus(elements) {
+    const focusable = Array.from(elements);
+    if (!focusable.length) return;
+
+    focusable.forEach(el => {
+      el.addEventListener('focus', () => {
+        focusable.forEach(e => e.classList.remove('focused'));
+        el.classList.add('focused');
+        currentFocus = el;
+      });
+    });
+
+    focusable[0].focus();
+
+    document.addEventListener('keydown', e => {
+      if (!currentFocus) return;
+      const rect = currentFocus.getBoundingClientRect();
+      let next = null;
+
+      switch(e.key) {
+        case 'ArrowRight': next = findNearest(focusable, rect, 'right'); break;
+        case 'ArrowLeft': next = findNearest(focusable, rect, 'left'); break;
+        case 'ArrowDown': next = findNearest(focusable, rect, 'down'); break;
+        case 'ArrowUp': next = findNearest(focusable, rect, 'up'); break;
+        case 'Backspace':
+          if (document.getElementById('detailOverlay').classList.contains('active')) {
+            closeDetail();
+            e.preventDefault();
+          }
+          return;
+      }
+
+      if (next) { next.focus(); e.preventDefault(); }
+    });
+  }
+
+  function findNearest(elements, rect, dir) {
+    let best = null, bestScore = Infinity;
+    elements.forEach(el => {
+      if (el === currentFocus) return;
+      const r = el.getBoundingClientRect();
+      let dx = 0, dy = 0;
+      switch(dir) {
+        case 'right': if (r.left <= rect.left) return; dx = r.left - rect.right; dy = Math.abs(r.top - rect.top); break;
+        case 'left': if (r.right >= rect.right) return; dx = rect.left - r.right; dy = Math.abs(r.top - rect.top); break;
+        case 'down': if (r.top <= rect.top) return; dx = Math.abs(r.left - rect.left); dy = r.top - rect.bottom; break;
+        case 'up': if (r.bottom >= rect.bottom) return; dx = Math.abs(r.left - rect.left); dy = rect.top - r.bottom; break;
+      }
+      const score = dx + dy;
+      if (score < bestScore) { bestScore = score; best = el; }
+    });
+    return best;
+  }
+
+  // 搜索
+  async function doSearch() {
+    const keyword = document.getElementById('searchInput').value.trim();
+    if (!keyword) return;
+    if (window.fm && window.fm.search) {
+      window.fm.search(keyword, { direct: true });
+      return;
+    }
+    window.open(`${BASE}/search/${encodeURIComponent(keyword)}.html`, '_blank');
+  }
+
+  // 初始化
+  async function init() {
+    detectMode();
+    await waitSdk();
+    renderNav();
+    await loadList();
+
+    document.getElementById('searchBtn').addEventListener('click', doSearch);
+    document.getElementById('searchInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+
+    if (isLeanback) setupTvFocus(document.querySelectorAll('[data-nav]'));
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

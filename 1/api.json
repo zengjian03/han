@@ -4,9 +4,19 @@
      "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
   "logo": "https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/lib/logo.gif",
     "sites": [
+          {
+  "key": "Nostr",
+  "name": "涵萌视界",
+  "type": 3,
+  "api": "csp_Nostr",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filter": 1,
+  "homePage": "https://18746.kstore.space/nostr-emby.html"
+}  ,    
         {
             "key": "豆瓣",
-            "name": "涵萌｜视界",
+            "name": "豆瓣推荐",
             "type": 3,
             "api": "csp_Douban",
             "searchable": 0
