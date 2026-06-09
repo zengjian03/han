@@ -92,7 +92,7 @@
 			"ext": "./js/爱奇艺.js"
 		},{
             "key": "Cat_聚合短剧",
-            "name": "📱 聚合丨短剧[短剧]",
+            "name": "📱 聚合[短剧][短剧]",
             "type": 3,
             "api": "./open/duanju_juhe.js",
             "searchable": 1,
@@ -761,7 +761,7 @@
         },
         {
             "key": "juheduanju",
-            "name": "🌟｜聚合｜短剧",
+            "name": "🌟｜聚合[短剧]",
             "type": 3,
             "api": "csp_JuheShortDrama",
             "changeable": 0,
@@ -769,7 +769,7 @@
         },
         {
             "key": "HeMa",
-            "name": "🌟｜盒马｜短剧",
+            "name": "🌟｜盒马[短剧]",
             "type": 3,
             "api": "csp_HeMa",
             "searchable": 0,
@@ -778,7 +778,7 @@
         },
         {
             "key": "JuWang",
-            "name": "🌟｜剧王｜短剧",
+            "name": "🌟｜剧王[短剧]",
             "type": 3,
             "api": "csp_JuWang",
             "searchable": 0,
@@ -787,12 +787,29 @@
         },
         {
             "key": "七星短剧",
-            "name": "🌟丨七星丨短剧",
+            "name": "🌟丨七星[短剧]",
             "type": 3,
             "api": "https://mpimg.cn/down.php/48e9d346cdf6da376c53136693bec95a.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
+            "filterable": 1
+        },{
+            "key": "Cat_围观",
+            "name": "📱 围观ᶜᵃᵗ[短剧]",
+            "type": 3,
+            "api": "./open/weiguan_dj.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
+        {
+            "key": "Cat_百度短剧",
+            "name": "📱 百度ᶜᵃᵗ[短剧]",
+            "type": 3,
+            "api": "./open/baidu_dj.js",
+            "searchable": 1,
+            "quickSearch": 0,
             "filterable": 1
         },
         {
