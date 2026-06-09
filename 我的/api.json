@@ -40,6 +40,15 @@
                     "http://v.rbotv.cn"
                 ]
             }
+        },       
+         {
+            "key": "guazi",
+            "name": "💥｜瓜子 | 影视[优]",
+            "type": 3,
+            "api": "csp_Guazi",
+            "searchable": 1,
+            "changeable": 1,
+            "ext": {}
         },{
 			"key": "hipy_js_腾讯弹幕[官]",
 			"name": "腾讯弹幕[官]",
@@ -81,7 +90,89 @@
 			"filterable": 1,
 			"order_num": 0,
 			"ext": "./js/爱奇艺.js"
-		},
+		},{
+            "key": "Cat_聚合短剧",
+            "name": "📱 聚合丨短剧[短剧]",
+            "type": 3,
+            "api": "./open/duanju_juhe.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
+        {
+            "key": "cat_哔哩",
+            "name": "📱哔哩｜合集",
+            "type": 3,
+            "api": "./js/cat_哔哩.js",
+            "style": {
+                "type": "rect",
+                "ratio": 1
+            },
+            "changeable": 1
+        },
+         {
+            "key": "Cat_听海",
+            "name": "🎻 听海丨音乐[听]",
+            "type": 3,
+            "api": "./open/tinghai_ting.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
+        {
+            "key": "Cat_喜马拉雅",
+            "name": "🎧️ 喜马丨听书[听]",
+            "type": 3,
+            "api": "./open/ximalaya_ting.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
+        {
+            "key": "Cat_梨园戏",
+            "name": "🎭 梨园丨戏曲[听]",
+            "type": 3,
+            "api": "./open/liyuan_xi.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
+        {
+            "key": "Cat_聚合音乐",
+            "name": "🎻 聚合丨音乐[听]",
+            "type": 3,
+            "api": "./open/yinyue_juhe.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
+        {
+            "key": "Cat_聚合儿歌",
+            "name": "👶 聚合丨儿童[听]",
+            "type": 3,
+            "api": "./open/erge_juhe.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
+        {
+            "key": "Cat_聚合知识",
+            "name": "📻 聚合丨知识[听]",
+            "type": 3,
+            "api": "./open/zhishi_juhe.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
+        {
+            "key": "Cat_聚合央视",
+            "name": "🌎 聚合丨央视[听]",
+            "type": 3,
+            "api": "./open/yangshi_juhe.js",
+            "searchable": 1,
+            "quickSearch": 0,
+            "filterable": 1
+        },
 		{
             "key": "配置",
             "name": "⚔️｜配置｜中心",
@@ -107,7 +198,7 @@
             "ext": "0"
         } , {
             "key": "📁网易歌曲下载[音]",
-            "name": "📁网易歌曲下载[音乐]",
+            "name": "📁网易歌曲下载[听]",
             "type": 3,
             "api": "./py/网易歌曲下载[音].py",
             "searchable": 1,
@@ -128,6 +219,84 @@
             "style": {
                 "type": "list"
             }
+        },{
+            "key": "听心99",
+            "name": "听心｜APP",
+            "type": 3,
+            "api": "./py/app99.py",
+            "ext": {
+                "host": "https://api.12321app.com/api",
+                "LoginPath": "/app/log",
+                "appkey": "a0a18659a9977a47e53442cd084b536c",
+                "versionName": "2.8.1",
+                "name": "听心视频",
+                "package": "com.iksp.adsys.jjsp",
+                "buildNumber": "2001",
+                "buildSignature": "03DD38CE4C3D62D0F0DEFACC06768D14EB382C7BD77A05B2EBF4D66E154A0D47"
+            }
+        },
+        {
+            "key": "追番99",
+            "name": "追番｜APP",
+            "type": 3,
+            "api": "./py/app99.py",
+            "ext": {
+                "host": "https://api.hboqy.cn.hboqy.cn/api",
+                "LoginPath": "/app/log",
+                "appkey": "a0a18659a9977a47e53442cd084b536c",
+                "versionName": "6.1.7",
+                "name": "追番达人",
+                "package": "com.android.packageinstaller",
+                "buildNumber": "2002",
+                "buildSignature": "A40DA80A59D170CAA950CF15C18C454D47A39B26989D8B640ECD745BA71BF5DC"
+            }
+        },
+        {
+            "key": "剧圈99",
+            "name": "剧圈丨APP",
+            "type": 3,
+            "api": "./py/app99.py",
+            "ext": {
+                "host": "http://124.221.3.182:19987/app/bn",
+                "appkey": "d1f0c269eab74d93821fffc9befdbbba",
+                "versionName": "1.2.0",
+                "name": "剧圈圈",
+                "package": "com.qingtangxiaozhuan.xyz",
+                "buildNumber": "2002",
+                "buildSignature": "054FA8DDA4319C6B6A9B954CA5777541C993F00B1B0BD4394F7EDE48184C4594"
+            }
+        },
+        {
+            "key": "双星99",
+            "name": "双星丨APP",
+            "type": 3,
+            "api": "./py/app99.py",
+            "ext": {
+                "host": "http://175.178.65.250:19987/app/bn",
+                "LoginPath": "/app/log",
+                "appkey": "f66f65db127e48449f073c2c6eb0f993",
+                "versionName": "6.4.5",
+                "name": "双子星动漫",
+                "package": "com.yingfu.mobile.android.pgsp",
+                "buildNumber": "2003",
+                "buildSignature": "054FA8DDA4319C6B6A9B954CA5777541C993F00B1B0BD4394F7EDE48184C4594"
+            }
+        },
+        {
+            "key": "顾我99",
+            "name": "顾我丨APP",
+            "type": 3,
+            "api": "./py/app99.py",
+            "ext": {
+                "host": "http://117.50.200.113:19987/app/bn",
+                "LoginPath": "/app/log",
+                "appkey": "040f9b1bc5e942569b5c3e63943306ab",
+                "versionName": "4.3.1",
+                "name": "顾我追剧",
+                "package": "com.guwozhuijux.app",
+                "buildNumber": "2001",
+                "buildSignature": "5AD4436C4730FFE26910C86278B80F3E661C317FFC3616F702D20A729262624A"
+            }
         },
         {
             "key": "金牌影视",
@@ -137,15 +306,6 @@
             "searchable": 1,
             "changeable": 1,
             "ext": "https://m.610pkea.com,https://y2s52n7.com,https://m.hkybqufgh.com,https://m.sizhengxt.com,https://m.9zhoukj.com,https://m.sizhengxt.com,https://m.jiabaide.cn"
-        },
-        {
-            "key": "guazi",
-            "name": "💥｜瓜子 | 影视[优]",
-            "type": 3,
-            "api": "csp_Guazi",
-            "searchable": 1,
-            "changeable": 1,
-            "ext": {}
         },
         {
             "key": "jianpian",

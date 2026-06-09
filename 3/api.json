@@ -19,7 +19,7 @@
 
         {
             "key": "Cat_荐片",
-            "name": "🔶 荐片ᶜᵃᵗ丨APP",
+            "name": "🔶 荐片丨APP",
             "type": 3,
             "api": "./open/jianpian_open.js",
             "searchable": 1,
@@ -86,7 +86,7 @@
         },
         {
             "key": "Cat_哔哩影视",
-            "name": "📱哔哩ᶜᵃᵗ｜APP",
+            "name": "📱哔哩｜APP",
             "type": 3,
             "api": "./js/cat_哔哩影视.js",
             "style": {
@@ -97,7 +97,7 @@
         },
         {
             "key": "Cat_聚合短剧",
-            "name": "📱 聚合ᶜᵃᵗ丨短剧",
+            "name": "📱 聚合丨短剧",
             "type": 3,
             "api": "./open/duanju_juhe.js",
             "searchable": 1,
@@ -106,7 +106,7 @@
         },
         {
             "key": "Cat_围观",
-            "name": "📱 围观ᶜᵃᵗ丨短剧",
+            "name": "📱 围观丨短剧",
             "type": 3,
             "api": "./open/weiguan_dj.js",
             "searchable": 1,
@@ -115,7 +115,7 @@
         },
         {
             "key": "Cat_百度短剧",
-            "name": "📱 百度ᶜᵃᵗ丨短剧",
+            "name": "📱 百度丨短剧",
             "type": 3,
             "api": "./open/baidu_dj.js",
             "searchable": 1,
@@ -124,7 +124,7 @@
         },
         {
             "key": "cat_哔哩",
-            "name": "📱哔哩ᶜᵃᵗ｜合集",
+            "name": "📱哔哩｜合集",
             "type": 3,
             "api": "./js/cat_哔哩.js",
             "style": {
@@ -153,7 +153,7 @@
         },
         {
             "key": "cat蜘蛛体育",
-            "name": "📱蜘蛛ᶜᵃᵗ｜球赛",
+            "name": "📱蜘蛛｜球赛",
             "type": 3,
             "api": "./js/蜘蛛体育.js",
             "style": {
@@ -164,7 +164,7 @@
         },
         {
             "key": "cat咖啡体育",
-            "name": "📱咖啡ᶜᵃᵗ｜球赛",
+            "name": "📱咖啡｜球赛",
             "type": 3,
             "api": "./js/咖啡体育.js",
             "style": {
@@ -175,7 +175,7 @@
         },
         {
             "key": "Cat_闪电[盘]",
-            "name": "🔵 闪电ᶜᵃᵗ丨云盘",
+            "name": "🔵 闪电丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -186,7 +186,7 @@
         },
         {
             "key": "Cat_至臻[盘]",
-            "name": "🔵 至臻ᶜᵃᵗ丨云盘",
+            "name": "🔵 至臻丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -197,7 +197,7 @@
         },
         {
             "key": "Cat_二小[盘]",
-            "name": "🔵 二小ᶜᵃᵗ丨云盘",
+            "name": "🔵 二小丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -208,7 +208,7 @@
         },
         {
             "key": "Cat_玩偶[盘]",
-            "name": "🔵 玩偶ᶜᵃᵗ丨云盘",
+            "name": "🔵 玩偶丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -219,7 +219,7 @@
         },
         {
             "key": "Cat_多多[盘]",
-            "name": "🔵 多多ᶜᵃᵗ丨云盘",
+            "name": "🔵 多多丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -230,7 +230,7 @@
         },
         {
             "key": "Cat_欧歌[盘]",
-            "name": "🔵 欧歌ᶜᵃᵗ丨云盘",
+            "name": "🔵 欧歌丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -241,7 +241,7 @@
         },
         {
             "key": "Cat_快映[盘]",
-            "name": "🔵 快映ᶜᵃᵗ丨云盘",
+            "name": "🔵 快映丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -252,7 +252,7 @@
         },
         {
             "key": "Cat_虎斑[盘]",
-            "name": "🔵 虎斑ᶜᵃᵗ丨云盘",
+            "name": "🔵 虎斑丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -263,7 +263,7 @@
         },
         {
             "key": "Cat_木偶[盘]",
-            "name": "🔵 木偶ᶜᵃᵗ丨云盘",
+            "name": "🔵 木偶丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -274,7 +274,7 @@
         },
         {
             "key": "Cat_蜡笔[盘]",
-            "name": "🔵 蜡笔ᶜᵃᵗ丨云盘",
+            "name": "🔵 蜡笔丨云盘",
             "type": 3,
             "api": "./open/wanpan.js",
             "searchable": 1,
@@ -285,7 +285,7 @@
         },
         {
             "key": "Cat_91电视",
-            "name": "🚀 91电视ᶜᵃᵗ丨直播",
+            "name": "🚀 91电视丨直播",
             "type": 3,
             "api": "./open/91live_zb.js",
             "searchable": 1,
@@ -294,7 +294,7 @@
         },
         {
             "key": "Cat_听海",
-            "name": "🎻 听海ᶜᵃᵗ丨音乐",
+            "name": "🎻 听海丨音乐",
             "type": 3,
             "api": "./open/tinghai_ting.js",
             "searchable": 1,
@@ -303,7 +303,7 @@
         },
         {
             "key": "Cat_喜马拉雅",
-            "name": "🎧️ 喜马ᶜᵃᵗ丨听书",
+            "name": "🎧️ 喜马丨听书",
             "type": 3,
             "api": "./open/ximalaya_ting.js",
             "searchable": 1,
@@ -312,7 +312,7 @@
         },
         {
             "key": "Cat_梨园戏",
-            "name": "🎭 梨园ᶜᵃᵗ丨戏曲",
+            "name": "🎭 梨园丨戏曲",
             "type": 3,
             "api": "./open/liyuan_xi.js",
             "searchable": 1,
@@ -321,7 +321,7 @@
         },
         {
             "key": "Cat_聚合音乐",
-            "name": "🎻 聚合ᶜᵃᵗ丨音乐",
+            "name": "🎻 聚合丨音乐",
             "type": 3,
             "api": "./open/yinyue_juhe.js",
             "searchable": 1,
@@ -330,7 +330,7 @@
         },
         {
             "key": "Cat_聚合儿歌",
-            "name": "👶 聚合ᶜᵃᵗ丨儿童",
+            "name": "👶 聚合丨儿童",
             "type": 3,
             "api": "./open/erge_juhe.js",
             "searchable": 1,
@@ -339,7 +339,7 @@
         },
         {
             "key": "Cat_聚合知识",
-            "name": "📻 聚合ᶜᵃᵗ丨知识",
+            "name": "📻 聚合丨知识",
             "type": 3,
             "api": "./open/zhishi_juhe.js",
             "searchable": 1,
@@ -348,7 +348,7 @@
         },
         {
             "key": "Cat_聚合央视",
-            "name": "🌎 聚合ᶜᵃᵗ丨央视",
+            "name": "🌎 聚合丨央视",
             "type": 3,
             "api": "./open/yangshi_juhe.js",
             "searchable": 1,
@@ -357,7 +357,7 @@
         },
         {
             "key": "Cat_djus",
-            "name": "📱 夸克短剧ᶜᵃᵗ丨搜索",
+            "name": "📱 夸克短剧丨搜索",
             "type": 3,
             "api": "./open/djus_search.js",
             "searchable": 1,
@@ -368,7 +368,7 @@
         },
         {
             "key": "Cat_wpzy",
-            "name": "🔎 网盘资源ᶜᵃᵗ丨搜索",
+            "name": "🔎 网盘资源丨搜索",
             "type": 3,
             "api": "./open/wpzy_search.js",
             "searchable": 1,
@@ -379,7 +379,7 @@
         },
         {
             "key": "Cat_97",
-            "name": "🔎 97搜索ᶜᵃᵗ丨搜索",
+            "name": "🔎 97搜索丨搜索",
             "type": 3,
             "api": "./open/97_search.js",
             "searchable": 1,
