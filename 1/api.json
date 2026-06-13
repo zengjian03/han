@@ -2,7 +2,7 @@
     "spider": "./svip.jar",
     "wallpaper": "https://sgmao.serv00.net/image/",
      "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
-  "logo": "https://ghproxy.net/raw.githubusercontent.com/zengjian03/han/master/lib/logo.gif",
+  "logo": "https://gh-proxy.com/raw.githubusercontent.com/zengjian03/han/master/lib/logo.gif",
     "sites": [   
         {
             "key": "豆瓣",
