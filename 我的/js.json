@@ -1,12 +1,22 @@
 {
     "logo": "./assets/logo2025121201.png",
     "spider": "./jar/dongli-spider.jar",
-    "sites": [
+    "sites": [{
+			"key": "hipy_js_爱奇艺[官]",
+			"name": "爱奇艺[官]",
+			"type": 3,
+			"api": "./js/drpy2.min.js",
+			"searchable": 1,
+			"quickSearch": 1,
+			"filterable": 1,
+			"order_num": 0,
+			"ext": "./js/bdtv.js"
+		},        
         {
             "key": "ylsp",
             "name": "永乐视频",
             "type": 3,
-            "api": "./js/永乐视频.js",
+            "api": "./js/bdtv.js",
             "searchable": 1,
             "changeable": 1
         },{

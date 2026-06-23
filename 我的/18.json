@@ -10,13 +10,39 @@
       "type": 3,
       "api": "csp_Builtin",
       "homePage": "./html/whostv.html"
-    },
+    },    {
+      "key": "jable",
+      "name": "jable",
+      "type": 3,
+      "api": "csp_jable",
+      "homePage": "./html/whostv.html"
+    }, {
+  "key": "jable",
+  "name": "jable",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "https://jable.tv/",
+  "extensions": [
+    {
+      "id": "pomo-native-router",
+      "name": "Pomo native router",
+      "runAt": "document-end",
+      "js": ["./html/js/jable.js"]
+    }
+  ]
+}, 
     {
       "key": "missav",
       "name": "missav",
       "type": 3,
       "api": "csp_missav",
       "homePage": "./html/missav.html"
+    },{
+      "key": "catemby",
+      "name": "catemby",
+      "type": 3,
+      "api": "csp_missav",
+      "homePage": "./html/catemby.html"
     },
     {
       "key": "采集之王密",

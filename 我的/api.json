@@ -14,7 +14,103 @@
   "quickSearch": 1,
   "filter": 1,
   "homePage": "https://18746.kstore.space/nostr-emby.html"
-}  ,  {
+}  , {
+  "key": "pomo",
+  "name": "Pomo",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "https://pomo.mom/",
+  "extensions": [
+    {
+      "id": "pomo-native-router",
+      "name": "Pomo native router",
+      "runAt": "document-end",
+      "js": ["./html/js/pomo.mom.js"]
+    }
+  ]
+},         {
+  "key": "4kzn_webhome_fixed",
+  "name": "4K 影院",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/4kzn_webhome_fixed.html"
+},   {
+  "key": "lmm_week_webhome",
+  "name": "聚聚动漫",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "./html/lmm_week_webhome.html"
+},{
+  "key": "a123tv",
+  "name": "A123TV",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "https://a123tv.com/",
+  "extensions": [{
+    "id": "a123tv-native-router",
+    "name": "A123TV native router",
+    "version": "1.0.0",
+    "runAt": "document-end",
+    "js": ["./html/js/a123tv.com.js"]
+  }]
+}
+, {
+  "key": "kaka_search",
+  "name": "盘搜",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "https://pan.nblizhe.top/",
+  "extensions": [
+    {
+      "id": "pomo-native-router",
+      "name": "Pomo native router",
+      "runAt": "document-end",
+      "js": ["./html/js/kaka_search.js"]
+    }
+  ]
+},  {
+  "key": "gying-extension",
+  "name": "观影",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "https://www.gying.net/",
+  "extensions": [
+    {
+      "id": "pomo-native-router",
+      "name": "Pomo native router",
+      "runAt": "document-end",
+      "js": ["./html/js/gying-extension.js"]
+    }
+  ]
+}, {
+  "key": "bdtv_ext",
+  "name": "哔滴影视",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "https://www.bdtv.org/",
+  "extensions": [
+    {
+      "id": "pomo-native-router",
+      "name": "Pomo native router",
+      "runAt": "document-end",
+      "js": ["./html/js/bdtv.org.js"]
+    }
+  ]
+},  {
+  "key": "ymvid",
+  "name": "粤漫之家",
+  "type": 3,
+  "api": "csp_Builtin",
+  "homePage": "https://www.ymvid.com",
+  "extensions": [
+    {
+      "id": "pomo-native-router",
+      "name": "Pomo native router",
+      "runAt": "document-end",
+      "js": ["./html/js/ymvid.com.js"]
+    }
+  ]
+}, {
             "key": "Douban",
             "name": "豆瓣推荐",
             "type": 3,
@@ -130,6 +226,16 @@
             "name": "📱毒蛇ᵖʸ｜APP",
             "type": 3,
             "api": "./py/毒蛇.py",
+            "searchable": 1,
+            "changeable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "playerType": 2
+        },        {
+            "key": "py_6V影视",
+            "name": "📱6V影视ᵖʸ｜APP",
+            "type": 3,
+            "api": "./py/6V影视.py",
             "searchable": 1,
             "changeable": 1,
             "quickSearch": 1,
