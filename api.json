@@ -1,0 +1,17 @@
+
+{
+  "urls": [
+    {
+      "name": "📛丨摸鱼",
+      "url": "https://6800.kstore.vip/fish.json"
+    },
+    {
+      "name": "📛丨涵萌B",
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/zengjian03/han/master/2/api.json"
+    },
+	{
+      "name": "📛丨涵萌KTV",
+      "url": "https://gh-proxy.com/https://raw.githubusercontent.com/zengjian03/han/master/ktv/api.json"
+    }
+  ]
+}

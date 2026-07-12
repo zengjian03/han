@@ -3,14 +3,33 @@
     "wallpaper": "https://sgmao.serv00.net/image/",
      "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
   "logo": "https://gh-proxy.com/raw.githubusercontent.com/zengjian03/han/master/lib/logo.gif",
-    "sites": [   
+    "sites": [   {
+      "key": "裤佬豆瓣片单",
+      "name": "关注公众涵萌视界更新",
+      "type": 3,
+      "api": "csp_Douban",
+      "jar": "https://gh-proxy.org/https://raw.githubusercontent.com/Jsnzkpg/Jsnzkpg/Jsnzkpg/stymei/paomadeng.jar",
+      "searchable": 1,
+      "quickSearch": 0,
+      "filterable": 1,
+      "ext": "https://gh-proxy.org/https://raw.githubusercontent.com/zengjian03/han/master/1/paomadeng.txt"
+    },
         {
             "key": "豆瓣",
-            "name": "豆瓣推荐",
+            "name": "关注公众涵萌视界更新",
             "type": 3,
             "api": "csp_Douban",
             "searchable": 0
-        },
+        },{
+  "key": "Nostr",
+  "name": "涵萌视界[首页]",
+  "type": 3,
+  "api": "csp_Nostr",
+  "searchable": 1,
+  "quickSearch": 1,
+  "filter": 1,
+  "homePage": "https://zengjian03.github.io/yuhan/api.html"
+}  , 
         {
             "key": "预告",
             "name": "新片｜预告",
@@ -29,14 +48,6 @@
                 "type": "rect",
                 "ratio": 1.597
             }
-        },
-        
-        {
-            "key": "预告",
-            "name": "新片｜预告",
-            "type": 3,
-            "api": "csp_YGP",
-            "searchable": 0
         },
         {
             "key": "热播影视",

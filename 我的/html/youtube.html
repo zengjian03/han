@@ -1,0 +1,2616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>YouTube</title>
+
+<!-- ============================================================
+     兼容引导层：文档第一个内联脚本，只用 ES5 语法书写
+     参考开发文档 15.5
+     ============================================================ -->
+<script>
+(function () {
+  var d = document, root = d.documentElement;
+
+  /* ---- polyfill ---- */
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+  }
+  if (!Element.prototype.closest) {
+    Element.prototype.closest = function (s) {
+      var el = this;
+      while (el && el.nodeType === 1) {
+        if (el.matches(s)) return el;
+        el = el.parentElement || el.parentNode;
+      }
+      return null;
+    };
+  }
+  if (!Element.prototype.replaceChildren) {
+    Element.prototype.replaceChildren = function () {
+      while (this.firstChild) this.removeChild(this.firstChild);
+      for (var i = 0; i < arguments.length; i++) {
+        var n = arguments[i];
+        this.appendChild(typeof n === 'string' ? d.createTextNode(n) : n);
+      }
+    };
+  }
+  if (!Object.values) {
+    Object.values = function (o) {
+      var r = [], k;
+      for (k in o) if (Object.prototype.hasOwnProperty.call(o, k)) r.push(o[k]);
+      return r;
+    };
+  }
+  if (!Object.entries) {
+    Object.entries = function (o) {
+      var r = [], k;
+      for (k in o) if (Object.prototype.hasOwnProperty.call(o, k)) r.push([k, o[k]]);
+      return r;
+    };
+  }
+  if (!Array.from) {
+    Array.from = function (a) {
+      var r = [], i;
+      for (i = 0; i < a.length; i++) r.push(a[i]);
+      return r;
+    };
+  }
+  if (!Array.prototype.includes) {
+    Array.prototype.includes = function (v) { return this.indexOf(v) !== -1; };
+  }
+  if (!String.prototype.includes) {
+    String.prototype.includes = function (v) { return this.indexOf(v) !== -1; };
+  }
+  if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = Array.prototype.forEach;
+  }
+  if (window.HTMLCollection && !HTMLCollection.prototype.forEach) {
+    HTMLCollection.prototype.forEach = Array.prototype.forEach;
+  }
+  if (!Promise.prototype['finally']) {
+    Promise.prototype['finally'] = function (cb) {
+      return this.then(function (v) { return Promise.resolve(cb()).then(function () { return v; }); },
+        function (e) { return Promise.resolve(cb()).then(function () { throw e; }); });
+    };
+  }
+  if (!window.requestIdleCallback) {
+    window.requestIdleCallback = function (cb) { return setTimeout(function () { cb({ timeRemaining: function () { return 8; } }); }, 1); };
+  }
+
+  /* ---- 特性检测：失败加降级类 ---- */
+  var supports = (window.CSS && CSS.supports) ? function (p, v) { try { return CSS.supports(p, v); } catch (e) { return false; } } : function () { return false; };
+
+  /* flex gap 必须实测 */
+  function testFlexGap() {
+    try {
+      var box = d.createElement('div');
+      box.style.cssText = 'display:flex;flex-direction:column;position:absolute;visibility:hidden;';
+      box.style.rowGap = '10px';
+      box.appendChild(d.createElement('div'));
+      box.appendChild(d.createElement('div'));
+      (d.body || root).appendChild(box);
+      var ok = box.scrollHeight === 10;
+      box.parentNode.removeChild(box);
+      return ok;
+    } catch (e) { return false; }
+  }
+
+  function testAspectRatio() {
+    if (!supports('aspect-ratio', '16 / 9')) return false;
+    try {
+      var el = d.createElement('div');
+      el.style.cssText = 'position:absolute;visibility:hidden;width:160px;';
+      el.style.aspectRatio = '16 / 9';
+      (d.body || root).appendChild(el);
+      var h = el.getBoundingClientRect().height;
+      el.parentNode.removeChild(el);
+      return h > 85 && h < 95;
+    } catch (e) { return false; }
+  }
+
+  function detect() {
+    if (!testFlexGap()) root.className += ' no-layout-gap';
+    if (!supports('width', 'clamp(1px, 2px, 3px)')) root.className += ' no-css-functions';
+    if (!testAspectRatio()) root.className += ' no-aspect-ratio';
+    if (!supports('display', 'grid')) root.className += ' no-grid';
+    if (window.fongmiBridge || window.fm) root.className += ' fm-native';
+    if (window.fongmiClient && window.fongmiClient.isLeanback) root.className += ' fm-tv';
+  }
+
+  if (d.body) detect();
+  else d.addEventListener('DOMContentLoaded', detect);
+})();
+</script>
+
+<style>
+/* ============ tokens ============ */
+:root{
+  --ink:#080A0F;
+  --panel:rgba(14,17,24,0.72);
+  --panel-2:rgba(22,26,36,0.86);
+  --line:rgba(255,255,255,0.10);
+  --text:#ECF1F6;
+  --muted:#9AA6B4;
+  --amber:#FFC24B;      /* 焦点 / 选中 */
+  --signal:#F0453A;     /* 播放 */
+  --radius:14px;
+
+  --safe-top:0px;
+  --safe-bottom:0px;
+  --safe-left:0px;
+  --safe-right:0px;
+}
+:root{
+  --safe-top:var(--fm-safe-top,0px);
+  --safe-bottom:var(--fm-safe-bottom,0px);
+  --safe-left:var(--fm-safe-left,0px);
+  --safe-right:var(--fm-safe-right,0px);
+}
+@supports (top: max(0px, 1px)){
+  :root{
+    --safe-top:max(var(--fm-safe-top,0px), env(safe-area-inset-top,0px));
+    --safe-bottom:max(var(--fm-safe-bottom,0px), env(safe-area-inset-bottom,0px));
+    --safe-left:max(var(--fm-safe-left,0px), env(safe-area-inset-left,0px));
+    --safe-right:max(var(--fm-safe-right,0px), env(safe-area-inset-right,0px));
+  }
+}
+
+*{ -webkit-tap-highlight-color:transparent; }
+html,body{
+  margin:0; padding:0;
+  height:100%;
+  background:transparent;           /* App 壁纸透出，不写死背景 */
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Source Han Sans SC","Microsoft YaHei",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+/* 浏览器预览时给一个底色，App 内保持透明 */
+html:not(.fm-native) body{ background:#0A0D13; }
+
+body{
+  min-height:100vh;
+  min-height:var(--fm-web-height,100vh);
+  overflow-x:hidden;
+}
+
+img{ border:0; display:block; }
+button,input{ font:inherit; color:inherit; }
+button{ background:none; border:0; cursor:pointer; }
+
+/* ============ 顶栏 ============ */
+.top{
+  position:sticky; top:0; z-index:30;
+  padding:10px 12px 8px;
+  padding-top:var(--safe-top);
+  padding-left:12px; padding-right:12px;
+  background:rgba(8,10,15,0.78);
+  border-bottom:1px solid var(--line);
+}
+@supports (backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px)){
+  .top{ -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); }
+}
+.top-inner{ display:block; padding-top:8px; }
+
+.brand{
+  display:inline-block; vertical-align:middle;
+  font-size:15px; font-weight:700; letter-spacing:.14em;
+  margin-right:10px;
+  padding:0; color:var(--text);
+  line-height:38px;
+}
+.brand .dot{
+  display:inline-block; width:8px; height:8px; border-radius:50%;
+  background:var(--signal); margin-right:6px; vertical-align:baseline;
+  transition:background .2s ease;
+}
+.brand .dot.bad{ background:#FF6B5E; }
+.brand .dot.ok{ background:#57D9A3; }
+.brand:focus{ color:var(--amber); }
+.brand:focus .dot{ background:var(--amber); }
+
+.gear{
+  display:inline-block; vertical-align:middle;
+  width:38px; height:38px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--panel-2);
+  color:var(--muted);
+  margin-left:8px;
+  line-height:0;
+  text-align:center;
+}
+.gear svg{ display:inline-block; vertical-align:middle; }
+.gear:focus{ color:#0A0D13; background:var(--amber); border-color:var(--amber); }
+
+/* 搜索联想 */
+.sug{
+  position:absolute;
+  top:44px; left:0; right:0;
+  z-index:50;
+  display:none;
+  border-radius:14px;
+  overflow:hidden;
+  background:rgba(18,21,29,0.98);
+  border:1px solid var(--line);
+  box-shadow:0 16px 40px rgba(0,0,0,0.5);
+}
+.sug.open{ display:block; }
+.sug button{
+  display:block; width:100%;
+  padding:11px 14px;
+  text-align:left;
+  font-size:14px;
+  color:var(--text);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.sug button:last-child{ border-bottom:0; }
+.sug button:focus,
+.sug button.on{ background:rgba(255,194,75,0.14); color:var(--amber); }
+.sug .k{ color:var(--muted); margin-right:8px; }
+.search{
+  display:inline-block; vertical-align:middle;
+  width:auto; max-width:none;
+  position:relative;
+  margin-right:0;
+}
+/* 搜索框吃掉 logo 和齿轮之外的所有宽度 */
+.top-inner{ display:block; white-space:nowrap; }
+.search{ width:calc(100% - 190px); min-width:120px; }
+html.fm-tv .search{ width:calc(100% - 240px); }
+.search input{
+  width:100%; box-sizing:border-box;
+  height:38px; line-height:38px;
+  padding:0 40px 0 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--panel-2);
+  outline:none;
+  font-size:14px;
+}
+.search input:focus{ border-color:var(--amber); }
+.search .go{
+  position:absolute; top:4px; right:4px;
+  top:4px; right:4px;
+  width:30px; height:30px; border-radius:50%;
+  color:var(--muted);
+}
+.search .go:focus{ color:var(--amber); }
+
+.icon-btn{
+  display:inline-block; vertical-align:middle;
+  height:38px; min-width:38px; padding:0 10px;
+  border-radius:999px; border:1px solid var(--line);
+  background:var(--panel-2);
+  font-size:13px; color:var(--muted);
+  margin-left:6px;
+}
+.icon-btn:focus{ color:var(--ink); background:var(--amber); border-color:var(--amber); }
+
+/* ============ 分类 tab ============ */
+.tabs{
+  white-space:nowrap; overflow-x:auto; overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  margin-top:10px;
+  padding-bottom:2px;
+}
+.tabs::-webkit-scrollbar{ display:none; }
+.tab{
+  display:inline-block;
+  padding:6px 14px; margin-right:8px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:var(--panel-2);
+  color:var(--muted);
+  font-size:13px;
+  white-space:nowrap;
+}
+.tab.on{ background:var(--text); color:#0A0D13; border-color:var(--text); font-weight:600; }
+.tab:focus{ border-color:var(--amber); color:var(--amber); }
+.tab.on:focus{ color:#0A0D13; background:var(--amber); }
+
+/* ============ 列表 ============ */
+.wrap{
+  padding:14px 8px 40px;
+  padding-left:8px; padding-right:8px;
+  padding-bottom:calc(var(--safe-bottom) + 40px);
+}
+.grid{ font-size:0; margin:0 -6px; }
+.card{
+  display:inline-block; vertical-align:top;
+  width:50%;
+  box-sizing:border-box;
+  padding:0 6px 18px;
+  font-size:14px;
+  text-align:left;
+}
+@media (min-width:640px){ .card{ width:33.3333%; } }
+@media (min-width:960px){ .card{ width:25%; } }
+@media (min-width:1400px){ .card{ width:20%; } }
+
+.card-inner{
+  display:block; width:100%;
+  border-radius:var(--radius);
+  overflow:hidden;
+  background:var(--panel);
+  border:1px solid transparent;
+  text-align:left;
+  padding:0;
+}
+.card-inner:focus{
+  border-color:var(--amber);
+  box-shadow:0 0 0 2px rgba(255,194,75,0.45);
+  transform:translateY(-2px);
+}
+.thumb{
+  position:relative;
+  width:100%;
+  padding-top:56.25%;              /* 固定 16:9，不依赖 aspect-ratio */
+  background:rgba(255,255,255,0.05);
+  overflow:hidden;
+}
+.thumb img{
+  position:absolute;
+  top:0; left:0; width:100%; height:100%;
+  object-fit:cover;
+}
+.badge{
+  position:absolute;
+  right:6px; bottom:6px;
+  padding:1px 6px;
+  border-radius:5px;
+  background:rgba(0,0,0,0.78);
+  color:#fff;
+  font-size:11px; line-height:18px;
+  font-variant-numeric:tabular-nums;
+}
+.badge.live{ background:var(--signal); }
+.badge.list{ left:6px; right:auto; background:rgba(0,0,0,0.78); }
+.meta{ padding:9px 10px 12px; }
+.title{
+  font-size:13px; line-height:1.35; font-weight:600;
+  color:var(--text);
+  display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2;
+  overflow:hidden;
+  max-height:36px;
+}
+.sub{
+  margin-top:6px;
+  font-size:11px; line-height:1.3;
+  color:var(--muted);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* ============ 状态 ============ */
+.state{
+  padding:60px 20px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+.state strong{ display:block; color:var(--text); font-size:15px; margin-bottom:8px; }
+.state .act{
+  display:inline-block;
+  margin-top:14px; padding:9px 18px;
+  border-radius:999px;
+  background:var(--panel-2); border:1px solid var(--line);
+  color:var(--text); font-size:13px;
+}
+.state .act:focus{ border-color:var(--amber); color:var(--amber); }
+.skel .card-inner{
+  background:var(--panel);
+  border:1px solid transparent;
+  border-radius:var(--radius);
+  overflow:hidden;
+  width:100%;
+  display:block;
+  cursor:default;
+}
+.skel .thumb{ background:rgba(255,255,255,0.06); }
+.skel .meta{ padding:9px 10px 12px; }
+.skel .bar{
+  height:11px;
+  border-radius:5px;
+  background:rgba(255,255,255,0.08);
+  margin-bottom:7px;
+}
+.skel .bar.short{ width:55%; margin-bottom:0; height:9px; background:rgba(255,255,255,0.05); }
+
+/* 微微呼吸，别做跑马灯高光：老 WebView 上渐变动画很容易掉帧 */
+.skel .card-inner{ animation:pulse 1.4s ease-in-out infinite; }
+.skel .card:nth-child(2n) .card-inner{ animation-delay:.18s; }
+.skel .card:nth-child(3n) .card-inner{ animation-delay:.36s; }
+@keyframes pulse{
+  0%,100%{ opacity:1; }
+  50%{ opacity:.55; }
+}
+@media (prefers-reduced-motion: reduce){
+  .skel .card-inner{ animation:none; }
+}
+
+.spinner{
+  width:22px; height:22px; margin:0 auto 12px;
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,0.16);
+  border-top-color:var(--amber);
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){ .skel .card-inner{
+  background:var(--panel);
+  border:1px solid transparent;
+  border-radius:var(--radius);
+  overflow:hidden;
+  width:100%;
+  display:block;
+  cursor:default;
+}
+.skel .thumb{ background:rgba(255,255,255,0.06); }
+.skel .meta{ padding:9px 10px 12px; }
+.skel .bar{
+  height:11px;
+  border-radius:5px;
+  background:rgba(255,255,255,0.08);
+  margin-bottom:7px;
+}
+.skel .bar.short{ width:55%; margin-bottom:0; height:9px; background:rgba(255,255,255,0.05); }
+
+/* 微微呼吸，别做跑马灯高光：老 WebView 上渐变动画很容易掉帧 */
+.skel .card-inner{ animation:pulse 1.4s ease-in-out infinite; }
+.skel .card:nth-child(2n) .card-inner{ animation-delay:.18s; }
+.skel .card:nth-child(3n) .card-inner{ animation-delay:.36s; }
+@keyframes pulse{
+  0%,100%{ opacity:1; }
+  50%{ opacity:.55; }
+}
+@media (prefers-reduced-motion: reduce){
+  .skel .card-inner{ animation:none; }
+}
+
+.spinner{ animation:none; } }
+.more{ padding:18px 0 4px; text-align:center; }
+
+/* ============ 浮层 ============ */
+.sheet{
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
+  z-index:60;
+  display:none;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  background:rgba(6,8,12,0.94);
+}
+.sheet.open{ display:block; }
+body.locked{ overflow:hidden; }
+
+.hero{ position:relative; width:100%; padding-top:56.25%; background:#101319; overflow:hidden; }
+.hero img{ position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
+.hero .fade{
+  position:absolute; left:0; right:0; bottom:0;
+  height:38%;
+  background:linear-gradient(to bottom, rgba(6,8,12,0), rgba(6,8,12,0.96));
+}
+.hero .play{
+  position:absolute;
+  left:50%; top:50%;
+  margin-left:-32px; margin-top:-32px;
+  width:64px; height:64px; border-radius:50%;
+  background:var(--signal);
+  color:#fff; font-size:22px; line-height:64px; text-align:center;
+  box-shadow:0 8px 28px rgba(240,69,58,0.4);
+}
+.hero .play:focus{ background:var(--amber); color:#0A0D13; box-shadow:0 0 0 3px rgba(255,194,75,0.5); }
+.sheet-back{
+  position:absolute;
+  top:10px; left:10px;
+  top:calc(var(--safe-top) + 10px);
+  z-index:5;
+  width:36px; height:36px; border-radius:50%;
+  background:rgba(0,0,0,0.55);
+  color:#fff; font-size:18px; line-height:36px; text-align:center;
+}
+.sheet-back:focus{ background:var(--amber); color:#0A0D13; }
+
+.row{ margin:0 -5px 18px; font-size:0; }
+.btn{
+  display:inline-block;
+  margin:0 5px 8px;
+  padding:11px 18px;
+  border-radius:999px;
+  background:var(--panel-2);
+  border:1px solid var(--line);
+  font-size:13px; font-weight:600;
+  color:var(--text);
+}
+.btn.primary{ background:var(--signal); border-color:var(--signal); color:#fff; }
+.btn:focus{ border-color:var(--amber); color:var(--amber); }
+.btn.primary:focus{ background:var(--amber); color:#0A0D13; }
+.section-title{
+  font-size:12px; letter-spacing:.16em; color:var(--muted);
+  text-transform:uppercase;
+  margin:6px 0 10px;
+}
+
+/* 设置 / 自检 */
+.panel{ max-width:640px; margin:0 auto; padding:0 16px 40px; padding-bottom:calc(var(--safe-bottom) + 40px); }
+.panel h2{ font-size:16px; margin:18px 0 12px; }
+.field{ margin-bottom:14px; }
+.field label{ display:block; font-size:12px; color:var(--muted); margin-bottom:6px; }
+.field input, .field select{
+  width:100%; box-sizing:border-box;
+  height:40px; padding:0 12px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:var(--panel-2);
+  outline:none; font-size:14px;
+}
+.field input:focus, .field select:focus{ border-color:var(--amber); }
+.note{
+  font-size:12px; line-height:1.7; color:var(--muted);
+  background:var(--panel); border:1px solid var(--line);
+  border-radius:12px; padding:12px 14px; margin-top:12px;
+}
+.note b{ color:var(--text); font-weight:600; }
+pre.code{
+  margin:10px 0 0;
+  padding:12px;
+  background:rgba(0,0,0,0.5);
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:11px; line-height:1.6;
+  color:#CBD6E2;
+  overflow-x:auto;
+  white-space:pre;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+.diag-line{
+  display:block;
+  padding:9px 12px; margin-bottom:8px;
+  border-radius:10px;
+  background:var(--panel); border:1px solid var(--line);
+  font-size:12px; color:var(--muted);
+}
+.diag-line b{ color:var(--text); }
+.ok{ color:#57D9A3; }
+.bad{ color:#FF6B5E; }
+
+/* toast */
+.toast{
+  position:fixed;
+  left:50%; bottom:34px;
+  bottom:calc(var(--safe-bottom) + 34px);
+  z-index:90;
+  transform:translateX(-50%);
+  max-width:80%;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(20,24,32,0.95);
+  border:1px solid var(--line);
+  font-size:13px;
+  opacity:0; visibility:hidden;
+  transition:opacity .18s ease;
+}
+.toast.show{ opacity:1; visibility:visible; }
+
+/* TV */
+html.fm-tv .card{ width:25%; }
+html.fm-tv .title{ font-size:15px; max-height:42px; }
+html.fm-tv .sub{ font-size:12px; }
+html.fm-tv .tab{ font-size:15px; padding:8px 18px; }
+html.fm-tv .card-inner:focus{ box-shadow:0 0 0 3px var(--amber); }
+
+/* 降级 */
+html.no-css-functions .top{ padding-top:16px; }
+html.no-css-functions .wrap{ padding-bottom:48px; }
+</style>
+</head>
+
+<body>
+
+<header class="top" id="top">
+  <div class="top-inner">
+    <!-- logo 兼作网络自检入口：小圆点就是状态灯 -->
+    <button class="brand" id="netBtn" aria-label="网络自检">
+      <span class="dot" id="netDot"></span>YOUTUBE
+    </button>
+
+    <span class="search">
+      <input id="q" type="search" placeholder="搜索视频、频道、播放列表" autocomplete="off">
+      <button class="go" id="goBtn" aria-label="搜索">⌕</button>
+      <div class="sug" id="sug"></div>
+    </span>
+
+    <button class="gear" id="setBtn" aria-label="设置">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+    </button>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+
+<main class="wrap">
+  <div id="list" class="grid"></div>
+  <div id="state" class="state"></div>
+  <div id="more" class="more"></div>
+</main>
+
+<!-- 设置浮层 -->
+<section class="sheet" id="settings">
+  <button class="sheet-back" id="setBack">‹</button>
+  <div class="panel">
+    <h2>设置</h2>
+    <div class="field">
+      <label for="quality">画质</label>
+      <select id="quality">
+        <option value="best">最高（有 4K 就 4K）</option>
+        <option value="2160">2160P / 4K</option>
+        <option value="1440">1440P / 2K</option>
+        <option value="1080">1080P</option>
+        <option value="720">720P</option>
+        <option value="480">480P</option>
+        <option value="360">360P</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="engine">播放引擎</label>
+      <select id="engine">
+        <option value="hls">HLS（YouTube 官方清单，推荐）</option>
+        <option value="dash">DASH（Invidious 清单，实例常被墙）</option>
+        <option value="newpipe">App 内置 NewPipe</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="client">取流客户端（播一会就 403 时，逐个换着试）</label>
+      <select id="client">
+        <option value="auto">自动（VR → IOS → ANDROID → MWEB → TV）</option>
+        <option value="ANDROID_VR">ANDROID_VR（Quest 3，通常不吃 PoToken）</option>
+        <option value="IOS">IOS</option>
+        <option value="ANDROID">ANDROID</option>
+        <option value="TVHTML5">TVHTML5</option>
+        <option value="MWEB">MWEB</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="seg">DASH 分片走哪条路</label>
+      <select id="seg">
+        <option value="gw">/webResource 网关（UA 每次请求都带得上，理论上能拖动）</option>
+        <option value="direct">googlevideo 直链（UA 只在首次请求，拖动可能 403）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="hlsmode">HLS 模式</label>
+      <select id="hlsmode">
+        <option value="variant">直推变体（把该档 m3u8 原地址给播放器，最稳）</option>
+        <option value="pin">锁定画质（改写主清单 + data URI，播放器可能不吃）</option>
+        <option value="master">原始主清单（播放器自适应，会从低码率起步）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="dashmode">DASH 模式</label>
+      <select id="dashmode">
+        <option value="pin">锁定画质（改写清单，播放器没得挑）</option>
+        <option value="raw">原始清单（播放器自适应，可能从低码率起步）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="inv">Invidious 实例（留空自动挑一个能用的）</label>
+      <input id="inv" type="text" placeholder="https://inv.nadeko.net">
+    </div>
+    <div class="field">
+      <label for="hl">界面语言 hl</label>
+      <input id="hl" type="text" placeholder="zh-CN">
+    </div>
+    <div class="field">
+      <label for="gl">内容地区 gl（代理出口所在地区效果最好）</label>
+      <input id="gl" type="text" placeholder="US">
+    </div>
+    <div class="field">
+      <label for="ua">请求 User-Agent</label>
+      <input id="ua" type="text">
+    </div>
+    <div class="row">
+      <button class="btn primary" id="saveBtn">保存</button>
+      <button class="btn" id="resetBtn">恢复默认</button>
+    </div>
+    <div class="note">
+      <b>关于画质。</b>YouTube 的单流上限就是 <b>720P</b>；1080P 以上一律是视频、音频分离的自适应流，必须有人把两条轨拼成一份清单。
+      网页自己做不到（没有本地服务端），所以 <b>DASH 引擎</b>用 Invidious 实例现成的 MPD：<code>/api/manifest/dash/id/…</code>，里面已经拼好了。
+      清单地址不以 <code>.mpd</code> 结尾，播放器猜不出类型，所以走 <code>fm.vodInline</code> 的逐集 resolver，显式回一个
+      <code>format: application/dash+xml</code>——之前 DASH 播不了就卡在这。DASH 是自适应的，播放器会自己上到最高，清晰度在播放页里调。
+      <b>HLS 引擎</b>是备选，能按档位精确挑一条，但 YouTube 的 iOS 清单一般到 1080P 为止。两条都不通才退回 NewPipe。
+    </div>
+    <div class="note">
+      <b>关于代理。</b>本页所有接口走 <b>fm.req</b>、所有图片走 <b>fm.res</b>，两者都使用 App 统一 OkHttp，会继承配置里的
+      <b>proxy / hosts / doh</b> 和增强功能里的 <b>Proxy 壳代理</b> 规则。页面本身不做任何代理，请在 App 侧配置一次即可。
+      播放使用 App 内置 NewPipe 解析 YouTube 链接，取到的是 <b>googlevideo.com</b> 直链，所以代理规则必须同时覆盖播放域名，否则会出现“能刷列表、不能起播”。
+      <pre class="code" id="proxySnippet"></pre>
+      <button class="btn" id="copyCfg" style="margin-top:10px">复制这段 proxy 配置</button>
+    </div>
+  </div>
+</section>
+
+<!-- 网络自检浮层 -->
+<section class="sheet" id="net">
+  <button class="sheet-back" id="netBack">‹</button>
+  <div class="panel">
+    <h2>网络自检</h2>
+    <div id="diag"></div>
+    <div class="row">
+      <button class="btn primary" id="runDiag">重新检测</button>
+    </div>
+    <div class="note">
+      检测项分别对应「拉列表」「出图」「起播」三条链路。任意一条失败，先去
+      <b>设置 → 增强功能 → Proxy 壳代理</b> 打开代理并补规则，或在点播配置顶层加 <code>proxy</code> 段。
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =============================================================
+   YouTube WebHome
+   语法基线 ES2017：无 ?. / ?? / ||= / replaceAll / allSettled
+   ============================================================= */
+(function () {
+  'use strict';
+
+  var YT = 'https://www.youtube.com';
+  var API = YT + '/youtubei/v1/';
+  var KEY = 'AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8';   // YouTube Web 端公开 key
+  var CVER = '2.20240401.00.00';
+  var DEF_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36';
+
+  var PROXY_SNIPPET = [
+    '{',
+    '  "proxy": [',
+    '    {',
+    '      "name": "youtube",',
+    '      "hosts": [',
+    '        "youtube.com", "youtu.be", "ytimg.com", "ggpht.com",',
+    '        "googlevideo.com", "googleapis.com", "gstatic.com"',
+    '      ],',
+    '      "urls": ["socks5://127.0.0.1:7897"]',
+    '    }',
+    '  ]',
+    '}'
+  ].join('\n');
+
+  var TABS = [
+    { id: 'rec',   name: '推荐',  type: 'browse', arg: 'FEwhat_to_watch' },
+    { id: 'hot',   name: '热门',  type: 'browse', arg: 'FEtrending' },
+    { id: 'music', name: '音乐',  type: 'search', arg: '音乐 MV' },
+    { id: 'game',  name: '游戏',  type: 'search', arg: '游戏 实况' },
+    { id: 'tech',  name: '科技',  type: 'search', arg: '科技 数码 评测' },
+    { id: 'movie', name: '影视',  type: 'search', arg: '电影 解说' },
+    { id: 'news',  name: '新闻',  type: 'search', arg: '新闻' },
+    { id: 'recent',name: '最近',  type: 'recent', arg: '' }
+  ];
+
+  /* ---------- DOM ---------- */
+  function $(id) { return document.getElementById(id); }
+  function setVal(id, v) { var el = $(id); if (el) el.value = v; }
+  function getVal(id) { var el = $(id); return el ? String(el.value) : ''; }
+  function on(id, evt, fn) {
+    var el = $(id);
+    if (el) el.addEventListener(evt, fn);
+  }
+  var elList = $('list'), elState = $('state'), elMore = $('more'), elTabs = $('tabs'), elToast = $('toast');
+
+  /* ---------- 状态 ---------- */
+  var prefs = { hl: 'zh-CN', gl: 'US', ua: DEF_UA, quality: 'best', engine: 'hls', hlsmode: 'variant', seg: 'gw', client: 'auto', dashmode: 'pin', inv: '' };
+  var view = { kind: 'browse', arg: 'FEwhat_to_watch', tab: 'rec', token: '', items: [], loading: false, seq: 0, ep: '' };
+  var native = false;
+
+  /* ---------- 基础工具 ---------- */
+  /* logo 里的小圆点 = 网络状态灯：绿=通，红=断。点 logo 打开自检 */
+  function netDot(ok) {
+    var d = $('netDot');
+    if (d) d.className = 'dot ' + (ok ? 'ok' : 'bad');
+  }
+
+  function toast(msg) {
+    elToast.textContent = msg;
+    elToast.className = 'toast show';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function () { elToast.className = 'toast'; }, 2200);
+  }
+
+  function get(obj, path) {                     // 代替可选链
+    var cur = obj, parts = path.split('.'), i, k;
+    for (i = 0; i < parts.length; i++) {
+      if (cur == null) return undefined;
+      k = parts[i];
+      cur = cur[k];
+    }
+    return cur;
+  }
+
+  function text(node) {
+    if (!node) return '';
+    if (typeof node === 'string') return node;
+    if (node.simpleText) return node.simpleText;
+    var runs = node.runs;
+    if (runs && runs.length) {
+      var s = '', i;
+      for (i = 0; i < runs.length; i++) s += (runs[i].text || '');
+      return s;
+    }
+    if (node.content) return node.content;
+    return '';
+  }
+
+  /* ---------- 存储：App 内 fm.cache，预览时 localStorage ---------- */
+  var store = {
+    get: async function (k) {
+      try {
+        if (native && window.fm && fm.cache) {
+          var v = await fm.cache.get(k, 'yt');
+          return v || '';
+        }
+      } catch (e) {}
+      try { return localStorage.getItem('yt_' + k) || ''; } catch (e) { return ''; }
+    },
+    set: async function (k, v) {
+      try {
+        if (native && window.fm && fm.cache) { await fm.cache.set(k, v, 'yt'); return; }
+      } catch (e) {}
+      try { localStorage.setItem('yt_' + k, v); } catch (e) {}
+    }
+  };
+
+  /* ---------- 网络：一律走 Native ---------- */
+  async function req(url, options) {
+    var opt = options || {};
+    if (native && window.fm && fm.req) {
+      var headers = opt.headers || {};
+      if (!headers['User-Agent']) headers['User-Agent'] = prefs.ua;
+      var r = await fm.req(url, {
+        method: opt.method || 'GET',
+        headers: headers,
+        body: opt.body || '',
+        responseType: opt.responseType || 'text',
+        timeout: opt.timeout || 20
+      });
+      if (!r || !r.ok) {
+        var msg = (r && (r.error || ('HTTP ' + r.status))) || '请求失败';
+        var err = new Error(msg);
+        err.status = r ? r.status : 0;
+        throw err;
+      }
+      return r.body;
+    }
+    // 电脑预览兜底（会受浏览器 CORS 限制）
+    var res = await fetch(url, {
+      method: opt.method || 'GET',
+      headers: opt.headers || {},
+      body: opt.body || undefined
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return (opt.responseType === 'json') ? res.json() : res.text();
+  }
+
+  function resUrl(url) {                        // 图片一律过本地网关 → 走代理
+    if (!url) return '';
+    if (native && window.fm && fm.res) {
+      try { return fm.res(url, { headers: { 'User-Agent': prefs.ua, Referer: YT + '/' } }); } catch (e) { return url; }
+    }
+    return url;
+  }
+
+  function setImg(img, url) {
+    img.src = resUrl(url);
+    img.onerror = function () {
+      img.onerror = null;
+      img.style.opacity = '0';
+    };
+  }
+
+  /* ---------- InnerTube ---------- */
+  var TRENDING_QUERY = { CN: '热门视频', TW: '熱門影片', HK: '熱門影片', JP: '人気の動画', US: 'trending' };
+
+  async function innertube(endpoint, payload) {
+    // browse（推荐 / 热门）必须带 visitorData，否则 YouTube 返回一个空信息流：
+    // 不报错、也没内容。搜索没这个限制，所以只有这两个 tab 会空。
+    var cfg = await ytcfg('');
+
+    var client = {
+      clientName: 'WEB',
+      clientVersion: CVER,
+      hl: prefs.hl,
+      gl: prefs.gl,
+      userAgent: prefs.ua
+    };
+    if (cfg.visitor) client.visitorData = cfg.visitor;
+
+    var body = { context: { client: client } };
+    var k;
+    for (k in payload) if (Object.prototype.hasOwnProperty.call(payload, k)) body[k] = payload[k];
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'Accept-Language': prefs.hl,
+      'Origin': YT,
+      'Referer': YT + '/',
+      'X-YouTube-Client-Name': '1',
+      'X-YouTube-Client-Version': CVER,
+      'User-Agent': prefs.ua
+    };
+    if (cfg.visitor) headers['X-Goog-Visitor-Id'] = cfg.visitor;
+
+    return req(API + endpoint + '?key=' + (cfg.key || KEY) + '&prettyPrint=false', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+      responseType: 'json',
+      timeout: 25
+    });
+  }
+
+  /* 深度遍历，兼容 YouTube 随时变化的 renderer 结构 */
+  function collect(node, keys, out, depth) {
+    if (!node || depth > 14) return out;
+    var i, k;
+    if (Object.prototype.toString.call(node) === '[object Array]') {
+      for (i = 0; i < node.length; i++) collect(node[i], keys, out, depth + 1);
+      return out;
+    }
+    if (typeof node !== 'object') return out;
+    for (k in node) {
+      if (!Object.prototype.hasOwnProperty.call(node, k)) continue;
+      if (keys.indexOf(k) !== -1 && node[k] && typeof node[k] === 'object') out.push(node[k]);
+      collect(node[k], keys, out, depth + 1);
+    }
+    return out;
+  }
+
+  var VIDEO_KEYS = ['videoRenderer', 'compactVideoRenderer', 'gridVideoRenderer', 'playlistVideoRenderer'];
+  var LIST_KEYS = ['playlistRenderer', 'compactPlaylistRenderer', 'gridPlaylistRenderer'];
+
+  function thumbOf(r, id, kind) {
+    var arr = get(r, 'thumbnail.thumbnails');
+    if (arr && arr.length) return arr[arr.length - 1].url;
+    if (kind === 'list') return 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+    return 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
+  }
+
+  function toVideo(r) {
+    var id = r.videoId;
+    if (!id) return null;
+    var badges = JSON.stringify(r.badges || r.thumbnailOverlays || '');
+    return {
+      kind: 'video',
+      id: id,
+      title: text(r.title),
+      author: text(r.ownerText) || text(r.longBylineText) || text(r.shortBylineText),
+      length: text(r.lengthText),
+      views: text(r.shortViewCountText) || text(r.viewCountText),
+      time: text(r.publishedTimeText),
+      live: badges.indexOf('LIVE') !== -1,
+      pic: thumbOf(r, id, 'video'),
+      wall: 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg',
+      url: YT + '/watch?v=' + id
+    };
+  }
+
+  function toList(r) {
+    var id = r.playlistId;
+    if (!id) return null;
+    var vid = get(r, 'navigationEndpoint.watchEndpoint.videoId') || '';
+    var count = text(r.videoCountShortText) || text(r.videoCountText) || '';
+    var pic = get(r, 'thumbnails.0.thumbnails');
+    return {
+      kind: 'list',
+      id: id,
+      title: text(r.title),
+      author: text(r.longBylineText) || text(r.shortBylineText),
+      count: count,
+      pic: (pic && pic.length ? pic[pic.length - 1].url : (vid ? 'https://i.ytimg.com/vi/' + vid + '/hqdefault.jpg' : '')),
+      wall: vid ? 'https://i.ytimg.com/vi/' + vid + '/maxresdefault.jpg' : '',
+      url: YT + '/playlist?list=' + id
+    };
+  }
+
+  function parseItems(json) {
+    var out = [], seen = {}, i, v;
+    var vids = collect(json, VIDEO_KEYS, [], 0);
+    for (i = 0; i < vids.length; i++) {
+      v = toVideo(vids[i]);
+      if (v && !seen['v' + v.id]) { seen['v' + v.id] = 1; out.push(v); }
+    }
+    var lists = collect(json, LIST_KEYS, [], 0);
+    for (i = 0; i < lists.length; i++) {
+      v = toList(lists[i]);
+      if (v && !seen['l' + v.id]) { seen['l' + v.id] = 1; out.push(v); }
+    }
+    return out;
+  }
+
+  function parseToken(json) {
+    var conts = collect(json, ['continuationItemRenderer'], [], 0);
+    var i, t;
+    for (i = 0; i < conts.length; i++) {
+      t = get(conts[i], 'continuationEndpoint.continuationCommand.token');
+      if (t) return t;
+    }
+    return '';
+  }
+
+  /* ---------- 数据源 ---------- */
+  async function fetchPage(kind, arg, token) {
+    if (token) {
+      // continuation token 必须发回**产生它的那个接口**。
+      // 推荐/热门经常降级到 search 兜底，这时 token 是 search 的，
+      // 再按 tab 类型发给 browse 就会 400 —— 这就是"加载更多"报错的原因。
+      var ep = view.ep || ((kind === 'search') ? 'search' : 'browse');
+      var other = (ep === 'search') ? 'browse' : 'search';
+      try {
+        return await innertube(ep, { continuation: token });
+      } catch (e) {
+        return innertube(other, { continuation: token });
+      }
+    }
+
+    if (kind === 'search') {
+      view.ep = 'search';
+      return innertube('search', { query: arg });
+    }
+
+    if (kind === 'browse') {
+      var json = null;
+
+      try {
+        json = await innertube('browse', { browseId: arg });
+        if (parseItems(json).length) { view.ep = 'browse'; return json; }
+      } catch (e2) {}
+
+      // 空信息流：YouTube 有时对某些地区 / 无 cookie 的请求直接给空。
+      // 推荐 → 热门 → 搜索，逐级降级，别让 tab 空着。
+      if (arg === 'FEwhat_to_watch') {
+        try {
+          json = await innertube('browse', { browseId: 'FEtrending' });
+          if (parseItems(json).length) { view.ep = 'browse'; return json; }
+        } catch (e3) {}
+      }
+
+      view.ep = 'search';   // 降级到搜索兜底，之后的 continuation 也得发给 search
+      return innertube('search', { query: TRENDING_QUERY[prefs.gl] || 'trending' });
+    }
+    return null;
+  }
+
+  /* ---------- 渲染 ---------- */
+  function card(item) {
+    var btn = document.createElement('button');
+    btn.className = 'card-inner';
+    btn.setAttribute('tabindex', '0');
+
+    var thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    var img = document.createElement('img');
+    img.alt = '';
+    img.loading = 'lazy';
+    setImg(img, item.pic);
+    thumb.appendChild(img);
+
+    if (item.kind === 'list') {
+      var lb = document.createElement('span');
+      lb.className = 'badge list';
+      lb.textContent = '播放列表 ' + (item.count || '');
+      thumb.appendChild(lb);
+    } else if (item.live) {
+      var live = document.createElement('span');
+      live.className = 'badge live';
+      live.textContent = 'LIVE';
+      thumb.appendChild(live);
+    } else if (item.length) {
+      var lg = document.createElement('span');
+      lg.className = 'badge';
+      lg.textContent = item.length;
+      thumb.appendChild(lg);
+    }
+
+    var meta = document.createElement('div');
+    meta.className = 'meta';
+    var t = document.createElement('div');
+    t.className = 'title';
+    t.textContent = item.title || '(无标题)';
+    var s = document.createElement('div');
+    s.className = 'sub';
+    var subParts = [];
+    if (item.author) subParts.push(item.author);
+    if (item.views) subParts.push(item.views);
+    if (item.time) subParts.push(item.time);
+    s.textContent = subParts.join(' · ');
+    meta.appendChild(t);
+    meta.appendChild(s);
+
+    btn.appendChild(thumb);
+    btn.appendChild(meta);
+
+    btn.addEventListener('click', function () { play(item); });
+    btn.addEventListener('contextmenu', function (e) {   // 长按 = 在其他站源搜索
+      e.preventDefault();
+      if (native && fm.search) fm.search(item.title, { direct: true, pic: item.pic, wallPic: item.wall })['catch'](function () {});
+    });
+    return btn;
+  }
+
+  function renderInto(box, items) {
+    var frag = document.createDocumentFragment(), i, wrap;
+    for (i = 0; i < items.length; i++) {
+      wrap = document.createElement('div');
+      wrap.className = 'card';
+      wrap.appendChild(card(items[i]));
+      frag.appendChild(wrap);
+    }
+    box.appendChild(frag);
+  }
+
+  function showState(html) { elState.innerHTML = html; }
+  // 骨架屏是塞进 elState 的，所以清空逻辑不变，clearState 会一起干掉
+  function clearState() { elState.innerHTML = ''; }
+
+  /* 骨架屏：形状和真实卡片完全一致，数据到了直接换掉，不会跳动 */
+  function skeleton(n) {
+    var box = document.createDocumentFragment();
+    var i, card, inner, thumb, meta;
+    for (i = 0; i < n; i++) {
+      card = document.createElement('div');
+      card.className = 'card';
+
+      inner = document.createElement('div');
+      inner.className = 'card-inner';
+
+      thumb = document.createElement('div');
+      thumb.className = 'thumb';
+
+      meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.innerHTML = '<div class="bar"></div><div class="bar short"></div>';
+
+      inner.appendChild(thumb);
+      inner.appendChild(meta);
+      card.appendChild(inner);
+      box.appendChild(card);
+    }
+    return box;
+  }
+
+  function loadingState() {
+    clearState();
+    elList.className = 'grid skel';
+    elList.replaceChildren(skeleton(12));
+  }
+
+  function endLoading() {
+    elList.className = 'grid';
+  }
+
+  function errorState(msg) {
+    showState(
+      '<strong>没能连上 YouTube</strong>' +
+      '<div>' + String(msg).replace(/</g, '&lt;') + '</div>' +
+      '<div style="margin-top:10px">这台设备访问 YouTube 需要代理。请在 App 里打开 <b>设置 → 增强功能 → Proxy 壳代理</b>，' +
+      '或在点播配置顶层加 <code>proxy</code> 规则，覆盖 youtube.com / ytimg.com / googlevideo.com。</div>' +
+      '<button class="act" id="errNet">打开网络自检</button>'
+    );
+    var b = $('errNet');
+    if (b) b.addEventListener('click', function () { openSheet('net'); runDiag(); });
+  }
+
+  /* ---------- 列表加载 ---------- */
+  async function load(reset) {
+    if (view.loading) return;
+    view.loading = true;
+    var seq = ++view.seq;
+
+    if (reset) {
+      view.items = [];
+      view.token = '';
+      elList.replaceChildren();
+      elMore.replaceChildren();
+      loadingState();
+      window.scrollTo(0, 0);
+    }
+
+    if (view.kind === 'recent') {
+      view.loading = false;
+      await renderRecent();
+      return;
+    }
+
+    try {
+      var json = await fetchPage(view.kind, view.arg, view.token);
+      if (seq !== view.seq) { view.loading = false; return; }
+      var items = parseItems(json);
+      var token = parseToken(json);
+      view.token = token;
+      netDot(true);
+      endLoading();
+      if (reset) elList.replaceChildren();
+      if (!items.length && !view.items.length) {
+        showState('<strong>没有内容</strong><div>换个关键词，或到设置里把地区 gl 改成代理出口所在地区。</div>');
+      } else {
+        clearState();
+        view.items = view.items.concat(items);
+        renderInto(elList, items);
+      }
+      renderMore();
+    } catch (e) {
+      if (seq === view.seq) {
+        netDot(false);
+        endLoading();
+        if (view.items.length) toast('加载失败：' + e.message);
+        else { elList.replaceChildren(); errorState(e.message); }
+      }
+    }
+    view.loading = false;
+  }
+
+  function renderMore() {
+    elMore.replaceChildren();
+    if (!view.token) return;
+    var b = document.createElement('button');
+    b.className = 'state act';
+    b.textContent = '加载更多';
+    b.addEventListener('click', function () { load(false); });
+    elMore.appendChild(b);
+  }
+
+  /* 可见时自动翻页（IntersectionObserver 不可用时用被动 scroll 兜底） */
+  function autoPage() {
+    function near() {
+      if (view.loading || !view.token || !elMore.firstChild) return;
+      var r = elMore.getBoundingClientRect();
+      if (r.top < (window.innerHeight + 400)) load(false);
+    }
+    window.addEventListener('scroll', near, { passive: true });
+    setInterval(near, 1200);
+  }
+
+  /* ---------- 最近观看（本页自己记录，不依赖 push_agent 历史过滤） ---------- */
+  async function pushRecent(item) {
+    try {
+      var raw = await store.get('recent');
+      var arr = raw ? JSON.parse(raw) : [];
+      arr = arr.filter(function (x) { return x.id !== item.id; });
+      arr.unshift({
+        kind: item.kind, id: item.id, title: item.title, author: item.author,
+        length: item.length, pic: item.pic, wall: item.wall, url: item.url, ts: Date.now()
+      });
+      if (arr.length > 60) arr = arr.slice(0, 60);
+      await store.set('recent', JSON.stringify(arr));
+    } catch (e) {}
+  }
+
+  async function renderRecent() {
+    endLoading();
+    elList.replaceChildren();
+    elMore.replaceChildren();
+    var arr = [];
+    try {
+      var raw = await store.get('recent');
+      arr = raw ? JSON.parse(raw) : [];
+    } catch (e) { arr = []; }
+    if (!arr.length) {
+      showState('<strong>还没有播放记录</strong><div>播放过的视频会留在这里，重启 App 后依然保留。</div>');
+      return;
+    }
+    clearState();
+    renderInto(elList, arr);
+  }
+
+  /* ---------- 画质解析 ----------
+     真相：YouTube 的 progressive 单流最高只有 720p，1080p 以上一律是
+     video/audio 分离的自适应流。要让 App 播放器真的拿到 1080p+，唯一
+     稳的路子是 HLS：用 IOS 客户端问 player 接口要 hlsManifestUrl，
+     再把主清单拆成一档一档的变体 m3u8。
+
+     然后用 fm.vodInline 把每一档画质注册成"一集"，播放页的集数列表
+     就是画质切换器，mark 决定默认选中哪一档。
+     这样 URL 以 index.m3u8 结尾，播放器能正确识别 HLS；
+     headers 由 vodInline 直接交给播放器，不经过 /webResource，
+     避免网关吃掉扩展名导致播放器按普通文件处理。
+     ------------------------------------------------------------------ */
+  var PLAYER_CLIENTS = [
+    {
+      // Quest 3。目前少数不需要 PoToken 的客户端，取到的流不会播几十秒就被切断。
+      // youtube.py 把它排第一位，就是这个原因。
+      name: 'ANDROID_VR', id: '28', ver: '1.65.10',
+      ua: 'com.google.android.apps.youtube.vr.oculus/1.65.10 (Linux; U; Android 12L; eureka-user Build/SQ3A.220605.009.A1) gzip',
+      client: {
+        clientName: 'ANDROID_VR', clientVersion: '1.65.10',
+        deviceMake: 'Oculus', deviceModel: 'Quest 3',
+        androidSdkVersion: 32, osName: 'Android', osVersion: '12L'
+      }
+    },
+    {
+      // IOS 常常给 HLS，但没有 PoToken 时流会在几十秒后 403
+      name: 'IOS', id: '5', ver: '21.02.3',
+      ua: 'com.google.ios.youtube/21.02.3 (iPhone16,2; U; CPU iOS 18_3_2 like Mac OS X;)',
+      client: {
+        clientName: 'IOS', clientVersion: '21.02.3',
+        deviceMake: 'Apple', deviceModel: 'iPhone16,2',
+        osName: 'iPhone', osVersion: '18.3.2.22D82'
+      }
+    },
+    {
+      name: 'ANDROID', id: '3', ver: '21.02.35',
+      ua: 'com.google.android.youtube/21.02.35 (Linux; U; Android 11) gzip',
+      client: {
+        clientName: 'ANDROID', clientVersion: '21.02.35',
+        androidSdkVersion: 30, osName: 'Android', osVersion: '11'
+      }
+    },
+    {
+      name: 'MWEB', id: '2', ver: '2.20260115.01.00',
+      ua: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+      client: { clientName: 'MWEB', clientVersion: '2.20260115.01.00' }
+    },
+    {
+      name: 'TVHTML5', id: '85', ver: '2.0',
+      ua: 'Mozilla/5.0 (PlayStation; PlayStation 4/12.00) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15',
+      client: { clientName: 'TVHTML5_SIMPLY_EMBEDDED_PLAYER', clientVersion: '2.0' },
+      embed: true
+    }
+  ];
+
+  /* 硬编码 key 已经会被风控挡掉：先抓 watch 页取真实 INNERTUBE_API_KEY 和 visitorData */
+  var ytcfgCache = { key: '', visitor: '', ts: 0 };
+
+  async function ytcfg(videoId) {
+    if (ytcfgCache.key && (Date.now() - ytcfgCache.ts) < 1800000) return ytcfgCache;
+    try {
+      var html = await req(videoId ? (YT + '/watch?v=' + videoId) : (YT + '/'), {
+        headers: { 'User-Agent': DEF_UA, 'Accept-Language': prefs.hl },
+        timeout: 20
+      });
+      var k = html.match(/"INNERTUBE_API_KEY":"([^"]+)"/);
+      var v = html.match(/"visitorData":"([^"]+)"/);
+      ytcfgCache = {
+        key: k ? k[1] : KEY,
+        visitor: v ? decodeURIComponent(JSON.parse('"' + v[1] + '"')) : '',
+        ts: Date.now()
+      };
+    } catch (e) {
+      ytcfgCache = { key: KEY, visitor: '', ts: Date.now() };
+    }
+    return ytcfgCache;
+  }
+
+  async function playerData(videoId, c, cfg) {
+    var client = { hl: prefs.hl, gl: prefs.gl };
+    var k;
+    for (k in c.client) client[k] = c.client[k];
+    client.userAgent = c.ua;
+    if (cfg.visitor) client.visitorData = cfg.visitor;
+
+    var body = {
+      videoId: videoId,
+      context: { client: client },
+      contentCheckOk: true,
+      racyCheckOk: true
+    };
+    if (c.embed) body.context.thirdParty = { embedUrl: YT };
+
+    var headers = {
+      'Content-Type': 'application/json',
+      'User-Agent': c.ua,
+      'Origin': YT,
+      'Referer': YT + '/',
+      'X-YouTube-Client-Name': c.id,
+      'X-YouTube-Client-Version': c.ver
+    };
+    if (cfg.visitor) headers['X-Goog-Visitor-Id'] = cfg.visitor;
+
+    return req(API + 'player?key=' + cfg.key + '&prettyPrint=false', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+      responseType: 'json',
+      timeout: 25
+    });
+  }
+
+  /* 主清单 → [{ height, url }]，从高到低 */
+  function parseHls(txt) {
+    var lines = txt.split(/\r?\n/);
+    var out = [], seen = {}, i, m, h, url;
+    for (i = 0; i < lines.length; i++) {
+      if (lines[i].indexOf('#EXT-X-STREAM-INF') !== 0) continue;
+      m = lines[i].match(/RESOLUTION=(\d+)x(\d+)/);
+      h = m ? parseInt(m[2], 10) : 0;
+      url = '';
+      while (++i < lines.length) {
+        if (lines[i] && lines[i].charAt(0) !== '#') { url = lines[i].trim(); break; }
+      }
+      if (!url || !h || seen[h]) continue;
+      seen[h] = 1;
+      out.push({ height: h, url: url });
+    }
+    out.sort(function (a, b) { return b.height - a.height; });
+    return out;
+  }
+
+  /* 只留选中那一档的主清单。
+     #EXT-X-MEDIA（音轨/字幕）整组保留，否则挑了纯视频变体会没声音。
+     YouTube 主清单里的 URI 都是绝对地址，不用做相对路径拼接。 */
+  function pinMaster(txt, want) {
+    var lines = String(txt).split(/\r?\n/);
+    var head = [], streams = [], i, line, m, h, url;
+
+    for (i = 0; i < lines.length; i++) {
+      line = lines[i];
+      if (line.indexOf('#EXT-X-STREAM-INF') === 0) {
+        m = line.match(/RESOLUTION=(\d+)x(\d+)/);
+        h = m ? parseInt(m[2], 10) : 0;
+        url = '';
+        while (++i < lines.length) {
+          if (lines[i] && lines[i].charAt(0) !== '#') { url = lines[i].trim(); break; }
+        }
+        if (url && h) streams.push({ h: h, inf: line, url: url });
+        continue;
+      }
+      if (line.indexOf('#EXTM3U') === 0 ||
+          line.indexOf('#EXT-X-VERSION') === 0 ||
+          line.indexOf('#EXT-X-INDEPENDENT-SEGMENTS') === 0 ||
+          line.indexOf('#EXT-X-MEDIA') === 0) {
+        head.push(line);
+      }
+    }
+    if (!streams.length) throw new Error('主清单里没有变体');
+
+    streams.sort(function (a, b) { return b.h - a.h; });
+    var pick = streams[0];
+    var cap = (want === 'best') ? 0 : parseInt(want, 10);
+    if (cap) {
+      for (i = 0; i < streams.length; i++) {
+        if (streams[i].h <= cap) { pick = streams[i]; break; }
+      }
+    }
+    if (head.indexOf('#EXTM3U') === -1) head.unshift('#EXTM3U');
+
+    return {
+      text: head.join('\n') + '\n' + pick.inf + '\n' + pick.url + '\n',
+      height: pick.h,
+      url: pick.url
+    };
+  }
+
+  function m3u8DataUri(txt) {
+    return 'data:application/vnd.apple.mpegurl;base64,' + btoa(unescape(encodeURIComponent(txt)));
+  }
+
+  function heightOf(f) {
+    if (f.height) return f.height;
+    var m = (f.qualityLabel || '').match(/(\d+)p/);
+    return m ? parseInt(m[1], 10) : 0;
+  }
+
+  /* 单流兜底：有音轨，但 YouTube 上限 720p */
+  function parseMuxed(sd) {
+    var list = sd.formats || [], out = [], i, f, h;
+    for (i = 0; i < list.length; i++) {
+      f = list[i];
+      if (!f.url) continue;                       // signatureCipher 的没法直接播
+      if (f.mimeType && f.mimeType.indexOf('video') !== 0) continue;
+      h = heightOf(f);
+      if (!h) continue;
+      out.push({ height: h, url: f.url });
+    }
+    out.sort(function (a, b) { return b.height - a.height; });
+    return out;
+  }
+
+  /* 返回 { levels, ua, kind, client }，失败返回 null；why 里留失败原因，供自检显示 */
+  var lastWhy = [];
+
+  /* 一个客户端能给的东西，按可用性排序：
+       hls       主清单，最省事
+       adaptive  分离流（video-only + audio-only），得自己拼 MPD
+       muxed     单流 mp4，有音轨但上限 720P，且常常只剩 360P 以下 */
+  function pickAdaptive(sd, json) {
+    var af = sd.adaptiveFormats || [];
+    var hasV = false, hasA = false, j, f, mime;
+    for (j = 0; j < af.length; j++) {
+      f = af[j];
+      if (!f.url || !f.indexRange || !f.initRange) continue;   // 带 signatureCipher 的解不了
+      mime = f.mimeType || '';
+      if (mime.indexOf('video') === 0 && f.height) hasV = true;
+      if (mime.indexOf('audio') === 0) hasA = true;
+    }
+    if (!hasV || !hasA) return null;
+    return {
+      kind: 'adaptive',
+      formats: af,
+      duration: parseInt(get(json, 'videoDetails.lengthSeconds') || 0, 10) || 0
+    };
+  }
+
+  async function resolve(videoId) {
+    lastWhy = [];
+    var i, json, sd, status, master, levels, c;
+    var adaptive = null, muxed = null;
+
+    var list = PLAYER_CLIENTS;
+    if (prefs.client && prefs.client !== 'auto') {
+      list = PLAYER_CLIENTS.filter(function (x) { return x.name === prefs.client; });
+      if (!list.length) list = PLAYER_CLIENTS;
+    }
+
+    // visitorData 是拿到分离流的前提，裸打（不带 visitor）几乎必然 LOGIN_REQUIRED。
+    // 所以直接等 ytcfg，别浪费那次注定失败的裸打往返。
+    // ytcfg 缓存 30 分钟：只有冷启动第一次要等 watch 页，之后命中缓存、瞬间返回。
+    var cfg = await ytcfg(videoId);
+    var bareCfg = { key: KEY, visitor: '' };
+
+    for (i = 0; i < list.length; i++) {
+      c = list[i];
+
+      json = null;
+      try { json = await playerData(videoId, c, cfg); } catch (e) {}
+
+      // 带 visitor 反被拒时（visitorData 可能过期），裸打兜一次底
+      if (!json || !json.streamingData) {
+        try { json = await playerData(videoId, c, bareCfg); } catch (e2) {}
+      }
+
+      status = get(json, 'playabilityStatus.status');
+      sd = json ? json.streamingData : null;
+      if (!sd) {
+        lastWhy.push(c.name + '：' + (status || '被拒'));
+        continue;
+      }
+
+      if (c.name === 'ANDROID_VR') {
+        var vr = pickAdaptive(sd, json);
+        if (vr) { vr.ua = c.ua; vr.client = c.name; return vr; }
+        lastWhy.push('ANDROID_VR：没有可用分离流');
+      }
+
+      if (sd.hlsManifestUrl) {
+        try {
+          master = await req(sd.hlsManifestUrl, {
+            headers: { 'User-Agent': c.ua, Referer: YT + '/' }, timeout: 20
+          });
+          levels = parseHls(master);
+          if (levels.length) {
+            return { kind: 'hls', levels: levels, ua: c.ua, client: c.name, master: String(master), masterUrl: sd.hlsManifestUrl };
+          }
+        } catch (e3) { lastWhy.push(c.name + '：主清单拉不动'); }
+      }
+
+      if (!adaptive) {
+        adaptive = pickAdaptive(sd, json);
+        if (adaptive) { adaptive.ua = c.ua; adaptive.client = c.name; }
+      }
+      if (!muxed) {
+        levels = parseMuxed(sd);
+        if (levels.length) muxed = { kind: 'muxed', levels: levels, ua: c.ua, client: c.name };
+      }
+      if (!sd.hlsManifestUrl) lastWhy.push(c.name + '：没有 HLS');
+
+      // 已经拿到分离流(能拼高画质)就别再往下试了，直接用
+      if (adaptive) return adaptive;
+    }
+
+    return adaptive || muxed;
+  }
+
+  /* ---------- 自己拼 MPD ----------
+     和 youtube.py 的 _proxy_mpd 一个套路：SegmentBase + initRange/indexRange，
+     BaseURL 直接写 googlevideo 直链。区别是我们没有本地服务端托管，
+     所以拼完用 data: URI 交给播放器，并靠 vodInline resolver 显式声明
+     format: application/dash+xml，同时把取流客户端的 UA 从 headers 带下去（不然 403）。 */
+  function xmlEsc(t) {
+    return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function codecsOf(mime) {
+    var m = String(mime).match(/codecs="([^"]+)"/);
+    return m ? m[1] : '';
+  }
+
+  function mimeOf(mime) {
+    return String(mime).split(';')[0];
+  }
+
+  /* 关键：BaseURL 不能直接写 googlevideo 直链。
+     resolver 下发的 headers 只作用于第一次请求，拖动时 ExoPlayer 会对 BaseURL
+     发新的 Range 请求，那次没带 UA，googlevideo 直接 403（播放页显示 Bad HTTP Status）。
+     所以把每条流包成 fm.res 的 /webResource 网关地址：网关把 headers 和 URL 绑定，
+     每一次分片请求都会带上正确的 UA，而且它原生支持 Range。 */
+  var gatewayNote = '';
+
+  /* 本地网关地址。
+     拖动时 ExoPlayer 会对 BaseURL 发新的 Range 请求，那次请求不带 resolver 的 headers，
+     googlevideo 见 UA 不对直接 403 —— 这就是"能播、一拖就 Bad HTTP Status"的原因。
+     把流包进 /webResource：headers 和 URL 绑在一起存在网关里，
+     之后每一次 Range 请求（拖动、缓冲、切轨）网关都会补上正确的 UA，且它原生透传 Range。
+
+     优先用 fm.res()；万一这个版本的 fm.res 形态不对，就按文档给的 URL 形态自己拼，
+     端口从 location.origin 拿（WebHome 页面本来就是这个本地服务器发出来的）。 */
+  function gwOrigin() {
+    if (native && window.fm && fm.res) {
+      try {
+        var probe = fm.res('https://example.com/probe.bin');
+        if (typeof probe === 'string' && probe.indexOf('/webResource') !== -1) {
+          return probe.slice(0, probe.indexOf('/webResource'));
+        }
+      } catch (e) {}
+    }
+    if (location.protocol.indexOf('http') === 0 && location.host) return location.origin;
+    return '';
+  }
+
+  function streamUrl(url, ua) {
+    var headers = { 'User-Agent': ua, Referer: YT + '/', Origin: YT };
+    if (prefs.seg === 'direct') { gatewayNote = '按设置走直链'; return url; }
+
+    if (native && window.fm && fm.res) {
+      try {
+        var out = fm.res(url, { headers: headers });
+        if (typeof out === 'string' && out.indexOf('/webResource') !== -1) return out;
+      } catch (e) {
+        gatewayNote = 'fm.res 出错：' + e.message;
+      }
+    }
+
+    var origin = gwOrigin();
+    if (origin) {
+      gatewayNote = gatewayNote || '自拼网关地址';
+      return origin + '/webResource?url=' + encodeURIComponent(url) +
+        '&headers=' + encodeURIComponent(JSON.stringify(headers));
+    }
+
+    gatewayNote = '拿不到网关端口，只能用直链（拖动会 403）';
+    return url;
+  }
+
+  function buildMpd(r, want) {
+    var af = r.formats, vids = [], auds = [], i, f, mime;
+    for (i = 0; i < af.length; i++) {
+      f = af[i];
+      if (!f.url || !f.initRange || !f.indexRange) continue;
+      mime = mimeOf(f.mimeType || '');
+      if (mime.indexOf('video') === 0 && f.height) {
+        vids.push({ f: f, h: f.height, mp4: mime.indexOf('mp4') !== -1, bw: f.bitrate || 0, mime: mime });
+      } else if (mime.indexOf('audio') === 0) {
+        auds.push({ f: f, mp4: mime.indexOf('mp4') !== -1, bw: f.bitrate || 0, mime: mime });
+      }
+    }
+    if (!vids.length || !auds.length) throw new Error('分离流不完整');
+
+    vids.sort(function (a, b) {
+      if (b.h !== a.h) return b.h - a.h;
+      if (a.mp4 !== b.mp4) return a.mp4 ? -1 : 1;   // 同档优先 avc1，老设备最稳
+      return b.bw - a.bw;
+    });
+    var v = vids[0];
+    var cap = (want === 'best') ? 0 : parseInt(want, 10);
+    if (cap) {
+      for (i = 0; i < vids.length; i++) if (vids[i].h <= cap) { v = vids[i]; break; }
+    }
+
+    auds.sort(function (a, b) {
+      if (a.mp4 !== b.mp4) return a.mp4 ? -1 : 1;
+      return b.bw - a.bw;
+    });
+    var a2 = auds[0];
+
+    var dur = r.duration || 0;
+    gatewayNote = '';
+    var vUrl = streamUrl(v.f.url, r.ua);
+    var aUrl = streamUrl(a2.f.url, r.ua);
+
+    function rep(x, base, extra) {
+      var f2 = x.f;
+      return '<Representation id="' + f2.itag + '" bandwidth="' + (f2.bitrate || 500000) + '"' +
+        ' codecs="' + xmlEsc(codecsOf(f2.mimeType)) + '"' + extra + '>' +
+        '<BaseURL>' + xmlEsc(base) + '</BaseURL>' +
+        '<SegmentBase indexRange="' + f2.indexRange.start + '-' + f2.indexRange.end + '">' +
+        '<Initialization range="' + f2.initRange.start + '-' + f2.initRange.end + '"/>' +
+        '</SegmentBase></Representation>';
+    }
+
+    var mpd = '<?xml version="1.0" encoding="UTF-8"?>' +
+      '<MPD xmlns="urn:mpeg:dash:schema:mpd:2011" type="static"' +
+      ' mediaPresentationDuration="PT' + dur + 'S" minBufferTime="PT1.5S"' +
+      ' profiles="urn:mpeg:dash:profile:isoff-on-demand:2011">' +
+      '<Period id="1" start="PT0S">' +
+      '<AdaptationSet mimeType="' + v.mime + '" startWithSAP="1" segmentAlignment="true">' +
+      rep(v, vUrl, ' width="' + v.f.width + '" height="' + v.f.height + '"') +
+      '</AdaptationSet>' +
+      '<AdaptationSet mimeType="' + a2.mime + '" startWithSAP="1" segmentAlignment="true" lang="und">' +
+      rep(a2, aUrl, ' audioSamplingRate="44100"') +
+      '</AdaptationSet>' +
+      '</Period></MPD>';
+
+    return {
+      xml: mpd, height: v.h,
+      size: (v.f.width || '?') + '×' + (v.f.height || '?'),
+      proxied: vUrl.indexOf('/webResource') !== -1,
+      mediaUrl: vUrl,
+      note: gatewayNote
+    };
+  }
+
+  function mpdDataUri(xml) {
+    return 'data:application/dash+xml;base64,' + btoa(unescape(encodeURIComponent(xml)));
+  }
+
+  function pickLevel(levels, want) {
+    var i;
+    if (want === 'best' || !want) return levels[0];
+    var cap = parseInt(want, 10);
+    for (i = 0; i < levels.length; i++) if (levels[i].height && levels[i].height <= cap) return levels[i];
+    return levels[levels.length - 1];
+  }
+
+  function levelName(l) { return l.height ? (l.height + 'P') : '自动'; }
+
+  /* ---------- Invidious DASH ----------
+     网页没有本地服务端，合不了 video-only + audio-only。
+     Invidious 的 /api/manifest/dash/id/{id} 已经是拼好的 MPD。
+
+     但原始清单是自适应的：ExoPlayer 从最低码率起步再往上爬，
+     网络一抖就一直待在低档 —— 看起来就是"最低画质"。
+     所以这里把清单改写掉：只保留目标分辨率那一条视频 Representation
+     和一条最好的音轨，其余全删。播放器没得挑，只能播这一档。
+
+     改写后的清单没有 URL 可托管，于是用 data: URI 交给播放器，
+     并通过 fm.vodInline 的逐集 resolver 显式带上
+     format: application/dash+xml（文档 18.3）——
+     不然播放器靠扩展名猜类型，只会把它当普通文件。
+     ------------------------------------------------------------------ */
+  var INV_LIST = [
+    'https://inv.nadeko.net',
+    'https://invidious.nerdvpn.de',
+    'https://yewtu.be',
+    'https://invidious.f5.si',
+    'https://iv.melmac.space',
+    'https://invidious.privacyredirect.com'
+  ];
+  var invOk = '';
+
+  function invHosts() {
+    if (prefs.inv) return [prefs.inv].concat(INV_LIST);
+    return INV_LIST;
+  }
+
+  async function invPick(videoId) {
+    if (invOk) return invOk;
+    var hosts = invHosts(), i, r;
+    for (i = 0; i < hosts.length; i++) {
+      try {
+        r = await req(hosts[i] + '/api/v1/videos/' + videoId + '?fields=videoId', {
+          responseType: 'json', timeout: 10
+        });
+        if (r && r.videoId) { invOk = hosts[i]; return invOk; }
+      } catch (e) {}
+    }
+    return '';
+  }
+
+  function invDash(host, videoId) {
+    return host + '/api/manifest/dash/id/' + videoId + '?local=false';
+  }
+
+  function attrInt(el, name) {
+    var v = el.getAttribute(name);
+    return v ? parseInt(v, 10) : 0;
+  }
+
+  /* 只留一档视频 + 一条音轨。返回 { xml, height } */
+  function pinManifest(mpdText, want) {
+    var doc = new DOMParser().parseFromString(mpdText, 'text/xml');
+    if (!doc || doc.getElementsByTagName('MPD').length === 0) throw new Error('清单不是 MPD');
+
+    var sets = Array.from(doc.getElementsByTagName('AdaptationSet'));
+    var cap = (want === 'best') ? 0 : parseInt(want, 10);
+
+    var vids = [], auds = [], i, j, reps, r, mime, h;
+    for (i = 0; i < sets.length; i++) {
+      mime = sets[i].getAttribute('mimeType') || '';
+      reps = Array.from(sets[i].getElementsByTagName('Representation'));
+      for (j = 0; j < reps.length; j++) {
+        r = reps[j];
+        if (mime.indexOf('video') === 0) {
+          h = attrInt(r, 'height');
+          if (h) vids.push({ set: sets[i], rep: r, h: h, bw: attrInt(r, 'bandwidth'), mp4: mime.indexOf('mp4') !== -1 });
+        } else if (mime.indexOf('audio') === 0) {
+          auds.push({ set: sets[i], rep: r, bw: attrInt(r, 'bandwidth'), mp4: mime.indexOf('mp4') !== -1 });
+        }
+      }
+    }
+    if (!vids.length || !auds.length) throw new Error('清单里没有可用的视频或音频轨');
+
+    // 同一档位优先 mp4/avc1，老设备兼容性最好
+    vids.sort(function (a, b) {
+      if (b.h !== a.h) return b.h - a.h;
+      if (a.mp4 !== b.mp4) return a.mp4 ? -1 : 1;
+      return b.bw - a.bw;
+    });
+    var pickV = vids[0];
+    if (cap) {
+      for (i = 0; i < vids.length; i++) {
+        if (vids[i].h <= cap) { pickV = vids[i]; break; }
+      }
+    }
+
+    auds.sort(function (a, b) {
+      if (a.mp4 !== b.mp4) return a.mp4 ? -1 : 1;
+      return b.bw - a.bw;
+    });
+    var pickA = auds[0];
+
+    // 删掉没被选中的 Representation，再删掉空掉的 AdaptationSet
+    var all = vids.concat(auds), item;
+    for (i = 0; i < all.length; i++) {
+      item = all[i];
+      if (item.rep !== pickV.rep && item.rep !== pickA.rep) {
+        item.rep.parentNode.removeChild(item.rep);
+      }
+    }
+    for (i = 0; i < sets.length; i++) {
+      if (sets[i].getElementsByTagName('Representation').length === 0 && sets[i].parentNode) {
+        sets[i].parentNode.removeChild(sets[i]);
+      }
+    }
+
+    return { xml: new XMLSerializer().serializeToString(doc), height: pickV.h };
+  }
+
+  function toDataUri(xml) {
+    var b64 = btoa(unescape(encodeURIComponent(xml)));   // btoa 不吃非 ASCII，先转 UTF-8
+    return 'data:application/dash+xml;base64,' + b64;
+  }
+
+  /* vodInline 的逐集解析回调：只有这里能告诉播放器 format */
+  var inlineMap = {};
+  window.__fmWebHomeInlineResolver = function (ep) {
+    var hit = inlineMap[(ep && ep.name) || ''];
+    if (!hit) return null;
+    return { url: hit.url, format: hit.format, headers: hit.headers || {} };
+  };
+
+  async function playDash(item) {
+    var host = await invPick(item.id);
+    if (!host) throw new Error('没有可用的 Invidious 实例');
+
+    var name, url;
+    if (prefs.dashmode === 'raw') {
+      name = '自动';
+      url = invDash(host, item.id);
+    } else {
+      var mpd = await req(invDash(host, item.id), { timeout: 20 });
+      var pinned = pinManifest(String(mpd), prefs.quality);
+      name = pinned.height + 'P';
+      url = toDataUri(pinned.xml);
+    }
+
+    inlineMap = {};
+    inlineMap[name] = {
+      url: url,
+      format: 'application/dash+xml',
+      headers: { 'User-Agent': DEF_UA }
+    };
+
+    await fm.vodInline({
+      vod_id: 'yt_' + item.id,
+      vod_name: item.title || 'YouTube',
+      vod_pic: item.pic,
+      wallPic: item.wall,
+      vod_play_from: 'DASH',
+      mark: name,
+      episodes: [{ name: name, url: url, resolve: true, pageUrl: item.url }]
+    });
+
+    toast('DASH · ' + (prefs.dashmode === 'raw' ? '自适应' : '锁定 ' + name) + ' · ' + host.replace(/^https?:\/\//, ''));
+    if (fm.ext && fm.ext.log) {
+      fm.ext.log('yt dash', { host: host, want: prefs.quality, pinned: name })['catch'](function () {});
+    }
+  }
+
+  /* ---------- 播放 ----------
+     三条路，按可靠性排序：
+
+     spider  ——  交给站点自己的 Python Spider（youtube.py）。
+                 它在 localProxy 里现场合成 MPD，把 video-only + audio-only
+                 两条 adaptive 流合起来，所以 1080P / 2K / 4K 才有音轨。
+                 网页做不到这件事：网页没有本地服务端，托管不了清单。
+                 vodId 传 "VIDEOID@best|4k|2k|1080p"，Spider 会把这一档
+                 排到第一条线路，播放页里切线路就是切画质。
+     hls     ——  不想装 Spider 时用。IOS 客户端的 HLS 主清单里挑一档变体，
+                 有音轨，但 YouTube 的 iOS HLS 一般到 1080P 为止。
+     newpipe ——  完全交给 App 内置解析，画质由播放器决定。
+     ------------------------------------------------------------------ */
+  var playing = false;
+
+  var lastPlay = null;   // 起播现场，给自检页看
+
+  async function playHls(item) {
+    var r = await resolve(item.id);
+    if (!r) throw new Error(lastWhy.length ? lastWhy.join('；') : '拿不到可播流');
+
+    var name, url, fmt, mode = prefs.hlsmode;
+
+    // ---- 分离流：自己拼 MPD，data URI 交付 ----
+    if (r.kind === 'adaptive') {
+      if (!fm.vodInline) throw new Error('App 不支持 vodInline，交付不了自拼清单');
+      var built = buildMpd(r, prefs.quality);
+      name = built.height + 'P';
+      url = mpdDataUri(built.xml);
+
+      inlineMap = {};
+      // BaseURL 走网关时，UA 由网关按 URL 绑定下发，拖动的每次 Range 请求都带得上。
+      // 万一退回了直链，就还是把 UA 塞进 resolver headers，起码起播能过。
+      inlineMap[name] = built.proxied
+        ? { url: url, format: 'application/dash+xml' }
+        : { url: url, format: 'application/dash+xml', headers: { 'User-Agent': r.ua, Referer: YT + '/' } };
+
+      lastPlay = {
+        engine: 'dash(自拼)', mode: '-', client: r.client,
+        want: prefs.quality, got: name,
+        scheme: 'data URI（' + Math.round(url.length / 1024) + 'KB）· 分片走 ' + (built.proxied ? '/webResource 网关' : 'googlevideo 直链'),
+        head: 'MPD: ' + built.size + ' + 音轨' + (built.note ? ' · ' + built.note : ''),
+        via: 'fm.vodInline + resolver', why: lastWhy.join('；'),
+        time: new Date().toLocaleTimeString()
+      };
+
+      await fm.vodInline({
+        vod_id: 'yt_' + item.id,
+        vod_name: item.title || 'YouTube',
+        vod_pic: item.pic,
+        wallPic: item.wall,
+        vod_play_from: '最高画质',
+        mark: name,
+        episodes: [{ name: name, url: url, resolve: true, pageUrl: item.url }]
+      });
+      toast(r.client + ' · ' + name);
+      if (fm.ext && fm.ext.log) fm.ext.log('yt dash', lastPlay)['catch'](function () {});
+      return;
+    }
+
+    // ---- 单流兜底：mp4 直链，必须带 UA，否则 403 ----
+    if (r.kind === 'muxed') {
+      var lv = pickLevel(r.levels, prefs.quality);
+      name = levelName(lv) + '（单流）';
+      lastPlay = {
+        engine: 'muxed', mode: '-', client: r.client,
+        want: prefs.quality, got: name,
+        scheme: 'mp4 直链 → /webResource',
+        head: lv.url.slice(0, 90),
+        via: 'fm.play + headers', why: lastWhy.join('；'),
+        time: new Date().toLocaleTimeString()
+      };
+      await fm.play(lv.url, item.title || 'YouTube', {
+        pic: item.pic, wallPic: item.wall,
+        headers: { 'User-Agent': r.ua, Referer: YT + '/' }
+      });
+      toast(r.client + ' · ' + name + '（只剩单流）');
+      return;
+    }
+
+    // ---- HLS ----
+    var splitAudio = r.master && r.master.indexOf('#EXT-X-MEDIA:TYPE=AUDIO') !== -1;
+    if (mode === 'variant' && splitAudio && fm.vodInline) mode = 'pin';
+    if (!r.master) mode = 'master';
+
+    if (mode === 'master') {
+      name = '自适应';
+      url = r.masterUrl || r.levels[0].url;
+    } else if (mode === 'variant') {
+      var lv2 = pickLevel(r.levels, prefs.quality);
+      name = levelName(lv2);
+      url = lv2.url;
+    } else {
+      var pinned = pinMaster(r.master, prefs.quality);
+      name = pinned.height + 'P';
+      url = m3u8DataUri(pinned.text);
+    }
+    fmt = 'application/x-mpegURL';
+
+    lastPlay = {
+      engine: 'hls', mode: mode + (mode !== prefs.hlsmode ? '（自动切）' : ''), client: r.client,
+      want: prefs.quality, got: name,
+      scheme: url.indexOf('data:') === 0 ? 'data URI' : 'https 直链',
+      head: url.slice(0, 90),
+      via: '', why: lastWhy.join('；'),
+      time: new Date().toLocaleTimeString()
+    };
+
+    if (mode === 'pin' && fm.vodInline) {
+      inlineMap = {};
+      inlineMap[name] = { url: url, format: fmt, headers: { 'User-Agent': r.ua } };
+      lastPlay.via = 'fm.vodInline + resolver';
+      await fm.vodInline({
+        vod_id: 'yt_' + item.id,
+        vod_name: item.title || 'YouTube',
+        vod_pic: item.pic,
+        wallPic: item.wall,
+        vod_play_from: 'YouTube HLS',
+        mark: name,
+        episodes: [{ name: name, url: url, resolve: true, pageUrl: item.url }]
+      });
+    } else {
+      // m3u8 原地址：不能带 headers，一带就被改写成 /webResource，扩展名没了
+      lastPlay.via = 'fm.play';
+      await fm.play(url, item.title || 'YouTube', { pic: item.pic, wallPic: item.wall });
+    }
+
+    toast(r.client + ' · ' + name + ' · ' + lastPlay.via);
+    if (fm.ext && fm.ext.log) fm.ext.log('yt hls', lastPlay)['catch'](function () {});
+  }
+
+  async function play(item) {
+    if (playing) return;
+    playing = true;
+    await pushRecent(item);
+
+    if (!native || !window.fm || !fm.play) {
+      window.open(item.url, '_blank');
+      playing = false;
+      return;
+    }
+
+    try {
+      if (fm.preloadArtwork) { try { await fm.preloadArtwork(item.pic, item.wall); } catch (e) {} }
+
+      if (item.kind === 'list' || prefs.engine === 'newpipe') {
+        await fm.play(item.url, item.title || 'YouTube', { pic: item.pic, wallPic: item.wall });
+        playing = false;
+        return;
+      }
+
+      if (prefs.engine === 'dash' && fm.vodInline) {
+        try {
+          await playDash(item);
+          playing = false;
+          return;
+        } catch (e) {
+          toast('DASH 失败：' + e.message + '，改走 HLS');
+        }
+      }
+
+      try {
+        await playHls(item);
+      } catch (e) {
+        lastPlay = {
+          engine: '退回 NewPipe', mode: '-', client: '-',
+          want: prefs.quality, got: '-',
+          scheme: '-', head: '解析/交付出错：' + e.message,
+          via: 'fm.play(watch url)', why: lastWhy.join('；'),
+          time: new Date().toLocaleTimeString()
+        };
+        toast('解析失败：' + e.message + '，退回 App 内置解析');
+        await fm.play(item.url, item.title || 'YouTube', { pic: item.pic, wallPic: item.wall });
+      }
+    } catch (e2) {
+      toast('起播失败：' + e2.message);
+    }
+    playing = false;
+  }
+
+  /* ---------- 浮层 / 路由 ---------- */
+  var sheets = { settings: $('settings'), net: $('net') };
+  var openName = '';
+
+  function openSheet(name, silent) {
+    var k;
+    for (k in sheets) sheets[k].className = 'sheet';
+    sheets[name].className = 'sheet open';
+    sheets[name].scrollTop = 0;
+    document.body.className = 'locked';
+    openName = name;
+    if (!silent) history.pushState({ sheet: name }, '', '#' + name);
+    // 自绘返回按钮时不要让 Native 再叠加恢复入口
+    if (native && fm.ui && fm.ui.setChrome) {
+      fm.ui.setChrome({ mode: 'edge', restoreAffordance: 'none', statusBarStyle: 'light' })['catch'](function () {});
+    }
+  }
+
+  function closeSheet(silent) {
+    var k;
+    for (k in sheets) sheets[k].className = 'sheet';
+    document.body.className = '';
+    openName = '';
+    if (!silent && history.state && history.state.sheet) history.back();
+  }
+
+  window.addEventListener('popstate', function () {
+    var st = history.state;
+    if (st && st.sheet) openSheet(st.sheet, true);
+    else closeSheet(true);
+  });
+
+  /* ---------- 网络自检 ---------- */
+  function diagLine(name, note) {
+    var el = document.createElement('div');
+    el.className = 'diag-line';
+    el.innerHTML = '<b>' + name + '</b> · <span>检测中…</span><div style="margin-top:4px">' + note + '</div>';
+    return el;
+  }
+
+  async function probe(el, fn) {
+    var t0 = Date.now();
+    try {
+      await fn();
+      el.querySelector('span').innerHTML = '<span class="ok">通过 · ' + (Date.now() - t0) + 'ms</span>';
+    } catch (e) {
+      el.querySelector('span').innerHTML = '<span class="bad">失败 · ' + String(e.message).slice(0, 60) + '</span>';
+    }
+  }
+
+  var diagRunning = false;
+
+  async function runDiag() {
+    if (diagRunning) return;
+    diagRunning = true;
+    var box = $('diag');
+    box.replaceChildren();
+    var a = diagLine('接口 youtube.com', '拉列表、搜索走这里（fm.req）');
+    var b = diagLine('图片 i.ytimg.com', '封面走这里（fm.res → /webResource）');
+    var d = diagLine('画质解析（YouTube）', 'HLS 优先；只有分离流时页面自拼 MPD');
+    var e = diagLine('视频流连通性', '用解析到的真实地址探一次 googlevideo');
+    box.appendChild(a); box.appendChild(b); box.appendChild(d); box.appendChild(e);
+
+    var g = diagLine('拖动能力（Range）', '拖动靠 Range 请求；网关或直链哪一层不认，就拖不动');
+    box.appendChild(g);
+
+    await probe(g, async function () {
+      if (!got) throw new Error('上一步没解析出流，跳过');
+
+      var direct = '', label = '';
+      if (got.kind === 'adaptive') {
+        var k, ff;
+        for (k = 0; k < got.formats.length; k++) {
+          ff = got.formats[k];
+          if (ff.url && (ff.mimeType || '').indexOf('video') === 0) { direct = ff.url; break; }
+        }
+        label = '自拼 MPD 的视频轨';
+      } else if (got.levels && got.levels.length) {
+        direct = got.levels[0].url;
+        label = got.kind === 'hls' ? 'HLS 变体' : '单流 mp4';
+      }
+      if (!direct) throw new Error('没有可测的地址');
+
+      var gw = streamUrl(direct, got.ua);
+      var viaGw = gw.indexOf('/webResource') !== -1;
+
+      var r1 = null, r2 = null;
+      try {
+        r1 = await fm.req(direct, {
+          method: 'GET',
+          headers: { 'User-Agent': got.ua, Referer: YT + '/', Range: 'bytes=1000000-1000100' },
+          timeout: 12
+        });
+      } catch (e1) {}
+      try {
+        if (viaGw) r2 = await fm.req(gw, { method: 'GET', headers: { Range: 'bytes=1000000-1000100' }, timeout: 12 });
+      } catch (e2) {}
+
+      var s1 = r1 ? r1.status : '无响应';
+      var s2 = r2 ? r2.status : '无响应';
+
+      g.querySelector('div').innerHTML =
+        '测的是 <b>' + label + '</b><br>' +
+        '直链 + UA：<b>' + s1 + '</b>　网关：<b>' + (viaGw ? s2 : '没拼出网关地址') + '</b><br>' +
+        '<span style="opacity:.6">206 = 支持 Range（能拖动）；403 = 被拒；200 = 不认 Range</span>';
+
+      if (viaGw && r2 && r2.status === 206) return;          // 网关能拖 → 播放器就该能拖
+      if (!viaGw && r1 && r1.status === 206) return;
+      throw new Error('Range 请求没拿到 206');
+    });
+
+    diagRunning = false;
+
+    if (lastPlay) {
+      var f = document.createElement('div');
+      f.className = 'diag-line';
+      f.innerHTML = '<b>上次播放</b> · <span class="ok">' + lastPlay.time + '</span>' +
+        '<div style="margin-top:4px">' +
+        '引擎 <b>' + lastPlay.engine + '/' + lastPlay.mode + '</b> · 客户端 <b>' + lastPlay.client + '</b><br>' +
+        '想要 <b>' + lastPlay.want + '</b> → 实际 <b>' + lastPlay.got + '</b><br>' +
+        '交付方式 <b>' + lastPlay.via + '</b>（' + lastPlay.scheme + '）<br>' +
+        '<span style="word-break:break-all;opacity:.7">' + lastPlay.head + '…</span>' +
+        (lastPlay.why ? '<br><span class="bad">被拒的客户端：' + lastPlay.why + '</span>' : '') + '</div>';
+      box.appendChild(f);
+    }
+
+    await probe(a, function () {
+      return innertube('search', { query: 'test' }).then(function (json) {
+        if (!json) throw new Error('空响应');
+      });
+    });
+
+    await probe(b, function () {
+      return new Promise(function (resolve2, reject) {
+        var img = new Image(), done = false;
+        var t = setTimeout(function () { if (!done) { done = true; reject(new Error('超时')); } }, 8000);
+        img.onload = function () { if (!done) { done = true; clearTimeout(t); resolve2(); } };
+        img.onerror = function () { if (!done) { done = true; clearTimeout(t); reject(new Error('无法加载')); } };
+        img.src = resUrl('https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg') + '&_=' + Date.now();
+      });
+    });
+
+    var got = null;
+
+    await probe(d, async function () {
+      got = await resolve('dQw4w9WgXcQ');
+      if (!got) throw new Error(lastWhy.length ? lastWhy.join('；') : '所有客户端都被拒');
+
+      var desc = '', hs = '';
+      if (got.kind === 'hls') {
+        hs = got.levels.map(function (l) { return l.height ? l.height + 'P' : '自动'; }).join(' / ');
+        desc = 'HLS 主清单';
+        if (got.master && prefs.hlsmode === 'pin') {
+          try { hs += '<br>按当前设置会锁到 <b>' + pinMaster(got.master, prefs.quality).height + 'P</b>'; } catch (e3) {}
+        }
+      } else if (got.kind === 'adaptive') {
+        desc = '分离流 → 页面自拼 MPD';
+        var b2 = buildMpd(got, prefs.quality);
+        hs = '按当前设置会拼出 <b>' + b2.size + ' + 音轨</b>' + (b2.proxied ? '（分片走网关）' : '<span class="bad">（分片走直链，拖动会 403）</span>');
+      } else {
+        desc = '只剩单流（上限 720P）';
+        hs = got.levels.map(function (l) { return l.height + 'P'; }).join(' / ');
+      }
+      d.querySelector('div').innerHTML =
+        '客户端 <b>' + got.client + '</b> · <b>' + desc + '</b><br>' + hs +
+        (lastWhy.length ? '<br><span class="bad">' + lastWhy.join('；') + '</span>' : '');
+    });
+
+    await probe(e, async function () {
+      if (!got) throw new Error('上一步没解析出地址，跳过');
+      var testUrl = '';
+      if (got.kind === 'adaptive') {
+        var k;
+        for (k = 0; k < got.formats.length; k++) {
+          if (got.formats[k].url) { testUrl = got.formats[k].url; break; }
+        }
+      } else if (got.levels && got.levels.length) {
+        testUrl = got.levels[0].url;
+      }
+      if (!testUrl) throw new Error('没有可探的地址');
+      var r = await fm.req(testUrl, {
+        method: 'GET',
+        headers: { 'User-Agent': got.ua, Range: 'bytes=0-1' },
+        timeout: 12
+      });
+      if (!r || (!r.ok && r.status !== 206)) throw new Error('HTTP ' + (r ? r.status : 0));
+    });
+  }
+
+  /* ---------- 设置 ---------- */
+  async function loadPrefs() {
+    var raw = await store.get('prefs');
+    if (raw) {
+      try {
+        var p = JSON.parse(raw);
+        if (p.hl) prefs.hl = p.hl;
+        if (p.gl) prefs.gl = p.gl;
+        if (p.ua) prefs.ua = p.ua;
+        if (p.quality) prefs.quality = p.quality;
+        if (p.engine) prefs.engine = p.engine;
+        if (p.inv) prefs.inv = p.inv;
+        if (p.dashmode) prefs.dashmode = p.dashmode;
+        if (p.hlsmode) prefs.hlsmode = p.hlsmode;
+        if (p.seg) prefs.seg = p.seg;
+        if (p.client) prefs.client = p.client;
+      } catch (e) {}
+    }
+    setVal('hl', prefs.hl);
+    setVal('gl', prefs.gl);
+    setVal('ua', prefs.ua);
+    setVal('quality', prefs.quality);
+    setVal('engine', prefs.engine);
+    setVal('hlsmode', prefs.hlsmode);
+    setVal('seg', prefs.seg);
+    setVal('client', prefs.client);
+    setVal('dashmode', prefs.dashmode);
+    setVal('inv', prefs.inv);
+  }
+
+  async function savePrefs() {
+    prefs.hl = getVal('hl').trim() || 'zh-CN';
+    prefs.gl = (getVal('gl').trim() || 'US').toUpperCase();
+    prefs.ua = getVal('ua').trim() || DEF_UA;
+    prefs.quality = getVal('quality') || 'best';
+    prefs.engine = getVal('engine') || 'dash';
+    prefs.hlsmode = getVal('hlsmode') || 'variant';
+    prefs.seg = getVal('seg') || 'gw';
+    prefs.client = getVal('client') || 'auto';
+    prefs.dashmode = getVal('dashmode') || 'pin';
+    prefs.inv = getVal('inv').trim().replace(/\/+$/, '');
+    await store.set('prefs', JSON.stringify(prefs));
+    toast('已保存');
+    closeSheet();
+    load(true);
+  }
+
+  function copyText(str) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = str;
+      ta.style.cssText = 'position:fixed;opacity:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');     // WebHome 非安全上下文，clipboard API 多半不可用
+      document.body.removeChild(ta);
+      toast('已复制');
+    } catch (e) { toast('复制失败'); }
+  }
+
+  /* ---------- TV 焦点：简易方向导航 ---------- */
+  function focusables() {
+    var all = document.querySelectorAll('button, input, [tabindex]');
+    var out = [], i, el, r;
+    for (i = 0; i < all.length; i++) {
+      el = all[i];
+      if (el.disabled) continue;
+      if (openName && !el.closest('.sheet.open')) continue;
+      if (!openName && el.closest('.sheet')) continue;
+      r = el.getBoundingClientRect();
+      if (r.width === 0 && r.height === 0) continue;
+      out.push({ el: el, r: r });
+    }
+    return out;
+  }
+
+  function nearest(dir) {
+    var act = document.activeElement;
+    if (!act) return null;
+    var ar = act.getBoundingClientRect();
+    var cands = focusables(), best = null, bestScore = Infinity, i, c, dx, dy, ok, score;
+    for (i = 0; i < cands.length; i++) {
+      c = cands[i];
+      if (c.el === act) continue;
+      dx = (c.r.left + c.r.width / 2) - (ar.left + ar.width / 2);
+      dy = (c.r.top + c.r.height / 2) - (ar.top + ar.height / 2);
+      ok = false;
+      if (dir === 'left') ok = dx < -4 && Math.abs(dy) < Math.abs(dx) * 1.6;
+      if (dir === 'right') ok = dx > 4 && Math.abs(dy) < Math.abs(dx) * 1.6;
+      if (dir === 'up') ok = dy < -4;
+      if (dir === 'down') ok = dy > 4;
+      if (!ok) continue;
+      score = (dir === 'up' || dir === 'down') ? Math.abs(dy) + Math.abs(dx) * 1.5 : Math.abs(dx) + Math.abs(dy) * 1.5;
+      if (score < bestScore) { bestScore = score; best = c.el; }
+    }
+    return best;
+  }
+
+  document.addEventListener('keydown', function (e) {
+    var key = e.key || '';
+    var code = e.keyCode || 0;
+    var dir = '';
+    if (key === 'ArrowLeft' || code === 37) dir = 'left';
+    if (key === 'ArrowUp' || code === 38) dir = 'up';
+    if (key === 'ArrowRight' || code === 39) dir = 'right';
+    if (key === 'ArrowDown' || code === 40) dir = 'down';
+
+    if ((key === 'Escape' || code === 27) && openName) { e.preventDefault(); closeSheet(); return; }
+    if (!dir) return;
+    if (document.activeElement && document.activeElement.tagName === 'INPUT' && (dir === 'left' || dir === 'right')) return;
+
+    var next = nearest(dir);
+    if (next) {
+      e.preventDefault();
+      next.focus();
+      if (next.scrollIntoView) { try { next.scrollIntoView({ block: 'nearest' }); } catch (err) { next.scrollIntoView(false); } }
+    }
+  });
+
+  /* ---------- tabs ---------- */
+  function renderTabs() {
+    elTabs.replaceChildren();
+    TABS.forEach(function (t) {
+      var b = document.createElement('button');
+      b.className = 'tab' + (t.id === view.tab ? ' on' : '');
+      b.textContent = t.name;
+      b.addEventListener('click', function () {
+        view.tab = t.id;
+        view.kind = t.type;
+        view.arg = t.arg;
+        renderTabs();
+        load(true);
+      });
+      elTabs.appendChild(b);
+    });
+  }
+
+  /* ---------- 搜索联想 ----------
+     用 YouTube 的 suggest 接口。它返回的是 JSONP（window.google.ac.h([...])），
+     不是 JSON，所以按文本取回来自己抠数组出来。走 fm.req，照样过代理。 */
+  var elSug = $('sug');
+  var sugTimer = 0, sugSeq = 0, sugItems = [], sugIdx = -1;
+
+  async function fetchSuggest(q) {
+    var url = 'https://suggestqueries-clients6.youtube.com/complete/search' +
+      '?client=youtube&ds=yt&hl=' + encodeURIComponent(prefs.hl) +
+      '&gl=' + encodeURIComponent(prefs.gl) +
+      '&q=' + encodeURIComponent(q);
+
+    var txt = await req(url, {
+      headers: { 'User-Agent': prefs.ua, Referer: YT + '/' },
+      timeout: 8
+    });
+
+    var str = String(txt);
+    var a = str.indexOf('('), b = str.lastIndexOf(')');
+    if (a === -1 || b === -1) return [];
+
+    var arr;
+    try { arr = JSON.parse(str.slice(a + 1, b)); } catch (e) { return []; }
+    if (!arr || !arr[1]) return [];
+
+    var out = [], i;
+    for (i = 0; i < arr[1].length && out.length < 8; i++) {
+      if (arr[1][i] && arr[1][i][0]) out.push(String(arr[1][i][0]));
+    }
+    return out;
+  }
+
+  function closeSug() {
+    elSug.className = 'sug';
+    elSug.replaceChildren();
+    sugItems = [];
+    sugIdx = -1;
+  }
+
+  function renderSug(list) {
+    if (!list.length) { closeSug(); return; }
+    sugItems = list;
+    sugIdx = -1;
+    elSug.replaceChildren();
+
+    list.forEach(function (w) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.innerHTML = '<span class="k">⌕</span>';
+      b.appendChild(document.createTextNode(w));
+      b.addEventListener('click', function () {
+        $('q').value = w;
+        closeSug();
+        doSearch();
+      });
+      elSug.appendChild(b);
+    });
+    elSug.className = 'sug open';
+  }
+
+  function onType() {
+    var q = $('q').value.trim();
+    clearTimeout(sugTimer);
+    if (!q) { closeSug(); return; }
+
+    sugTimer = setTimeout(async function () {
+      var seq = ++sugSeq;
+      try {
+        var list = await fetchSuggest(q);
+        if (seq === sugSeq && $('q').value.trim()) renderSug(list);
+      } catch (e) { closeSug(); }
+    }, 220);   // 打字停 220ms 才发请求，别每个字符都打
+  }
+
+  /* 上下键在联想词里走，回车选中当前项 */
+  function sugKey(e) {
+    var key = e.key || '', code = e.keyCode || 0;
+    var isOpen = elSug.className.indexOf('open') !== -1;
+
+    if ((key === 'Escape' || code === 27) && isOpen) { closeSug(); return true; }
+    if (!isOpen || !sugItems.length) return false;
+
+    var nodes = elSug.children;
+    if (key === 'ArrowDown' || code === 40) {
+      sugIdx = (sugIdx + 1) % sugItems.length;
+    } else if (key === 'ArrowUp' || code === 38) {
+      sugIdx = (sugIdx <= 0 ? sugItems.length : sugIdx) - 1;
+    } else if ((key === 'Enter' || code === 13) && sugIdx >= 0) {
+      $('q').value = sugItems[sugIdx];
+      closeSug();
+      doSearch();
+      return true;
+    } else {
+      return false;
+    }
+
+    var i;
+    for (i = 0; i < nodes.length; i++) {
+      nodes[i].className = (i === sugIdx) ? 'on' : '';
+    }
+    e.preventDefault();
+    return true;
+  }
+
+  function doSearch() {
+    var q = $('q').value.trim();
+    if (!q) return;
+    closeSug();
+    view.tab = '';
+    view.kind = 'search';
+    view.arg = q;
+    renderTabs();
+    load(true);
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  }
+
+  /* ---------- 启动 ---------- */
+  function bind() {
+    on('goBtn', 'click', doSearch);
+    on('q', 'input', onType);
+    on('q', 'keydown', function (e) {
+      if (sugKey(e)) return;
+      if (e.key === 'Enter' || e.keyCode === 13) doSearch();
+    });
+    on('q', 'blur', function () { setTimeout(closeSug, 160); });   // 等点击先触发
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('.search')) closeSug();
+    });
+    on('setBtn', 'click', function () { openSheet('settings'); });
+    on('netBtn', 'click', function () { openSheet('net'); runDiag(); });
+    on('setBack', 'click', function () { closeSheet(); });
+    on('netBack', 'click', function () { closeSheet(); });
+    on('runDiag', 'click', runDiag);
+    on('saveBtn', 'click', savePrefs);
+    on('resetBtn', 'click', function () {
+      setVal('hl', 'zh-CN'); setVal('gl', 'US'); setVal('ua', DEF_UA);
+      setVal('quality', 'best'); setVal('engine', 'hls'); setVal('hlsmode', 'variant'); setVal('seg', 'gw'); setVal('client', 'auto');
+      setVal('dashmode', 'pin'); setVal('inv', '');
+    });
+    var snip = $('proxySnippet');
+    if (snip) snip.textContent = PROXY_SNIPPET;
+    on('copyCfg', 'click', function () { copyText(PROXY_SNIPPET); });
+  }
+
+  async function boot() {
+    native = !!(window.fm && window.fm.req);
+    document.documentElement.className += native ? ' fm-native' : '';
+    if (window.fongmiClient && window.fongmiClient.isLeanback) {
+      document.documentElement.className += ' fm-tv';
+    }
+
+    try { await loadPrefs(); } catch (e) {}
+    try { bind(); } catch (e) {}
+    try { renderTabs(); } catch (e) {}
+    try { autoPage(); } catch (e) {}
+
+    if (native && fm.ui && fm.ui.setChrome) {
+      try {
+        fm.ui.setChrome({ mode: 'edge', statusBarStyle: 'light', navigationBarStyle: 'light', startup: true })['catch'](function () {});
+      } catch (e) {}
+    }
+    load(true);
+  }
+
+  // 兜底：脚本内任何未捕获异常都写到页面上，别再白屏
+  window.addEventListener('error', function (ev) {
+    if (elState && !elList.firstChild) {
+      showState('<strong>页面出错了</strong><div>' + String(ev.message || '').replace(/</g, '&lt;') + '</div>');
+    }
+  });
+
+  /* SDK 在 onPageFinished 后注入，必须等 fmsdk */
+  if (window.fm && window.fm.req) boot();
+  else {
+    var started = false;
+    window.addEventListener('fmsdk', function () {
+      if (!started) { started = true; boot(); }
+    });
+    // 电脑浏览器预览：等 1.2s 还没有 SDK 就按预览模式启动
+    setTimeout(function () {
+      if (!started) { started = true; boot(); }
+    }, 1200);
+  }
+
+  window.addEventListener('fmresume', function () {
+    if (view.tab === 'recent') renderRecent();
+  });
+})();
+</script>
+</body>
+</html>
