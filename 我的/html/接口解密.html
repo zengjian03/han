@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>影视接口智能解密(终极对齐版)</title>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { margin:0; padding:16px; background:#0f0f0f; color:#e0e0e0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:15px; }
+    h1 { font-size:18px; margin:0 0 14px; color:#4fc3f7; text-align:center; }
+    label { display:block; margin:12px 0 6px; font-size:13px; color:#9e9e9e; }
+    input, textarea {
+      width:100%; background:#1a1a1a; color:#76ff03; border:1px solid #333;
+      border-radius:10px; padding:12px; font-family:monospace; font-size:13px;
+    }
+    input { height:46px; }
+    textarea { height:220px; resize:vertical; }
+    button {
+      width:100%; padding:14px; margin-top:14px; background:#1976d2; color:#fff;
+      border:none; border-radius:10px; font-size:16px; font-weight:600;
+      cursor: pointer;
+    }
+    button:active { background:#1565c0; }
+    button:disabled { background:#555; color:#aaa; }
+    .copy-btn { background:#388e3c; margin-top:10px; }
+    .copy-btn:active { background:#2e7d32; }
+    #output { color:#fff; background:#000; }
+    .hint { font-size:12px; color:#777; margin-top:8px; line-height:1.5; word-break:break-all; }
+    .ok { color:#76ff03; }
+    .err { color:#ff5252; }
+    .debug-info { 
+      font-size:11px; color:#888; margin-top:6px; word-break:break-all;
+      background:#1a1a1a; padding:8px; border-radius:6px; max-height:120px; overflow:auto;
+      font-family:monospace;
+    }
+    .status-bar {
+      display:flex; gap:10px; align-items:center; margin:6px 0;
+    }
+    .spinner {
+      display:none; width:18px; height:18px;
+      border:3px solid #333; border-top:3px solid #4fc3f7;
+      border-radius:50%; animation: spin 0.8s linear infinite;
+    }
+    .spinner.active { display:inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .env-badge { 
+      display:inline-block; background:#2d2d2d; padding:4px 12px; border-radius:20px;
+      font-size:12px; color:#aaa; margin-bottom:10px;
+    }
+    .env-badge .highlight { color:#4fc3f7; font-weight:bold; }
+  </style>
+</head>
+<body>
+
+<h1>🎬 影视接口解密 (全流智能对齐版)</h1>
+
+<div style="text-align:center; margin-bottom:12px;">
+  <span class="env-badge">📡 状态: <span class="highlight" id="methodStatus">核心就绪</span></span>
+  <span class="env-badge">📦 识别: <span class="highlight" id="formatStatus">初始化</span></span>
+</div>
+
+<label>📎 输入接口链接 (图片隐写/网站接口/文本配置)</label>
+<input id="url" placeholder="请输入完整影视接口链接...">
+
+<button id="runBtn" onclick="fetchAndDecrypt()">🔓 混合抓取并智能解密</button>
+
+<label>📄 解密结果 JSON</label>
+<textarea id="output" readonly placeholder="解密后的 JSON 会显示在这里"></textarea>
+
+<button class="copy-btn" onclick="copyResult()">📋 复制结果</button>
+
+<div class="status-bar">
+  <span class="spinner" id="spinner"></span>
+  <div class="hint" id="status"></div>
+</div>
+<div class="debug-info" id="debugInfo">日志输出区</div>
+
+<script>
+  function setStatus(msg, ok) {
+    document.getElementById("status").innerHTML = '<span class="' + (ok ? 'ok' : 'err') + '">' + msg + '</span>';
+  }
+
+  function setDebug(msg) {
+    const el = document.getElementById("debugInfo");
+    const time = new Date().toLocaleTimeString();
+    el.innerHTML += '[' + time + '] ' + msg + '<br>';
+    el.scrollTop = el.scrollHeight;
+  }
+
+  function clearDebug() {
+    document.getElementById("debugInfo").innerHTML = '';
+  }
+
+  function setFormatText(txt, color) {
+    const el = document.getElementById('formatStatus');
+    el.textContent = txt;
+    el.style.color = color || '#4fc3f7';
+  }
+
+  function setLoading(loading) {
+    const spinner = document.getElementById('spinner');
+    const btn = document.getElementById('runBtn');
+    if (loading) {
+      spinner.classList.add('active');
+      btn.disabled = true;
+      btn.textContent = '⏳ 智能解析中...';
+    } else {
+      spinner.classList.remove('active');
+      btn.disabled = false;
+      btn.textContent = '🔓 混合抓取并智能解密';
+    }
+  }
+
+  // ============================================================
+  // 高级辅助算法 (严格对齐 Python 字节码与十六进制)
+  // ============================================================
+  function padZero(s) {
+    if (!s) s = '';
+    return s + "0".repeat(Math.max(0, 16 - s.length));
+  }
+
+  function hexToLatin1(hexStr) {
+    let s = "";
+    for (let i = 0; i < hexStr.length; i += 2) {
+      s += String.fromCharCode(parseInt(hexStr.substr(i, 2), 16));
+    }
+    return s;
+  }
+
+  // 完美复刻 python 数据流转 hex
+  function stringToHex(str) {
+    let hex = "";
+    for (let i = 0; i < str.length; i++) {
+      let code = str.charCodeAt(i).toString(16);
+      hex += (code.length < 2 ? '0' : '') + code;
+    }
+    return hex;
+  }
+
+  // ============================================================
+  // 全模式分流路由内核
+  // ============================================================
+  function processSmartDecrypt(raw) {
+    if (!raw) throw new Error("获取到的源码数据为空");
+    
+    // 强制清洗前段可能存在的 BOM 头
+    let s = raw.trim();
+    if (s.charCodeAt(0) === 0xFEFF) {
+      s = s.substring(1).trim();
+    }
+
+    const txtLower = s.toLowerCase();
+    
+    // ➔ 兼容直出型：未加密的普通 JSON 或配置
+    if (s.startsWith("{") || s.startsWith("[")) {
+      setFormatText('📄 纯明文 JSON', '#76ff03');
+      return formatJson(s);
+    }
+
+    // ➔ 兼容直出型：未加密的 M3U / 规则文本
+    if (s.includes('#EXTM3U') || s.includes('#genre#')) {
+      setFormatText('📄 纯文本配置/M3U', '#76ff03');
+      return s;
+    }
+
+    // ====== 模式一：完全同步 Python 版的网站接口 (PHP AES) 检测 ======
+    if (txtLower.includes('$#') && txtLower.includes('#$')) {
+      setFormatText('🔐 网站接口 (PHP AES)', '#ffab00');
+      setDebug("判定结果: 网站源码接口风格");
+      return decryptPHPAES(s);
+    }
+
+    // ====== 模式二：全数据转换为 Hex 后检索（用于应对图片接口中被破坏的格式） ======
+    const fullDataHex = stringToHex(s).toLowerCase();
+    
+    // 检查是否包含 AES 图片隐写边界特征 2423 / 2324
+    if (fullDataHex.includes('2423') && fullDataHex.includes('2324')) {
+      setFormatText('🔐 图片接口 (2423 AES)', '#4fc3f7');
+      setDebug("判定结果: 标准 Hex-2423 图片隐写风格");
+      let cleanHex = fullDataHex;
+      const idx = cleanHex.indexOf('2423');
+      if (idx !== -1) {
+        cleanHex = cleanHex.substring(idx);
+      }
+      return decryptStandardAES(cleanHex);
+    }
+
+    // ====== 模式三：传统的标记提取机制 (** 提取 Base64) ======
+    let b64 = "";
+    const firstMark = s.indexOf("**");
+    if (firstMark !== -1) {
+      const secondMark = s.indexOf("**", firstMark + 2);
+      if (secondMark !== -1) {
+        b64 = s.substring(firstMark + 2, secondMark).trim();
+      } else {
+        b64 = s.substring(firstMark + 2).trim();
+      }
+    } else {
+      // 兜底正则提取长串 base64
+      const match = s.match(/[A-Za-z0-9+/=]{40,}/);
+      if (match) b64 = match[0].trim();
+    }
+
+    b64 = b64.replace(/\s+/g, "");
+    if (b64 && b64.length > 10) {
+      setDebug("判定结果: 纯 Base64 / 隐写数据提取");
+      return decryptBase64Payload(b64);
+    }
+
+    throw new Error("成功识别数据流，但在智能分流中无法找到兼容的解密机制");
+  }
+
+  // ============================================================
+  // 子解密引擎：PHP 风格动态加密 (网站接口核心)
+  // ============================================================
+  function decryptPHPAES(htmlSource) {
+    const txt = htmlSource;
+    const txtLower = htmlSource.toLowerCase();
+
+    let s = txtLower.indexOf('$#');
+    if (s === -1) throw new Error("PHP-AES: 未找到密钥起点 $#");
+    s += 2;
+
+    let e = txtLower.indexOf('#$', s);
+    if (e === -1) throw new Error("PHP-AES: 未找到密钥终点 #$");
+
+    // 提取动态秘钥与末尾的 IV 特征
+    let keyRaw = txt.substring(s, e);
+    let key = padZero(keyRaw).substring(0, 16);
+    let ivRaw = txt.substring(txt.length - 13);
+    let iv = padZero(ivRaw).substring(0, 16);
+
+    setDebug("解析秘钥对 -> Key: " + key + " | IV: " + iv);
+
+    const dataHex = stringToHex(htmlSource).toLowerCase();
+    let cs = dataHex.indexOf("2324");
+    if (cs === -1) throw new Error("PHP-AES: 源码特征中未包含数据区边界 2324");
+    cs += 4;
+    
+    let ce = dataHex.length - 26;
+    if (ce <= cs) throw new Error("PHP-AES: 密文计算长度溢出边界");
+
+    const cipherHex = dataHex.substring(cs, ce);
+    return performAESCBC(cipherHex, key, iv);
+  }
+
+  // ============================================================
+  // 子解密引擎：标准 2423 协议 (图片接口核心)
+  // ============================================================
+  function decryptStandardAES(hexStr) {
+    const latin1Str = hexToLatin1(hexStr).toLowerCase();
+
+    const sIdx = latin1Str.indexOf("$#") + 2;
+    const eIdx = latin1Str.indexOf("#$");
+    if (sIdx < 2 || eIdx < 0 || eIdx <= sIdx) throw new Error("2423-AES: 未检测到密码组标记");
+
+    let keyRaw = latin1Str.substring(sIdx, eIdx);
+    const key = padZero(keyRaw).substring(0, 16);
+    let ivRaw = latin1Str.substring(latin1Str.length - 13);
+    const iv = padZero(ivRaw).substring(0, 16);
+
+    setDebug("解析图片密码 -> Key: " + key + " | IV: " + iv);
+
+    const cipherStart = hexStr.indexOf("2324") + 4;
+    const cipherEnd = hexStr.length - 26;
+    if (cipherEnd <= cipherStart) throw new Error("2423-AES: 数据包截断异常");
+
+    const cipherHex = hexStr.substring(cipherStart, cipherEnd);
+    return performAESCBC(cipherHex, key, iv);
+  }
+
+  // ============================================================
+  // 子解密引擎：Base64 复合分流器
+  // ============================================================
+  function decryptBase64Payload(b64) {
+    let decodedLatin1 = "";
+    let decodedUtf8 = "";
+    try {
+      const parsedWordArray = CryptoJS.enc.Base64.parse(b64);
+      decodedLatin1 = parsedWordArray.toString(CryptoJS.enc.Latin1);
+      try { decodedUtf8 = parsedWordArray.toString(CryptoJS.enc.Utf8); } catch(e){}
+    } catch(e) {
+      throw new Error("Base64解析器致命故障: " + e.message);
+    }
+
+    if (decodedLatin1.startsWith("2423") || decodedLatin1.includes("2324")) {
+      setFormatText('🔐 图片接口 (2423 AES)', '#4fc3f7');
+      let cleanHex = decodedLatin1;
+      if (!cleanHex.startsWith("2423")) {
+        const p = cleanHex.indexOf("2423");
+        if (p !== -1) cleanHex = cleanHex.substring(p);
+      }
+      return decryptStandardAES(cleanHex);
+    }
+
+    let checkStr = (decodedUtf8 || decodedLatin1).trim();
+    if (checkStr.startsWith("{") || checkStr.startsWith("[")) {
+      setFormatText('📄 图片接口 (纯 Base64 JSON)', '#76ff03');
+      return formatJson(checkStr);
+    }
+
+    if (decodedUtf8) {
+      setFormatText('📄 纯文本 Base64', '#aaa');
+      return decodedUtf8;
+    }
+    throw new Error("Base64荷载内容无法被任何已知子引擎解析");
+  }
+
+  // 底层 CBC 运算器
+  function performAESCBC(cipherHex, keyStr, ivStr) {
+    const decrypted = CryptoJS.AES.decrypt(
+      { ciphertext: CryptoJS.enc.Hex.parse(cipherHex) },
+      CryptoJS.enc.Utf8.parse(keyStr),
+      {
+        iv: CryptoJS.enc.Utf8.parse(ivStr),
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+      }
+    );
+
+    const result = decrypted.toString(CryptoJS.enc.Utf8);
+    if (!result) throw new Error("核心算法未决：AES解密结果为空，秘钥不匹配或数据损坏");
+    return formatJson(result);
+  }
+
+  function formatJson(str) {
+    try {
+      let clean = str.trim();
+      clean = clean.replace(/,(\s*[\]}])/g, '$1'); 
+      return JSON.stringify(JSON.parse(clean), null, 2);
+    } catch (e) {
+      return str;
+    }
+  }
+
+  // ============================================================
+  // 网络抓取模块 (带对齐 Python版 okhttp 请求头配置)
+  // ============================================================
+  async function fetchImage(url) {
+    setDebug("📡 发起外壳跨域代理 fm.res()...");
+    
+    // 强制模拟影视外壳核心默认的 UA 环境
+    const customUA = "okhttp/4.12.0";
+    const headers = {
+      'Referer': new URL(url).origin + '/',
+      'User-Agent': customUA
+    };
+
+    const proxyUrl = window.fm.res(url, { headers: headers, credentials: 'include' });
+    setDebug("📡 高级请求发送中...");
+
+    const response = await window.fm.req(proxyUrl, {
+      method: "GET",
+      headers: { 
+        "Accept": "*/*", 
+        "User-Agent": customUA,
+        "Accept-Language": "zh-CN,zh;q=0.9"
+      },
+      responseType: "text",
+      timeout: 60
+    });
+
+    if (!response.ok) throw new Error(response.error || "HTTP 状态异常码: " + response.status);
+    return response.body || "";
+  }
+
+  async function fetchAndDecrypt() {
+    const url = document.getElementById("url").value.trim();
+    const output = document.getElementById("output");
+
+    output.value = "";
+    clearDebug();
+    setStatus("正在发起连接架构...", true);
+    setFormatText('分析中...', '#aaa');
+
+    if (!url) {
+      setStatus("❌ 错误：请求接口链接不能为空", false);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const rawSource = await fetchImage(url);
+      setDebug("数据抓取成功，捕获长度: " + rawSource.length);
+      
+      if (rawSource.length > 100) {
+        setDebug("抓取前50字符: " + rawSource.substring(0, 50).replace(/\r?\n/g, " "));
+      }
+
+      const jsonResult = processSmartDecrypt(rawSource);
+      output.value = jsonResult;
+
+      setStatus("✅ 全自动化智能解密完成！", true);
+    } catch (e) {
+      setStatus("❌ " + e.message, false);
+      setDebug("❌ 详细报错原因: " + e.message);
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  function copyResult() {
+    const output = document.getElementById("output");
+    if (!output.value) { setStatus("❌ 没有可复制的数据", false); return; }
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(output.value).then(() => setStatus("📋 结果已写入系统剪贴板", true))
+        .catch(() => { output.select(); document.execCommand("copy"); setStatus("📋 已复制", true); });
+    } else {
+      output.select(); document.execCommand("copy"); setStatus("📋 已复制", true);
+    }
+  }
+</script>
+</body>
+</html>

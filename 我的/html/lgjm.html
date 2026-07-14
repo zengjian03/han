@@ -1,0 +1,2798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>TVBox 解密工具</title>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            min-height: 100vh;
+            padding: 16px 12px 32px;
+            color: #1a1a1a;
+            background: #c8bca8;
+            background-image:
+                linear-gradient(180deg, rgba(99, 102, 241, .08) 0%, transparent 35%, transparent 65%, rgba(139, 92, 246, .06) 100%),
+                radial-gradient(ellipse 50% 40% at 15% 5%, rgba(99, 102, 241, .22) 0%, rgba(99, 102, 241, .06) 40%, transparent 60%),
+                radial-gradient(ellipse 45% 50% at 85% 88%, rgba(139, 92, 246, .22) 0%, rgba(139, 92, 246, .06) 40%, transparent 60%),
+                radial-gradient(ellipse 30% 30% at 50% 45%, rgba(251, 191, 36, .12) 0%, transparent 55%);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding: 0 4px;
+        }
+        .header .logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 4px 16px rgba(99, 102, 241, .25);
+            position: relative;
+            overflow: hidden;
+        }
+        .header .logo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .3), transparent 50%);
+            border-radius: inherit;
+        }
+        .header .title-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.2;
+        }
+        .header .title-group .name {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #4a3f33, #6b5a4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .header .title-group .sub {
+            font-size: 12px;
+            color: rgba(60, 50, 40, 0.45);
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        #statusBar {
+            text-align: center;
+            padding: 8px 16px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            font-size: 13px;
+            background: rgba(255, 255, 255, .25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .35);
+            color: rgba(60, 50, 40, 0.6);
+            transition: all .4s ease;
+        }
+        #statusBar.online { color: #16a34a; }
+        #statusBar.offline { color: #b05a5a; }
+
+        .tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 14px;
+            background: rgba(255, 255, 255, .20);
+            border-radius: 14px;
+            padding: 4px;
+            flex-wrap: wrap;
+            border: 1px solid rgba(255, 255, 255, .25);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .tab {
+            flex: 1;
+            padding: 9px 12px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: rgba(60, 50, 40, 0.4);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all .3s;
+            font-size: 13px;
+            font-weight: 500;
+            min-width: 56px;
+        }
+        .tab:hover {
+            color: rgba(60, 50, 40, 0.7);
+            background: rgba(255, 255, 255, .1);
+        }
+        .tab.active {
+            background: rgba(255, 255, 255, .55);
+            color: #4a3f33;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
+            border: 1px solid rgba(200, 190, 180, .06);
+        }
+        .tab-content { display: none; animation: fadeIn .3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .panel {
+            border-radius: 14px;
+            padding: 14px;
+            background: rgba(255, 255, 255, .25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .35);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .03);
+            margin-bottom: 12px;
+        }
+        .panel-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(60, 50, 40, 0.4);
+            letter-spacing: 1px;
+            padding: 0 2px 10px;
+            text-transform: uppercase;
+        }
+        .panel-label .tag {
+            font-weight: 400;
+            color: rgba(60, 50, 40, 0.25);
+            font-size: 10px;
+            text-transform: none;
+            margin-left: 6px;
+        }
+
+        textarea, input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, .40);
+            border: 1px solid rgba(255, 255, 255, .35);
+            border-radius: 12px;
+            color: #1a1a1a;
+            font-size: 13px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            transition: all .3s;
+            resize: vertical;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            outline: none;
+        }
+        textarea { min-height: 180px; }
+        select {
+            appearance: auto;
+            width: auto;
+            min-width: 130px;
+            font-family: inherit;
+            background: rgba(255, 255, 255, .40);
+        }
+        select option { background: #f5f0e8; color: #1a1a1a; }
+        textarea:focus, input:focus, select:focus {
+            border-color: rgba(99, 102, 241, .25);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, .04);
+            background: rgba(255, 255, 255, .55);
+        }
+        textarea::placeholder, input::placeholder { color: rgba(60, 50, 40, 0.2); }
+
+        .url-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+        }
+        .url-row .url-input-wrapper {
+            flex: 1;
+            min-width: 120px;
+            position: relative;
+        }
+        .url-row .url-input-wrapper input {
+            width: 100%;
+            padding-right: 36px;
+        }
+        .url-row .url-input-wrapper .dropdown-arrow {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(60, 50, 40, 0.3);
+            font-size: 16px;
+            pointer-events: none;
+            border-left: 1px solid rgba(60, 50, 40, 0.1);
+            padding-left: 6px;
+        }
+        input[list="urlHistory"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+        input[list="urlHistory"] { cursor: pointer; }
+        .url-row select { min-width: 130px; }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 8px 0;
+        }
+        .btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .25);
+        }
+        .btn:active { transform: scale(0.96); }
+        .btn-primary { background: rgba(99, 102, 241, .20); color: #4a3f33; }
+        .btn-primary:hover { background: rgba(99, 102, 241, .30); transform: translateY(-1px); }
+        .btn-success { background: rgba(34, 197, 94, .18); color: #4a3f33; }
+        .btn-success:hover { background: rgba(34, 197, 94, .28); transform: translateY(-1px); }
+        .btn-danger { background: rgba(239, 68, 68, .14); color: #8a5a5a; }
+        .btn-danger:hover { background: rgba(239, 68, 68, .24); transform: translateY(-1px); }
+        .btn-warning { background: rgba(234, 179, 8, .18); color: #7a6a3a; }
+        .btn-warning:hover { background: rgba(234, 179, 8, .28); transform: translateY(-1px); }
+        .btn-outline { background: rgba(255, 255, 255, .20); color: rgba(60, 50, 40, 0.5); border: 1px solid rgba(255, 255, 255, .25); }
+        .btn-outline:hover { background: rgba(255, 255, 255, .35); transform: translateY(-1px); }
+        .btn-sm { padding: 4px 12px; font-size: 11px; border-radius: 8px; }
+        .btn-purple { background: rgba(139, 92, 246, .18); color: #4a3f33; }
+        .btn-purple:hover { background: rgba(139, 92, 246, .28); transform: translateY(-1px); }
+        .btn-save { background: rgba(34, 197, 94, .12); color: #2d7a4a; }
+        .btn-save:hover { background: rgba(34, 197, 94, .22); transform: translateY(-1px); }
+
+        .checkbox-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 6px 0;
+        }
+        .checkbox-group label {
+            font-size: 12px;
+            color: rgba(60, 50, 40, 0.55);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .checkbox-group input[type="checkbox"] { accent-color: #6366f1; width: 14px; height: 14px; cursor: pointer; }
+
+        .result-box {
+            background: rgba(255, 255, 255, .25);
+            border-radius: 12px;
+            padding: 14px;
+            min-height: 180px;
+            max-height: 420px;
+            overflow-y: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            border: 1px solid rgba(255, 255, 255, .20);
+            color: #1a1a1a;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            transition: all .3s;
+        }
+        .result-box .placeholder { color: rgba(60, 50, 40, 0.2); }
+
+        .stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, .18);
+            border-radius: 12px;
+            margin: 6px 0 12px 0;
+            border: 1px solid rgba(255, 255, 255, .12);
+        }
+        .stats span { font-size: 12px; color: rgba(60, 50, 40, 0.45); }
+        .stats strong { color: #1a1a1a; font-weight: 600; }
+
+        #progressContainer {
+            display: none;
+            margin-top: 10px;
+            background: rgba(255, 255, 255, .18);
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, .15);
+        }
+        #progressBar {
+            width: 0%;
+            height: 6px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-radius: 10px;
+            transition: width .4s;
+        }
+        #progressText { font-size: 12px; margin-top: 6px; text-align: center; color: rgba(60, 50, 40, 0.45); }
+        #progressPercent { font-size: 13px; color: #6b5a44; font-weight: 600; }
+        #currentFileDisplay { font-size: 11px; color: #6366f1; text-align: center; margin-top: 2px; min-height: 16px; }
+        .failed-list {
+            display: none;
+            max-height: 100px;
+            overflow-y: auto;
+            font-size: 11px;
+            color: #b05a5a;
+            margin-top: 6px;
+            padding: 6px 10px;
+            background: rgba(239, 68, 68, .04);
+            border-radius: 8px;
+            border: 1px solid rgba(239, 68, 68, .06);
+        }
+        .failed-list.show { display: block; }
+
+        #urlListContainer {
+            display: none;
+            max-height: 180px;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, .15);
+            border-radius: 10px;
+            padding: 8px;
+            margin-top: 6px;
+            border: 1px solid rgba(255, 255, 255, .12);
+        }
+        #urlList { font-size: 12px; font-family: monospace; color: rgba(60, 50, 40, 0.5); }
+        #urlList .cat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 4px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        #urlList .cat-item .cat-name { color: #6366f1; font-weight: 600; }
+        #urlList .cat-item .cat-count { color: rgba(60,50,40,0.5); }
+
+        #savePath { cursor: default; color: rgba(60, 50, 40, 0.3) !important; }
+        #pathStatus { font-size: 11px; color: rgba(60, 50, 40, 0.3); margin-top: 4px; }
+
+        .result-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .result-actions .label { font-size: 11px; color: rgba(60, 50, 40, 0.4); }
+        .result-actions .btns { display: flex; gap: 6px; }
+
+        #toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(255, 255, 255, .88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 10px 28px;
+            border-radius: 14px;
+            color: #1a1a1a;
+            font-size: 13px;
+            opacity: 0;
+            transition: all .5s cubic-bezier(.22, 1, .36, 1);
+            border: 1px solid rgba(255, 255, 255, .3);
+            pointer-events: none;
+            z-index: 1000;
+            max-width: 90%;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .06);
+        }
+        #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        /* 中文域名提示 */
+        #domainHint {
+            font-size: 11px;
+            color: #6366f1;
+            margin-top: 4px;
+            padding: 4px 10px;
+            background: rgba(99, 102, 241, 0.08);
+            border-radius: 6px;
+            display: none;
+        }
+        #domainHint.show { display: block; }
+
+        /* 后端设置面板样式增强 */
+        .backend-config-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .backend-config-row .backend-input {
+            flex: 1;
+            min-width: 180px;
+        }
+        .backend-config-row .backend-input input {
+            width: 100%;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, .30);
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: 8px;
+            color: #1a1a1a;
+            font-size: 12px;
+            font-family: Consolas, Monaco, monospace;
+            outline: none;
+        }
+        .backend-config-row .backend-input input:focus {
+            border-color: rgba(99, 102, 241, .25);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, .04);
+            background: rgba(255, 255, 255, .55);
+        }
+        .backend-info {
+            font-size: 11px;
+            color: rgba(60, 50, 40, 0.4);
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, .10);
+            border-radius: 6px;
+            margin-top: 6px;
+        }
+        .backend-info .label { color: rgba(60, 50, 40, 0.3); }
+        .backend-info .value { color: #4a3f33; font-family: monospace; }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, .06); border-radius: 10px; }
+
+        @media (max-width: 600px) {
+            body { padding: 10px 8px 24px; }
+            .header .logo { width: 40px; height: 40px; font-size: 18px; }
+            .header .title-group .name { font-size: 18px; }
+            .header .title-group .sub { font-size: 10px; }
+            .tab { font-size: 12px; padding: 7px 8px; min-width: 44px; }
+            .panel { padding: 10px; border-radius: 12px; }
+            .panel-label { font-size: 10px; padding-bottom: 8px; }
+            .btn { padding: 6px 14px; font-size: 12px; }
+            textarea { min-height: 140px; }
+            .result-box { min-height: 140px; max-height: 320px; font-size: 12px; }
+            .stats { gap: 10px; padding: 4px 10px; }
+            .stats span { font-size: 11px; }
+            .url-row .url-input-wrapper input { padding-right: 32px; }
+            .backend-config-row { flex-direction: column; }
+            .backend-config-row .backend-input { width: 100%; }
+        }
+        @media (max-width: 420px) {
+            .header { gap: 6px; }
+            .header .logo { width: 34px; height: 34px; font-size: 16px; }
+            .header .title-group .name { font-size: 16px; letter-spacing: 1px; }
+            .tabs { gap: 3px; padding: 3px; }
+            .tab { font-size: 11px; padding: 5px 6px; min-width: 38px; }
+            .url-row { flex-direction: column; }
+            .url-row select { width: 100%; }
+            .url-row .url-input-wrapper { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🔐</div>
+            <div class="title-group">
+                <div class="name">TVBox 解密工具</div>
+                <div class="sub">解密 · 提取资源 · 生成本地包 · 中文域名保留显示</div>
+            </div>
+        </div>
+
+        <div id="statusBar">⏳ 检测后端连接...</div>
+
+        <div class="tabs" id="tabContainer">
+            <button class="tab active" data-tab="tab-decrypt">📝 解密</button>
+            <button class="tab" data-tab="tab-url">🌐 URL</button>
+            <button class="tab" data-tab="tab-package">📦 本地包</button>
+            <button class="tab" data-tab="tab-backend">⚙️ 后端</button>
+        </div>
+
+        <!-- Tab 1: 解密 -->
+        <div class="tab-content active" id="tab-decrypt">
+            <div class="panel">
+                <div class="panel-label">📄 输入数据 <span class="tag">TVBox / Base64 / AES / DES / XOR</span></div>
+                <textarea id="inputData" placeholder="粘贴加密数据..."></textarea>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="decodeData()">🔓 解密</button>
+                    <button class="btn btn-success" onclick="fetchAndDecode()">🌐 获取并解密</button>
+                    <button class="btn btn-outline" onclick="formatJson()">📐 格式化JSON</button>
+                    <button class="btn btn-danger" onclick="clearAll()">🗑️ 清空</button>
+                </div>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="autoFormat" checked> 自动格式化JSON</label>
+                    <label><input type="checkbox" id="useBackend" checked> 使用后端解密</label>
+                </div>
+            </div>
+            <div class="stats" id="stats" style="display:none;">
+                <span>📏 长度: <strong id="charCount">0</strong></span>
+                <span>⏱️ 耗时: <strong id="timeCost">0ms</strong></span>
+                <span>📊 状态: <span id="statusBadge" style="color:#16a34a;">● 就绪</span></span>
+            </div>
+            <div class="panel" style="margin-bottom:0;">
+                <div class="result-actions">
+                    <span class="label">📄 解密结果</span>
+                    <span class="btns">
+                        <button class="btn btn-sm btn-success" onclick="downloadResult()">💾 下载</button>
+                        <button class="btn btn-sm btn-outline" onclick="copyResult()">📋 复制</button>
+                    </span>
+                </div>
+                <div class="result-box" id="resultBox"><span class="placeholder">等待解密...</span></div>
+            </div>
+        </div>
+
+        <!-- Tab 2: URL -->
+        <div class="tab-content" id="tab-url">
+            <div class="panel">
+                <div class="panel-label">🌐 接口地址 <span class="tag">支持中文域名（显示中文，传输自动编码）</span></div>
+                <div class="url-row">
+                    <div class="url-input-wrapper">
+                        <input type="text" id="apiUrl" placeholder="输入TVBox接口地址或直播源链接..." list="urlHistory" autocomplete="off">
+                        <datalist id="urlHistory"></datalist>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <select id="uaSelect">
+                        <option value="okhttp/4.12.0">okhttp/4.12.0</option>
+                        <option value="okhttp/3.10.0">okhttp/3.10.0</option>
+                        <option value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36">Chrome PC</option>
+                        <option value="Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36">Chrome Mobile</option>
+                        <option value="Custom">✏️ 自定义</option>
+                    </select>
+                </div>
+                <div id="domainHint" class="show">🌐 检测到中文域名，显示保留中文，传输时自动编码为 Punycode</div>
+                <div id="customUaRow" style="display:none;margin-top:6px;">
+                    <input type="text" id="customUa" placeholder="输入自定义 User-Agent...">
+                </div>
+                <div style="margin-top:4px;font-size:11px;color:rgba(60,50,40,0.35);">
+                    📌 当前 UA: <span id="currentUaDisplay" style="color:rgba(60,50,40,0.5);">okhttp/4.12.0</span>
+                </div>
+                <div class="btn-group" style="margin-top:8px;">
+                    <button class="btn btn-success" onclick="fetchAndDecode()">📥 获取并解密</button>
+                    <button class="btn btn-primary" onclick="fetchRaw()">📄 仅获取原始内容</button>
+                    <button class="btn btn-purple" onclick="downloadRawFile()">💾 下载网页源代码</button>
+                    <button class="btn btn-outline btn-sm" onclick="clearUrlHistory()" style="margin-left:auto;">🗑️ 清空记录</button>
+                </div>
+            </div>
+            <div class="stats" id="statsUrl" style="display:none;">
+                <span>📏 长度: <strong id="charCountUrl">0</strong></span>
+                <span>📊 状态: <span id="statusBadgeUrl" style="color:#16a34a;">● 就绪</span></span>
+            </div>
+            <div class="panel" style="margin-bottom:0;">
+                <div class="result-actions">
+                    <span class="label">📄 获取结果</span>
+                    <span class="btns">
+                        <button class="btn btn-sm btn-success" onclick="downloadResult()">💾 下载</button>
+                        <button class="btn btn-sm btn-outline" onclick="copyResult()">📋 复制</button>
+                    </span>
+                </div>
+                <div class="result-box" id="resultBoxUrl"><span class="placeholder">等待获取...</span></div>
+            </div>
+        </div>
+
+        <!-- Tab 3: 本地包 -->
+        <div class="tab-content" id="tab-package">
+            <div class="panel">
+                <div class="panel-label">📦 生成 TVBox 本地包 <span class="tag">含原接口文件</span></div>
+                <div style="background:rgba(255,255,255,.18);border-radius:12px;padding:10px 12px;border:1px solid rgba(255,255,255,.15);">
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                        <label style="color:rgba(60,50,40,0.45);font-size:12px;">保存路径：</label>
+                        <input type="text" id="savePath" placeholder="默认：浏览器下载文件夹" style="flex:1;min-width:100px;padding:6px 10px;background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.2);border-radius:8px;color:rgba(60,50,40,0.3);font-size:12px;cursor:default;" readonly>
+                        <button class="btn btn-sm btn-success" onclick="selectSaveFolder()">📁 选择</button>
+                        <button class="btn btn-sm btn-outline" onclick="resetSavePath()">↩️ 重置</button>
+                    </div>
+                    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;align-items:center;">
+                        <label style="color:rgba(60,50,40,0.45);font-size:12px;">并发数：</label>
+                        <input type="number" id="concurrentLimit" value="3" min="1" max="5" style="width:48px;padding:4px 8px;background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#1a1a1a;font-size:12px;">
+                        <label style="color:rgba(60,50,40,0.45);font-size:12px;margin-left:4px;">超时(秒)：</label>
+                        <input type="number" id="timeoutSeconds" value="120" min="30" max="300" style="width:48px;padding:4px 8px;background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#1a1a1a;font-size:12px;">
+                    </div>
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center;">
+                        <label style="color:rgba(60,50,40,0.45);font-size:12px;min-width:70px;">📁 文件夹名：</label>
+                        <input type="text" id="folderName" placeholder="自定义ZIP内文件夹名" value="TVBox本地包" style="flex:1;min-width:120px;padding:6px 10px;background:rgba(255,255,255,.20);border:1px solid rgba(255,255,255,.2);border-radius:8px;color:#1a1a1a;font-size:12px;">
+                    </div>
+                    <div id="pathStatus" style="font-size:11px;color:rgba(60,50,40,0.3);margin-top:4px;">💡 点击「选择」自定义保存位置</div>
+                </div>
+                <div class="btn-group" style="margin-top:8px;">
+                    <button class="btn btn-warning" onclick="generateLocalPackage()">📦 生成本地包</button>
+                    <button class="btn btn-outline" onclick="extractUrlsFromResult()">📋 提取资源列表</button>
+                    <button class="btn btn-outline" onclick="clearPackage()">🗑️ 清空</button>
+                </div>
+                <div id="urlListContainer"><div id="urlList"></div></div>
+            </div>
+            <div id="progressContainer">
+                <div style="display:flex;justify-content:space-between;">
+                    <span style="color:rgba(60,50,40,0.45);font-size:12px;">下载进度</span>
+                    <span id="progressPercent" style="color:#6b5a44;font-size:13px;font-weight:600;">0%</span>
+                </div>
+                <div id="progressBar"></div>
+                <div id="progressText" style="font-size:12px;margin-top:6px;text-align:center;color:rgba(60,50,40,0.45);">准备中...</div>
+                <div id="currentFileDisplay"></div>
+                <div id="failedList" class="failed-list"></div>
+                <div style="text-align:center;margin-top:6px;">
+                    <button id="cancelDownloadBtn" class="btn btn-sm btn-danger" style="display:none;" onclick="cancelDownload()">⛔ 取消</button>
+                </div>
+            </div>
+            <div class="panel" style="margin-top:12px;margin-bottom:0;">
+                <div class="result-actions">
+                    <span class="label">📄 解密结果 (本地包)</span>
+                    <span class="btns">
+                        <button class="btn btn-sm btn-success" onclick="downloadResult()">💾 下载</button>
+                        <button class="btn btn-sm btn-outline" onclick="copyResult()">📋 复制</button>
+                    </span>
+                </div>
+                <div class="result-box" id="resultBoxPackage"><span class="placeholder">等待解密或获取数据...</span></div>
+            </div>
+        </div>
+
+        <!-- Tab 4: 后端 -->
+        <div class="tab-content" id="tab-backend">
+            <div class="panel" style="margin-bottom:0;">
+                <div class="panel-label">🖥️ 后端API配置 <span id="backendApiStatus" class="tag" style="color:rgba(60,50,40,0.3);">● 未连接</span></div>
+                <div style="background:rgba(255,255,255,.18);border-radius:12px;padding:12px 14px;border:1px solid rgba(255,255,255,.15);">
+                    <div class="backend-config-row">
+                        <div class="backend-input">
+                            <input type="text" id="backendUrl" placeholder="http://localhost:8901/api.php" style="font-family:Consolas,Monaco,monospace;">
+                        </div>
+                        <button class="btn btn-sm btn-success" onclick="saveBackendUrl()">💾 保存</button>
+                        <button class="btn btn-sm btn-primary" onclick="testBackend()">🔌 测试</button>
+                        <button class="btn btn-sm btn-outline" onclick="resetBackendUrl()">↩️ 重置</button>
+                    </div>
+                    <div class="backend-info">
+                        <span class="label">📌 当前地址：</span>
+                        <span class="value" id="backendUrlDisplay">http://localhost:8901/api.php</span>
+                        <span style="margin-left:12px;" id="backendStatusDot">⚪</span>
+                        <span id="backendStatusText" style="font-size:11px;color:rgba(60,50,40,0.4);">未测试</span>
+                    </div>
+                    <div style="margin-top:6px;font-size:11px;color:rgba(60,50,40,0.3);">
+                        💡 修改后点击「保存」即可生效，支持任意端口和路径
+                    </div>
+                </div>
+            </div>
+            <div class="panel" style="margin-top:12px;margin-bottom:0;">
+                <div class="panel-label">📋 后端API说明 <span class="tag">实现参考</span></div>
+                <div style="background:rgba(255,255,255,.12);border-radius:10px;padding:10px 12px;font-size:12px;color:rgba(60,50,40,0.5);font-family:Consolas,Monaco,monospace;overflow-x:auto;">
+                    <div>POST /api.php</div>
+                    <div style="margin-top:4px;color:rgba(60,50,40,0.35);">
+                        action=health → { "status": "ok" }<br>
+                        action=decrypt → { "success": true, "data": "..." }<br>
+                        action=fetch → { "success": true, "data": "..." }<br>
+                        action=download → { "success": true, "data": "base64..." }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="toast"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js">
+    </script>
+    <script>
+        // ============================================================
+        // 配置
+        // ============================================================
+        const BACKEND_STORAGE_KEY = 'tvbox_backend_url';
+        let BACKEND_URL = localStorage.getItem(BACKEND_STORAGE_KEY) || 'http://localhost:8901/api.php';
+        let backendOnline = false;
+        let currentApiUrl = '';
+        let isDownloading = false;
+        let downloadCanceled = false;
+        let downloadedFiles = [];
+        let failedFiles = [];
+        let totalUrls = 0;
+        let selectedFolderHandle = null;
+        let selectedFolderPath = '';
+
+        // ============================================================
+        // 后端地址管理
+        // ============================================================
+        function getBackendUrl() {
+            return BACKEND_URL;
+        }
+
+        function setBackendUrl(url) {
+            const trimmed = url.trim();
+            if (!trimmed) return false;
+            BACKEND_URL = trimmed;
+            localStorage.setItem(BACKEND_STORAGE_KEY, trimmed);
+            document.getElementById('backendUrl').value = trimmed;
+            document.getElementById('backendUrlDisplay').textContent = trimmed;
+            return true;
+        }
+
+        function saveBackendUrl() {
+            const input = document.getElementById('backendUrl');
+            const url = input.value.trim();
+            if (!url) {
+                showToast('❌ 请输入有效的后端地址', 'error');
+                return;
+            }
+            if (setBackendUrl(url)) {
+                showToast('✅ 后端地址已保存', 'success');
+                // 自动测试连接
+                setTimeout(testBackend, 300);
+            }
+        }
+
+        function resetBackendUrl() {
+            const defaultUrl = 'http://localhost:8901/api.php';
+            setBackendUrl(defaultUrl);
+            document.getElementById('backendUrl').value = defaultUrl;
+            document.getElementById('backendUrlDisplay').textContent = defaultUrl;
+            document.getElementById('backendStatusDot').textContent = '⚪';
+            document.getElementById('backendStatusText').textContent = '已重置';
+            backendOnline = false;
+            updateStatusBar(false);
+            showToast('↩️ 已重置为默认地址', 'success');
+        }
+
+        function updateBackendStatus(online, detail = '') {
+            const dot = document.getElementById('backendStatusDot');
+            const text = document.getElementById('backendStatusText');
+            const apiStatus = document.getElementById('backendApiStatus');
+            if (online) {
+                dot.textContent = '🟢';
+                dot.style.color = '#16a34a';
+                text.textContent = detail || '已连接';
+                text.style.color = '#16a34a';
+                apiStatus.textContent = '✅ 已连接';
+                apiStatus.style.color = '#16a34a';
+            } else {
+                dot.textContent = '🔴';
+                dot.style.color = '#b05a5a';
+                text.textContent = detail || '未连接';
+                text.style.color = '#b05a5a';
+                apiStatus.textContent = '❌ 未连接';
+                apiStatus.style.color = '#b05a5a';
+            }
+        }
+
+        function updateStatusBar(online) {
+            const statusBar = document.getElementById('statusBar');
+            if (online) {
+                statusBar.textContent = '✅ 后端在线';
+                statusBar.className = 'online';
+            } else {
+                statusBar.textContent = '❌ 后端离线';
+                statusBar.className = 'offline';
+            }
+        }
+
+        // ============================================================
+        // ★★★ 中文域名支持 - 显示中文，传输时自动编码 ★★★
+        // ============================================================
+
+        function isChineseDomain(url) {
+            if (!url) return false;
+            try {
+                const match = url.match(/^(https?:\/\/)?([^\/?#]+)/);
+                if (!match) return false;
+                return /[\u4e00-\u9fa5]/.test(match[2]);
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function getEncodedUrlForRequest(url) {
+            if (!url) return url;
+            try {
+                if (url.includes('%')) return url;
+                const match = url.match(/^(https?:\/\/)?([^\/?#]+)(.*)$/);
+                if (!match) return url;
+                const protocol = match[1] || '';
+                const host = match[2];
+                const rest = match[3] || '';
+                if (/[\u4e00-\u9fa5]/.test(host)) {
+                    try {
+                        const encodedHost = encodeHostToPunycode(host);
+                        return protocol + encodedHost + rest;
+                    } catch (e) {
+                        return protocol + encodeURIComponent(host) + rest;
+                    }
+                }
+                return url;
+            } catch (e) {
+                return url;
+            }
+        }
+
+        function encodeHostToPunycode(host) {
+            if (typeof URL !== 'undefined') {
+                try {
+                    const testUrl = new URL('http://' + host);
+                    return testUrl.hostname;
+                } catch (e) {}
+            }
+            const parts = host.split('.');
+            const encoded = parts.map(part => {
+                if (/[\u4e00-\u9fa5]/.test(part)) {
+                    try {
+                        const enc = encodeURIComponent(part);
+                        return 'xn--' + enc.replace(/%/g, '');
+                    } catch (e) {
+                        return part;
+                    }
+                }
+                return part;
+            });
+            return encoded.join('.');
+        }
+
+        function encodeChinesePath(path) {
+            if (!path) return path;
+            if (/[\u4e00-\u9fa5]/.test(path)) {
+                const parts = path.split('/');
+                return parts.map(p => {
+                    if (/[\u4e00-\u9fa5]/.test(p)) {
+                        return encodeURIComponent(p);
+                    }
+                    return p;
+                }).join('/');
+            }
+            return path;
+        }
+
+        // ============================================================
+        // 地址记录管理
+        // ============================================================
+        const HISTORY_KEY = 'tvbox_url_history';
+        const MAX_HISTORY = 5;
+
+        function getUrlHistory() {
+            try {
+                const data = localStorage.getItem(HISTORY_KEY);
+                return data ? JSON.parse(data) : [];
+            } catch { return []; }
+        }
+
+        function saveUrlHistory(history) {
+            try {
+                if (history.length > MAX_HISTORY) {
+                    history = history.slice(0, MAX_HISTORY);
+                }
+                localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+            } catch {}
+        }
+
+        function addUrlToHistory(url) {
+            if (!url || !url.trim()) return;
+            const trimmed = url.trim();
+            let history = getUrlHistory();
+            history = history.filter(item => item !== trimmed);
+            history.unshift(trimmed);
+            if (history.length > MAX_HISTORY) history = history.slice(0, MAX_HISTORY);
+            saveUrlHistory(history);
+            updateHistoryDatalist();
+        }
+
+        function updateHistoryDatalist() {
+            const datalist = document.getElementById('urlHistory');
+            const history = getUrlHistory();
+            datalist.innerHTML = history.map(url => `<option value="${url}">`).join('');
+        }
+
+        function clearUrlHistory() {
+            if (getUrlHistory().length === 0) {
+                showToast('📭 记录已为空', 'info');
+                return;
+            }
+            saveUrlHistory([]);
+            updateHistoryDatalist();
+            showToast('🗑️ 地址记录已清空', 'success');
+        }
+
+        function setupUrlHistory() {
+            const apiInput = document.getElementById('apiUrl');
+            if (!apiInput) return;
+            apiInput.addEventListener('input', function() {
+                const val = this.value;
+                const hint = document.getElementById('domainHint');
+                if (isChineseDomain(val)) {
+                    hint.textContent = '🌐 检测到中文域名，显示保留中文，传输时自动编码为 Punycode';
+                    hint.className = 'show';
+                    hint.style.color = '#6366f1';
+                } else {
+                    hint.textContent = '';
+                    hint.className = '';
+                }
+            });
+            apiInput.addEventListener('change', function() {
+                if (this.value.trim()) {
+                    addUrlToHistory(this.value.trim());
+                }
+            });
+            apiInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && this.value.trim()) {
+                    addUrlToHistory(this.value.trim());
+                }
+            });
+            updateHistoryDatalist();
+        }
+
+        // ============================================================
+        // Toast
+        // ============================================================
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = '';
+            void toast.offsetWidth;
+            toast.classList.add('show');
+            clearTimeout(toast._hideTimer);
+            toast._hideTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ============================================================
+        // UA 管理
+        // ============================================================
+        function getCurrentUA() {
+            const select = document.getElementById('uaSelect');
+            if (select.value === 'Custom') {
+                return document.getElementById('customUa').value.trim() || 'okhttp/4.12.0';
+            }
+            return select.value;
+        }
+
+        function updateUADisplay() {
+            document.getElementById('currentUaDisplay').textContent = getCurrentUA();
+        }
+
+        document.getElementById('uaSelect').addEventListener('change', function() {
+            const row = document.getElementById('customUaRow');
+            if (this.value === 'Custom') {
+                row.style.display = 'block';
+            } else {
+                row.style.display = 'none';
+            }
+            updateUADisplay();
+            const val = this.value === 'Custom' ? document.getElementById('customUa').value : this.value;
+            if (val) localStorage.setItem('tvbox_ua', val);
+        });
+        document.getElementById('customUa').addEventListener('input', function() {
+            if (document.getElementById('uaSelect').value === 'Custom') {
+                localStorage.setItem('tvbox_ua', this.value);
+                updateUADisplay();
+            }
+        });
+
+        // ============================================================
+        // 标签切换
+        // ============================================================
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+                document.querySelectorAll('.tab').forEach(t => {
+                    t.style.background = 'transparent';
+                    t.style.color = 'rgba(60,50,40,0.4)';
+                    t.style.boxShadow = 'none';
+                    t.style.border = 'none';
+                });
+                this.style.background = 'rgba(255,255,255,.55)';
+                this.style.color = '#4a3f33';
+                this.style.boxShadow = '0 2px 12px rgba(0,0,0,.04)';
+                this.style.border = '1px solid rgba(200,190,180,.06)';
+            });
+        });
+        document.querySelector('.tab.active').style.background = 'rgba(255,255,255,.55)';
+        document.querySelector('.tab.active').style.color = '#4a3f33';
+        document.querySelector('.tab.active').style.boxShadow = '0 2px 12px rgba(0,0,0,.04)';
+        document.querySelector('.tab.active').style.border = '1px solid rgba(200,190,180,.06)';
+
+        // ============================================================
+        // 后端 API
+        // ============================================================
+        async function testBackend() {
+            const url = getBackendUrl();
+            const statusEl = document.getElementById('statusBar');
+            const detailEl = document.getElementById('backendDetail');
+
+            if (!url || !url.trim()) {
+                showToast('❌ 请先设置后端地址', 'error');
+                return;
+            }
+
+            statusEl.textContent = '⏳ 检测中...';
+            statusEl.className = '';
+            updateBackendStatus(false, '检测中...');
+
+            try {
+                const response = await fetch(`${url}?action=health`, { signal: AbortSignal.timeout(5000) });
+                const data = await response.json();
+                if (data.status === 'ok') {
+                    backendOnline = true;
+                    statusEl.textContent = '✅ 后端在线';
+                    statusEl.className = 'online';
+                    updateBackendStatus(true, `✅ PHP ${data.php_version || ''} | OpenSSL: ${data.extensions?.openssl ? '✅' : '❌'}`);
+                    showToast('✅ 后端连接成功', 'success');
+                } else {
+                    backendOnline = false;
+                    statusEl.textContent = '❌ 后端离线';
+                    statusEl.className = 'offline';
+                    updateBackendStatus(false, '❌ ' + (data.error || '未知错误'));
+                    showToast('❌ 后端连接失败', 'error');
+                }
+            } catch (error) {
+                backendOnline = false;
+                statusEl.textContent = '❌ 后端离线';
+                statusEl.className = 'offline';
+                updateBackendStatus(false, '❌ ' + error.message);
+                showToast('❌ 后端不可用: ' + error.message, 'error');
+            }
+        }
+
+        async function callBackendProxy(action, params) {
+            const url = getBackendUrl();
+            if (!url) {
+                return { error: '后端地址未设置' };
+            }
+            const formData = new URLSearchParams();
+            formData.append('action', action);
+            for (let [key, value] of Object.entries(params)) {
+                formData.append(key, value);
+            }
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData.toString(),
+                    signal: AbortSignal.timeout(30000)
+                });
+                return await response.json();
+            } catch (error) {
+                return { error: error.message };
+            }
+        }
+
+        // ============================================================
+        // 选择文件夹
+        // ============================================================
+        async function selectSaveFolder() {
+            try {
+                if (!('showDirectoryPicker' in window)) {
+                    showToast('❌ 当前浏览器不支持选择文件夹，请使用 Chrome 86+ 或 Edge 86+', 'error');
+                    return;
+                }
+                const folderHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+                selectedFolderHandle = folderHandle;
+                selectedFolderPath = folderHandle.name;
+                document.getElementById('savePath').value = folderHandle.name;
+                document.getElementById('pathStatus').innerHTML = `✅ 已选择：<strong style="color:#6366f1;">${folderHandle.name}</strong>`;
+                document.getElementById('pathStatus').style.color = '#6366f1';
+                try { localStorage.setItem('tvbox_save_folder', folderHandle.name); } catch (e) {}
+                showToast(`✅ 已选择文件夹：${folderHandle.name}`, 'success');
+            } catch (error) {
+                if (error.name === 'AbortError' || error.name === 'SecurityError') {
+                    showToast('已取消选择', 'warning');
+                } else {
+                    showToast('❌ 选择文件夹失败: ' + error.message, 'error');
+                }
+            }
+        }
+
+        function resetSavePath() {
+            selectedFolderHandle = null;
+            selectedFolderPath = '';
+            document.getElementById('savePath').value = '';
+            document.getElementById('pathStatus').innerHTML = '💡 点击「选择」自定义保存位置';
+            document.getElementById('pathStatus').style.color = 'rgba(60,50,40,0.3)';
+            localStorage.removeItem('tvbox_save_folder');
+            showToast('已重置为默认下载路径', 'success');
+        }
+
+        async function saveFileToPath(blob, filename) {
+            if (selectedFolderHandle) {
+                try {
+                    if (!('requestPermission' in selectedFolderHandle)) {
+                        selectedFolderHandle = null;
+                        selectedFolderPath = '';
+                        showToast('⚠️ 文件夹权限已失效，使用默认下载', 'warning');
+                        return saveFileToDefault(blob, filename);
+                    }
+                    const permission = await selectedFolderHandle.requestPermission({ mode: 'readwrite' });
+                    if (permission !== 'granted') {
+                        showToast('⚠️ 未获得写入权限，使用默认下载', 'warning');
+                        return saveFileToDefault(blob, filename);
+                    }
+                    const fileHandle = await selectedFolderHandle.getFileHandle(filename, { create: true });
+                    const writable = await fileHandle.createWritable();
+                    await writable.write(blob);
+                    await writable.close();
+                    showToast(`✅ 文件已保存到：${selectedFolderPath}/${filename}`, 'success');
+                    return true;
+                } catch (error) {
+                    showToast('⚠️ 保存到文件夹失败，使用默认下载', 'warning');
+                    return saveFileToDefault(blob, filename);
+                }
+            }
+            return saveFileToDefault(blob, filename);
+        }
+
+        function saveFileToDefault(blob, filename) {
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => { URL.revokeObjectURL(a.href); }, 5000);
+            showToast(`✅ 文件已下载：${filename}`, 'success');
+            return true;
+        }
+
+        // ============================================================
+        // TVBox 解码器
+        // ============================================================
+        class TVBoxDecoder {
+            constructor(options = {}) {
+                this.debug = options.debug || false;
+                this.autoDetect = options.autoDetect || true;
+                this.customKey = options.customKey || null;
+                this.customIv = options.customIv || null;
+                this.decodedMethods = [];
+            }
+
+            log(msg) {
+                if (!this.debug) return;
+                console.log(`[${new Date().toLocaleTimeString()}] ${msg}`);
+            }
+
+            decode(data) {
+                if (!data || data.trim() === '') return data;
+                this.decodedMethods = [];
+                let result = data.trim();
+
+                if (this.autoDetect) {
+                    const tvboxResult = this.decodeTVBox(result);
+                    if (tvboxResult !== result) {
+                        this.decodedMethods.push('TVBox专用');
+                        result = tvboxResult;
+                        this.log('✅ TVBox格式解密成功');
+                    }
+                }
+
+                let maxRounds = 5;
+                for (let i = 0; i < maxRounds; i++) {
+                    let changed = false;
+
+                    if (result.includes('base64(') || this.isBase64(result)) {
+                        const newResult = this.decodeBase64Wrapper(result);
+                        if (newResult !== result) {
+                            result = newResult;
+                            changed = true;
+                            this.decodedMethods.push('Base64');
+                            continue;
+                        }
+                    }
+
+                    if (result.includes('aes(') || result.includes('AES(')) {
+                        const newResult = this.decodeAESWrapper(result);
+                        if (newResult !== result) {
+                            result = newResult;
+                            changed = true;
+                            this.decodedMethods.push('AES');
+                            continue;
+                        }
+                    }
+
+                    if (result.includes('des(') || result.includes('DES(')) {
+                        const newResult = this.decodeDESWrapper(result);
+                        if (newResult !== result) {
+                            result = newResult;
+                            changed = true;
+                            this.decodedMethods.push('DES');
+                            continue;
+                        }
+                    }
+
+                    if (result.includes('xor(') || result.includes('XOR(')) {
+                        const newResult = this.decodeXORWrapper(result);
+                        if (newResult !== result) {
+                            result = newResult;
+                            changed = true;
+                            this.decodedMethods.push('XOR');
+                            continue;
+                        }
+                    }
+
+                    try {
+                        const decoded = decodeURIComponent(result);
+                        if (decoded !== result && !decoded.includes('%')) {
+                            result = decoded;
+                            changed = true;
+                            this.decodedMethods.push('URL解码');
+                            continue;
+                        }
+                    } catch (e) {}
+
+                    if (/^[0-9a-fA-F]+$/.test(result) && result.length % 2 === 0 && result.length > 10) {
+                        try {
+                            const hexDecoded = this.hex2str(result);
+                            if (hexDecoded && hexDecoded.length > 0 && !/^[0-9a-fA-F]+$/.test(hexDecoded)) {
+                                result = hexDecoded;
+                                changed = true;
+                                this.decodedMethods.push('Hex');
+                                continue;
+                            }
+                        } catch (e) {}
+                    }
+
+                    if (!changed) break;
+                }
+
+                result = this.cleanMarkers(result);
+                this.decodedMethods = [...new Set(this.decodedMethods)];
+                return result;
+            }
+
+            decodeTVBox(data) {
+                const clean = data.replace(/\s+/g, '');
+                if (clean.startsWith('2423') || data.includes('$#')) {
+                    try {
+                        const result = this.tvBoxDecrypt(clean);
+                        if (result && !result.includes('错误')) {
+                            return result;
+                        }
+                    } catch (e) {}
+                }
+                return data;
+            }
+
+            tvBoxDecrypt(dataHex) {
+                try {
+                    const decodeStr = this.hex2str(dataHex).toLowerCase();
+                    const startPos = decodeStr.indexOf('$#');
+                    if (startPos === -1) return dataHex;
+                    const keyStart = startPos + 2;
+                    const keyEnd = decodeStr.indexOf('#$', keyStart);
+                    if (keyEnd === -1) return dataHex;
+
+                    const keyRaw = decodeStr.substring(keyStart, keyEnd);
+                    const key = this.padKey(keyRaw, 16);
+                    const ivRaw = decodeStr.slice(-13);
+                    const iv = this.padKey(ivRaw, 16);
+
+                    const contentStart = dataHex.indexOf('2324');
+                    if (contentStart === -1) return dataHex;
+                    const contentEnd = dataHex.length - 26;
+
+                    if (contentEnd <= contentStart + 4) return dataHex;
+                    const encryptedHex = dataHex.substring(contentStart + 4, contentEnd);
+
+                    const encryptedBytes = this.hex2bin(encryptedHex);
+                    if (!encryptedBytes) return dataHex;
+
+                    const keyWord = CryptoJS.enc.Utf8.parse(key);
+                    const ivWord = CryptoJS.enc.Utf8.parse(iv);
+
+                    const decrypted = CryptoJS.AES.decrypt(
+                        CryptoJS.enc.Base64.parse(btoa(encryptedBytes)),
+                        keyWord, {
+                            iv: ivWord,
+                            mode: CryptoJS.mode.CBC,
+                            padding: CryptoJS.pad.Pkcs7
+                        }
+                    );
+
+                    const result = decrypted.toString(CryptoJS.enc.Utf8);
+                    if (result) return result;
+                    return dataHex;
+                } catch (e) {
+                    return dataHex;
+                }
+            }
+
+            isBase64(str) {
+                try {
+                    const clean = str.replace(/\s/g, '');
+                    if (clean.length % 4 !== 0) return false;
+                    if (!/^[A-Za-z0-9+/=]+$/.test(clean)) return false;
+                    const decoded = atob(clean);
+                    return decoded.length > 0 && !/[\x00-\x08\x0b\x0c\x0e-\x1f]/.test(decoded);
+                } catch (e) {
+                    return false;
+                }
+            }
+
+            decodeBase64Wrapper(data) {
+                const match = data.match(/base64\s*\(\s*['"](.+?)['"]\s*\)/i);
+                if (match) {
+                    try {
+                        const decoded = atob(match[1]);
+                        if (decoded) return decoded;
+                    } catch (e) {}
+                }
+                try {
+                    const clean = data.replace(/\s/g, '');
+                    if (this.isBase64(clean)) {
+                        const decoded = atob(clean);
+                        if (decoded && decoded.length > 0) return decoded;
+                    }
+                } catch (e) {}
+                return data;
+            }
+
+            decodeAESWrapper(data) {
+                const match = data.match(/aes\s*\(\s*['"](.+?)['"]\s*,\s*['"](.+?)['"]\s*(?:,\s*['"](.+?)['"]\s*)?\)/i);
+                if (match) {
+                    try {
+                        const encrypted = match[1];
+                        const key = match[2] || this.customKey || '1234567890123456';
+                        const iv = match[3] || this.customIv || null;
+                        return this.aesDecrypt(encrypted, key, iv);
+                    } catch (e) {}
+                }
+                return data;
+            }
+
+            aesDecrypt(encrypted, key, iv = null) {
+                const keyData = CryptoJS.enc.Utf8.parse(this.padKey(key, 16));
+                let encryptedData;
+                try {
+                    encryptedData = CryptoJS.enc.Base64.parse(encrypted);
+                } catch (e) {
+                    encryptedData = CryptoJS.enc.Hex.parse(encrypted);
+                }
+                const config = {
+                    mode: CryptoJS.mode.CBC,
+                    padding: CryptoJS.pad.Pkcs7
+                };
+                if (iv) {
+                    config.iv = CryptoJS.enc.Utf8.parse(this.padKey(iv, 16));
+                } else {
+                    config.iv = CryptoJS.enc.Utf8.parse('0000000000000000');
+                }
+                const decrypted = CryptoJS.AES.decrypt({ ciphertext: encryptedData }, keyData, config);
+                const result = decrypted.toString(CryptoJS.enc.Utf8);
+                if (result) return result;
+                return encrypted;
+            }
+
+            decodeDESWrapper(data) {
+                const match = data.match(/des\s*\(\s*['"](.+?)['"]\s*,\s*['"](.+?)['"]\s*\)/i);
+                if (match) {
+                    try {
+                        const encrypted = match[1];
+                        const key = match[2] || this.customKey || '12345678';
+                        const keyData = CryptoJS.enc.Utf8.parse(this.padKey(key, 8));
+                        const encryptedData = CryptoJS.enc.Base64.parse(encrypted);
+                        const decrypted = CryptoJS.DES.decrypt({ ciphertext: encryptedData }, keyData, {
+                            mode: CryptoJS.mode.ECB,
+                            padding: CryptoJS.pad.Pkcs7
+                        });
+                        const result = decrypted.toString(CryptoJS.enc.Utf8);
+                        if (result) return result;
+                    } catch (e) {}
+                }
+                return data;
+            }
+
+            decodeXORWrapper(data) {
+                const match = data.match(/xor\s*\(\s*['"](.+?)['"]\s*,\s*['"](.+?)['"]\s*\)/i);
+                if (match) {
+                    try {
+                        const encrypted = match[1];
+                        const key = match[2] || 'key';
+                        let result = '';
+                        for (let i = 0; i < encrypted.length; i++) {
+                            result += String.fromCharCode(
+                                encrypted.charCodeAt(i) ^ key.charCodeAt(i % key.length)
+                            );
+                        }
+                        if (result) return result;
+                    } catch (e) {}
+                }
+                return data;
+            }
+
+            padKey(key, length) {
+                if (!key) key = '';
+                if (key.length >= length) return key.substring(0, length);
+                return key + '\0'.repeat(length - key.length);
+            }
+
+            hex2str(hex) {
+                try {
+                    let str = '';
+                    for (let i = 0; i < hex.length; i += 2) {
+                        str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+                    }
+                    return str;
+                } catch (e) {
+                    return '';
+                }
+            }
+
+            hex2bin(hex) {
+                try {
+                    const bytes = new Uint8Array(hex.length / 2);
+                    for (let i = 0; i < hex.length; i += 2) {
+                        bytes[i / 2] = parseInt(hex.substr(i, 2), 16);
+                    }
+                    return String.fromCharCode(...bytes);
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            cleanMarkers(data) {
+                const replacements = {
+                    '【': '{',
+                    '】': '}',
+                    '｛': '{',
+                    '｝': '}',
+                    '＠': '@',
+                    '，': ',',
+                    '：': ':'
+                };
+                for (let [old, new_] of Object.entries(replacements)) {
+                    data = data.split(old).join(new_);
+                }
+                data = data.replace(/"\.\/(\w+)\.js\?v=\d+"/g, '');
+                data = data.replace(/\.\.\//g, '');
+                return data;
+            }
+
+            formatJson(data) {
+                try {
+                    const json = JSON.parse(data);
+                    return JSON.stringify(json, null, 2);
+                } catch (e) {
+                    return data;
+                }
+            }
+
+            getDecodedMethods() {
+                return this.decodedMethods.length > 0 ? this.decodedMethods.join(' → ') : '未识别';
+            }
+        }
+
+        let decoder = new TVBoxDecoder({ debug: false, autoDetect: true });
+
+        // ============================================================
+        // 结果更新函数
+        // ============================================================
+        function updateResultBoxes(text, statsData) {
+            const box1 = document.getElementById('resultBox');
+            box1.textContent = text;
+            box1.querySelector('.placeholder') && (box1.innerHTML = text);
+
+            const box2 = document.getElementById('resultBoxUrl');
+            box2.textContent = text;
+            box2.querySelector('.placeholder') && (box2.innerHTML = text);
+
+            const box3 = document.getElementById('resultBoxPackage');
+            if (box3) {
+                box3.textContent = text;
+                box3.querySelector('.placeholder') && (box3.innerHTML = text);
+            }
+
+            if (statsData) {
+                const stats = document.getElementById('stats');
+                stats.style.display = 'flex';
+                document.getElementById('charCount').textContent = statsData.length || text.length;
+                document.getElementById('timeCost').textContent = statsData.time || '0ms';
+                const badge = document.getElementById('statusBadge');
+                try {
+                    JSON.parse(text);
+                    badge.innerHTML = '<span style="color:#16a34a;">● 有效JSON</span>';
+                } catch (e) {
+                    badge.innerHTML = '<span style="color:#b05a5a;">● 纯文本</span>';
+                }
+
+                const statsUrl = document.getElementById('statsUrl');
+                statsUrl.style.display = 'flex';
+                document.getElementById('charCountUrl').textContent = text.length;
+                const badgeUrl = document.getElementById('statusBadgeUrl');
+                try {
+                    JSON.parse(text);
+                    badgeUrl.innerHTML = '<span style="color:#16a34a;">● 有效JSON</span>';
+                } catch (e) {
+                    badgeUrl.innerHTML = '<span style="color:#b05a5a;">● 纯文本</span>';
+                }
+            }
+        }
+
+        // ============================================================
+        // 下载原文件
+        // ============================================================
+        async function downloadRawFile() {
+            let url = document.getElementById('apiUrl').value;
+            if (!url) {
+                showToast('请输入接口URL', 'error');
+                return;
+            }
+
+            const encodedUrl = getEncodedUrlForRequest(url);
+            const ua = getCurrentUA();
+            const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(encodedUrl)}`;
+
+            try {
+                const response = await fetch(proxy, {
+                    headers: {
+                        'User-Agent': ua,
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8'
+                    }
+                });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.text();
+
+                let fileName = url.split('/').pop().split('?')[0] || 'index';
+                const lowerName = fileName.toLowerCase();
+                if (!lowerName.endsWith('.html') && !lowerName.endsWith('.htm')) {
+                    if (!fileName.includes('.')) {
+                        fileName = fileName + '.html';
+                    }
+                }
+
+                const blob = new Blob([data], { type: 'text/html;charset=utf-8' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+                showToast(`✅ 已下载: ${fileName}`, 'success');
+            } catch (error) {
+                showToast('❌ 下载失败: ' + error.message, 'error');
+            }
+        }
+
+        // ============================================================
+        // 下载结果
+        // ============================================================
+        function downloadResult() {
+            let content = '';
+            let activeTabId = '';
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab) {
+                activeTabId = activeTab.id;
+                if (activeTabId === 'tab-url') {
+                    const box = document.getElementById('resultBoxUrl');
+                    content = box ? box.innerText || box.textContent || '' : '';
+                } else if (activeTabId === 'tab-package') {
+                    const box = document.getElementById('resultBoxPackage');
+                    content = box ? box.innerText || box.textContent || '' : '';
+                } else {
+                    const box = document.getElementById('resultBox');
+                    content = box ? box.innerText || box.textContent || '' : '';
+                }
+            } else {
+                const box = document.getElementById('resultBox');
+                content = box ? box.innerText || box.textContent || '' : '';
+            }
+
+            const trimmed = content.trim();
+            const placeholders = ['等待解密...', '等待获取...', '等待解密或获取数据...'];
+            let isPlaceholder = false;
+            for (const p of placeholders) {
+                if (trimmed === p) {
+                    isPlaceholder = true;
+                    break;
+                }
+            }
+
+            if (!trimmed || trimmed.length === 0 || isPlaceholder) {
+                showToast('没有可下载的内容，请先获取或解密', 'error');
+                return;
+            }
+
+            let downloadContent = content;
+            let filename = `index_${new Date().toISOString().slice(0,10)}.json`;
+
+            const firstLine = content.split('\n')[0] || '';
+            const url = document.getElementById('apiUrl').value || '';
+
+            const isLive = firstLine.includes('#EXTM3U') || firstLine.includes('#EXTINF') ||
+                (url && (url.includes('.m3u') || url.includes('.m3u8') || url.includes('.txt'))) ||
+                content.includes('#EXTM3U') || content.includes('#EXTINF');
+
+            if (isLive) {
+                if (url) {
+                    try {
+                        const urlObj = new URL(getEncodedUrlForRequest(url));
+                        let name = urlObj.pathname.split('/').pop();
+                        if (name && name.includes('.')) {
+                            filename = name.split('?')[0];
+                        } else {
+                            filename = urlObj.hostname.replace(/^www\./, '') + '.m3u';
+                        }
+                    } catch (e) {
+                        const parts = url.split('/');
+                        const last = parts.pop() || parts.pop() || 'live';
+                        if (last && last.includes('.')) {
+                            filename = last.split('?')[0];
+                        } else {
+                            filename = last + '.m3u';
+                        }
+                    }
+                } else {
+                    filename = `live_${new Date().toISOString().slice(0,10)}.m3u`;
+                }
+
+                if (!filename.endsWith('.txt') && !filename.endsWith('.m3u') && !filename.endsWith('.m3u8')) {
+                    if (url && url.includes('.txt')) {
+                        filename = filename + '.txt';
+                    } else if (content.includes('#EXTM3U')) {
+                        filename = filename + '.m3u';
+                    } else {
+                        filename = filename + '.m3u';
+                    }
+                }
+            } else {
+                try {
+                    const json = JSON.parse(content);
+                    downloadContent = JSON.stringify(json, null, 2);
+                    if (!filename.endsWith('.json')) {
+                        filename = filename.replace(/\.[^.]+$/, '') + '.json';
+                    }
+                } catch (e) {}
+            }
+
+            const blob = new Blob([downloadContent], { type: 'application/octet-stream;charset=utf-8' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => { URL.revokeObjectURL(a.href); }, 5000);
+            showToast(`✅ 已下载: ${filename} (${(blob.size / 1024 / 1024).toFixed(2)} MB)`, 'success');
+        }
+
+        // ============================================================
+        // 核心函数
+        // ============================================================
+        async function decodeData() {
+            const input = document.getElementById('inputData').value;
+            if (!input.trim()) {
+                showToast('请输入要解密的数据', 'error');
+                return;
+            }
+
+            const useBackend = document.getElementById('useBackend').checked;
+            const startTime = performance.now();
+
+            if (useBackend && backendOnline) {
+                try {
+                    const data = await callBackendProxy('decrypt', { input: input });
+                    if (data.success) {
+                        let displayResult = data.data;
+                        if (document.getElementById('autoFormat').checked) {
+                            try { displayResult = JSON.stringify(JSON.parse(displayResult), null, 2); } catch (e) {}
+                        }
+                        updateResultBoxes(displayResult, { length: displayResult.length, time: Math.round(performance
+                                .now() - startTime) + 'ms' });
+                        showToast('✅ 后端解密成功', 'success');
+                        return;
+                    }
+                } catch (error) {
+                    showToast('⚠️ 后端失败，使用前端解密', 'warning');
+                }
+            }
+
+            try {
+                const result = decoder.decode(input);
+                let displayResult = result;
+                if (document.getElementById('autoFormat').checked) {
+                    try { displayResult = JSON.stringify(JSON.parse(displayResult), null, 2); } catch (e) {}
+                }
+                updateResultBoxes(displayResult, { length: displayResult.length, time: Math.round(performance.now() -
+                        startTime) + 'ms' });
+                showToast('✅ 解密完成', 'success');
+            } catch (e) {
+                updateResultBoxes('解密失败: ' + e.message);
+                showToast('❌ ' + e.message, 'error');
+            }
+        }
+
+        async function fetchAndDecode() {
+            let url = document.getElementById('apiUrl').value;
+            if (!url) {
+                showToast('请输入接口URL', 'error');
+                return;
+            }
+
+            const displayUrl = url;
+            const encodedUrl = getEncodedUrlForRequest(url);
+
+            if (isChineseDomain(url)) {
+                showToast('🌐 中文域名已自动编码，输入框保持中文显示', 'info');
+            }
+
+            addUrlToHistory(displayUrl);
+            currentApiUrl = displayUrl;
+            const ua = getCurrentUA();
+            updateUADisplay();
+
+            const useBackend = document.getElementById('useBackend').checked;
+            const isM3u = encodedUrl.toLowerCase().includes('.m3u') || encodedUrl.toLowerCase().includes('.m3u8') ||
+                encodedUrl.toLowerCase().includes('.txt');
+
+            if (useBackend && backendOnline) {
+                try {
+                    const data = await callBackendProxy('fetch', {
+                        url: encodedUrl,
+                        ua: ua
+                    });
+                    if (data.success) {
+                        document.getElementById('inputData').value = data.data;
+                        let displayResult = data.data;
+
+                        if (isM3u) {
+                            updateResultBoxes(displayResult, { length: displayResult.length, time: '0ms' });
+                            showToast('✅ 获取成功', 'success');
+                            return;
+                        }
+
+                        try {
+                            JSON.parse(data.data);
+                            if (document.getElementById('autoFormat').checked) {
+                                displayResult = JSON.stringify(JSON.parse(data.data), null, 2);
+                            }
+                        } catch (e) {
+                            const result = decoder.decode(data.data);
+                            displayResult = result;
+                            if (document.getElementById('autoFormat').checked) {
+                                try { displayResult = JSON.stringify(JSON.parse(displayResult), null, 2); } catch (e) {}
+                            }
+                        }
+
+                        updateResultBoxes(displayResult, { length: displayResult.length, time: '0ms' });
+                        showToast('✅ 获取并解密成功', 'success');
+                        return;
+                    }
+                } catch (error) {
+                    showToast('⚠️ 后端失败，使用代理', 'warning');
+                }
+            }
+
+            try {
+                const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(encodedUrl)}`;
+                const response = await fetch(proxy, {
+                    headers: {
+                        'User-Agent': ua,
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8'
+                    }
+                });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.text();
+                document.getElementById('inputData').value = data;
+
+                let displayResult = data;
+
+                if (isM3u) {
+                    updateResultBoxes(displayResult, { length: displayResult.length, time: '0ms' });
+                    showToast('✅ 直播源获取成功', 'success');
+                    return;
+                }
+
+                try {
+                    JSON.parse(data);
+                    if (document.getElementById('autoFormat').checked) {
+                        displayResult = JSON.stringify(JSON.parse(data), null, 2);
+                    }
+                } catch (e) {
+                    const result = decoder.decode(data);
+                    displayResult = result;
+                    if (document.getElementById('autoFormat').checked) {
+                        try { displayResult = JSON.stringify(JSON.parse(displayResult), null, 2); } catch (e) {}
+                    }
+                }
+
+                updateResultBoxes(displayResult, { length: displayResult.length, time: '0ms' });
+                showToast('✅ 获取并解密成功', 'success');
+            } catch (error) {
+                updateResultBoxes('获取失败: ' + error.message);
+                showToast('❌ ' + error.message, 'error');
+            }
+        }
+
+        async function fetchRaw() {
+            let url = document.getElementById('apiUrl').value;
+            if (!url) { showToast('请输入接口URL', 'error'); return; }
+
+            const displayUrl = url;
+            const encodedUrl = getEncodedUrlForRequest(url);
+
+            if (isChineseDomain(url)) {
+                showToast('🌐 中文域名已自动编码，输入框保持中文显示', 'info');
+            }
+
+            addUrlToHistory(displayUrl);
+            const ua = getCurrentUA();
+
+            const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(encodedUrl)}`;
+            try {
+                const response = await fetch(proxy, {
+                    headers: {
+                        'User-Agent': ua,
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                        'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8'
+                    }
+                });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.text();
+                document.getElementById('inputData').value = data;
+                updateResultBoxes(data);
+                showToast('✅ 原始内容已加载', 'success');
+            } catch (error) {
+                updateResultBoxes('获取失败: ' + error.message);
+                showToast('❌ ' + error.message, 'error');
+            }
+        }
+
+        function formatJson() {
+            const content = document.getElementById('resultBox').textContent;
+            try {
+                const json = JSON.parse(content);
+                const formatted = JSON.stringify(json, null, 2);
+                updateResultBoxes(formatted);
+                showToast('✅ JSON已格式化', 'success');
+            } catch (e) {
+                showToast('不是有效的JSON', 'error');
+            }
+        }
+
+        function clearAll() {
+            document.getElementById('inputData').value = '';
+            updateResultBoxes('等待解密...');
+            document.getElementById('stats').style.display = 'none';
+            document.getElementById('statsUrl').style.display = 'none';
+            document.getElementById('urlListContainer').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'none';
+            currentApiUrl = '';
+            showToast('已清空', 'success');
+        }
+
+        function copyResult() {
+            let content = '';
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab) {
+                const activeId = activeTab.id;
+                if (activeId === 'tab-url') {
+                    const box = document.getElementById('resultBoxUrl');
+                    content = box ? box.innerText || box.textContent || '' : '';
+                } else if (activeId === 'tab-package') {
+                    const box = document.getElementById('resultBoxPackage');
+                    content = box ? box.innerText || box.textContent || '' : '';
+                } else {
+                    const box = document.getElementById('resultBox');
+                    content = box ? box.innerText || box.textContent || '' : '';
+                }
+            } else {
+                const box = document.getElementById('resultBox');
+                content = box ? box.innerText || box.textContent || '' : '';
+            }
+
+            const trimmed = content.trim();
+            const placeholders = ['等待解密...', '等待获取...', '等待解密或获取数据...'];
+            let isPlaceholder = false;
+            for (const p of placeholders) {
+                if (trimmed === p) {
+                    isPlaceholder = true;
+                    break;
+                }
+            }
+
+            if (!trimmed || trimmed.length === 0 || isPlaceholder) {
+                showToast('没有可复制的内容', 'error');
+                return;
+            }
+            navigator.clipboard.writeText(content).then(() => {
+                showToast('✅ 已复制到剪贴板', 'success');
+            }).catch(() => {
+                const ta = document.createElement('textarea');
+                ta.value = content;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                ta.remove();
+                showToast('✅ 已复制到剪贴板', 'success');
+            });
+        }
+
+        // ============================================================
+        // 工具函数
+        // ============================================================
+        function getFileName(originalPath) {
+            if (!originalPath) return 'unknown.bin';
+
+            let filename = originalPath;
+
+            if (filename.startsWith('http://') || filename.startsWith('https://')) {
+                try {
+                    const urlObj = new URL(getEncodedUrlForRequest(filename));
+                    let pathname = urlObj.pathname;
+                    if (pathname.endsWith('/')) {
+                        const params = new URLSearchParams(urlObj.search);
+                        if (params.get('filename')) return params.get('filename');
+                        if (params.get('name')) return params.get('name');
+                        return urlObj.hostname.replace(/^www\./, '') + '.m3u';
+                    }
+                    filename = pathname.split('/').pop();
+                    if (!filename || filename === '') {
+                        filename = urlObj.hostname.replace(/^www\./, '') + '.m3u';
+                    }
+                } catch (e) {
+                    const parts = filename.split('/');
+                    filename = parts.pop() || filename;
+                }
+            } else {
+                const parts = filename.split('/');
+                filename = parts.pop() || filename;
+            }
+
+            if (filename.includes('?')) filename = filename.split('?')[0];
+            if (filename.includes('#')) filename = filename.split('#')[0];
+            if (filename.includes(';md5;')) filename = filename.split(';md5;')[0];
+            if (filename.includes(';MD5;')) filename = filename.split(';MD5;')[0];
+
+            if (!filename || filename === '.' || filename === '..' || filename === '/') {
+                const extMatch = originalPath.match(/\.(m3u8?|json|txt|xml|js|py|jar|php|asp|jsp|png|jpg|jpeg|gif|svg|ico|webp)(\?|;|$)/i);
+                const ext = extMatch ? extMatch[1] : 'bin';
+                try {
+                    const urlObj = new URL(getEncodedUrlForRequest(originalPath));
+                    const domain = urlObj.hostname.replace(/^www\./, '');
+                    filename = domain + '.' + ext;
+                } catch (e) {
+                    const hash = originalPath.split('').reduce((acc, char) => {
+                        acc = ((acc << 5) - acc) + char.charCodeAt(0);
+                        return acc & acc;
+                    }, 0);
+                    filename = `file_${Math.abs(hash)}.${ext}`;
+                }
+            }
+
+            if (originalPath.includes('.m3u') || originalPath.includes('.m3u8')) {
+                if (!filename.includes('.m3u')) {
+                    try {
+                        const urlObj = new URL(getEncodedUrlForRequest(originalPath));
+                        let pathname = urlObj.pathname;
+                        if (pathname && pathname !== '/') {
+                            const parts = pathname.split('/');
+                            const name = parts.pop();
+                            if (name && name.includes('.')) {
+                                filename = name;
+                            } else {
+                                filename = urlObj.hostname.replace(/^www\./, '') + '.m3u';
+                            }
+                        } else {
+                            filename = urlObj.hostname.replace(/^www\./, '') + '.m3u';
+                        }
+                    } catch (e) {
+                        const match = originalPath.match(/\/([^\/?]+\.m3u8?)/i);
+                        if (match) {
+                            filename = match[1];
+                        } else {
+                            const parts = originalPath.split('/');
+                            const last = parts.pop() || parts.pop();
+                            if (last && last.includes('.')) {
+                                filename = last.split('?')[0];
+                            } else {
+                                filename = 'live.m3u';
+                            }
+                        }
+                    }
+                }
+                if (filename.includes('?')) filename = filename.split('?')[0];
+                if (filename.includes('#')) filename = filename.split('#')[0];
+                if (!filename.endsWith('.m3u') && !filename.endsWith('.m3u8')) {
+                    if (filename.includes('m3u')) {
+                        if (!filename.endsWith('.m3u') && !filename.endsWith('.m3u8')) {
+                            if (originalPath.includes('.m3u8')) {
+                                filename = filename + '.m3u8';
+                            } else {
+                                filename = filename + '.m3u';
+                            }
+                        }
+                    } else {
+                        if (originalPath.includes('.m3u8')) {
+                            filename = filename + '.m3u8';
+                        } else {
+                            filename = filename + '.m3u';
+                        }
+                    }
+                }
+            }
+
+            filename = filename.replace(/[<>:"/\\|*]/g, '_');
+            return filename;
+        }
+
+        function resolveRelativePath(baseUrl, relativePath) {
+            if (!baseUrl || !relativePath) return relativePath;
+
+            if (/[\u4e00-\u9fa5]/.test(relativePath)) {
+                relativePath = encodeChinesePath(relativePath);
+            }
+
+            let baseDir = baseUrl;
+            const queryIndex = baseDir.indexOf('?');
+            if (queryIndex !== -1) baseDir = baseDir.substring(0, queryIndex);
+            const hashIndex = baseDir.indexOf('#');
+            if (hashIndex !== -1) baseDir = baseDir.substring(0, hashIndex);
+
+            const lastSlashIndex = baseDir.lastIndexOf('/');
+            if (lastSlashIndex !== -1) {
+                const afterLastSlash = baseDir.substring(lastSlashIndex + 1);
+                if (afterLastSlash.includes('.')) {
+                    baseDir = baseDir.substring(0, lastSlashIndex + 1);
+                } else {
+                    if (lastSlashIndex !== baseDir.length - 1) {
+                        baseDir = baseDir.substring(0, lastSlashIndex + 1);
+                    }
+                }
+            } else {
+                baseDir = baseDir + '/';
+            }
+            if (!baseDir.endsWith('/')) baseDir = baseDir + '/';
+
+            let cleanPath = relativePath;
+            while (cleanPath.startsWith('./')) cleanPath = cleanPath.substring(2);
+            while (cleanPath.startsWith('../')) cleanPath = cleanPath.substring(3);
+
+            let fullPath = baseDir + cleanPath;
+            const pathParts = fullPath.split('/');
+            const resolved = [];
+            for (const part of pathParts) {
+                if (part === '..') {
+                    if (resolved.length > 0) resolved.pop();
+                } else if (part !== '.' && part !== '') {
+                    resolved.push(part);
+                }
+            }
+            fullPath = resolved.join('/');
+            return fullPath;
+        }
+
+        function shouldDownload(url, parentKey) {
+            if (!url || typeof url !== 'string') return false;
+            const lower = url.toLowerCase();
+
+            if (lower.endsWith('.m3u8') || lower.includes('.m3u8?')) return true;
+            if (lower.endsWith('.m3u') || lower.includes('.m3u?')) return true;
+            if (parentKey === 'lives') return true;
+            if (parentKey === 'lives' && (lower.endsWith('.txt') || lower.includes('.txt?'))) return true;
+            if (lower.endsWith('.txt') || lower.includes('.txt?')) return false;
+            if (parentKey === 'wallpaper' || parentKey === 'logo') return false;
+
+            const allowedExtensions = ['.js', '.py', '.json', '.jar', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico',
+                '.webp', '.bmp'
+            ];
+            for (const ext of allowedExtensions) {
+                if (lower.endsWith(ext) || lower.includes(ext + '?')) return true;
+            }
+            if (parentKey === 'spider') return true;
+            if (lower.includes('xbpq') || lower.includes('xyq')) return true;
+            return false;
+        }
+
+        function getTargetFolder(url, parentKey, apiType) {
+            const lower = url.toLowerCase();
+            if (parentKey === 'lives') return 'live/';
+            if (lower.endsWith('.m3u8') || lower.includes('.m3u8?')) return 'live/';
+            if (lower.endsWith('.m3u') || lower.includes('.m3u?')) return 'live/';
+            if (parentKey === 'spider' || lower.endsWith('.jar')) return 'jar/';
+            if (parentKey === 'wallpaper' || parentKey === 'logo') return 'img/';
+            if (parentKey === 'ext') {
+                if (apiType === 'csp_XBPQ') return 'XBPQ/';
+                if (apiType === 'csp_XYQHiker') return 'XYQ/';
+                const match = url.match(/^\.{0,2}\/([^\/]+)\//);
+                if (match) return match[1] + '/';
+                return 'json/';
+            }
+            if (lower.includes('xbpq')) return 'XBPQ/';
+            if (lower.includes('xyq')) return 'XYQ/';
+            if (lower.endsWith('.js')) return 'js/';
+            if (lower.endsWith('.py')) return 'py/';
+            if (lower.endsWith('.json')) return 'json/';
+            if (lower.endsWith('.jar')) return 'jar/';
+            if (lower.endsWith('.png') || lower.endsWith('.jpg') || lower.endsWith('.jpeg') ||
+                lower.endsWith('.gif') || lower.endsWith('.svg') || lower.endsWith('.ico') ||
+                lower.endsWith('.webp') || lower.endsWith('.bmp')) return 'img/';
+            return 'other/';
+        }
+
+        // ============================================================
+        // parseJsonWithComments - 安全处理 Base64 长字符串
+        // ============================================================
+        function parseJsonWithComments(text) {
+            if (!text || !text.trim()) return null;
+            let clean = text;
+            if (clean.charCodeAt(0) === 0xFEFF) clean = clean.slice(1);
+
+            // 只移除行首的 // 注释（不影响 URL 和 Base64 中的 //）
+            clean = clean.replace(/^\s*\/\/.*$/gm, '');
+            clean = clean.replace(/\/\*[\s\S]*?\*\//g, '');
+            clean = clean.replace(/,\s*}/g, '}');
+            clean = clean.replace(/,\s*\]/g, ']');
+            clean = clean.replace(/，/g, ',');
+            clean = clean.replace(/：/g, ':');
+
+            try {
+                return JSON.parse(clean);
+            } catch (e) {
+                try {
+                    return new Function('return (' + clean + ')')();
+                } catch (e2) {
+                    console.error('JSON 解析失败:', e2);
+                    return null;
+                }
+            }
+        }
+
+        // ============================================================
+        // 提取资源列表
+        // ============================================================
+        function getConfig() {
+            const input = document.getElementById('inputData').value;
+            if (!input || !input.trim()) { showToast('请先解密数据', 'error'); return null; }
+            const result = parseJsonWithComments(input);
+            if (!result) { showToast('❌ JSON 解析失败，请检查格式', 'error'); return null; }
+            return result;
+        }
+
+        function extractRemoteUrls(obj, resources, baseUrl = '', parentKey = '', apiType = '') {
+            if (typeof obj === 'string') {
+                const trimmed = obj.trim();
+                if (!trimmed) return;
+
+                if (parentKey === 'lives' || parentKey === 'live') {
+                    if (trimmed.includes('epg.112114') || trimmed.includes('epg.v1.mk') ||
+                        trimmed.includes('epg.112114.xyz') || trimmed.includes('epg.iill') ||
+                        trimmed.includes('epg.51zmt')) return;
+                    if (trimmed.startsWith('okhttp/') || trimmed.startsWith('AptvPlayer/') ||
+                        trimmed.startsWith('ClashforAndroid') || trimmed === 'okhttp/3.15,AptvPlayer/1.4.0') return;
+                    if (trimmed.includes('gh-proxy.org') && !trimmed.includes('.m3u') && !trimmed.includes('.json'))
+                    return;
+                    if (!trimmed.startsWith('http://') && !trimmed.startsWith('https://') &&
+                        !trimmed.startsWith('./') && !trimmed.startsWith('../') && !trimmed.startsWith('/')) {
+                        if (!trimmed.includes('/')) return;
+                    }
+                    if (trimmed.includes('gitee.com') && !trimmed.includes('.m3u') && !trimmed.includes('.json') &&
+                        !trimmed.includes('.txt') && !trimmed.includes('.js') && !trimmed.includes('.py')) return;
+                    if (trimmed.includes('epg.pw') && !trimmed.startsWith('http://') && !trimmed.startsWith('https://'))
+                        return;
+                    if (trimmed.includes('logo/') || trimmed.includes('/logo/') ||
+                        trimmed.includes('epg.iill.top/logo') || trimmed.includes('epg.51zmt.top/logo')) return;
+                }
+
+                if (!shouldDownload(trimmed, parentKey)) return;
+
+                const isRelativePath = trimmed.startsWith('./') || trimmed.startsWith('../') ||
+                    trimmed.startsWith('/') ||
+                    (!trimmed.startsWith('http://') && !trimmed.startsWith('https://') && trimmed.includes('/'));
+
+                const isRemote = trimmed.startsWith('http://') || trimmed.startsWith('https://');
+
+                if (isRemote || isRelativePath) {
+                    let fullUrl = trimmed;
+                    if (isRelativePath && baseUrl) {
+                        fullUrl = resolveRelativePath(baseUrl, trimmed);
+                    }
+                    if (isRemote && !shouldDownload(fullUrl, parentKey)) return;
+
+                    const folder = getTargetFolder(trimmed, parentKey, apiType);
+                    const filename = getFileName(fullUrl);
+                    const exists = resources.some(r => r.url === fullUrl);
+                    if (exists) return;
+
+                    resources.push({
+                        url: fullUrl,
+                        original: trimmed,
+                        folder: folder,
+                        filename: filename,
+                        key: parentKey,
+                        apiType: apiType
+                    });
+                }
+                return;
+            }
+
+            if (Array.isArray(obj)) {
+                for (let i = 0; i < obj.length; i++) {
+                    extractRemoteUrls(obj[i], resources, baseUrl, parentKey, apiType);
+                }
+                return;
+            }
+
+            if (obj && typeof obj === 'object') {
+                let currentApiType = apiType;
+                if (obj.api && typeof obj.api === 'string') {
+                    if (obj.api.includes('XBPQ')) currentApiType = 'csp_XBPQ';
+                    else if (obj.api.includes('XYQHiker') || obj.api.includes('XYQ')) currentApiType = 'csp_XYQHiker';
+                }
+
+                for (const key of Object.keys(obj)) {
+                    const value = obj[key];
+
+                    if (key === 'lives') {
+                        if (Array.isArray(value)) {
+                            for (const item of value) {
+                                if (item && typeof item === 'object' && item.url) {
+                                    extractRemoteUrls(item.url, resources, baseUrl, 'lives', currentApiType);
+                                } else if (typeof item === 'string') {
+                                    extractRemoteUrls(item, resources, baseUrl, 'lives', currentApiType);
+                                }
+                            }
+                        } else if (typeof value === 'string') {
+                            extractRemoteUrls(value, resources, baseUrl, 'lives', currentApiType);
+                        } else if (typeof value === 'object') {
+                            if (value.url) {
+                                extractRemoteUrls(value.url, resources, baseUrl, 'lives', currentApiType);
+                            } else {
+                                extractRemoteUrls(value, resources, baseUrl, 'lives', currentApiType);
+                            }
+                        }
+                        continue;
+                    }
+
+                    let newParentKey = parentKey;
+                    if (key === 'api') newParentKey = 'api';
+                    else if (key === 'ext') newParentKey = 'ext';
+                    else if (key === 'spider') newParentKey = 'spider';
+                    else if (key === 'wallpaper' || key === 'logo') newParentKey = key;
+
+                    if (typeof value === 'string') {
+                        extractRemoteUrls(value, resources, baseUrl, newParentKey, currentApiType);
+                    } else if (typeof value === 'object') {
+                        extractRemoteUrls(value, resources, baseUrl, newParentKey, currentApiType);
+                    }
+                }
+            }
+        }
+
+        function replaceUrlsWithLocalPath(obj, fileMap) {
+            if (typeof obj === 'string') {
+                if (fileMap[obj]) return './' + fileMap[obj];
+                for (const [key, value] of Object.entries(fileMap)) {
+                    if (obj === key || obj === key.replace(/^https?:\/\/[^\/]+\//, '')) {
+                        return './' + value;
+                    }
+                }
+                return obj;
+            }
+            if (Array.isArray(obj)) {
+                return obj.map(item => replaceUrlsWithLocalPath(item, fileMap));
+            }
+            if (obj && typeof obj === 'object') {
+                const result = {};
+                for (const key of Object.keys(obj)) {
+                    const value = obj[key];
+                    if (['spider', 'wallpaper', 'logo', 'url', 'src', 'href', 'path', 'api', 'ext', 'site', 'json', 'rule',
+                            'lives'
+                        ].includes(key)) {
+                        if (typeof value === 'string') {
+                            let replaced = false;
+                            for (const [orig, local] of Object.entries(fileMap)) {
+                                if (value === orig || value === orig.replace(/^https?:\/\/[^\/]+\//, '')) {
+                                    result[key] = './' + local;
+                                    replaced = true;
+                                    break;
+                                }
+                            }
+                            if (!replaced) result[key] = replaceUrlsWithLocalPath(value, fileMap);
+                        } else {
+                            result[key] = replaceUrlsWithLocalPath(value, fileMap);
+                        }
+                    } else {
+                        result[key] = replaceUrlsWithLocalPath(value, fileMap);
+                    }
+                }
+                return result;
+            }
+            return obj;
+        }
+
+        function extractUrlsFromResult() {
+            const config = getConfig();
+            if (!config) return;
+
+            const baseUrl = currentApiUrl || '';
+            const resources = [];
+            extractRemoteUrls(config, resources, baseUrl);
+
+            if (resources.length === 0) {
+                showToast('❌ 未找到可下载的资源', 'error');
+                return;
+            }
+
+            let listHtml = '';
+            const groups = {};
+            for (const r of resources) {
+                if (!groups[r.folder]) groups[r.folder] = [];
+                groups[r.folder].push(r.original);
+            }
+            for (const [folder, urls] of Object.entries(groups)) {
+                listHtml += `<div class="cat-item"><span class="cat-name">📁 ${folder}</span><span class="cat-count">${urls.length} 个</span></div>`;
+            }
+            listHtml += `<div style="margin-top:6px;font-size:11px;color:rgba(60,50,40,0.3);">共 ${resources.length} 个资源，点击「生成本地包」下载</div>`;
+            const sample = resources.slice(0, 5);
+            if (sample.length) {
+                listHtml += `<div style="margin-top:4px;padding:4px 6px;background:rgba(255,255,255,0.1);border-radius:6px;font-size:11px;color:rgba(60,50,40,0.4);word-break:break-all;">`;
+                for (const r of sample) {
+                    listHtml += `<div>• ${r.original}</div>`;
+                }
+                if (resources.length > 5) {
+                    listHtml += `<div style="color:rgba(60,50,40,0.25);">... 还有 ${resources.length - 5} 个</div>`;
+                }
+                listHtml += `</div>`;
+            }
+
+            document.getElementById('urlListContainer').style.display = 'block';
+            document.getElementById('urlList').innerHTML = listHtml;
+            showToast(`📋 找到 ${resources.length} 个可下载资源`, 'success');
+        }
+
+        function clearPackage() {
+            document.getElementById('urlListContainer').style.display = 'none';
+            document.getElementById('urlList').innerHTML = '';
+            document.getElementById('progressContainer').style.display = 'none';
+            downloadedFiles = [];
+            failedFiles = [];
+            totalUrls = 0;
+            isDownloading = false;
+            downloadCanceled = false;
+            showToast('已清空', 'success');
+        }
+
+        // ============================================================
+        // 下载文件 & 生成本地包
+        // ============================================================
+        async function downloadFile(url, maxRetries = 3) {
+            const encodedUrl = getEncodedUrlForRequest(url);
+            const timeout = parseInt(document.getElementById('timeoutSeconds').value) || 120;
+            const ua = getCurrentUA();
+            const useBackend = document.getElementById('useBackend').checked;
+
+            let cleanUrl = encodedUrl;
+            if (cleanUrl.includes(';md5;') || cleanUrl.includes(';MD5;')) {
+                cleanUrl = cleanUrl.split(';')[0];
+            }
+
+            if (useBackend && backendOnline) {
+                for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                    try {
+                        const data = await callBackendProxy('download', {
+                            url: cleanUrl,
+                            ua: ua
+                        });
+                        if (data.success && data.data) {
+                            const binaryString = atob(data.data);
+                            const bytes = new Uint8Array(binaryString.length);
+                            for (let i = 0; i < binaryString.length; i++) {
+                                bytes[i] = binaryString.charCodeAt(i);
+                            }
+                            return { success: true, blob: new Blob([bytes]) };
+                        }
+                    } catch (e) {
+                        if (attempt >= maxRetries) break;
+                        await new Promise(r => setTimeout(r, 1500 * attempt));
+                    }
+                }
+            }
+
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), timeout * 1000);
+                    const response = await fetch(cleanUrl, {
+                        signal: controller.signal,
+                        headers: { 'User-Agent': ua }
+                    });
+                    clearTimeout(timeoutId);
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    const blob = await response.blob();
+                    return { success: true, blob: blob };
+                } catch (e) {
+                    if (attempt >= maxRetries) break;
+                    await new Promise(r => setTimeout(r, 1500 * attempt));
+                }
+            }
+
+            try {
+                const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(cleanUrl)}`;
+                const response = await fetch(proxy, { headers: { 'User-Agent': ua } });
+                if (response.ok) {
+                    const blob = await response.blob();
+                    return { success: true, blob: blob };
+                }
+            } catch (e) {}
+
+            return { success: false, error: new Error('下载失败') };
+        }
+
+        async function generateLocalPackage() {
+            const config = getConfig();
+            if (!config) return;
+
+            const baseUrl = currentApiUrl || '';
+            const resources = [];
+            extractRemoteUrls(config, resources, baseUrl);
+
+            if (resources.length === 0) {
+                showToast('📦 未发现可下载资源，直接打包为本地包', 'warning');
+                await createLocalPackageDirect(config);
+                return;
+            }
+
+            let listHtml = '';
+            const groups = {};
+            for (const r of resources) {
+                if (!groups[r.folder]) groups[r.folder] = [];
+                groups[r.folder].push(r.original);
+            }
+            for (const [folder, urls] of Object.entries(groups)) {
+                listHtml += `<div class="cat-item"><span class="cat-name">📁 ${folder}</span><span class="cat-count">${urls.length} 个</span></div>`;
+            }
+            document.getElementById('urlListContainer').style.display = 'block';
+            document.getElementById('urlList').innerHTML = listHtml;
+
+            showToast(`📦 发现 ${resources.length} 个可下载资源，开始下载...`, 'success');
+            await downloadAllResources(resources, config);
+        }
+
+        async function downloadAllResources(resources, config) {
+            if (isDownloading) return;
+            isDownloading = true;
+            downloadCanceled = false;
+            downloadedFiles = [];
+            failedFiles = [];
+
+            const container = document.getElementById('progressContainer');
+            const bar = document.getElementById('progressBar');
+            const percent = document.getElementById('progressPercent');
+            const text = document.getElementById('progressText');
+            const currentFileDisplay = document.getElementById('currentFileDisplay');
+            const failedList = document.getElementById('failedList');
+            const cancelBtn = document.getElementById('cancelDownloadBtn');
+
+            container.style.display = 'block';
+            cancelBtn.style.display = 'inline-block';
+            failedList.classList.remove('show');
+
+            totalUrls = resources.length;
+            let completed = 0;
+            const concurrent = parseInt(document.getElementById('concurrentLimit').value) || 3;
+            const fileMap = {};
+
+            const updateProgress = () => {
+                const pct = totalUrls > 0 ? (completed / totalUrls * 100).toFixed(1) : 0;
+                bar.style.width = pct + '%';
+                percent.textContent = pct + '%';
+                text.textContent = `已完成 ${completed} / ${totalUrls} 个文件`;
+                if (failedFiles.length > 0) {
+                    failedList.classList.add('show');
+                    failedList.innerHTML = `<strong style="color:#b05a5a;font-size:11px;">⚠️ 失败 ${failedFiles.length} 个</strong><br>` +
+                        failedFiles.slice(0, 20).map(u => `<div style="color:#b05a5a;font-size:11px;">❌ ${u}</div>`).join('');
+                }
+            };
+
+            const downloadOne = async (resource) => {
+                if (downloadCanceled) return;
+                currentFileDisplay.textContent = `📥 ${resource.filename}`;
+                updateProgress();
+
+                try {
+                    const result = await downloadFile(resource.url);
+                    if (result.success) {
+                        const localPath = resource.folder + resource.filename;
+                        downloadedFiles.push({
+                            original: resource.original,
+                            path: localPath,
+                            data: result.blob,
+                            folder: resource.folder,
+                            filename: resource.filename
+                        });
+                        fileMap[resource.original] = localPath;
+                        fileMap[resource.url] = localPath;
+                        currentFileDisplay.textContent = `✅ ${resource.filename}`;
+                        currentFileDisplay.style.color = '#16a34a';
+                    } else {
+                        failedFiles.push(resource.original);
+                        currentFileDisplay.textContent = `❌ ${resource.filename}`;
+                        currentFileDisplay.style.color = '#b05a5a';
+                    }
+                } catch (e) {
+                    failedFiles.push(resource.original);
+                    currentFileDisplay.textContent = `❌ ${resource.filename}`;
+                    currentFileDisplay.style.color = '#b05a5a';
+                } finally {
+                    completed++;
+                    updateProgress();
+                }
+            };
+
+            text.textContent = `准备下载 ${totalUrls} 个文件...`;
+            await new Promise(r => setTimeout(r, 300));
+
+            const queue = [...resources];
+            const workers = [];
+            for (let i = 0; i < Math.min(concurrent, queue.length); i++) {
+                workers.push((async () => {
+                    while (queue.length > 0 && !downloadCanceled) {
+                        await downloadOne(queue.shift());
+                    }
+                })());
+            }
+            await Promise.all(workers);
+
+            isDownloading = false;
+            cancelBtn.style.display = 'none';
+
+            if (downloadCanceled) {
+                text.textContent = '⛔ 已取消';
+                showToast('⛔ 已取消', 'error');
+                return;
+            }
+
+            if (downloadedFiles.length === 0) {
+                text.textContent = '❌ 没有成功下载任何文件';
+                showToast('❌ 下载失败', 'error');
+                return;
+            }
+
+            text.textContent = `📦 下载完成 ${downloadedFiles.length} 个文件，正在生成本地包...`;
+            showToast(`✅ 下载完成 ${downloadedFiles.length} 个文件`, 'success');
+
+            let modifiedConfig = config;
+            if (Object.keys(fileMap).length > 0) {
+                modifiedConfig = replaceUrlsWithLocalPath(config, fileMap);
+            }
+
+            await createLocalPackage(modifiedConfig);
+        }
+
+        async function createLocalPackage(modifiedConfig) {
+            try {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+                document.head.appendChild(script);
+                await new Promise((resolve, reject) => {
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    setTimeout(reject, 10000);
+                });
+
+                let folderName = document.getElementById('folderName').value.trim();
+                if (!folderName) folderName = 'TVBox本地包';
+                folderName = folderName.replace(/[<>:"/\\|?*]/g, '_');
+
+                const zip = new JSZip();
+                const rootFolder = zip.folder(folderName);
+
+                rootFolder.file('index.json', JSON.stringify(modifiedConfig, null, 2));
+
+                const originalData = document.getElementById('inputData').value;
+                if (originalData && originalData.trim()) {
+                    try {
+                        const parsed = JSON.parse(originalData);
+                        rootFolder.file('origin.json', JSON.stringify(parsed, null, 2));
+                    } catch (e) {
+                        rootFolder.file('origin.json', originalData);
+                    }
+                }
+
+                const groups = {};
+                for (const file of downloadedFiles) {
+                    if (!groups[file.folder]) groups[file.folder] = [];
+                    groups[file.folder].push({ name: file.filename, data: file.data });
+                }
+                for (const [dir, files] of Object.entries(groups)) {
+                    const subFolder = rootFolder.folder(dir);
+                    for (const file of files) {
+                        subFolder.file(file.name, file.data);
+                    }
+                }
+
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const zipFilename = `${folderName}.zip`;
+                await saveFileToPath(zipBlob, zipFilename);
+
+                document.getElementById('progressText').textContent =
+                    `✅ 本地包生成完成！${downloadedFiles.length} 个文件，${failedFiles.length} 个失败`;
+                document.getElementById('currentFileDisplay').textContent = '';
+                showToast(`✅ TVBox 本地包已保存！`, 'success');
+
+            } catch (error) {
+                showToast('⚠️ 打包失败: ' + error.message, 'error');
+                simpleLocalPackage(modifiedConfig);
+            }
+        }
+
+        async function createLocalPackageDirect(config) {
+            try {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+                document.head.appendChild(script);
+                await new Promise((resolve, reject) => {
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    setTimeout(reject, 10000);
+                });
+
+                let folderName = document.getElementById('folderName').value.trim();
+                if (!folderName) folderName = 'TVBox本地包';
+                folderName = folderName.replace(/[<>:"/\\|?*]/g, '_');
+
+                const zip = new JSZip();
+                const rootFolder = zip.folder(folderName);
+
+                rootFolder.file('index.json', JSON.stringify(config, null, 2));
+
+                const originalData = document.getElementById('inputData').value;
+                if (originalData && originalData.trim()) {
+                    try {
+                        const parsed = JSON.parse(originalData);
+                        rootFolder.file('origin.json', JSON.stringify(parsed, null, 2));
+                    } catch (e) {
+                        rootFolder.file('origin.json', originalData);
+                    }
+                }
+
+                const zipBlob = await zip.generateAsync({ type: 'blob' });
+                const zipFilename = `${folderName}.zip`;
+                await saveFileToPath(zipBlob, zipFilename);
+
+                document.getElementById('progressText').textContent = `✅ 本地包生成完成！`;
+                document.getElementById('currentFileDisplay').textContent = '';
+                showToast(`✅ TVBox 本地包已保存！`, 'success');
+
+            } catch (error) {
+                showToast('⚠️ 打包失败: ' + error.message, 'error');
+            }
+        }
+
+        function simpleLocalPackage(modifiedConfig) {
+            let folderName = document.getElementById('folderName').value.trim();
+            if (!folderName) folderName = 'TVBox本地包';
+            folderName = folderName.replace(/[<>:"/\\|?*]/g, '_');
+
+            let output = `# ${folderName}\n# 生成时间: ${new Date().toISOString()}\n# 文件数: ${downloadedFiles.length}\n\n`;
+            output += `--- index.json ---\n`;
+            output += JSON.stringify(modifiedConfig, null, 2);
+            output += '\n\n';
+            const originalData = document.getElementById('inputData').value;
+            if (originalData && originalData.trim()) {
+                output += `--- origin.json (原始接口数据) ---\n`;
+                try {
+                    const parsed = JSON.parse(originalData);
+                    output += JSON.stringify(parsed, null, 2);
+                } catch (e) {
+                    output += originalData;
+                }
+                output += '\n\n';
+            }
+            for (const file of downloadedFiles) {
+                output += `--- ${file.path} ---\n`;
+                try {
+                    const text = new TextDecoder('utf-8').decode(file.data);
+                    output += text + '\n';
+                } catch (e) {
+                    output += `[二进制数据: ${file.data.size} 字节]\n`;
+                }
+                output += '\n';
+            }
+            const blob = new Blob([output], { type: 'text/plain;charset=utf-8' });
+            const filename = `${folderName}.txt`;
+            saveFileToPath(blob, filename);
+            document.getElementById('progressText').textContent =
+                `✅ 本地包生成完成！${downloadedFiles.length} 个文件，${failedFiles.length} 个失败`;
+            document.getElementById('currentFileDisplay').textContent = '';
+            showToast(`✅ 本地包已保存`, 'success');
+        }
+
+        function cancelDownload() {
+            downloadCanceled = true;
+            isDownloading = false;
+            document.getElementById('cancelDownloadBtn').style.display = 'none';
+            document.getElementById('progressText').textContent = '⛔ 正在取消...';
+            showToast('⛔ 正在取消', 'error');
+        }
+
+        // ============================================================
+        // 初始化
+        // ============================================================
+        window.onload = function() {
+            // 初始化后端地址
+            const savedUrl = localStorage.getItem(BACKEND_STORAGE_KEY);
+            if (savedUrl) {
+                BACKEND_URL = savedUrl;
+                document.getElementById('backendUrl').value = savedUrl;
+                document.getElementById('backendUrlDisplay').textContent = savedUrl;
+            } else {
+                document.getElementById('backendUrl').value = 'http://localhost:8901/api.php';
+                document.getElementById('backendUrlDisplay').textContent = 'http://localhost:8901/api.php';
+            }
+
+            const savedFolder = localStorage.getItem('tvbox_save_folder');
+            if (savedFolder) {
+                document.getElementById('savePath').value = savedFolder;
+                document.getElementById('pathStatus').innerHTML = `📁 上次选择：<strong style="color:#6366f1;">${savedFolder}</strong>`;
+                document.getElementById('pathStatus').style.color = '#6366f1';
+            }
+
+            const savedUA = localStorage.getItem('tvbox_ua');
+            if (savedUA) {
+                const select = document.getElementById('uaSelect');
+                let found = false;
+                for (let opt of select.options) {
+                    if (opt.value === savedUA) {
+                        select.value = savedUA;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    select.value = 'Custom';
+                    document.getElementById('customUaRow').style.display = 'block';
+                    document.getElementById('customUa').value = savedUA;
+                }
+                updateUADisplay();
+            }
+
+            setupUrlHistory();
+
+            const savedFolderName = localStorage.getItem('tvbox_folder_name');
+            if (savedFolderName) {
+                document.getElementById('folderName').value = savedFolderName;
+            }
+            document.getElementById('folderName').addEventListener('change', function() {
+                if (this.value.trim()) {
+                    localStorage.setItem('tvbox_folder_name', this.value.trim());
+                }
+            });
+
+            // 后端地址输入框支持回车保存
+            document.getElementById('backendUrl').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    saveBackendUrl();
+                }
+            });
+
+            document.getElementById('statusBar').style.background = 'rgba(255,255,255,.25)';
+            setTimeout(testBackend, 500);
+            showToast('💡 支持中文域名，输入框显示中文，传输时自动编码为 Punycode', 'info');
+        };
+    </script>
+</body>
+</html>
