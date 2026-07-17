@@ -12,6 +12,16 @@
                 "ratio": 0.75
             },
             "changeable": 1
+        },{
+            "key": "酷我",
+            "name": "酷我",
+            "type": 3,
+            "api": "./py/酷我.py",
+            "style": {
+                "type": "rect",
+                "ratio": 0.75
+            },
+            "changeable": 1
         }
     ],
     "headers": [
