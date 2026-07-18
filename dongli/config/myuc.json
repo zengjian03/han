@@ -1,0 +1,23 @@
+{
+    "categories": [
+        {
+            "key": "dlfx",
+            "hide": false,
+            "name": "🔥热门推荐",
+            "shares": [
+                {
+                    "name": "应用商店",
+                    "remarks": "应用推荐",
+                    "url": "https://drive.uc.cn/s/084710ec4dc04?public=1",
+                    "pwd": ""
+                },
+                {
+                    "name": "剑来",
+                    "remarks": "剑澜青萍",
+                    "url": "https://drive.uc.cn/s/9b3b5f24ca074?public=1",
+                    "pwd": ""
+                }
+            ]
+        }
+    ]
+}

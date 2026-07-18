@@ -1,6 +1,7 @@
 {
   "spider": "./934836235_2_1783691760866.jar;md5;01aeca771c222e9a65fae459a9bf0745",
-  "logo": "https://modelscope-resouces.oss-cn-zhangjiakou.aliyuncs.com/avatar%2Ff5309172-1af6-4c4f-a1c5-a4773a1cc718.gif",
+ "warningText": "仅作学习交流测试使用，配置或下载后请于24小时之内删除",
+  "logo": "https://gh-proxy.com/raw.githubusercontent.com/zengjian03/han/master/lib/logo.gif",
   "wallpaper": "http://127.0.0.1:9978/proxy?do=wallpaper",
   "sites": [
        {
@@ -922,52 +923,6 @@
       "ext": "https://m.ting15.com",
       "style": {
         "type": "list"
-      }
-    },
-    {
-      "key": "Market",
-      "name": "🛒┆网盘┆市场",
-      "type": 3,
-      "api": "csp_Market",
-      "searchable": 0,
-      "indexs": 0,
-      "style": {
-        "type": "list"
-      },
-      "ext": "AWmNzXUj5sW3E9cmHg7HzJYgcAvvRz30uYzOo5s+V+dNu26wvhfMrZXAaq9RcngbFaXU6gtq9etJ6nql9shxXjY567AyaX/mLQYkQNARHNfUnsxZ3sLFpUWallggHoCuAf0dAiLFsgi3T9KAB9sPHpuYrBF26N3YZX6a62CsVtBgqMXEP0Apg8s12I6R7dUOT0F6+Cr0+P3JmOcA98Ir/RkGi0AaWDwQSPtVOarYdbvhy1WzXn//N9hGjuXYhRnJgOmBiWPZAacCyxbFHLV0G/vjjbEXMK7fLa1KLdJ9RWWz9/Z0UevEdx2CEqTKsJFjD7WOxrsubZps5ylQj3ZQqBF0m9A8wBDhz2oksq5VrXsUolAHAKrNaz0t8K13IRbkxA3fYUH6v2YTzcz5HYrAz7McDNJyDfXLIw3bVwH+FU97"
-    },
-    {
-      "key": "push_agent",
-      "name": "💌┆推送┆接收",
-      "type": 3,
-      "api": "csp_Push",
-      "searchable": 0,
-      "changeable": 0,
-      "indexs": 0,
-      "timeout": 60
-    },
-    {
-      "key": "Fishdrive",
-      "name": "🐠┆摸鱼┆媒体库",
-      "type": 3,
-      "api": "csp_FishDrive",
-      "indexs": 0,
-      "searchable": 1,
-      "filterable": 1,
-      "ext": "./lib/fishdrive.json"
-    },
-    {
-      "key": "Wallpaper",
-      "name": "🖼️┆摸鱼┆壁纸库",
-      "type": 3,
-      "api": "csp_Wallpaper",
-      "searchable": 0,
-      "indexs": 0,
-      "quickSearch": 0,
-      "filterable": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 0.56
       }
     }
   ],

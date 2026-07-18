@@ -1,0 +1,23 @@
+{
+    "categories": [
+        {
+            "key": "dlfx",
+            "hide": false,
+            "name": "🔥热门推荐",
+            "shares": [
+                {
+                    "name": "应用商店",
+                    "remarks": "应用推荐",
+                    "url": "https://pan.xunlei.com/s/VOkvcQ2Pcn41Bh4gxAgyXggiA1?pwd=v5z7",
+                    "pwd": "v5z7"
+                },
+                {
+                    "name": "体育健康",
+                    "remarks": "健康",
+                    "url": "https://pan.xunlei.com/s/VOojIJbj_wsra61Au4wEkLaZA1?pwd=hqyn",
+                    "pwd": "hqyn"
+                }
+            ]
+        }
+    ]
+}

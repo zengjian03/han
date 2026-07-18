@@ -1,0 +1,14 @@
+[
+    {
+        "name": "dongli1",
+        "server": "smb://shan:du2026@192.168.100.111/movies1"
+    },
+     {
+        "name": "dongli2",
+        "server": "smb://shan:du2026@192.168.100.111/movies2"
+    },
+     {
+        "name": "dongli3",
+        "server": "smb://shan:du2026@192.168.100.111/movies3"
+    }
+]

@@ -1,0 +1,20 @@
+[
+    {
+        "name": "七米兰",
+        "server": "https://al.chirmyram.com/dav",
+        "user": "alist",
+        "pass": "alist"
+    },
+    {
+        "name": "亿苯正经",
+        "server": "https://pan.lm379.cn/dav",
+        "user": "public_dav",
+        "pass": "public"
+    },
+    {
+        "name": "追番",
+        "server": "https://zhuifan.link:443/dav",
+        "user": "zhuifan",
+        "pass": "zhuifan"
+    }
+]
